@@ -48,8 +48,8 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "split_categories": True,
     },
     "filters": {
-        "require_topic_match": True,
-        "min_score": 1,
+        "require_topic_match": False,
+        "min_score": 0,
         "max_papers_per_day": 30,
     },
     "outputs": {
@@ -328,8 +328,18 @@ def build_rss_feed_url(categories: list[str], rss_endpoint: str) -> str:
     endpoint = rss_endpoint.rstrip("/")
     if not categories:
         return endpoint
-    category_path = "+".join(urllib.parse.quote(category, safe=".+-") for category in categories)
+    category_path = "+".join(
+        urllib.parse.quote(normalize_rss_category(category), safe=".+-")
+        for category in categories
+    )
     return f"{endpoint}/{category_path}"
+
+
+def normalize_rss_category(category: str) -> str:
+    category = str(category).strip()
+    if category.lower().startswith("cs."):
+        return category.lower()
+    return category
 
 
 def fetch_arxiv_entries_from_rss(config: dict[str, Any]) -> list[ET.Element]:

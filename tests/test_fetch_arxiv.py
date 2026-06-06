@@ -58,6 +58,8 @@ class FetchArxivTest(unittest.TestCase):
 
     def test_atom_entries_are_filtered_and_rendered(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["filters"]["require_topic_match"] = True
+        config["filters"]["min_score"] = 1
         root = ET.fromstring(SAMPLE_FEED)
         entries = list(root.findall("atom:entry", fetch_arxiv.NS))
         tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
@@ -110,7 +112,7 @@ class FetchArxivTest(unittest.TestCase):
             "https://rss.arxiv.org/atom/",
         )
 
-        self.assertEqual(url, "https://rss.arxiv.org/atom/cs.AI+cs.LG+cs.CV")
+        self.assertEqual(url, "https://rss.arxiv.org/atom/cs.ai+cs.lg+cs.cv")
 
     def test_fetch_arxiv_entries_from_rss(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
@@ -123,9 +125,20 @@ class FetchArxivTest(unittest.TestCase):
         get_text.assert_called_once()
         self.assertEqual(
             get_text.call_args.args[0],
-            "https://rss.arxiv.org/atom/cs.AI+cs.CV",
+            "https://rss.arxiv.org/atom/cs.ai+cs.cv",
         )
         self.assertIsNone(get_text.call_args.args[1])
+
+    def test_default_filter_keeps_category_feed_papers_without_topic_match(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        root = ET.fromstring(SAMPLE_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+        tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
+
+        papers = fetch_arxiv.filter_and_sort_papers(entries, config, date(2026, 6, 6), tz)
+
+        self.assertEqual(len(papers), 2)
+        self.assertEqual({paper.arxiv_id for paper in papers}, {"2606.00001", "2606.00002"})
 
     def test_rss_source_falls_back_to_search_api(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
@@ -150,6 +163,8 @@ class FetchArxivTest(unittest.TestCase):
     def test_split_category_fetch_continues_after_partial_failure(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["source"] = "search"
+        config["filters"]["require_topic_match"] = True
+        config["filters"]["min_score"] = 1
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
         config["arxiv"]["request_delay_seconds"] = 0
         root = ET.fromstring(SAMPLE_FEED)
@@ -172,6 +187,8 @@ class FetchArxivTest(unittest.TestCase):
     def test_split_category_fetch_fails_when_all_categories_fail(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["source"] = "search"
+        config["filters"]["require_topic_match"] = True
+        config["filters"]["min_score"] = 1
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
         config["arxiv"]["request_delay_seconds"] = 0
 
@@ -186,6 +203,8 @@ class FetchArxivTest(unittest.TestCase):
     def test_split_category_results_are_deduplicated_later_by_arxiv_id(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["source"] = "search"
+        config["filters"]["require_topic_match"] = True
+        config["filters"]["min_score"] = 1
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
         config["arxiv"]["request_delay_seconds"] = 0
         root = ET.fromstring(SAMPLE_FEED)
