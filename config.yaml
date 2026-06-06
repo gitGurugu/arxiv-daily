@@ -3,7 +3,7 @@
   "arxiv": {
     "source": "rss",
     "endpoint": "https://export.arxiv.org/api/query",
-    "rss_endpoint": "https://rss.arxiv.org/atom",
+    "rss_endpoint": "https://rss.arxiv.org/rss",
     "categories": [
       "cs.AI",
       "cs.LG",

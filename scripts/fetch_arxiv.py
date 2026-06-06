@@ -12,6 +12,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass
 from datetime import date, datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
 from pathlib import Path
 from typing import Any
 
@@ -33,7 +34,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "arxiv": {
         "source": "rss",
         "endpoint": "https://export.arxiv.org/api/query",
-        "rss_endpoint": "https://rss.arxiv.org/atom",
+        "rss_endpoint": "https://rss.arxiv.org/rss",
         "categories": ["cs.AI", "cs.LG", "cs.CV", "cs.CL"],
         "max_results": 100,
         "per_category_max_results": 25,
@@ -139,6 +140,13 @@ def parse_datetime(value: str | None) -> datetime | None:
     try:
         return datetime.fromisoformat(value.replace("Z", "+00:00"))
     except ValueError:
+        pass
+    try:
+        parsed = parsedate_to_datetime(value)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return parsed
+    except (TypeError, ValueError, IndexError, OverflowError):
         return None
 
 
@@ -355,7 +363,10 @@ def fetch_arxiv_entries_from_rss(config: dict[str, Any]) -> list[ET.Element]:
         optional_float(arxiv_config.get("max_retry_delay_seconds")),
     )
     root = ET.fromstring(xml_text)
-    return list(root.findall("atom:entry", NS))
+    entries = list(root.findall("atom:entry", NS))
+    if entries:
+        return entries
+    return list(root.findall("./channel/item"))
 
 
 def fetch_arxiv_entries_from_search(config: dict[str, Any]) -> list[ET.Element]:
@@ -419,7 +430,23 @@ def fetch_arxiv_entries(config: dict[str, Any]) -> list[ET.Element]:
 
 def child_text(entry: ET.Element, name: str) -> str:
     child = entry.find(f"atom:{name}", NS)
+    if child is None:
+        child = entry.find(name)
     return clean_text(child.text if child is not None else None)
+
+
+def extract_abstract(entry: ET.Element) -> str:
+    summary = child_text(entry, "summary")
+    if summary:
+        return summary
+
+    description = child_text(entry, "description")
+    if not description:
+        return ""
+    match = re.search(r"Abstract:\s*(.*)", description, flags=re.IGNORECASE | re.DOTALL)
+    if match:
+        return clean_text(match.group(1))
+    return description
 
 
 def entry_to_paper(
@@ -428,8 +455,8 @@ def entry_to_paper(
     report_tz,
 ) -> Paper:
     title = child_text(entry, "title")
-    abstract = child_text(entry, "summary")
-    abs_url = child_text(entry, "id")
+    abstract = extract_abstract(entry)
+    abs_url = child_text(entry, "id") or child_text(entry, "link") or child_text(entry, "guid")
     arxiv_id = extract_arxiv_id(abs_url)
     published_raw = child_text(entry, "published")
     updated_raw = child_text(entry, "updated")
@@ -443,11 +470,21 @@ def entry_to_paper(
         for author in entry.findall("atom:author", NS)
         if child_text(author, "name")
     ]
+    if not authors:
+        creator = entry.find("{http://purl.org/dc/elements/1.1/}creator")
+        if creator is not None and clean_text(creator.text):
+            authors = [clean_text(creator.text)]
     categories = [
         str(category.attrib["term"])
         for category in entry.findall("atom:category", NS)
         if category.attrib.get("term")
     ]
+    if not categories:
+        categories = [
+            clean_text(category.text)
+            for category in entry.findall("category")
+            if clean_text(category.text)
+        ]
 
     pdf_url = ""
     for link in entry.findall("atom:link", NS):

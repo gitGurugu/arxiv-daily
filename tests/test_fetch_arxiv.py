@@ -47,6 +47,26 @@ SAMPLE_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 </feed>
 """
 
+SAMPLE_RSS_FEED = """<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>arXiv.org cs.AI</title>
+    <item>
+      <title>RSS Large Language Model Paper</title>
+      <link>https://arxiv.org/abs/2606.00003</link>
+      <guid>https://arxiv.org/abs/2606.00003</guid>
+      <pubDate>Sat, 06 Jun 2026 12:00:00 GMT</pubDate>
+      <dc:creator>RSS Author</dc:creator>
+      <category>cs.AI</category>
+      <description>
+        arXiv:2606.00003 Announce Type: new Abstract:
+        This paper studies a large language model for agents.
+      </description>
+    </item>
+  </channel>
+</rss>
+"""
+
 
 class FetchArxivTest(unittest.TestCase):
     def test_config_loads_and_merges_defaults(self) -> None:
@@ -109,25 +129,40 @@ class FetchArxivTest(unittest.TestCase):
     def test_build_rss_feed_url_joins_categories(self) -> None:
         url = fetch_arxiv.build_rss_feed_url(
             ["cs.AI", "cs.LG", "cs.CV"],
-            "https://rss.arxiv.org/atom/",
+            "https://rss.arxiv.org/rss/",
         )
 
-        self.assertEqual(url, "https://rss.arxiv.org/atom/cs.ai+cs.lg+cs.cv")
+        self.assertEqual(url, "https://rss.arxiv.org/rss/cs.ai+cs.lg+cs.cv")
 
     def test_fetch_arxiv_entries_from_rss(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
 
-        with mock.patch.object(fetch_arxiv, "http_get_text", return_value=SAMPLE_FEED) as get_text:
+        with mock.patch.object(fetch_arxiv, "http_get_text", return_value=SAMPLE_RSS_FEED) as get_text:
             entries = fetch_arxiv.fetch_arxiv_entries_from_rss(config)
 
-        self.assertEqual(len(entries), 2)
+        self.assertEqual(len(entries), 1)
         get_text.assert_called_once()
         self.assertEqual(
             get_text.call_args.args[0],
-            "https://rss.arxiv.org/atom/cs.ai+cs.cv",
+            "https://rss.arxiv.org/rss/cs.ai+cs.cv",
         )
         self.assertIsNone(get_text.call_args.args[1])
+
+    def test_rss_item_is_converted_to_paper(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        root = ET.fromstring(SAMPLE_RSS_FEED)
+        entries = list(root.findall("./channel/item"))
+        tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
+
+        papers = fetch_arxiv.filter_and_sort_papers(entries, config, date(2026, 6, 6), tz)
+
+        self.assertEqual(len(papers), 1)
+        self.assertEqual(papers[0].arxiv_id, "2606.00003")
+        self.assertEqual(papers[0].authors, ["RSS Author"])
+        self.assertEqual(papers[0].categories, ["cs.AI"])
+        self.assertIn("large language model", papers[0].abstract)
+        self.assertEqual(papers[0].pdf_url, "https://arxiv.org/pdf/2606.00003")
 
     def test_default_filter_keeps_category_feed_papers_without_topic_match(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
