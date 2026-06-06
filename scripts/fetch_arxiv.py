@@ -5,6 +5,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -32,10 +33,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "endpoint": "https://export.arxiv.org/api/query",
         "categories": ["cs.AI", "cs.LG", "cs.CV", "cs.CL"],
         "max_results": 100,
+        "per_category_max_results": 50,
         "days_back": 3,
         "sort_by": "submittedDate",
         "sort_order": "descending",
         "timeout_seconds": 30,
+        "request_retries": 3,
+        "retry_delay_seconds": 10,
+        "request_delay_seconds": 3,
+        "split_categories": True,
     },
     "filters": {
         "require_topic_match": True,
@@ -195,7 +201,13 @@ def score_topics(
     return matched_topics, total_score
 
 
-def http_get_text(url: str, params: dict[str, Any], timeout_seconds: int) -> str:
+def http_get_text(
+    url: str,
+    params: dict[str, Any],
+    timeout_seconds: int,
+    request_retries: int = 3,
+    retry_delay_seconds: float = 10,
+) -> str:
     query = urllib.parse.urlencode(params)
     separator = "&" if urllib.parse.urlparse(url).query else "?"
     request = urllib.request.Request(
@@ -203,27 +215,105 @@ def http_get_text(url: str, params: dict[str, Any], timeout_seconds: int) -> str
         headers={"User-Agent": "arxiv-daily/1.0 (+https://github.com/arxiv-daily)"},
         method="GET",
     )
-    with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
-        charset = response.headers.get_content_charset() or "utf-8"
-        return response.read().decode(charset, errors="replace")
+
+    attempts = max(1, int(request_retries))
+    last_error: BaseException | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout_seconds) as response:
+                charset = response.headers.get_content_charset() or "utf-8"
+                return response.read().decode(charset, errors="replace")
+        except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError, OSError) as exc:
+            last_error = exc
+            if attempt >= attempts:
+                break
+            delay = max(0.0, float(retry_delay_seconds)) * attempt
+            print(
+                f"arXiv request failed on attempt {attempt}/{attempts}: {exc}. "
+                f"Retrying in {delay:g}s.",
+                file=sys.stderr,
+            )
+            if delay:
+                time.sleep(delay)
+
+    assert last_error is not None
+    raise last_error
 
 
-def fetch_arxiv_entries(config: dict[str, Any]) -> list[ET.Element]:
-    arxiv_config = config["arxiv"]
-    params = {
-        "search_query": build_query(list(arxiv_config.get("categories", []))),
+def arxiv_query_params(
+    categories: list[str],
+    arxiv_config: dict[str, Any],
+    max_results: int,
+) -> dict[str, Any]:
+    return {
+        "search_query": build_query(categories),
         "start": 0,
-        "max_results": int(arxiv_config.get("max_results", 100)),
+        "max_results": max_results,
         "sortBy": arxiv_config.get("sort_by", "submittedDate"),
         "sortOrder": arxiv_config.get("sort_order", "descending"),
     }
+
+
+def fetch_arxiv_entries_for_categories(
+    categories: list[str],
+    arxiv_config: dict[str, Any],
+    max_results: int,
+) -> list[ET.Element]:
+    params = arxiv_query_params(categories, arxiv_config, max_results)
     xml_text = http_get_text(
         str(arxiv_config["endpoint"]),
         params,
         int(arxiv_config.get("timeout_seconds", 30)),
+        int(arxiv_config.get("request_retries", 3)),
+        float(arxiv_config.get("retry_delay_seconds", 10)),
     )
     root = ET.fromstring(xml_text)
     return list(root.findall("atom:entry", NS))
+
+
+def fetch_arxiv_entries(config: dict[str, Any]) -> list[ET.Element]:
+    arxiv_config = config["arxiv"]
+    categories = [str(category) for category in arxiv_config.get("categories", [])]
+    max_results = int(arxiv_config.get("max_results", 100))
+    split_categories = bool(arxiv_config.get("split_categories", True)) and bool(categories)
+
+    if not split_categories:
+        return fetch_arxiv_entries_for_categories(categories, arxiv_config, max_results)
+
+    all_entries: list[ET.Element] = []
+    failures: list[str] = []
+    successful_requests = 0
+    per_category_max_results = int(
+        arxiv_config.get("per_category_max_results") or max_results
+    )
+    request_delay_seconds = max(0.0, float(arxiv_config.get("request_delay_seconds", 3)))
+
+    for index, category in enumerate(categories):
+        if index > 0 and request_delay_seconds:
+            time.sleep(request_delay_seconds)
+        try:
+            entries = fetch_arxiv_entries_for_categories(
+                [category],
+                arxiv_config,
+                per_category_max_results,
+            )
+            successful_requests += 1
+            all_entries.extend(entries)
+        except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError, OSError, ET.ParseError) as exc:
+            message = f"{category}: {exc}"
+            failures.append(message)
+            print(f"Warning: arXiv category request failed: {message}", file=sys.stderr)
+
+    if failures:
+        print(
+            "Warning: continuing with partial arXiv results; failed categories: "
+            + "; ".join(failures),
+            file=sys.stderr,
+        )
+    if successful_requests == 0:
+        raise RuntimeError("All arXiv category requests failed: " + "; ".join(failures))
+
+    return all_entries
 
 
 def child_text(entry: ET.Element, name: str) -> str:

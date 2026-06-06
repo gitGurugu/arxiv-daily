@@ -26,6 +26,7 @@ jobs:
           python-version: "3.11"
 
       - name: Fetch arXiv papers
+        timeout-minutes: 20
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}

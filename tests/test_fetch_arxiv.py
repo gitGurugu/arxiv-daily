@@ -5,6 +5,7 @@ import unittest
 import xml.etree.ElementTree as ET
 from datetime import date
 from pathlib import Path
+from unittest import mock
 
 import sys
 
@@ -84,6 +85,61 @@ class FetchArxivTest(unittest.TestCase):
 
             self.assertIn("new content", content)
             self.assertNotIn("old content", content)
+
+    def test_split_category_fetch_continues_after_partial_failure(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
+        config["arxiv"]["request_delay_seconds"] = 0
+        root = ET.fromstring(SAMPLE_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+
+        def fake_fetch(categories, _arxiv_config, _max_results):
+            if categories == ["cs.AI"]:
+                return entries
+            raise TimeoutError("slow category")
+
+        with mock.patch.object(
+            fetch_arxiv,
+            "fetch_arxiv_entries_for_categories",
+            side_effect=fake_fetch,
+        ):
+            fetched = fetch_arxiv.fetch_arxiv_entries(config)
+
+        self.assertEqual(len(fetched), 2)
+
+    def test_split_category_fetch_fails_when_all_categories_fail(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
+        config["arxiv"]["request_delay_seconds"] = 0
+
+        with mock.patch.object(
+            fetch_arxiv,
+            "fetch_arxiv_entries_for_categories",
+            side_effect=TimeoutError("arxiv timeout"),
+        ):
+            with self.assertRaisesRegex(RuntimeError, "All arXiv category requests failed"):
+                fetch_arxiv.fetch_arxiv_entries(config)
+
+    def test_split_category_results_are_deduplicated_later_by_arxiv_id(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
+        config["arxiv"]["request_delay_seconds"] = 0
+        root = ET.fromstring(SAMPLE_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+
+        with mock.patch.object(
+            fetch_arxiv,
+            "fetch_arxiv_entries_for_categories",
+            return_value=entries,
+        ):
+            fetched = fetch_arxiv.fetch_arxiv_entries(config)
+
+        tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
+        papers = fetch_arxiv.filter_and_sort_papers(fetched, config, date(2026, 6, 6), tz)
+
+        self.assertEqual(len(fetched), 4)
+        self.assertEqual(len(papers), 1)
+        self.assertEqual(papers[0].arxiv_id, "2606.00001")
 
 
 if __name__ == "__main__":

@@ -9,10 +9,15 @@
       "cs.CL"
     ],
     "max_results": 150,
+    "per_category_max_results": 50,
     "days_back": 3,
     "sort_by": "submittedDate",
     "sort_order": "descending",
-    "timeout_seconds": 30
+    "timeout_seconds": 90,
+    "request_retries": 3,
+    "retry_delay_seconds": 10,
+    "request_delay_seconds": 3,
+    "split_categories": true
   },
   "filters": {
     "require_topic_match": true,
