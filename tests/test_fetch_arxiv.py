@@ -87,6 +87,23 @@ class FetchArxivTest(unittest.TestCase):
             self.assertIn("new content", content)
             self.assertNotIn("old content", content)
 
+    def test_readme_replacement_preserves_backslashes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            readme = Path(tmpdir) / "README.md"
+            readme.write_text(
+                "# Demo\n\n"
+                f"{fetch_arxiv.README_START}\nold content\n{fetch_arxiv.README_END}\n",
+                encoding="utf-8",
+            )
+
+            digest = r"Abstract: This paper studies \epsilon constraints and \e escapes."
+            fetch_arxiv.update_readme(readme, digest)
+            content = readme.read_text(encoding="utf-8")
+
+            self.assertIn(r"\epsilon constraints", content)
+            self.assertIn(r"\e escapes", content)
+            self.assertNotIn("old content", content)
+
     def test_split_category_fetch_continues_after_partial_failure(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]

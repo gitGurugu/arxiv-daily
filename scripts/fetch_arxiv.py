@@ -628,7 +628,7 @@ def update_readme(path: Path, digest_markdown: str) -> None:
             rf"{re.escape(README_START)}.*?{re.escape(README_END)}",
             re.DOTALL,
         )
-        updated = pattern.sub(block, current)
+        updated = pattern.sub(lambda _match: block, current)
     else:
         separator = "\n" if current.endswith("\n") else "\n\n"
         updated = current + separator + block + "\n"
