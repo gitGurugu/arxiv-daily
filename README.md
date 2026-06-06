@@ -26,8 +26,13 @@ output paths. The file intentionally uses JSON syntax, which is valid YAML, so
 the crawler can run with only the Python standard library.
 
 <!-- ARXIV-DAILY:START -->
-## Latest Papers
+## Latest Papers (2026-06-07)
 
-No digest has been generated yet. Run the GitHub Action or execute the local
-command above to populate this section.
+Tracked categories: `cs.AI, cs.LG, cs.CV, cs.CL`
+
+Found `0` matching papers.
+
+### Papers
+
+No matching papers were found for this run.
 <!-- ARXIV-DAILY:END -->
