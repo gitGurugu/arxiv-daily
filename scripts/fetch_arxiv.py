@@ -26,6 +26,7 @@ README_END = "<!-- ARXIV-DAILY:END -->"
 
 ATOM_NS = "http://www.w3.org/2005/Atom"
 NS = {"atom": ATOM_NS}
+USER_AGENT = "arxiv-daily/1.0 (https://github.com/gitGurugu/arxiv-daily; mailto:actions@github.com)"
 
 DEFAULT_CONFIG: dict[str, Any] = {
     "report_timezone": "UTC",
@@ -33,14 +34,15 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "endpoint": "https://export.arxiv.org/api/query",
         "categories": ["cs.AI", "cs.LG", "cs.CV", "cs.CL"],
         "max_results": 100,
-        "per_category_max_results": 50,
+        "per_category_max_results": 25,
         "days_back": 3,
         "sort_by": "submittedDate",
         "sort_order": "descending",
         "timeout_seconds": 30,
-        "request_retries": 3,
-        "retry_delay_seconds": 10,
-        "request_delay_seconds": 3,
+        "request_retries": 5,
+        "retry_delay_seconds": 30,
+        "max_retry_delay_seconds": 60,
+        "request_delay_seconds": 10,
         "split_categories": True,
     },
     "filters": {
@@ -201,18 +203,59 @@ def score_topics(
     return matched_topics, total_score
 
 
+def retry_after_seconds(exc: BaseException) -> float | None:
+    headers = getattr(exc, "headers", None)
+    if not headers:
+        return None
+    retry_after = headers.get("Retry-After")
+    if not retry_after:
+        return None
+    retry_after = str(retry_after).strip()
+    if retry_after.isdigit():
+        return float(retry_after)
+    try:
+        retry_at = datetime.strptime(retry_after, "%a, %d %b %Y %H:%M:%S %Z")
+        retry_at = retry_at.replace(tzinfo=timezone.utc)
+        return max(0.0, (retry_at - datetime.now(timezone.utc)).total_seconds())
+    except ValueError:
+        return None
+
+
+def retry_delay_for_attempt(
+    attempt: int,
+    retry_delay_seconds: float,
+    exc: BaseException,
+    max_retry_delay_seconds: float | None = None,
+) -> float:
+    retry_after = retry_after_seconds(exc)
+    if retry_after is not None:
+        delay = retry_after
+    else:
+        delay = max(0.0, float(retry_delay_seconds)) * attempt
+    if max_retry_delay_seconds is not None:
+        delay = min(delay, max(0.0, float(max_retry_delay_seconds)))
+    return delay
+
+
+def optional_float(value: Any) -> float | None:
+    if value is None:
+        return None
+    return float(value)
+
+
 def http_get_text(
     url: str,
     params: dict[str, Any],
     timeout_seconds: int,
     request_retries: int = 3,
     retry_delay_seconds: float = 10,
+    max_retry_delay_seconds: float | None = None,
 ) -> str:
     query = urllib.parse.urlencode(params)
     separator = "&" if urllib.parse.urlparse(url).query else "?"
     request = urllib.request.Request(
         f"{url}{separator}{query}",
-        headers={"User-Agent": "arxiv-daily/1.0 (+https://github.com/arxiv-daily)"},
+        headers={"User-Agent": USER_AGENT},
         method="GET",
     )
 
@@ -227,7 +270,12 @@ def http_get_text(
             last_error = exc
             if attempt >= attempts:
                 break
-            delay = max(0.0, float(retry_delay_seconds)) * attempt
+            delay = retry_delay_for_attempt(
+                attempt,
+                retry_delay_seconds,
+                exc,
+                max_retry_delay_seconds=max_retry_delay_seconds,
+            )
             print(
                 f"arXiv request failed on attempt {attempt}/{attempts}: {exc}. "
                 f"Retrying in {delay:g}s.",
@@ -266,6 +314,7 @@ def fetch_arxiv_entries_for_categories(
         int(arxiv_config.get("timeout_seconds", 30)),
         int(arxiv_config.get("request_retries", 3)),
         float(arxiv_config.get("retry_delay_seconds", 10)),
+        optional_float(arxiv_config.get("max_retry_delay_seconds")),
     )
     root = ET.fromstring(xml_text)
     return list(root.findall("atom:entry", NS))
@@ -520,7 +569,12 @@ def format_topic_overview(papers: list[Paper]) -> str:
     return "\n".join(rows)
 
 
-def render_markdown(papers: list[Paper], report_day: date, config: dict[str, Any]) -> str:
+def render_markdown(
+    papers: list[Paper],
+    report_day: date,
+    config: dict[str, Any],
+    status_note: str | None = None,
+) -> str:
     categories = ", ".join(config["arxiv"].get("categories", []))
     lines = [
         f"## Latest Papers ({report_day.isoformat()})",
@@ -529,6 +583,8 @@ def render_markdown(papers: list[Paper], report_day: date, config: dict[str, Any
         "",
         f"Found `{len(papers)}` matching papers.",
     ]
+    if status_note:
+        lines.extend(["", f"> {status_note}"])
 
     overview = format_topic_overview(papers)
     if overview:
@@ -589,15 +645,51 @@ def write_json(path: Path, payload: dict[str, Any]) -> None:
     )
 
 
+def paper_from_payload(item: dict[str, Any]) -> Paper:
+    allowed_keys = set(Paper.__dataclass_fields__)
+    values = {key: value for key, value in item.items() if key in allowed_keys}
+    return Paper(**values)
+
+
+def load_latest_payload(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        print(f"Warning: failed to parse fallback payload {path}: {exc}", file=sys.stderr)
+        return None
+    if not isinstance(payload, dict) or not isinstance(payload.get("papers"), list):
+        print(f"Warning: fallback payload {path} has an invalid shape.", file=sys.stderr)
+        return None
+    return payload
+
+
+def load_latest_papers(path: Path) -> tuple[list[Paper], str] | None:
+    payload = load_latest_payload(path)
+    if payload is None:
+        return None
+    try:
+        papers = [paper_from_payload(item) for item in payload["papers"]]
+    except TypeError as exc:
+        print(f"Warning: fallback payload {path} contains invalid papers: {exc}", file=sys.stderr)
+        return None
+    return papers, str(payload.get("report_date") or "unknown date")
+
+
 def build_payload(
     papers: list[Paper],
     report_day: date,
     config: dict[str, Any],
+    fallback: bool = False,
+    source_report_date: str | None = None,
 ) -> dict[str, Any]:
     return {
         "report_date": report_day.isoformat(),
         "categories": list(config["arxiv"].get("categories", [])),
         "days_back": int(config["arxiv"].get("days_back", 3)),
+        "fallback": fallback,
+        "source_report_date": source_report_date,
         "paper_count": len(papers),
         "papers": [asdict(paper) for paper in papers],
     }
@@ -633,12 +725,37 @@ def main() -> int:
         else datetime.now(report_tz).date()
     )
 
-    entries = fetch_arxiv_entries(config)
-    papers = filter_and_sort_papers(entries, config, report_day, report_tz)
-    add_optional_llm_summaries(papers, config)
+    outputs = config["outputs"]
+    latest_json_path = Path(outputs["latest_json"])
+    status_note = None
+    fallback = False
+    source_report_date = None
 
-    digest_markdown = render_markdown(papers, report_day, config)
-    payload = build_payload(papers, report_day, config)
+    try:
+        entries = fetch_arxiv_entries(config)
+        papers = filter_and_sort_papers(entries, config, report_day, report_tz)
+        add_optional_llm_summaries(papers, config)
+    except RuntimeError as exc:
+        fallback_payload = load_latest_papers(latest_json_path)
+        if fallback_payload is None:
+            raise
+        papers, source_report_date = fallback_payload
+        fallback = True
+        status_note = (
+            "arXiv is temporarily unavailable for this run; "
+            f"showing the last successful digest from {source_report_date}. "
+            f"Original error: {exc}"
+        )
+        print(f"Warning: using fallback latest.json because arXiv failed: {exc}", file=sys.stderr)
+
+    digest_markdown = render_markdown(papers, report_day, config, status_note=status_note)
+    payload = build_payload(
+        papers,
+        report_day,
+        config,
+        fallback=fallback,
+        source_report_date=source_report_date,
+    )
 
     if args.dry_run:
         print(digest_markdown)
@@ -646,9 +763,9 @@ def main() -> int:
         print(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
-    outputs = config["outputs"]
     update_readme(Path(outputs["readme"]), digest_markdown)
-    write_json(Path(outputs["latest_json"]), payload)
+    if not fallback:
+        write_json(latest_json_path, payload)
     archive_path = Path(outputs["archive_dir"]) / f"{report_day.isoformat()}.json"
     write_json(archive_path, payload)
     return 0

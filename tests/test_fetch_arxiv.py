@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import tempfile
+import urllib.error
 import unittest
 import xml.etree.ElementTree as ET
 from datetime import date
@@ -140,6 +141,128 @@ class FetchArxivTest(unittest.TestCase):
         self.assertEqual(len(fetched), 4)
         self.assertEqual(len(papers), 1)
         self.assertEqual(papers[0].arxiv_id, "2606.00001")
+
+    def test_http_503_uses_retry_after_header(self) -> None:
+        error = urllib.error.HTTPError(
+            url="https://export.arxiv.org/api/query",
+            code=503,
+            msg="Service Unavailable",
+            hdrs={"Retry-After": "7"},
+            fp=None,
+        )
+
+        class FakeResponse:
+            headers = mock.Mock()
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self):
+                return SAMPLE_FEED.encode("utf-8")
+
+        FakeResponse.headers.get_content_charset.return_value = "utf-8"
+
+        with mock.patch.object(
+            fetch_arxiv.urllib.request,
+            "urlopen",
+            side_effect=[error, FakeResponse()],
+        ), mock.patch.object(fetch_arxiv.time, "sleep") as sleep:
+            text = fetch_arxiv.http_get_text(
+                "https://export.arxiv.org/api/query",
+                {"search_query": "cat:cs.AI"},
+                timeout_seconds=30,
+                request_retries=2,
+                retry_delay_seconds=30,
+            )
+
+        self.assertIn("Agentic Large Language Models", text)
+        sleep.assert_called_once_with(7.0)
+
+    def test_main_uses_latest_json_when_all_arxiv_requests_fail(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            readme = tmp / "README.md"
+            latest_json = tmp / "data" / "latest.json"
+            archive_dir = tmp / "data"
+            readme.write_text(
+                "# Demo\n\n"
+                f"{fetch_arxiv.README_START}\nold\n{fetch_arxiv.README_END}\n",
+                encoding="utf-8",
+            )
+            latest_json.parent.mkdir(parents=True)
+            paper = fetch_arxiv.Paper(
+                arxiv_id="2606.00001",
+                title="Fallback Large Language Model Paper",
+                authors=["Alice"],
+                published="2026-06-05T00:00:00+08:00",
+                updated="2026-06-05T00:00:00+08:00",
+                categories=["cs.AI"],
+                abstract="A fallback abstract about a large language model.",
+                abs_url="https://arxiv.org/abs/2606.00001",
+                pdf_url="https://arxiv.org/pdf/2606.00001",
+                matched_topics=["Large Language Models"],
+                score=3,
+            )
+            latest_json.write_text(
+                fetch_arxiv.json.dumps(
+                    {
+                        "report_date": "2026-06-05",
+                        "paper_count": 1,
+                        "papers": [fetch_arxiv.asdict(paper)],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            config = fetch_arxiv.load_config(ROOT / "config.yaml")
+            config["outputs"]["readme"] = str(readme)
+            config["outputs"]["latest_json"] = str(latest_json)
+            config["outputs"]["archive_dir"] = str(archive_dir)
+
+            with mock.patch.object(fetch_arxiv, "load_config", return_value=config), mock.patch.object(
+                fetch_arxiv,
+                "fetch_arxiv_entries",
+                side_effect=RuntimeError("All arXiv category requests failed"),
+            ), mock.patch.object(
+                fetch_arxiv.sys,
+                "argv",
+                ["fetch_arxiv.py", "--config", str(tmp / "config.yaml"), "--date", "2026-06-06"],
+            ):
+                exit_code = fetch_arxiv.main()
+
+            content = readme.read_text(encoding="utf-8")
+            archive_payload = fetch_arxiv.json.loads((archive_dir / "2026-06-06.json").read_text(encoding="utf-8"))
+            latest_payload = fetch_arxiv.json.loads(latest_json.read_text(encoding="utf-8"))
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("showing the last successful digest from 2026-06-05", content)
+            self.assertIn("Fallback Large Language Model Paper", content)
+            self.assertTrue(archive_payload["fallback"])
+            self.assertEqual(latest_payload["report_date"], "2026-06-05")
+
+    def test_main_fails_when_arxiv_and_fallback_are_unavailable(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            config = fetch_arxiv.load_config(ROOT / "config.yaml")
+            config["outputs"]["readme"] = str(tmp / "README.md")
+            config["outputs"]["latest_json"] = str(tmp / "data" / "latest.json")
+            config["outputs"]["archive_dir"] = str(tmp / "data")
+
+            with mock.patch.object(fetch_arxiv, "load_config", return_value=config), mock.patch.object(
+                fetch_arxiv,
+                "fetch_arxiv_entries",
+                side_effect=RuntimeError("All arXiv category requests failed"),
+            ), mock.patch.object(
+                fetch_arxiv.sys,
+                "argv",
+                ["fetch_arxiv.py", "--config", str(tmp / "config.yaml"), "--date", "2026-06-06"],
+            ):
+                with self.assertRaisesRegex(RuntimeError, "All arXiv category requests failed"):
+                    fetch_arxiv.main()
 
 
 if __name__ == "__main__":

@@ -25,8 +25,14 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Show checked-out revision
+        run: |
+          git rev-parse HEAD
+          wc -l scripts/fetch_arxiv.py
+          grep -n "split_categories\|request_retries\|fetch_arxiv_entries_for_categories" scripts/fetch_arxiv.py
+
       - name: Fetch arXiv papers
-        timeout-minutes: 20
+        timeout-minutes: 60
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
