@@ -1,18 +1,40 @@
 {
   "report_timezone": "Asia/Shanghai",
   "arxiv": {
-    "source": "rss",
+    "source": "search",
     "endpoint": "https://export.arxiv.org/api/query",
     "rss_endpoint": "https://rss.arxiv.org/rss",
     "categories": [
       "cs.AI",
       "cs.LG",
-      "cs.CV",
-      "cs.CL"
+      "cs.CL",
+      "cs.HC",
+      "cs.CV"
     ],
-    "max_results": 150,
-    "per_category_max_results": 25,
-    "days_back": 3,
+    "search_keywords": [
+      "gui agent",
+      "gui agents",
+      "computer use",
+      "computer using agent",
+      "computer control",
+      "ui automation",
+      "user interface automation",
+      "graphical user interface",
+      "web agent",
+      "browser agent",
+      "mobile agent",
+      "app agent",
+      "screen understanding",
+      "screen grounding",
+      "visual grounding",
+      "vision-language agent",
+      "multimodal agent",
+      "agent benchmark"
+    ],
+    "use_keyword_query": true,
+    "max_results": 30,
+    "per_category_max_results": 10,
+    "days_back": 14,
     "sort_by": "submittedDate",
     "sort_order": "descending",
     "timeout_seconds": 90,
@@ -20,12 +42,12 @@
     "retry_delay_seconds": 30,
     "max_retry_delay_seconds": 60,
     "request_delay_seconds": 10,
-    "split_categories": true
+    "split_categories": false
   },
   "filters": {
-    "require_topic_match": false,
-    "min_score": 0,
-    "max_papers_per_day": 30
+    "require_topic_match": true,
+    "min_score": 1,
+    "max_papers_per_day": 20
   },
   "outputs": {
     "readme": "README.md",
@@ -41,87 +63,55 @@
     "timeout_seconds": 45
   },
   "topics": {
-    "large-language-models": {
-      "display_name": "Large Language Models",
+    "gui-agents": {
+      "display_name": "GUI Agents",
       "keywords": [
-        "large language model",
-        "llm",
-        "language model",
-        "instruction tuning",
-        "alignment",
-        "reasoning",
-        "chain-of-thought",
-        "prompt tuning",
-        "in-context learning",
-        "transformer"
+        "gui agent",
+        "gui agents",
+        "graphical user interface",
+        "user interface",
+        "screen understanding",
+        "screen grounding"
       ]
     },
-    "agents-and-rag": {
-      "display_name": "Agents and RAG",
+    "computer-use": {
+      "display_name": "Computer Use",
       "keywords": [
-        "agent",
-        "autonomous agent",
-        "tool use",
-        "retrieval augmented generation",
-        "retrieval-augmented generation",
-        "rag",
-        "knowledge retrieval",
-        "vector database",
-        "memory"
+        "computer use",
+        "computer using agent",
+        "computer control",
+        "desktop automation",
+        "operating system agent"
       ]
     },
-    "computer-vision": {
-      "display_name": "Computer Vision",
+    "ui-automation": {
+      "display_name": "UI Automation",
       "keywords": [
-        "computer vision",
-        "image recognition",
-        "object detection",
-        "segmentation",
-        "image generation",
-        "diffusion model",
-        "visual representation",
-        "video understanding",
-        "tracking"
+        "ui automation",
+        "user interface automation",
+        "workflow automation",
+        "task automation",
+        "app agent"
       ]
     },
-    "multimodal-ai": {
-      "display_name": "Multimodal AI",
+    "web-agents": {
+      "display_name": "Web Agents",
       "keywords": [
-        "multimodal",
-        "vision-language",
-        "visual language",
-        "image-text",
-        "video-language",
-        "vlm",
-        "cross-modal",
-        "audio-visual"
+        "web agent",
+        "browser agent",
+        "web automation",
+        "web navigation",
+        "mobile agent"
       ]
     },
-    "natural-language-processing": {
-      "display_name": "Natural Language Processing",
+    "vision-language-agents": {
+      "display_name": "Vision-Language Agents",
       "keywords": [
-        "natural language processing",
-        "nlp",
-        "machine translation",
-        "information extraction",
-        "question answering",
-        "text generation",
-        "dialogue",
-        "summarization"
-      ]
-    },
-    "machine-learning": {
-      "display_name": "Machine Learning",
-      "keywords": [
-        "machine learning",
-        "deep learning",
-        "representation learning",
-        "self-supervised",
-        "reinforcement learning",
-        "optimization",
-        "generalization",
-        "benchmark",
-        "evaluation"
+        "vision-language agent",
+        "visual grounding",
+        "multimodal agent",
+        "visual agent",
+        "agent benchmark"
       ]
     }
   }

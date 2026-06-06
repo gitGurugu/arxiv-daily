@@ -22,10 +22,10 @@ SAMPLE_FEED = """<?xml version="1.0" encoding="UTF-8"?>
     <id>https://arxiv.org/abs/2606.00001</id>
     <updated>2026-06-06T12:00:00Z</updated>
     <published>2026-06-06T12:00:00Z</published>
-    <title>Agentic Large Language Models for Visual Reasoning</title>
+    <title>GUI Agents for Screen Grounding and Computer Use</title>
     <summary>
-      We study tool use and retrieval augmented generation for multimodal
-      large language model reasoning.
+      We study a vision-language agent for graphical user interface automation,
+      screen understanding, and computer control.
     </summary>
     <author><name>Alice Researcher</name></author>
     <author><name>Bob Scientist</name></author>
@@ -52,7 +52,7 @@ SAMPLE_RSS_FEED = """<?xml version="1.0" encoding="UTF-8"?>
   <channel>
     <title>arXiv.org cs.AI</title>
     <item>
-      <title>RSS Large Language Model Paper</title>
+    <title>RSS GUI Agent Paper</title>
       <link>https://arxiv.org/abs/2606.00003</link>
       <guid>https://arxiv.org/abs/2606.00003</guid>
       <pubDate>Sat, 06 Jun 2026 12:00:00 GMT</pubDate>
@@ -60,7 +60,7 @@ SAMPLE_RSS_FEED = """<?xml version="1.0" encoding="UTF-8"?>
       <category>cs.AI</category>
       <description>
         arXiv:2606.00003 Announce Type: new Abstract:
-        This paper studies a large language model for agents.
+        This paper studies a GUI agent for graphical user interface automation.
       </description>
     </item>
   </channel>
@@ -89,9 +89,9 @@ class FetchArxivTest(unittest.TestCase):
 
         self.assertEqual(len(papers), 1)
         self.assertEqual(papers[0].arxiv_id, "2606.00001")
-        self.assertIn("Large Language Models", papers[0].matched_topics)
-        self.assertIn("Agents and RAG", papers[0].matched_topics)
-        self.assertIn("Agentic Large Language Models", markdown)
+        self.assertIn("GUI Agents", papers[0].matched_topics)
+        self.assertIn("Computer Use", papers[0].matched_topics)
+        self.assertIn("GUI Agents for Screen Grounding", markdown)
         self.assertNotIn("Unrelated Numerical Solver", markdown)
 
     def test_readme_marker_region_is_replaced(self) -> None:
@@ -161,11 +161,13 @@ class FetchArxivTest(unittest.TestCase):
         self.assertEqual(papers[0].arxiv_id, "2606.00003")
         self.assertEqual(papers[0].authors, ["RSS Author"])
         self.assertEqual(papers[0].categories, ["cs.AI"])
-        self.assertIn("large language model", papers[0].abstract)
+        self.assertIn("GUI agent", papers[0].abstract)
         self.assertEqual(papers[0].pdf_url, "https://arxiv.org/pdf/2606.00003")
 
     def test_default_filter_keeps_category_feed_papers_without_topic_match(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["filters"]["require_topic_match"] = False
+        config["filters"]["min_score"] = 0
         root = ET.fromstring(SAMPLE_FEED)
         entries = list(root.findall("atom:entry", fetch_arxiv.NS))
         tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
@@ -174,6 +176,30 @@ class FetchArxivTest(unittest.TestCase):
 
         self.assertEqual(len(papers), 2)
         self.assertEqual({paper.arxiv_id for paper in papers}, {"2606.00001", "2606.00002"})
+
+    def test_build_keyword_query_includes_categories_and_gui_terms(self) -> None:
+        query = fetch_arxiv.build_keyword_query(
+            ["cs.AI", "cs.HC"],
+            ["gui agent", "computer use"],
+        )
+
+        self.assertIn("cat:cs.AI", query)
+        self.assertIn("cat:cs.HC", query)
+        self.assertIn('all:"gui agent"', query)
+        self.assertIn('all:"computer use"', query)
+        self.assertIn(" AND ", query)
+
+    def test_fetch_arxiv_entries_by_keywords_uses_combined_query(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+
+        with mock.patch.object(fetch_arxiv, "http_get_text", return_value=SAMPLE_FEED) as get_text:
+            entries = fetch_arxiv.fetch_arxiv_entries_by_keywords(config)
+
+        self.assertEqual(len(entries), 2)
+        params = get_text.call_args.args[1]
+        self.assertEqual(params["max_results"], 30)
+        self.assertIn('all:"gui agent"', params["search_query"])
+        self.assertIn("cat:cs.HC", params["search_query"])
 
     def test_rss_source_falls_back_to_search_api(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
@@ -198,6 +224,8 @@ class FetchArxivTest(unittest.TestCase):
     def test_split_category_fetch_continues_after_partial_failure(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["source"] = "search"
+        config["arxiv"]["use_keyword_query"] = False
+        config["arxiv"]["split_categories"] = True
         config["filters"]["require_topic_match"] = True
         config["filters"]["min_score"] = 1
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
@@ -222,6 +250,8 @@ class FetchArxivTest(unittest.TestCase):
     def test_split_category_fetch_fails_when_all_categories_fail(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["source"] = "search"
+        config["arxiv"]["use_keyword_query"] = False
+        config["arxiv"]["split_categories"] = True
         config["filters"]["require_topic_match"] = True
         config["filters"]["min_score"] = 1
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
@@ -238,6 +268,8 @@ class FetchArxivTest(unittest.TestCase):
     def test_split_category_results_are_deduplicated_later_by_arxiv_id(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["arxiv"]["source"] = "search"
+        config["arxiv"]["use_keyword_query"] = False
+        config["arxiv"]["split_categories"] = True
         config["filters"]["require_topic_match"] = True
         config["filters"]["min_score"] = 1
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
@@ -295,7 +327,7 @@ class FetchArxivTest(unittest.TestCase):
                 retry_delay_seconds=30,
             )
 
-        self.assertIn("Agentic Large Language Models", text)
+        self.assertIn("GUI Agents for Screen Grounding", text)
         sleep.assert_called_once_with(7.0)
 
     def test_main_uses_latest_json_when_all_arxiv_requests_fail(self) -> None:
@@ -312,15 +344,15 @@ class FetchArxivTest(unittest.TestCase):
             latest_json.parent.mkdir(parents=True)
             paper = fetch_arxiv.Paper(
                 arxiv_id="2606.00001",
-                title="Fallback Large Language Model Paper",
+                title="Fallback GUI Agent Paper",
                 authors=["Alice"],
                 published="2026-06-05T00:00:00+08:00",
                 updated="2026-06-05T00:00:00+08:00",
                 categories=["cs.AI"],
-                abstract="A fallback abstract about a large language model.",
+                abstract="A fallback abstract about a GUI agent.",
                 abs_url="https://arxiv.org/abs/2606.00001",
                 pdf_url="https://arxiv.org/pdf/2606.00001",
-                matched_topics=["Large Language Models"],
+                matched_topics=["GUI Agents"],
                 score=3,
             )
             latest_json.write_text(
@@ -357,7 +389,7 @@ class FetchArxivTest(unittest.TestCase):
 
             self.assertEqual(exit_code, 0)
             self.assertIn("showing the last successful digest from 2026-06-05", content)
-            self.assertIn("Fallback Large Language Model Paper", content)
+            self.assertIn("Fallback GUI Agent Paper", content)
             self.assertTrue(archive_payload["fallback"])
             self.assertEqual(latest_payload["report_date"], "2026-06-05")
 

@@ -160,6 +160,32 @@ def build_query(categories: list[str]) -> str:
     return " OR ".join(f"cat:{category}" for category in categories)
 
 
+def collect_topic_keywords(config: dict[str, Any]) -> list[str]:
+    keywords: list[str] = []
+    seen: set[str] = set()
+    for _topic_id, _display_name, topic_keywords in topic_specs(config):
+        for keyword in topic_keywords:
+            normalized = clean_text(keyword).lower()
+            if normalized and normalized not in seen:
+                seen.add(normalized)
+                keywords.append(clean_text(keyword))
+    return keywords
+
+
+def arxiv_all_term(keyword: str) -> str:
+    keyword = clean_text(keyword)
+    escaped = keyword.replace('"', '\\"')
+    return f'all:"{escaped}"' if " " in keyword else f"all:{escaped}"
+
+
+def build_keyword_query(categories: list[str], keywords: list[str]) -> str:
+    category_query = f"({build_query(categories)})" if categories else "all:*"
+    keyword_terms = [arxiv_all_term(keyword) for keyword in keywords if clean_text(keyword)]
+    if not keyword_terms:
+        return category_query
+    return f"{category_query} AND ({' OR '.join(keyword_terms)})"
+
+
 def topic_specs(config: dict[str, Any]) -> list[tuple[str, str, list[str]]]:
     topics = config.get("topics", {})
     if not isinstance(topics, dict):
@@ -314,6 +340,36 @@ def arxiv_query_params(
     }
 
 
+def fetch_arxiv_entries_by_keywords(config: dict[str, Any]) -> list[ET.Element]:
+    arxiv_config = config["arxiv"]
+    categories = [str(category) for category in arxiv_config.get("categories", [])]
+    keywords = [
+        str(keyword)
+        for keyword in arxiv_config.get("search_keywords", [])
+        if clean_text(str(keyword))
+    ]
+    if not keywords:
+        keywords = collect_topic_keywords(config)
+
+    params = {
+        "search_query": build_keyword_query(categories, keywords),
+        "start": 0,
+        "max_results": int(arxiv_config.get("max_results", 30)),
+        "sortBy": arxiv_config.get("sort_by", "submittedDate"),
+        "sortOrder": arxiv_config.get("sort_order", "descending"),
+    }
+    xml_text = http_get_text(
+        str(arxiv_config["endpoint"]),
+        params,
+        int(arxiv_config.get("timeout_seconds", 30)),
+        int(arxiv_config.get("request_retries", 3)),
+        float(arxiv_config.get("retry_delay_seconds", 10)),
+        optional_float(arxiv_config.get("max_retry_delay_seconds")),
+    )
+    root = ET.fromstring(xml_text)
+    return list(root.findall("atom:entry", NS))
+
+
 def fetch_arxiv_entries_for_categories(
     categories: list[str],
     arxiv_config: dict[str, Any],
@@ -371,6 +427,9 @@ def fetch_arxiv_entries_from_rss(config: dict[str, Any]) -> list[ET.Element]:
 
 def fetch_arxiv_entries_from_search(config: dict[str, Any]) -> list[ET.Element]:
     arxiv_config = config["arxiv"]
+    if bool(arxiv_config.get("use_keyword_query", False)):
+        return fetch_arxiv_entries_by_keywords(config)
+
     categories = [str(category) for category in arxiv_config.get("categories", [])]
     max_results = int(arxiv_config.get("max_results", 100))
     split_categories = bool(arxiv_config.get("split_categories", True)) and bool(categories)
