@@ -1,0 +1,120 @@
+{
+  "report_timezone": "Asia/Shanghai",
+  "arxiv": {
+    "endpoint": "https://export.arxiv.org/api/query",
+    "categories": [
+      "cs.AI",
+      "cs.LG",
+      "cs.CV",
+      "cs.CL"
+    ],
+    "max_results": 150,
+    "days_back": 3,
+    "sort_by": "submittedDate",
+    "sort_order": "descending",
+    "timeout_seconds": 30
+  },
+  "filters": {
+    "require_topic_match": true,
+    "min_score": 1,
+    "max_papers_per_day": 30
+  },
+  "outputs": {
+    "readme": "README.md",
+    "latest_json": "data/latest.json",
+    "archive_dir": "data"
+  },
+  "llm": {
+    "enabled": true,
+    "max_papers": 8,
+    "language": "Simplified Chinese",
+    "model": "gpt-4o-mini",
+    "base_url": "https://api.openai.com/v1",
+    "timeout_seconds": 45
+  },
+  "topics": {
+    "large-language-models": {
+      "display_name": "Large Language Models",
+      "keywords": [
+        "large language model",
+        "llm",
+        "language model",
+        "instruction tuning",
+        "alignment",
+        "reasoning",
+        "chain-of-thought",
+        "prompt tuning",
+        "in-context learning",
+        "transformer"
+      ]
+    },
+    "agents-and-rag": {
+      "display_name": "Agents and RAG",
+      "keywords": [
+        "agent",
+        "autonomous agent",
+        "tool use",
+        "retrieval augmented generation",
+        "retrieval-augmented generation",
+        "rag",
+        "knowledge retrieval",
+        "vector database",
+        "memory"
+      ]
+    },
+    "computer-vision": {
+      "display_name": "Computer Vision",
+      "keywords": [
+        "computer vision",
+        "image recognition",
+        "object detection",
+        "segmentation",
+        "image generation",
+        "diffusion model",
+        "visual representation",
+        "video understanding",
+        "tracking"
+      ]
+    },
+    "multimodal-ai": {
+      "display_name": "Multimodal AI",
+      "keywords": [
+        "multimodal",
+        "vision-language",
+        "visual language",
+        "image-text",
+        "video-language",
+        "vlm",
+        "cross-modal",
+        "audio-visual"
+      ]
+    },
+    "natural-language-processing": {
+      "display_name": "Natural Language Processing",
+      "keywords": [
+        "natural language processing",
+        "nlp",
+        "machine translation",
+        "information extraction",
+        "question answering",
+        "text generation",
+        "dialogue",
+        "summarization"
+      ]
+    },
+    "machine-learning": {
+      "display_name": "Machine Learning",
+      "keywords": [
+        "machine learning",
+        "deep learning",
+        "representation learning",
+        "self-supervised",
+        "reinforcement learning",
+        "optimization",
+        "generalization",
+        "benchmark",
+        "evaluation"
+      ]
+    }
+  }
+}

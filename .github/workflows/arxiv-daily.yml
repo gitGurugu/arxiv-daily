@@ -1,0 +1,42 @@
+name: arXiv Daily
+
+on:
+  schedule:
+    # Runs at 08:30 Asia/Shanghai. GitHub Actions cron uses UTC.
+    - cron: "30 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Fetch arXiv papers
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+        run: python scripts/fetch_arxiv.py --config config.yaml
+
+      - name: Commit updated digest
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md data
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update arXiv daily digest"
+            git push
+          fi
