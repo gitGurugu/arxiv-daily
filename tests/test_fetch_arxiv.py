@@ -104,8 +104,52 @@ class FetchArxivTest(unittest.TestCase):
             self.assertIn(r"\e escapes", content)
             self.assertNotIn("old content", content)
 
+    def test_build_rss_feed_url_joins_categories(self) -> None:
+        url = fetch_arxiv.build_rss_feed_url(
+            ["cs.AI", "cs.LG", "cs.CV"],
+            "https://rss.arxiv.org/atom/",
+        )
+
+        self.assertEqual(url, "https://rss.arxiv.org/atom/cs.AI+cs.LG+cs.CV")
+
+    def test_fetch_arxiv_entries_from_rss(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
+
+        with mock.patch.object(fetch_arxiv, "http_get_text", return_value=SAMPLE_FEED) as get_text:
+            entries = fetch_arxiv.fetch_arxiv_entries_from_rss(config)
+
+        self.assertEqual(len(entries), 2)
+        get_text.assert_called_once()
+        self.assertEqual(
+            get_text.call_args.args[0],
+            "https://rss.arxiv.org/atom/cs.AI+cs.CV",
+        )
+        self.assertIsNone(get_text.call_args.args[1])
+
+    def test_rss_source_falls_back_to_search_api(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["source"] = "rss"
+        root = ET.fromstring(SAMPLE_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+
+        with mock.patch.object(
+            fetch_arxiv,
+            "fetch_arxiv_entries_from_rss",
+            side_effect=TimeoutError("rss timeout"),
+        ), mock.patch.object(
+            fetch_arxiv,
+            "fetch_arxiv_entries_from_search",
+            return_value=entries,
+        ) as search:
+            fetched = fetch_arxiv.fetch_arxiv_entries(config)
+
+        self.assertEqual(len(fetched), 2)
+        search.assert_called_once_with(config)
+
     def test_split_category_fetch_continues_after_partial_failure(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["source"] = "search"
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
         config["arxiv"]["request_delay_seconds"] = 0
         root = ET.fromstring(SAMPLE_FEED)
@@ -127,6 +171,7 @@ class FetchArxivTest(unittest.TestCase):
 
     def test_split_category_fetch_fails_when_all_categories_fail(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["source"] = "search"
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
         config["arxiv"]["request_delay_seconds"] = 0
 
@@ -140,6 +185,7 @@ class FetchArxivTest(unittest.TestCase):
 
     def test_split_category_results_are_deduplicated_later_by_arxiv_id(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        config["arxiv"]["source"] = "search"
         config["arxiv"]["categories"] = ["cs.AI", "cs.CV"]
         config["arxiv"]["request_delay_seconds"] = 0
         root = ET.fromstring(SAMPLE_FEED)

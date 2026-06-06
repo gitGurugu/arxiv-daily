@@ -1,7 +1,9 @@
 {
   "report_timezone": "Asia/Shanghai",
   "arxiv": {
+    "source": "rss",
     "endpoint": "https://export.arxiv.org/api/query",
+    "rss_endpoint": "https://rss.arxiv.org/atom",
     "categories": [
       "cs.AI",
       "cs.LG",
@@ -14,7 +16,7 @@
     "sort_by": "submittedDate",
     "sort_order": "descending",
     "timeout_seconds": 90,
-    "request_retries": 5,
+    "request_retries": 2,
     "retry_delay_seconds": 30,
     "max_retry_delay_seconds": 60,
     "request_delay_seconds": 10,
@@ -31,7 +33,7 @@
     "archive_dir": "data"
   },
   "llm": {
-    "enabled": true,
+    "enabled": false,
     "max_papers": 8,
     "language": "Simplified Chinese",
     "model": "gpt-4o-mini",

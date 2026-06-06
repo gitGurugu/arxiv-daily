@@ -31,7 +31,9 @@ USER_AGENT = "arxiv-daily/1.0 (https://github.com/gitGurugu/arxiv-daily; mailto:
 DEFAULT_CONFIG: dict[str, Any] = {
     "report_timezone": "UTC",
     "arxiv": {
+        "source": "rss",
         "endpoint": "https://export.arxiv.org/api/query",
+        "rss_endpoint": "https://rss.arxiv.org/atom",
         "categories": ["cs.AI", "cs.LG", "cs.CV", "cs.CL"],
         "max_results": 100,
         "per_category_max_results": 25,
@@ -39,7 +41,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "sort_by": "submittedDate",
         "sort_order": "descending",
         "timeout_seconds": 30,
-        "request_retries": 5,
+        "request_retries": 2,
         "retry_delay_seconds": 30,
         "max_retry_delay_seconds": 60,
         "request_delay_seconds": 10,
@@ -245,16 +247,18 @@ def optional_float(value: Any) -> float | None:
 
 def http_get_text(
     url: str,
-    params: dict[str, Any],
+    params: dict[str, Any] | None,
     timeout_seconds: int,
     request_retries: int = 3,
     retry_delay_seconds: float = 10,
     max_retry_delay_seconds: float | None = None,
 ) -> str:
+    params = params or {}
     query = urllib.parse.urlencode(params)
     separator = "&" if urllib.parse.urlparse(url).query else "?"
+    request_url = f"{url}{separator}{query}" if query else url
     request = urllib.request.Request(
-        f"{url}{separator}{query}",
+        request_url,
         headers={"User-Agent": USER_AGENT},
         method="GET",
     )
@@ -320,7 +324,31 @@ def fetch_arxiv_entries_for_categories(
     return list(root.findall("atom:entry", NS))
 
 
-def fetch_arxiv_entries(config: dict[str, Any]) -> list[ET.Element]:
+def build_rss_feed_url(categories: list[str], rss_endpoint: str) -> str:
+    endpoint = rss_endpoint.rstrip("/")
+    if not categories:
+        return endpoint
+    category_path = "+".join(urllib.parse.quote(category, safe=".+-") for category in categories)
+    return f"{endpoint}/{category_path}"
+
+
+def fetch_arxiv_entries_from_rss(config: dict[str, Any]) -> list[ET.Element]:
+    arxiv_config = config["arxiv"]
+    categories = [str(category) for category in arxiv_config.get("categories", [])]
+    url = build_rss_feed_url(categories, str(arxiv_config.get("rss_endpoint")))
+    xml_text = http_get_text(
+        url,
+        None,
+        int(arxiv_config.get("timeout_seconds", 30)),
+        int(arxiv_config.get("request_retries", 3)),
+        float(arxiv_config.get("retry_delay_seconds", 10)),
+        optional_float(arxiv_config.get("max_retry_delay_seconds")),
+    )
+    root = ET.fromstring(xml_text)
+    return list(root.findall("atom:entry", NS))
+
+
+def fetch_arxiv_entries_from_search(config: dict[str, Any]) -> list[ET.Element]:
     arxiv_config = config["arxiv"]
     categories = [str(category) for category in arxiv_config.get("categories", [])]
     max_results = int(arxiv_config.get("max_results", 100))
@@ -363,6 +391,20 @@ def fetch_arxiv_entries(config: dict[str, Any]) -> list[ET.Element]:
         raise RuntimeError("All arXiv category requests failed: " + "; ".join(failures))
 
     return all_entries
+
+
+def fetch_arxiv_entries(config: dict[str, Any]) -> list[ET.Element]:
+    source = str(config["arxiv"].get("source", "rss")).lower()
+    if source == "search":
+        return fetch_arxiv_entries_from_search(config)
+    if source != "rss":
+        raise ValueError(f"Unknown arXiv source: {source}")
+
+    try:
+        return fetch_arxiv_entries_from_rss(config)
+    except (TimeoutError, urllib.error.URLError, urllib.error.HTTPError, OSError, ET.ParseError) as exc:
+        print(f"Warning: arXiv RSS feed failed, falling back to Search API: {exc}", file=sys.stderr)
+        return fetch_arxiv_entries_from_search(config)
 
 
 def child_text(entry: ET.Element, name: str) -> str:
