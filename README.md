@@ -26,13 +26,14 @@ output paths. The file intentionally uses JSON syntax, which is valid YAML, so
 the crawler can run with only the Python standard library.
 
 <!-- ARXIV-DAILY:START -->
-## Latest Papers (2026-06-07)
+## GUI Agent Memory Papers (updated 2026-06-07)
 
 Tracked categories: `cs.AI, cs.LG, cs.CL, cs.HC, cs.CV`
 
-Found `0` matching papers.
+Found `0` matching papers in the cumulative list.
+Current run matched `0` papers.
 
 ### Papers
 
-No matching papers were found for this run.
+No matching papers have been accumulated yet.
 <!-- ARXIV-DAILY:END -->
