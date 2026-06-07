@@ -216,6 +216,36 @@ def keyword_matches(keyword: str, text: str) -> bool:
     return re.search(pattern, text) is not None
 
 
+def matches_any_keyword(keywords: list[str], text: str) -> bool:
+    return any(keyword_matches(keyword, text) for keyword in keywords)
+
+
+def matches_required_keyword_groups(filters: dict[str, Any], text: str) -> bool:
+    groups = filters.get("required_keyword_groups", {})
+    if not isinstance(groups, dict) or not groups:
+        return True
+    for _group_name, keywords in groups.items():
+        if not isinstance(keywords, list):
+            continue
+        if not matches_any_keyword([str(keyword) for keyword in keywords], text):
+            return False
+    return True
+
+
+def is_excluded_by_keywords(filters: dict[str, Any], text: str) -> bool:
+    exclude_keywords = filters.get("exclude_keywords", [])
+    if not isinstance(exclude_keywords, list):
+        return False
+    if not matches_any_keyword([str(keyword) for keyword in exclude_keywords], text):
+        return False
+
+    # Keep UI-control papers even if they mention generic language-agent terms.
+    strong_gui_keywords = filters.get("strong_gui_keywords", [])
+    if isinstance(strong_gui_keywords, list) and matches_any_keyword([str(keyword) for keyword in strong_gui_keywords], text):
+        return False
+    return True
+
+
 def score_topics(
     title: str,
     abstract: str,
@@ -589,11 +619,16 @@ def filter_and_sort_papers(
     papers_by_id: dict[str, Paper] = {}
     for entry in entries:
         paper = entry_to_paper(entry, specs, report_tz)
+        searchable_text = f"{paper.title} {paper.abstract}".lower()
         published_dt = parse_datetime(child_text(entry, "published"))
         if published_dt:
             published_day = published_dt.astimezone(report_tz).date()
             if published_day < since_day or published_day > report_day:
                 continue
+        if not matches_required_keyword_groups(filters, searchable_text):
+            continue
+        if is_excluded_by_keywords(filters, searchable_text):
+            continue
         if require_topic_match and not paper.matched_topics:
             continue
         if paper.score < min_score:

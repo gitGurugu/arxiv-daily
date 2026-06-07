@@ -84,6 +84,51 @@ SAMPLE_RSS_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 """
 
 
+GROUP_FILTER_FEED = """<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <entry>
+    <id>https://arxiv.org/abs/2606.10001</id>
+    <updated>2026-06-06T12:00:00Z</updated>
+    <published>2026-06-06T12:00:00Z</published>
+    <title>Mobile GUI Agents with Trajectory Memory for Android Apps</title>
+    <summary>
+      We build a mobile GUI agent for Android app control with retrieval over
+      previous interaction trajectory history and persistent memory.
+    </summary>
+    <author><name>Alice Researcher</name></author>
+    <category term="cs.AI" />
+    <category term="cs.HC" />
+    <link href="https://arxiv.org/abs/2606.10001" rel="alternate" />
+  </entry>
+  <entry>
+    <id>https://arxiv.org/abs/2606.10002</id>
+    <updated>2026-06-06T11:00:00Z</updated>
+    <published>2026-06-06T11:00:00Z</published>
+    <title>Language Agent Memory for Text Reasoning</title>
+    <summary>
+      This paper studies a language agent with long-term memory for text-only
+      question answering and retrieval augmented generation.
+    </summary>
+    <author><name>Bob Scientist</name></author>
+    <category term="cs.CL" />
+    <link href="https://arxiv.org/abs/2606.10002" rel="alternate" />
+  </entry>
+  <entry>
+    <id>https://arxiv.org/abs/2606.10003</id>
+    <updated>2026-06-06T10:00:00Z</updated>
+    <published>2026-06-06T10:00:00Z</published>
+    <title>GUI Agent Benchmark for Screen Understanding</title>
+    <summary>
+      We evaluate graphical user interface agents on screen grounding tasks.
+    </summary>
+    <author><name>Carol Engineer</name></author>
+    <category term="cs.CV" />
+    <link href="https://arxiv.org/abs/2606.10003" rel="alternate" />
+  </entry>
+</feed>
+"""
+
+
 class FetchArxivTest(unittest.TestCase):
     def test_config_loads_and_merges_defaults(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
@@ -179,10 +224,41 @@ class FetchArxivTest(unittest.TestCase):
         self.assertIn("GUI agent memory", papers[0].abstract)
         self.assertEqual(papers[0].pdf_url, "https://arxiv.org/pdf/2606.00003")
 
+    def test_grouped_filters_keep_mobile_gui_agent_memory_papers_only(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        root = ET.fromstring(GROUP_FILTER_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+        tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
+
+        papers = fetch_arxiv.filter_and_sort_papers(entries, config, date(2026, 6, 6), tz)
+
+        self.assertEqual([paper.arxiv_id for paper in papers], ["2606.10001"])
+
+    def test_grouped_filters_reject_text_only_agent_memory(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        root = ET.fromstring(GROUP_FILTER_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+        tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
+
+        papers = fetch_arxiv.filter_and_sort_papers(entries[1:2], config, date(2026, 6, 6), tz)
+
+        self.assertEqual(papers, [])
+
+    def test_grouped_filters_reject_gui_agent_without_memory_evidence(self) -> None:
+        config = fetch_arxiv.load_config(ROOT / "config.yaml")
+        root = ET.fromstring(GROUP_FILTER_FEED)
+        entries = list(root.findall("atom:entry", fetch_arxiv.NS))
+        tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
+
+        papers = fetch_arxiv.filter_and_sort_papers(entries[2:3], config, date(2026, 6, 6), tz)
+
+        self.assertEqual(papers, [])
+
     def test_default_filter_keeps_category_feed_papers_without_topic_match(self) -> None:
         config = fetch_arxiv.load_config(ROOT / "config.yaml")
         config["filters"]["require_topic_match"] = False
         config["filters"]["min_score"] = 0
+        config["filters"]["required_keyword_groups"] = {}
         root = ET.fromstring(SAMPLE_FEED)
         entries = list(root.findall("atom:entry", fetch_arxiv.NS))
         tz = fetch_arxiv.get_report_timezone("Asia/Shanghai")
@@ -213,7 +289,8 @@ class FetchArxivTest(unittest.TestCase):
         self.assertEqual(len(entries), 2)
         params = get_text.call_args.args[1]
         self.assertEqual(params["max_results"], 30)
-        self.assertIn('all:"gui agent memory"', params["search_query"])
+        self.assertIn('all:"mobile gui agent"', params["search_query"])
+        self.assertIn('all:"gui agent"', params["search_query"])
         self.assertIn("cat:cs.HC", params["search_query"])
 
     def test_rss_source_falls_back_to_search_api(self) -> None:
