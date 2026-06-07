@@ -47,6 +47,7 @@
   "outputs": {
     "readme": "README.md",
     "latest_json": "data/latest.json",
+    "papers_json": "data/papers.json",
     "archive_dir": "data"
   },
   "llm": {

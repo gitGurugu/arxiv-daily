@@ -16,6 +16,22 @@ sys.path.insert(0, str(ROOT))
 from scripts import fetch_arxiv
 
 
+def make_paper(arxiv_id: str, title: str, published: str) -> fetch_arxiv.Paper:
+    return fetch_arxiv.Paper(
+        arxiv_id=arxiv_id,
+        title=title,
+        authors=["Alice"],
+        published=published,
+        updated=published,
+        categories=["cs.AI"],
+        abstract=f"{title} abstract.",
+        abs_url=f"https://arxiv.org/abs/{arxiv_id}",
+        pdf_url=f"https://arxiv.org/pdf/{arxiv_id}",
+        matched_topics=["GUI Agent Memory"],
+        score=3,
+    )
+
+
 SAMPLE_FEED = """<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <entry>
@@ -369,6 +385,7 @@ class FetchArxivTest(unittest.TestCase):
             config = fetch_arxiv.load_config(ROOT / "config.yaml")
             config["outputs"]["readme"] = str(readme)
             config["outputs"]["latest_json"] = str(latest_json)
+            config["outputs"]["papers_json"] = str(tmp / "data" / "papers.json")
             config["outputs"]["archive_dir"] = str(archive_dir)
 
             with mock.patch.object(fetch_arxiv, "load_config", return_value=config), mock.patch.object(
@@ -392,12 +409,77 @@ class FetchArxivTest(unittest.TestCase):
             self.assertTrue(archive_payload["fallback"])
             self.assertEqual(latest_payload["report_date"], "2026-06-05")
 
+    def test_main_keeps_cumulative_papers_when_run_finds_zero(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            tmp = Path(tmpdir)
+            readme = tmp / "README.md"
+            latest_json = tmp / "data" / "latest.json"
+            papers_json = tmp / "data" / "papers.json"
+            archive_dir = tmp / "data"
+            readme.write_text(
+                "# Demo\n\n"
+                f"{fetch_arxiv.README_START}\nold\n{fetch_arxiv.README_END}\n",
+                encoding="utf-8",
+            )
+            historical = make_paper("2606.00010", "Historical GUI Agent Memory", "2026-06-05T00:00:00+08:00")
+            papers_json.parent.mkdir(parents=True)
+            papers_json.write_text(
+                fetch_arxiv.json.dumps(
+                    {
+                        "report_date": "2026-06-05",
+                        "paper_count": 1,
+                        "papers": [fetch_arxiv.asdict(historical)],
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+
+            config = fetch_arxiv.load_config(ROOT / "config.yaml")
+            config["outputs"]["readme"] = str(readme)
+            config["outputs"]["latest_json"] = str(latest_json)
+            config["outputs"]["papers_json"] = str(papers_json)
+            config["outputs"]["archive_dir"] = str(archive_dir)
+
+            with mock.patch.object(fetch_arxiv, "load_config", return_value=config), mock.patch.object(
+                fetch_arxiv,
+                "fetch_arxiv_entries",
+                return_value=[],
+            ), mock.patch.object(
+                fetch_arxiv.sys,
+                "argv",
+                ["fetch_arxiv.py", "--config", str(tmp / "config.yaml"), "--date", "2026-06-06"],
+            ):
+                exit_code = fetch_arxiv.main()
+
+            content = readme.read_text(encoding="utf-8")
+            latest_payload = fetch_arxiv.json.loads(latest_json.read_text(encoding="utf-8"))
+            archive_payload = fetch_arxiv.json.loads((archive_dir / "2026-06-06.json").read_text(encoding="utf-8"))
+
+            self.assertEqual(exit_code, 0)
+            self.assertIn("Historical GUI Agent Memory", content)
+            self.assertIn("0 new matching papers", content)
+            self.assertEqual(latest_payload["paper_count"], 1)
+            self.assertEqual(latest_payload["run_paper_count"], 0)
+            self.assertEqual(archive_payload["paper_count"], 0)
+
+    def test_merge_papers_deduplicates_and_sorts_newest_first(self) -> None:
+        old = make_paper("2606.00010", "Old Paper", "2026-06-05T00:00:00+08:00")
+        newer = make_paper("2606.00011", "Newer Paper", "2026-06-06T00:00:00+08:00")
+        replacement = make_paper("2606.00010", "Old Paper Updated", "2026-06-05T12:00:00+08:00")
+
+        merged = fetch_arxiv.merge_papers([old], [newer, replacement])
+
+        self.assertEqual([paper.arxiv_id for paper in merged], ["2606.00011", "2606.00010"])
+        self.assertEqual(merged[1].title, "Old Paper Updated")
+
     def test_main_fails_when_arxiv_and_fallback_are_unavailable(self) -> None:
         with tempfile.TemporaryDirectory() as tmpdir:
             tmp = Path(tmpdir)
             config = fetch_arxiv.load_config(ROOT / "config.yaml")
             config["outputs"]["readme"] = str(tmp / "README.md")
             config["outputs"]["latest_json"] = str(tmp / "data" / "latest.json")
+            config["outputs"]["papers_json"] = str(tmp / "data" / "papers.json")
             config["outputs"]["archive_dir"] = str(tmp / "data")
 
             with mock.patch.object(fetch_arxiv, "load_config", return_value=config), mock.patch.object(

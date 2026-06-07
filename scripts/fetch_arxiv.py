@@ -56,6 +56,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
     "outputs": {
         "readme": "README.md",
         "latest_json": "data/latest.json",
+        "papers_json": "data/papers.json",
         "archive_dir": "data",
     },
     "llm": {
@@ -722,15 +723,19 @@ def render_markdown(
     report_day: date,
     config: dict[str, Any],
     status_note: str | None = None,
+    run_paper_count: int | None = None,
 ) -> str:
     categories = ", ".join(config["arxiv"].get("categories", []))
+    title = "GUI Agent Memory Papers" if "gui-agent-memory" in config.get("topics", {}) else "Latest Papers"
     lines = [
-        f"## Latest Papers ({report_day.isoformat()})",
+        f"## {title} (updated {report_day.isoformat()})",
         "",
         f"Tracked categories: `{categories}`",
         "",
-        f"Found `{len(papers)}` matching papers.",
+        f"Found `{len(papers)}` matching papers in the cumulative list.",
     ]
+    if run_paper_count is not None:
+        lines.append(f"Current run matched `{run_paper_count}` papers.")
     if status_note:
         lines.extend(["", f"> {status_note}"])
 
@@ -740,7 +745,7 @@ def render_markdown(
 
     lines.extend(["", "### Papers", ""])
     if not papers:
-        lines.append("No matching papers were found for this run.")
+        lines.append("No matching papers have been accumulated yet.")
         return "\n".join(lines).rstrip()
 
     for index, paper in enumerate(papers, start=1):
@@ -825,12 +830,41 @@ def load_latest_papers(path: Path) -> tuple[list[Paper], str] | None:
     return papers, str(payload.get("report_date") or "unknown date")
 
 
+def sort_papers_by_published(papers: list[Paper]) -> list[Paper]:
+    def sort_key(paper: Paper) -> tuple[str, str]:
+        parsed = parse_datetime(paper.published)
+        sortable_date = parsed.astimezone(timezone.utc).isoformat() if parsed else paper.published
+        return sortable_date, paper.arxiv_id
+
+    return sorted(papers, key=sort_key, reverse=True)
+
+
+def merge_papers(existing: list[Paper], new_papers: list[Paper]) -> list[Paper]:
+    by_id = {paper.arxiv_id: paper for paper in existing if paper.arxiv_id}
+    for paper in new_papers:
+        if paper.arxiv_id:
+            by_id[paper.arxiv_id] = paper
+    return sort_papers_by_published(list(by_id.values()))
+
+
+def load_papers_file(path: Path) -> list[Paper]:
+    payload = load_latest_payload(path)
+    if payload is None:
+        return []
+    try:
+        return sort_papers_by_published([paper_from_payload(item) for item in payload["papers"]])
+    except TypeError as exc:
+        print(f"Warning: failed to parse cumulative papers {path}: {exc}", file=sys.stderr)
+        return []
+
+
 def build_payload(
     papers: list[Paper],
     report_day: date,
     config: dict[str, Any],
     fallback: bool = False,
     source_report_date: str | None = None,
+    run_paper_count: int | None = None,
 ) -> dict[str, Any]:
     return {
         "report_date": report_day.isoformat(),
@@ -838,6 +872,7 @@ def build_payload(
         "days_back": int(config["arxiv"].get("days_back", 3)),
         "fallback": fallback,
         "source_report_date": source_report_date,
+        "run_paper_count": len(papers) if run_paper_count is None else run_paper_count,
         "paper_count": len(papers),
         "papers": [asdict(paper) for paper in papers],
     }
@@ -875,19 +910,21 @@ def main() -> int:
 
     outputs = config["outputs"]
     latest_json_path = Path(outputs["latest_json"])
+    papers_json_path = Path(outputs.get("papers_json", "data/papers.json"))
     status_note = None
     fallback = False
     source_report_date = None
+    run_papers: list[Paper] = []
 
     try:
         entries = fetch_arxiv_entries(config)
-        papers = filter_and_sort_papers(entries, config, report_day, report_tz)
-        add_optional_llm_summaries(papers, config)
+        run_papers = filter_and_sort_papers(entries, config, report_day, report_tz)
+        add_optional_llm_summaries(run_papers, config)
     except RuntimeError as exc:
-        fallback_payload = load_latest_papers(latest_json_path)
+        fallback_payload = load_latest_papers(papers_json_path) or load_latest_papers(latest_json_path)
         if fallback_payload is None:
             raise
-        papers, source_report_date = fallback_payload
+        run_papers, source_report_date = fallback_payload
         fallback = True
         status_note = (
             "arXiv is temporarily unavailable for this run; "
@@ -896,26 +933,48 @@ def main() -> int:
         )
         print(f"Warning: using fallback latest.json because arXiv failed: {exc}", file=sys.stderr)
 
-    digest_markdown = render_markdown(papers, report_day, config, status_note=status_note)
-    payload = build_payload(
-        papers,
+    existing_papers = [] if fallback else load_papers_file(papers_json_path)
+    cumulative_papers = sort_papers_by_published(run_papers) if fallback else merge_papers(existing_papers, run_papers)
+    run_paper_count = 0 if fallback else len(run_papers)
+    if not fallback and not run_papers and cumulative_papers:
+        status_note = "This run found 0 new matching papers; showing historical matches."
+
+    digest_markdown = render_markdown(
+        cumulative_papers,
+        report_day,
+        config,
+        status_note=status_note,
+        run_paper_count=run_paper_count,
+    )
+    latest_payload = build_payload(
+        cumulative_papers,
         report_day,
         config,
         fallback=fallback,
         source_report_date=source_report_date,
+        run_paper_count=run_paper_count,
+    )
+    archive_payload = build_payload(
+        run_papers,
+        report_day,
+        config,
+        fallback=fallback,
+        source_report_date=source_report_date,
+        run_paper_count=run_paper_count,
     )
 
     if args.dry_run:
         print(digest_markdown)
         print("\n--- JSON payload ---")
-        print(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True))
+        print(json.dumps(latest_payload, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
 
     update_readme(Path(outputs["readme"]), digest_markdown)
     if not fallback:
-        write_json(latest_json_path, payload)
+        write_json(papers_json_path, latest_payload)
+        write_json(latest_json_path, latest_payload)
     archive_path = Path(outputs["archive_dir"]) / f"{report_day.isoformat()}.json"
-    write_json(archive_path, payload)
+    write_json(archive_path, archive_payload)
     return 0
 
 
