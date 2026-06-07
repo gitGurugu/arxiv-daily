@@ -6,11 +6,204 @@
     "cs.HC",
     "cs.CV"
   ],
-  "days_back": 30,
+  "days_back": 180,
   "fallback": false,
-  "paper_count": 0,
-  "papers": [],
+  "paper_count": 7,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2606.05597v1",
+      "abstract": "Training vision-language web agents with multi-step RL is compute-intensive, with two dominant forms of inefficiency: idle GPUs in synchronous RL, and trajectories that use more steps and tokens than necessary. We present AsyncWebRL, which addresses both. On the system side, an asynchronous design overlaps rollout, gradient update, and policy refresh across iterations, paired with two web-agent-specific adaptations, namely an everlasting rollout pool and lightweight screenshot handling, that together deliver up to a $2.9\\times$ end-to-end training-throughput speedup over the previously fastest open synchronous pipeline (WebGym). On the algorithmic side, we identify the per-trajectory normalizer $1/|τ_i|$ in multi-step GRPO as the root cause of trajectory-level and token-level inefficiency: because failures are systematically longer than successes, it down-weights the negative gradient on failed tokens, so the policy keeps producing verbose memory schemas. Replacing $1/|τ_i|$ with a constant $1/k$ breaks this coupling, contracting trajectories while preserving aggregate success. Together, these contributions set a new open-source state of the art on the WebGym out-of-distribution test split (+5.8% relative over the 42.9% prior best), with the largest gains on the harder slices (+42% relative on Medium, +48% relative on Hard).",
+      "arxiv_id": "2606.05597v1",
+      "authors": [
+        "Hao Bai",
+        "Rui Yang",
+        "Chenlu Ye",
+        "Spencer Whitehead",
+        "Aviral Kumar",
+        "Tong Zhang"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.05597v1",
+      "published": "2026-06-04T10:18:44+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents",
+      "updated": "2026-06-04T10:18:44+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.04391v1",
+      "abstract": "Language agents increasingly rely on reusable skills to improve multi-step web automation across related tasks. A growing line of work studies online skill learning, where agents continually induce skills from previous task trajectories and reuse them in future tasks on the fly. However, existing methods mainly reuse skills at the task-level: a fixed set of skills is retrieved based on the initial task instruction and then held fixed throughout execution. This static strategy is misaligned with web execution, where the appropriate next action depends not only on the task goal but also on the current webpage state, which often transitions into situations that the initial skills fail to cover. To address this gap, we propose State-Grounded Dynamic Retrieval (SGDR), an online skill learning method that enables stepwise skill reuse for web agents. SGDR consists of three components: a sliding-window extraction process that turns completed trajectories into reusable sub-procedures invokable at intermediate execution states, a dual text-code representation that connects skill retrieval with executable action, and a state-grounded dynamic retrieval mechanism that matches skills to both the task goal and the current webpage state. Experiments on WebArena across five domains show that SGDR consistently outperforms strong baselines, achieving average success rates of 37.5% with GPT-4.1 and 24.3% with Qwen3-4B, corresponding to relative gains of 10.6% and 10.0% over the strongest baseline, respectively. The code is available at https://github.com/plusnli/skill-dynamic-retrieval.",
+      "arxiv_id": "2606.04391v1",
+      "authors": [
+        "Jiaxi Li",
+        "Ke Deng",
+        "Yun Wang",
+        "Jingyuan Huang",
+        "Yucheng Shi",
+        "Qiaoyu Tan",
+        "Jin Lu",
+        "Ninghao Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.04391v1",
+      "published": "2026-06-03T11:11:50+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval",
+      "updated": "2026-06-03T11:11:50+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.03951v1",
+      "abstract": "Human experience in digital environments offers a vast, underexplored resource of authentic, untrimmed interactions that contain rich procedural knowledge. We introduce Demo2Tutorial, a framework that transforms this experience captured via screen recordings and interaction logs into structured, multimodal software tutorials for teaching both humans and agents. Demo2Tutorial first collects human experience via a dedicated recorder, then parses raw experience using a multimodal Action Parser to reconstruct perception, action, and intent. A Step Planner then abstracts these steps into hierarchical task graphs representing goals and steps. Finally, a Tutorial Composer transforms the parsed experience into structured, reusable image-text instructions. We evaluate the tutorial generation quality on a new benchmark derived from official software documentation. We further demonstrate that this distilled representation benefits (i) human learning, by automatically generating multimodal tutorials, and (ii) agent learning, by improving downstream GUI-agent planning and generalization. Experiments show Demo2Tutorial produces high-quality tutorials that surpass human-authored ones and significantly outperform baseline methods, while enabling both faster human task completion and improved GUI agent planning, demonstrating that structured tutorials distilled from human experience can serve as effective knowledge representations for advancing both human learning and agent capabilities. Code and data will be available at https://github.com/showlab/Demo2Tutorial.",
+      "arxiv_id": "2606.03951v1",
+      "authors": [
+        "Zechen Bai",
+        "Zhiheng Chen",
+        "Yiqi Lin",
+        "Kevin Qinghong Lin",
+        "Difei Gao",
+        "Xiangwu Guo",
+        "Xin Wang",
+        "Mike Zheng Shou"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.03951v1",
+      "published": "2026-06-03T01:39:07+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Demo2Tutorial: From Human Experience to Multimodal Software Tutorials",
+      "updated": "2026-06-03T01:39:07+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.02031v2",
+      "abstract": "Building capable visual web agents requires long-horizon reasoning, precise grounding, and robust interaction with dynamic real-world websites. Despite rapid progress, the strongest systems remain largely proprietary, while open agents still depend heavily on supervised post-training over large collections of curated web trajectories. This dependence creates a major scalability bottleneck: high-quality demonstrations are expensive to collect, and static datasets offer limited coverage of the diverse, ever-changing open web. Although online RL has shown promise for text-based agents, its potential for training visual web agents directly on live websites remains largely underexplored. In this paper, we introduce OpenWebRL, an open framework for training visual web agents with online multi-turn RL on real websites. OpenWebRL covers the full training pipeline, including scalable live-browser infrastructure, supervised initialization, multimodal context management, trajectory-level success judging, and efficient multi-turn policy optimization. Using this framework, we train OpenWebRL-4B, which establishes a new open-source state of the art on challenging live-web benchmarks. With only 0.4K initialization trajectories and 2.2K open-ended RL training tasks, OpenWebRL-4B achieves 67.0% success on Online-Mind2Web and 64.0% on DeepShop, outperforming prior open agents of similar or larger scale and remaining competitive with proprietary systems including OpenAI CUA and Gemini CUA. Beyond strong benchmark performance, we systematically study the key design choices that make online RL effective for visual web agents, and analyze how RL improves agentic reasoning. Overall, our work offers a practical path toward building more capable, reproducible, and cost-efficient open web agents. We will release our training data, models, and code to support future research.",
+      "arxiv_id": "2606.02031v2",
+      "authors": [
+        "Rui Yang",
+        "Qianhui Wu",
+        "Yuxi Chen",
+        "Hao Bai",
+        "Wenlin Yao",
+        "Hao Cheng",
+        "Baolin Peng",
+        "Huan Zhang",
+        "Tong Zhang",
+        "Jianfeng Gao"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.02031v2",
+      "published": "2026-06-01T18:20:10+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents",
+      "updated": "2026-06-04T17:03:30+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.01790v1",
+      "abstract": "Vision-language-model-based graphical user interface (GUI) agents have shown broad automation capabilities, yet deployment is bottlenecked by a key-value (KV) cache that grows linearly with interaction steps. For instance, UI-TARS-1.5-7B consumes 76 GB of GPU memory on merely five screenshots, approaching the capacity of mainstream 80 GB accelerators. Existing KV compression methods share two structural assumptions: aggregating visual-token importance into a single shared saliency map, and applying a fixed top-B cutoff to the fused score distribution. Pilot measurements refute both: spatial specialization lives at the attention-subspace level and migrates across layers, while the score distribution drifts in shape along a trajectory. We propose STaR-KV (Spatio-Temporal Adaptive Re-weighting), a training-free KV cache compression framework that calibrates token importance along three axes: (i) subspace-aware scoring driven by online spatial mutual information; (ii) a temporal stability discount that suppresses redundant cache entries from persistently attended subspaces; and (iii) an entropy-derived temperature that adaptively reshapes the score distribution. Across four GUI benchmarks, STaR-KV achieves the strongest average accuracy among state-of-the-art KV compression methods (e.g., GUIKV, SnapKV) at matched budgets, with no compression-stage FLOPs overhead (-0.07%) and cutting peak GPU memory by nearly 40% at a 20% KV-cache budget. Code is available at https://github.com/kawhiiiileo/STaR-KV.",
+      "arxiv_id": "2606.01790v1",
+      "authors": [
+        "Yuhang Han",
+        "Wenzheng Yang",
+        "Yujie Chen",
+        "Xiangqi Jin",
+        "Yaojie Zhang",
+        "Siteng Huang",
+        "Linfeng Zhang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.01790v1",
+      "published": "2026-06-01T15:10:00+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "STaR-KV: Spatio-Temporal Adaptive Re-weighting for KV Cache Compression in GUI Vision-Language Models",
+      "updated": "2026-06-01T15:10:00+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.00408v1",
+      "abstract": "Long-horizon search agents accumulate large amounts of retrieved content across many tool calls, making context-budget efficiency increasingly important. A minimal intervention is to mask stale observations from the context as the trajectory progresses, but it remains unclear when this form of context management helps and why. We study observation masking through a systematic sweep over various agent backbones (4B to 284B parameters) and three retrievers on offline and live-web agentic search benchmarks. We find that the accuracy gain from masking follows an asymmetric inverted-U shape when plotted against the model's accuracy without context management: a plateau under weak retrievers, a peak when a strong retriever meets a mid-capacity model, and a sharp collapse when the model is saturated. This pattern reflects the interaction between retriever recall and the model's implicit filtering capacity, rather than either factor in isolation. Mechanistically, masking implements a token-for-turn trade-off: it removes observations the model has largely stopped attending to and pages the agent rarely re-opens. The added turns help when they convert failures into successes, but they fail when masking removes evidence the model would otherwise have used. We therefore reframe context management as a regime-dependent intervention and provide a holistic perspective for analyzing context use in agentic deep search. We release our scaffold and trajectories here (https://github.com/i-DeepSearch/observation-masking) to support future research.",
+      "arxiv_id": "2606.00408v1",
+      "authors": [
+        "Haoxiang Zhang",
+        "Qixin Xu",
+        "Zhuofeng Li",
+        "Lei Zhang",
+        "Pengcheng Jiang",
+        "Yu Zhang",
+        "Julian McAuley"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.IR"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.00408v1",
+      "published": "2026-05-30T06:51:58+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism",
+      "updated": "2026-05-30T06:51:58+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2605.29532v1",
+      "abstract": "Exploratory GUI testing is a particularly demanding setting for MLLM agents: without predefined test scripts, an agent must autonomously navigate an application and discover defects through its own interaction. However, current evaluation falls short on two fronts. First, existing benchmarks focus almost exclusively on interaction defects, leaving display defects outside the evaluation frame. Second, evaluation protocols are bound to predefined defect annotations, collapsing the testing process into a single end-state judgment that conflates qualitatively distinct failure modes. To address these challenges, we present GUITestScape, an interactive benchmark covering 61 real-world Android applications and 508 preset defects spanning interaction and display types, and introduce GUIJudge, an open-set evaluator that decomposes an agent's testing trajectory into independently diagnosable capabilities. Experimental results demonstrate that GUIJudge achieves reliable process-aware evaluation beyond predefined annotations, substantially outperforming all baselines. Benchmarking on GUITestScape further reveals that detection remains the critical bottleneck for existing models across both defect types, and that integrating GUIJudge's verifiers into existing agents significantly boosts their detection performance without retraining.",
+      "arxiv_id": "2605.29532v1",
+      "authors": [
+        "Xiaoyi Chen",
+        "Yifei Gao",
+        "Yang Xu",
+        "Xingxing Song",
+        "Yi Zhang",
+        "Jitao Sang"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2605.29532v1",
+      "published": "2026-05-28T15:47:27+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "GUITestScape: Towards Open-set Evaluation on Exploratory GUI Testing",
+      "updated": "2026-05-28T15:47:27+08:00"
+    }
+  ],
   "report_date": "2026-06-07",
-  "run_paper_count": 0,
+  "run_paper_count": 7,
   "source_report_date": null
 }
