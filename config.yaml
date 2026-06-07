@@ -12,29 +12,24 @@
       "cs.CV"
     ],
     "search_keywords": [
-      "gui agent",
-      "gui agents",
-      "computer use",
-      "computer using agent",
-      "computer control",
-      "ui automation",
-      "user interface automation",
-      "graphical user interface",
-      "web agent",
-      "browser agent",
-      "mobile agent",
-      "app agent",
-      "screen understanding",
-      "screen grounding",
-      "visual grounding",
-      "vision-language agent",
-      "multimodal agent",
-      "agent benchmark"
+      "gui agent memory",
+      "gui agents memory",
+      "gui agent long-term memory",
+      "gui agent memory retrieval",
+      "gui agent persistent memory",
+      "gui agent episodic memory",
+      "gui agent external memory",
+      "computer use agent memory",
+      "computer control agent memory",
+      "screen agent memory",
+      "screen grounding memory",
+      "user interface agent memory",
+      "graphical user interface agent memory"
     ],
     "use_keyword_query": true,
     "max_results": 30,
     "per_category_max_results": 10,
-    "days_back": 14,
+    "days_back": 30,
     "sort_by": "submittedDate",
     "sort_order": "descending",
     "timeout_seconds": 90,
@@ -63,55 +58,22 @@
     "timeout_seconds": 45
   },
   "topics": {
-    "gui-agents": {
-      "display_name": "GUI Agents",
+    "gui-agent-memory": {
+      "display_name": "GUI Agent Memory",
       "keywords": [
-        "gui agent",
-        "gui agents",
-        "graphical user interface",
-        "user interface",
-        "screen understanding",
-        "screen grounding"
-      ]
-    },
-    "computer-use": {
-      "display_name": "Computer Use",
-      "keywords": [
-        "computer use",
-        "computer using agent",
-        "computer control",
-        "desktop automation",
-        "operating system agent"
-      ]
-    },
-    "ui-automation": {
-      "display_name": "UI Automation",
-      "keywords": [
-        "ui automation",
-        "user interface automation",
-        "workflow automation",
-        "task automation",
-        "app agent"
-      ]
-    },
-    "web-agents": {
-      "display_name": "Web Agents",
-      "keywords": [
-        "web agent",
-        "browser agent",
-        "web automation",
-        "web navigation",
-        "mobile agent"
-      ]
-    },
-    "vision-language-agents": {
-      "display_name": "Vision-Language Agents",
-      "keywords": [
-        "vision-language agent",
-        "visual grounding",
-        "multimodal agent",
-        "visual agent",
-        "agent benchmark"
+        "gui agent memory",
+        "gui agents memory",
+        "gui agent long-term memory",
+        "gui agent memory retrieval",
+        "gui agent persistent memory",
+        "gui agent episodic memory",
+        "gui agent external memory",
+        "computer use agent memory",
+        "computer control agent memory",
+        "screen agent memory",
+        "screen grounding memory",
+        "user interface agent memory",
+        "graphical user interface agent memory"
       ]
     }
   }
