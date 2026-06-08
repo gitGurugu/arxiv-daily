@@ -26,64 +26,71 @@ output paths. The file intentionally uses JSON syntax, which is valid YAML, so
 the crawler can run with only the Python standard library.
 
 <!-- ARXIV-DAILY:START -->
-## GUI Agent Memory Papers (updated 2026-06-07)
+## GUI Agent Memory Papers (updated 2026-06-08)
 
 Tracked categories: `cs.AI, cs.LG, cs.CL, cs.HC, cs.CV`
 
-Found `7` matching papers in the cumulative list.
+Found `8` matching papers in the cumulative list.
 Current run matched `7` papers.
 
 ### Topic Overview
 
 | Topic | Papers |
 | --- | ---: |
-| GUI Agent Memory | 7 |
+| GUI Agent Memory | 8 |
 
 ### Papers
 
-1. **AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents**
+1. **StainFlow: Entity-Stain Tracking and Evidence Linking for Process Rewards in GUI Agents**
+   - Authors: Haojie Hao, Longkun Hao, Yihang Lou, Yan Bai, Zhenyang Li, et al.
+   - arXiv: [2606.07027v1](http://arxiv.org/abs/2606.07027v1) | [PDF](https://arxiv.org/pdf/2606.07027v1)
+   - Published: `2026-06-05` | Categories: `cs.AI`
+   - Topics: GUI Agent Memory | Score: `7`
+   - Abstract: Reinforcement Learning (RL) has become a promising approach for improving GUI Agents in long-horizon, stochastic digital environments, but trajectory-level success feedback is too sparse to provide reliable credit assignment for intermediate exploration steps. To mitigate this issue, recent studies introduce Process Reward Models (PRMs), which provide finer-grained training feedback through global milestone verification or local step-level evaluation. However, these methods still suffer from two level-specific lim...
+
+2. **AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents**
    - Authors: Hao Bai, Rui Yang, Chenlu Ye, Spencer Whitehead, Aviral Kumar, et al.
    - arXiv: [2606.05597v1](http://arxiv.org/abs/2606.05597v1) | [PDF](https://arxiv.org/pdf/2606.05597v1)
    - Published: `2026-06-04` | Categories: `cs.LG`
    - Topics: GUI Agent Memory | Score: `5`
    - Abstract: Training vision-language web agents with multi-step RL is compute-intensive, with two dominant forms of inefficiency: idle GPUs in synchronous RL, and trajectories that use more steps and tokens than necessary. We present AsyncWebRL, which addresses both. On the system side, an asynchronous design overlaps rollout, gradient update, and policy refresh across iterations, paired with two web-agent-specific adaptations, namely an everlasting rollout pool and lightweight screenshot handling, that together deliver up to...
 
-2. **Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval**
+3. **Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval**
    - Authors: Jiaxi Li, Ke Deng, Yun Wang, Jingyuan Huang, Yucheng Shi, et al.
    - arXiv: [2606.04391v1](http://arxiv.org/abs/2606.04391v1) | [PDF](https://arxiv.org/pdf/2606.04391v1)
    - Published: `2026-06-03` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `6`
    - Abstract: Language agents increasingly rely on reusable skills to improve multi-step web automation across related tasks. A growing line of work studies online skill learning, where agents continually induce skills from previous task trajectories and reuse them in future tasks on the fly. However, existing methods mainly reuse skills at the task-level: a fixed set of skills is retrieved based on the initial task instruction and then held fixed throughout execution. This static strategy is misaligned with web execution, wher...
 
-3. **Demo2Tutorial: From Human Experience to Multimodal Software Tutorials**
+4. **Demo2Tutorial: From Human Experience to Multimodal Software Tutorials**
    - Authors: Zechen Bai, Zhiheng Chen, Yiqi Lin, Kevin Qinghong Lin, Difei Gao, et al.
    - arXiv: [2606.03951v1](http://arxiv.org/abs/2606.03951v1) | [PDF](https://arxiv.org/pdf/2606.03951v1)
    - Published: `2026-06-03` | Categories: `cs.CV`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: Human experience in digital environments offers a vast, underexplored resource of authentic, untrimmed interactions that contain rich procedural knowledge. We introduce Demo2Tutorial, a framework that transforms this experience captured via screen recordings and interaction logs into structured, multimodal software tutorials for teaching both humans and agents. Demo2Tutorial first collects human experience via a dedicated recorder, then parses raw experience using a multimodal Action Parser to reconstruct percepti...
 
-4. **OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents**
+5. **OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents**
    - Authors: Rui Yang, Qianhui Wu, Yuxi Chen, Hao Bai, Wenlin Yao, et al.
    - arXiv: [2606.02031v2](http://arxiv.org/abs/2606.02031v2) | [PDF](https://arxiv.org/pdf/2606.02031v2)
    - Published: `2026-06-01` | Categories: `cs.LG, cs.AI, cs.CL, cs.CV`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: Building capable visual web agents requires long-horizon reasoning, precise grounding, and robust interaction with dynamic real-world websites. Despite rapid progress, the strongest systems remain largely proprietary, while open agents still depend heavily on supervised post-training over large collections of curated web trajectories. This dependence creates a major scalability bottleneck: high-quality demonstrations are expensive to collect, and static datasets offer limited coverage of the diverse, ever-changing...
 
-5. **STaR-KV: Spatio-Temporal Adaptive Re-weighting for KV Cache Compression in GUI Vision-Language Models**
+6. **STaR-KV: Spatio-Temporal Adaptive Re-weighting for KV Cache Compression in GUI Vision-Language Models**
    - Authors: Yuhang Han, Wenzheng Yang, Yujie Chen, Xiangqi Jin, Yaojie Zhang, et al.
    - arXiv: [2606.01790v1](http://arxiv.org/abs/2606.01790v1) | [PDF](https://arxiv.org/pdf/2606.01790v1)
    - Published: `2026-06-01` | Categories: `cs.CV, cs.AI`
    - Topics: GUI Agent Memory | Score: `3`
    - Abstract: Vision-language-model-based graphical user interface (GUI) agents have shown broad automation capabilities, yet deployment is bottlenecked by a key-value (KV) cache that grows linearly with interaction steps. For instance, UI-TARS-1.5-7B consumes 76 GB of GPU memory on merely five screenshots, approaching the capacity of mainstream 80 GB accelerators. Existing KV compression methods share two structural assumptions: aggregating visual-token importance into a single shared saliency map, and applying a fixed top-B c...
 
-6. **Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism**
+7. **Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism**
    - Authors: Haoxiang Zhang, Qixin Xu, Zhuofeng Li, Lei Zhang, Pengcheng Jiang, et al.
    - arXiv: [2606.00408v1](http://arxiv.org/abs/2606.00408v1) | [PDF](https://arxiv.org/pdf/2606.00408v1)
    - Published: `2026-05-30` | Categories: `cs.CL, cs.AI, cs.IR`
    - Topics: GUI Agent Memory | Score: `2`
    - Abstract: Long-horizon search agents accumulate large amounts of retrieved content across many tool calls, making context-budget efficiency increasingly important. A minimal intervention is to mask stale observations from the context as the trajectory progresses, but it remains unclear when this form of context management helps and why. We study observation masking through a systematic sweep over various agent backbones (4B to 284B parameters) and three retrievers on offline and live-web agentic search benchmarks. We find t...
 
-7. **GUITestScape: Towards Open-set Evaluation on Exploratory GUI Testing**
+8. **GUITestScape: Towards Open-set Evaluation on Exploratory GUI Testing**
    - Authors: Xiaoyi Chen, Yifei Gao, Yang Xu, Xingxing Song, Yi Zhang, et al.
    - arXiv: [2605.29532v1](http://arxiv.org/abs/2605.29532v1) | [PDF](https://arxiv.org/pdf/2605.29532v1)
    - Published: `2026-05-28` | Categories: `cs.SE, cs.AI`
