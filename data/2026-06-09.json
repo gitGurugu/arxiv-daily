@@ -8,7 +8,7 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 8,
+  "paper_count": 7,
   "papers": [
     {
       "abs_url": "http://arxiv.org/abs/2606.07027v1",
@@ -205,32 +205,6 @@
       "summary_zh": null,
       "title": "Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism",
       "updated": "2026-05-30T06:51:58+08:00"
-    },
-    {
-      "abs_url": "http://arxiv.org/abs/2605.29532v1",
-      "abstract": "Exploratory GUI testing is a particularly demanding setting for MLLM agents: without predefined test scripts, an agent must autonomously navigate an application and discover defects through its own interaction. However, current evaluation falls short on two fronts. First, existing benchmarks focus almost exclusively on interaction defects, leaving display defects outside the evaluation frame. Second, evaluation protocols are bound to predefined defect annotations, collapsing the testing process into a single end-state judgment that conflates qualitatively distinct failure modes. To address these challenges, we present GUITestScape, an interactive benchmark covering 61 real-world Android applications and 508 preset defects spanning interaction and display types, and introduce GUIJudge, an open-set evaluator that decomposes an agent's testing trajectory into independently diagnosable capabilities. Experimental results demonstrate that GUIJudge achieves reliable process-aware evaluation beyond predefined annotations, substantially outperforming all baselines. Benchmarking on GUITestScape further reveals that detection remains the critical bottleneck for existing models across both defect types, and that integrating GUIJudge's verifiers into existing agents significantly boosts their detection performance without retraining.",
-      "arxiv_id": "2605.29532v1",
-      "authors": [
-        "Xiaoyi Chen",
-        "Yifei Gao",
-        "Yang Xu",
-        "Xingxing Song",
-        "Yi Zhang",
-        "Jitao Sang"
-      ],
-      "categories": [
-        "cs.SE",
-        "cs.AI"
-      ],
-      "matched_topics": [
-        "GUI Agent Memory"
-      ],
-      "pdf_url": "https://arxiv.org/pdf/2605.29532v1",
-      "published": "2026-05-28T15:47:27+08:00",
-      "score": 1,
-      "summary_zh": null,
-      "title": "GUITestScape: Towards Open-set Evaluation on Exploratory GUI Testing",
-      "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
   "report_date": "2026-06-09",
