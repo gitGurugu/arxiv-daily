@@ -8,8 +8,30 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 12,
+  "paper_count": 13,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2606.11980v1",
+      "abstract": "Spatial computing, generative AI, and open web standards are converging. Three spatial operating systems -- Android XR, Meta Horizon OS, and Apple visionOS -- now ship with platform-level scene understanding. Wearable displays span the range from full headsets to slim smartglasses. Agentic AI operates on the same spatial substrates as the human user. This convergence enables new opportunities for \\textit{ubiquitous analytics} (UA): the use of many, physically distributed, networked devices to support data sensemaking anytime and anywhere. But proprietary platforms are settling design conventions that will calcify without evidence-based alternatives. UA has now matured to the point where its intellectual history can be read as a structured genealogy of foundations, contributions, and lineages. We trace this genealogy and organize it into clusters spanning cognition, context, interaction, platforms, visualization, collaboration, and evaluation. Finally, we cross these clusters with each other, yielding a total of 42 future research challenges.",
+      "arxiv_id": "2606.11980v1",
+      "authors": [
+        "Niklas Elmqvist",
+        "Panagiotis D. Ritsos",
+        "Peter W. S. Butcher"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.11980v1",
+      "published": "2026-06-10T19:57:44+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Somewhere Over the Desktop: A Research Agenda for Ubiquitous Analytics",
+      "updated": "2026-06-10T19:57:44+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2606.11078v1",
       "abstract": "Various test-time interventions for Computer Use Agents (CUAs), including critic models, have been developed to improve performance through pre-execution action evaluation in complex Graphical User Interface (GUI) environments. However, existing critics suffer from two key limitations: they (1) focus primarily on short-sighted decision loops (e.g., forgetting earlier actions) and (2) lack the visual grounding needed to detect flawed actions (e.g., clicking wrong UI elements). To address these, we introduce HiViG, a History-aware Visually Grounded test-time framework, built around a multimodal critic trained on real GUI trajectories to abstract past interactions into a compact record and to evaluate actions with visual grounding. At test time, HiViG integrates the critic into the policy decision loop to provide macro-action history, which summarizes the policy's completed achievements, and visually grounded critique, which verifies raw execution coordinates against the current screenshot to intercept errors before execution. Across web, mobile, and desktop benchmarks, HiViG consistently outperforms existing scalar and verbal critics, improving average success rates over the strongest baseline by 5.8% for Qwen3-VL-32B and 9.0% for Gemini-3-Flash, and demonstrates strong cross-platform generalization. Ablations show that macro-action history mitigates short-sighted planning and visually grounded critique reduces execution errors, with both components being critical for test-time scaling in long-horizon GUI tasks.",
@@ -339,7 +361,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-06-10",
-  "run_paper_count": 7,
+  "report_date": "2026-06-11",
+  "run_paper_count": 8,
   "source_report_date": null
 }
