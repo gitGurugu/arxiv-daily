@@ -8,8 +8,87 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 13,
+  "paper_count": 17,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2606.13194v1",
+      "abstract": "Deep learning has become the dominant paradigm in Wearable Human Activity Recognition (WHAR), yet progress is obscured by a comparability crisis. Results are often reported using inconsistent datasets, custom data processing, and varying evaluation protocols, making state-of-the-art claims fragile. We address this with a large-scale, open-source benchmark that integrates 30 diverse datasets under standardized processing, unified model interfaces, and a shared cross-subject evaluation protocol. Evaluating 17 representative architectures across 4760 training runs, we jointly measure predictive performance alongside on-device latency, peak memory, and model size on an Android reference device. Our results reveal that the WHAR state of the art is distributed rather than dominated by a single architecture. While CNN-HAR achieves the highest mean macro-F1, top-performing models cluster tightly, indicating contemporary architectures have converged near a predictive performance ceiling. When accounting for deployment efficiency, compact neural models, such as TinierHAR, and classical Random Forests define the practically relevant Pareto frontier, whereas larger recurrent and hybrid models incur high hardware costs without corresponding performance gains. Consequently, while predictive performance has plateaued, substantial potential for future progress remains in optimizing deployment efficiency and improving adaptation to domain shifts. We release our full framework to support transparent reuse and extension.",
+      "arxiv_id": "2606.13194v1",
+      "authors": [
+        "Maximilian Burzer",
+        "Tobias King",
+        "Till Riedel",
+        "Michael Beigl",
+        "Tobias Röddiger"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.13194v1",
+      "published": "2026-06-11T19:01:36+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "WHAR Arena: Benchmarking the State of the Art in Efficient Wearable Human Activity Recognition",
+      "updated": "2026-06-11T19:01:36+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.13192v1",
+      "abstract": "User experience (UX) centered on usability, perceived consistency, and functional clarity is fundamental to real-world user interfaces (UI). The application of multimodal large language models (MLLMs) in the field of user interfaces is evolving rapidly, such as visual element grounding, graphical user interface (GUI) agents, and design-to-code generation. However, research efforts on evaluating UX based on UI screenshots are still immature. To address this, we propose UXBench, a novel multimodal benchmark consisting of 2,000 VQA data samples designed to assess MLLMs' ability to perform UI-based reasoning. UXBench includes 8 tasks based on real-world UI screenshots that require fine-grained diagnosis of UX issues across layout relationships, visual hierarchy, and content consistency. Our extensive evaluation of mainstream MLLMs shows that they remain fundamentally limited in their capacity for UI-based reasoning. The results underscore the need for further advancements in this area. To bridge this gap, we propose UI-UX, an MLLM based on Qwen3-VL-4B-Thinking foundation model and enhanced via reinforcement learning with two key innovations: a reward routing mechanism that dynamically balances perceptual understanding and logical reasoning during inference, and an asymmetric transition reward that suppresses redundant or insufficient reasoning steps. Experiments demonstrate that UI-UX achieves state-of-the-art (SOTA) performance on UXBench, attaining an accuracy of 0.7963 -- surpassing Claude-4.5-Sonnet's 0.6550 -- while exhibiting strong generalization across diverse UI tasks and maintaining low inference latency.",
+      "arxiv_id": "2606.13192v1",
+      "authors": [
+        "Ruichao Mao",
+        "Zhou Fang",
+        "Teng Guo",
+        "Hao Yang",
+        "Yaping Li",
+        "Shaohua Peng",
+        "Maji Huang",
+        "Xiaoyu Lin",
+        "Shuoyang Liu",
+        "Xuepeng Li",
+        "Yuyu Zhang",
+        "Hai Rao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.13192v1",
+      "published": "2026-06-11T19:00:16+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Reasoning for Mobile User Experience with Multimodal LLMs: Task, Benchmark, and Approach",
+      "updated": "2026-06-11T19:00:16+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.12666v1",
+      "abstract": "Screenshot-based mobile GUI agents can operate ordinary smartphone apps through the same visual interface as a human user, but this capability also turns every screen observation into a privacy boundary. During normal task execution, screenshots may expose contacts, messages, photos, files, recommendations, health cues, and other sensitive context that is unrelated to the user's request. We call this problem incidental visual privacy exposure. It is difficult to address with existing defenses: text anonymization misses many visual and inferential cues, while generic privacy masking can remove the evidence and controls that a GUI agent needs to complete the task. This paper presents CAPED, a context-aware pre-upload exposure control layer for mobile GUI agents. CAPED is designed as a phone-side protection layer: before screenshots are released to a remote multimodal agent, it extracts task requirements, uses screen context as a privacy prior, parses visible UI elements, and selectively exposes only content needed for the current task while masking incidental private content. We evaluate CAPED on AndroidWorld for broad task utility and with a controlled 28-task seeded privacy evaluation used as a measurement instrument for trajectory-level incidental leakage. In this seeded evaluation, Full CAPED reduces success-conditioned weighted seeded leakage from 0.766 under raw screenshots to 0.268 while preserving high task utility. A broader AndroidWorld run shows a remaining prototype-level utility cost, but the results support the central claim that screenshot upload should be treated as an explicit device--cloud boundary decision, governed by task-driven selective exposure rather than all-or-nothing screen sharing.",
+      "arxiv_id": "2606.12666v1",
+      "authors": [
+        "Siyu Shen",
+        "Fenghao Xu",
+        "Wenrui Diao",
+        "Kehuan Zhang"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.12666v1",
+      "published": "2026-06-11T04:48:39+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents",
+      "updated": "2026-06-11T04:48:39+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2606.11980v1",
       "abstract": "Spatial computing, generative AI, and open web standards are converging. Three spatial operating systems -- Android XR, Meta Horizon OS, and Apple visionOS -- now ship with platform-level scene understanding. Wearable displays span the range from full headsets to slim smartglasses. Agentic AI operates on the same spatial substrates as the human user. This convergence enables new opportunities for \\textit{ubiquitous analytics} (UA): the use of many, physically distributed, networked devices to support data sensemaking anytime and anywhere. But proprietary platforms are settling design conventions that will calcify without evidence-based alternatives. UA has now matured to the point where its intellectual history can be read as a structured genealogy of foundations, contributions, and lineages. We trace this genealogy and organize it into clusters spanning cognition, context, interaction, platforms, visualization, collaboration, and evaluation. Finally, we cross these clusters with each other, yielding a total of 42 future research challenges.",
@@ -31,6 +110,39 @@
       "summary_zh": null,
       "title": "Somewhere Over the Desktop: A Research Agenda for Ubiquitous Analytics",
       "updated": "2026-06-10T19:57:44+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.12485v1",
+      "abstract": "Training interactive web agents through imitation learning from expert trajectories has emerged as a highly effective approach. However, determining the optimal timing for expert intervention presents a critical challenge in this context. Delayed intervention often leads to the accumulation of early-stage errors, pushing the page state into an irrecoverable regime. Conversely, premature or excessive intervention causes the agent to become overly reliant on expert policies, trapping the model in local optima characterized by a single, rigid trajectory. We propose Speculative Rollback Correction (SRC), a branch-level imitation framework for resettable agent environments. Instead of requesting teacher labels at every visited state or correcting only after a completed trajectory, SRC uses fixed-horizon branch review: the student executes a short speculative segment before teacher review, and the teacher localizes the first harmful deviation only when local progress breaks. Rollback preserves useful prefixes, while successful rollouts are filtered by a hard verifier and retained in a lightweight quality-diversity archive. The resulting data supports next-action supervised fine-tuning on both localized corrections and verifier-passing trajectories. On WebArena-Infinity, SRC collects 977 verifier-passing trajectories and 9,183 next-action examples; fixed-horizon review improves the recovery-versus-query tradeoff over step-level review while retaining verifier-passing solution variants. Code is available at https://github.com/LongkunHao/SRC_gui_agent.",
+      "arxiv_id": "2606.12485v1",
+      "authors": [
+        "Longkun Hao",
+        "Hongyu Lin",
+        "Hao Li",
+        "Zhichao Yang",
+        "Haojie Hao",
+        "Dongshuo Huang",
+        "Haitao Yang",
+        "Hongyu Ge",
+        "Ming jie Xie",
+        "Yanjun Wu",
+        "Zi Hao Yin",
+        "Yan Bai",
+        "Yihang Lou"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.12485v1",
+      "published": "2026-06-10T16:56:27+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Speculative Rollback Correction for Quality-Diverse Web Agent Imitation",
+      "updated": "2026-06-10T16:56:27+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2606.11078v1",
@@ -361,7 +473,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-06-11",
-  "run_paper_count": 8,
+  "report_date": "2026-06-12",
+  "run_paper_count": 10,
   "source_report_date": null
 }
