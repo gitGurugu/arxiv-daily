@@ -1,0 +1,223 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 8,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2606.18890v1",
+      "abstract": "Improving GUI agents typically relies on behavior cloning on expert trajectories. However, as the current policy deviates from the expert policy, it inevitably encounters policy-induced off-trajectory states during closed-loop execution, i.e., states that fall outside the expert trajectories. Since expert trajectories provide no demonstrations for these unseen states, such states receive no effective supervision, leaving the policy unable to select the correct action. To close this supervision gap, we propose Skill-Guided Continuation Distillation (SGCD), an iterative self-improvement framework. SGCD first runs the plain policy without skill guidance for a few steps to reach realistic off-trajectory states. From these states, a skill-guided policy then completes the task and produces successful continuations, which are mixed with expert trajectories to supply supervision over policy-induced off-trajectory states. The skills are extracted from both successful and failed rollouts, consisting of Continuation Plans, Critical Targets, Failure Traps, and Success Criteria. On OSWorld-Verified, SGCD improves the success rate of three base models from the low-30\\% range to over 50\\%, demonstrating its effectiveness and generality.",
+      "arxiv_id": "2606.18890v1",
+      "authors": [
+        "Zhimin Fan",
+        "Hongwei Yu",
+        "Yeqing Shen",
+        "Haolong Yan",
+        "Guozhen Peng",
+        "Tianhao Peng",
+        "Yudong Zhang",
+        "Xiaowen Zhang",
+        "Kaijun Tan",
+        "Zheng Ge",
+        "Xiangyu Zhang",
+        "Daxin Jiang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.18890v1",
+      "published": "2026-06-17T18:07:51+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Skill-Guided Continuation Distillation for GUI Agents",
+      "updated": "2026-06-17T18:07:51+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.18671v1",
+      "abstract": "AI web agents can perform complex, multi-step tasks such as searching for products, comparing options, and making purchases on behalf of users. However, verifying the correctness of an agent's output remains difficult. Existing transparency mechanisms, including full trajectory logs, source links, screenshots, and LLM-generated summaries, treat verification as a passive reading task, leaving users to sift through overwhelming logs or trust potentially unfaithful explanations. We present HANSEL (Highlighting Agent Navigation Steps as Evidence Links), a system that extracts interactive, verifiable evidence from web-agent trajectories. Given an agent trajectory, HANSEL extracts evidence pages and snippets and presents them as navigable, interactive views with relevant page state preserved (e.g., applied filters, search queries, and scroll positions), enabling users to verify how the agent arrived at its answer. When the agent's answer cannot be traced to any visited page, HANSEL explicitly flags this gap. A technical evaluation on 45 tasks from AssistantBench and Online-Mind2Web shows that HANSEL achieves 83.7% precision and 88.8% recall in identifying evidence pages, while reducing trajectory volume by 61.6%. In a controlled user study with 14 participants, HANSEL significantly reduced task completion time and perceived effort compared to a standard agent interface, while participants rated it significantly higher on usability, verification ease, and error identification. Our results demonstrate that reframing verification as an interactive activity, rather than passive consumption of agent explanations, leads to more efficient human oversight of AI agents.",
+      "arxiv_id": "2606.18671v1",
+      "authors": [
+        "Yujin Zhang",
+        "Daye Nam"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.18671v1",
+      "published": "2026-06-17T12:13:20+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "HANSEL: Extracting Breadcrumbs from Web Agent Trajectories for Interactive Verification",
+      "updated": "2026-06-17T12:13:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.15017v1",
+      "abstract": "Online web agents often augment a base actor with memory, workflow, or skill modules. These modules can improve performance, but they also consume test-time tokens, a cost rarely reported alongside the actor's inference cost. We study online augmentation, where this overhead is paid on every task, and re-evaluate its benefits under a fixed total inference budget. We compare AWM, ASI, and ReasoningBank with a token-matched vanilla baseline that uses the same budget for additional actor steps. Across three WebArena domains and three models, Gemini 3 Flash, GPT-5.4-mini, and Qwen 3.6-27B, the vanilla baseline matches or surpasses all three augmentation methods in aggregate success rate while often using fewer total tokens. We observe a similar trend on WorkArena-L1 with Qwen 3.6-27B, indicating that the effect extends to enterprise knowledge-work tasks. Our results suggest that skills and workflow memory can be useful in specific domains, but their apparent gains often vanish against a budget-matched actor. We further show that run-to-run variance materially affects outcomes and should be reported as a core evaluation criterion for online web agents.",
+      "arxiv_id": "2606.15017v1",
+      "authors": [
+        "Sina Hajimiri",
+        "Masih Aminbeidokhti",
+        "Jose Dolz",
+        "Ismail Ben Ayed",
+        "Issam H. Laradji",
+        "Spandana Gella",
+        "Nicolas Gontier"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.15017v1",
+      "published": "2026-06-13T07:30:14+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "Are Online Skill and Memory Modules Always Worth Their Tokens? A Budget-Constrained Study of Web Agents",
+      "updated": "2026-06-13T07:30:14+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.14106v1",
+      "abstract": "Graphical User Interface (GUI) agents are increasingly used to automate complex computer tasks across applications, websites, and operating systems. To improve their reliability, recent work has introduced experiential memory, where agents retrieve prior trajectories to guide decision-making in similar states. More recent approaches further extend this idea to visual memory by storing and retrieving screenshots from past interactions, providing agents with richer contextual information than text-only memories. However, the effect of visual memory in GUI agents remains insufficiently understood: it is unclear which failures visual memory mitigates, or which failures it exacerbates. To systematically analyze the effect of visual memory, we introduce a taxonomy of four GUI agent failures (i.e., cognitive failure, visual state misunderstanding, hidden operation blindness, and grounding error) that map to distinct stages of the perception-reasoning-action pipeline. We find that prepending full-image memory has a divergent effect on the failure distribution: it reduces state-level failures but worsens action-level ones, and increases hidden operation blindness and grounding error. Motivated by this finding, we propose Action-Grounded Visual Memory (AGMem), an action-grounded memory framework for GUI agents. The core idea of AGMem is to store image crops that capture the local GUI region closely related to a successful action or a recovery, rather than storing full screenshots. Experiments on OSWorld show that AGMem improves task success rates by 33.3 % over full-image memory. These results demonstrate that AGMem is an effective representation for visual memory in GUI agents.",
+      "arxiv_id": "2606.14106v1",
+      "authors": [
+        "Seoyoung Choi",
+        "Minseok Ko",
+        "Hyunseok Lee",
+        "Kunwoong Kim",
+        "Woomin Song",
+        "Chanseok Jeon",
+        "Jinwoo Shin"
+      ],
+      "categories": [
+        "cs.MA",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.14106v1",
+      "published": "2026-06-12T12:39:01+08:00",
+      "score": 10,
+      "summary_zh": null,
+      "title": "Naive Visual Memory is Not Enough: A Failure-Mode Study of GUI Agents",
+      "updated": "2026-06-12T12:39:01+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.13194v1",
+      "abstract": "Deep learning has become the dominant paradigm in Wearable Human Activity Recognition (WHAR), yet progress is obscured by a comparability crisis. Results are often reported using inconsistent datasets, custom data processing, and varying evaluation protocols, making state-of-the-art claims fragile. We address this with a large-scale, open-source benchmark that integrates 30 diverse datasets under standardized processing, unified model interfaces, and a shared cross-subject evaluation protocol. Evaluating 17 representative architectures across 4760 training runs, we jointly measure predictive performance alongside on-device latency, peak memory, and model size on an Android reference device. Our results reveal that the WHAR state of the art is distributed rather than dominated by a single architecture. While CNN-HAR achieves the highest mean macro-F1, top-performing models cluster tightly, indicating contemporary architectures have converged near a predictive performance ceiling. When accounting for deployment efficiency, compact neural models, such as TinierHAR, and classical Random Forests define the practically relevant Pareto frontier, whereas larger recurrent and hybrid models incur high hardware costs without corresponding performance gains. Consequently, while predictive performance has plateaued, substantial potential for future progress remains in optimizing deployment efficiency and improving adaptation to domain shifts. We release our full framework to support transparent reuse and extension.",
+      "arxiv_id": "2606.13194v1",
+      "authors": [
+        "Maximilian Burzer",
+        "Tobias King",
+        "Till Riedel",
+        "Michael Beigl",
+        "Tobias Röddiger"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.13194v1",
+      "published": "2026-06-11T19:01:36+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "WHAR Arena: Benchmarking the State of the Art in Efficient Wearable Human Activity Recognition",
+      "updated": "2026-06-11T19:01:36+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.13192v1",
+      "abstract": "User experience (UX) centered on usability, perceived consistency, and functional clarity is fundamental to real-world user interfaces (UI). The application of multimodal large language models (MLLMs) in the field of user interfaces is evolving rapidly, such as visual element grounding, graphical user interface (GUI) agents, and design-to-code generation. However, research efforts on evaluating UX based on UI screenshots are still immature. To address this, we propose UXBench, a novel multimodal benchmark consisting of 2,000 VQA data samples designed to assess MLLMs' ability to perform UI-based reasoning. UXBench includes 8 tasks based on real-world UI screenshots that require fine-grained diagnosis of UX issues across layout relationships, visual hierarchy, and content consistency. Our extensive evaluation of mainstream MLLMs shows that they remain fundamentally limited in their capacity for UI-based reasoning. The results underscore the need for further advancements in this area. To bridge this gap, we propose UI-UX, an MLLM based on Qwen3-VL-4B-Thinking foundation model and enhanced via reinforcement learning with two key innovations: a reward routing mechanism that dynamically balances perceptual understanding and logical reasoning during inference, and an asymmetric transition reward that suppresses redundant or insufficient reasoning steps. Experiments demonstrate that UI-UX achieves state-of-the-art (SOTA) performance on UXBench, attaining an accuracy of 0.7963 -- surpassing Claude-4.5-Sonnet's 0.6550 -- while exhibiting strong generalization across diverse UI tasks and maintaining low inference latency.",
+      "arxiv_id": "2606.13192v1",
+      "authors": [
+        "Ruichao Mao",
+        "Zhou Fang",
+        "Teng Guo",
+        "Hao Yang",
+        "Yaping Li",
+        "Shaohua Peng",
+        "Maji Huang",
+        "Xiaoyu Lin",
+        "Shuoyang Liu",
+        "Xuepeng Li",
+        "Yuyu Zhang",
+        "Hai Rao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.13192v1",
+      "published": "2026-06-11T19:00:16+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Reasoning for Mobile User Experience with Multimodal LLMs: Task, Benchmark, and Approach",
+      "updated": "2026-06-11T19:00:16+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.12666v2",
+      "abstract": "Screenshot-based mobile GUI agents can operate ordinary smartphone apps through the same visual interface as a human user, but this capability also turns every screen observation into a privacy boundary. During normal task execution, screenshots may expose contacts, messages, photos, files, recommendations, health cues, and other sensitive context that is unrelated to the user's request. We call this problem incidental visual privacy exposure. It is difficult to address with existing defenses: text anonymization misses many visual and inferential cues, while generic privacy masking can remove the evidence and controls that a GUI agent needs to complete the task. This paper presents CAPED, a context-aware pre-upload exposure control layer for mobile GUI agents. CAPED is designed as a phone-side protection layer: before screenshots are released to a remote multimodal agent, it extracts task requirements, uses screen context as a privacy prior, parses visible UI elements, and selectively exposes only content needed for the current task while masking incidental private content. We evaluate CAPED on AndroidWorld for broad task utility and with a controlled 28-task seeded privacy evaluation used as a measurement instrument for trajectory-level incidental leakage. In this seeded evaluation, Full CAPED reduces success-conditioned weighted seeded leakage from 0.766 under raw screenshots to 0.268 while preserving high task utility. A broader AndroidWorld run shows a remaining prototype-level utility cost, but the results show that task-driven selective exposure can reduce incidental visual leakage before screenshots are released to a remote GUI agent.",
+      "arxiv_id": "2606.12666v2",
+      "authors": [
+        "Siyu Shen",
+        "Fenghao Xu",
+        "Wenrui Diao",
+        "Kehuan Zhang"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.12666v2",
+      "published": "2026-06-11T04:48:39+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents",
+      "updated": "2026-06-16T11:15:00+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.11980v1",
+      "abstract": "Spatial computing, generative AI, and open web standards are converging. Three spatial operating systems -- Android XR, Meta Horizon OS, and Apple visionOS -- now ship with platform-level scene understanding. Wearable displays span the range from full headsets to slim smartglasses. Agentic AI operates on the same spatial substrates as the human user. This convergence enables new opportunities for \\textit{ubiquitous analytics} (UA): the use of many, physically distributed, networked devices to support data sensemaking anytime and anywhere. But proprietary platforms are settling design conventions that will calcify without evidence-based alternatives. UA has now matured to the point where its intellectual history can be read as a structured genealogy of foundations, contributions, and lineages. We trace this genealogy and organize it into clusters spanning cognition, context, interaction, platforms, visualization, collaboration, and evaluation. Finally, we cross these clusters with each other, yielding a total of 42 future research challenges.",
+      "arxiv_id": "2606.11980v1",
+      "authors": [
+        "Niklas Elmqvist",
+        "Panagiotis D. Ritsos",
+        "Peter W. S. Butcher"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.11980v1",
+      "published": "2026-06-10T19:57:44+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Somewhere Over the Desktop: A Research Agenda for Ubiquitous Analytics",
+      "updated": "2026-06-10T19:57:44+08:00"
+    }
+  ],
+  "report_date": "2026-06-18",
+  "run_paper_count": 8,
+  "source_report_date": null
+}
