@@ -26,218 +26,225 @@ output paths. The file intentionally uses JSON syntax, which is valid YAML, so
 the crawler can run with only the Python standard library.
 
 <!-- ARXIV-DAILY:START -->
-## GUI Agent Memory Papers (updated 2026-06-29)
+## GUI Agent Memory Papers (updated 2026-06-30)
 
 Tracked categories: `cs.AI, cs.LG, cs.CL, cs.HC, cs.CV`
 
-Found `29` matching papers in the cumulative list.
-Current run matched `8` papers.
+Found `30` matching papers in the cumulative list.
+Current run matched `5` papers.
 
 ### Topic Overview
 
 | Topic | Papers |
 | --- | ---: |
-| GUI Agent Memory | 29 |
+| GUI Agent Memory | 30 |
 
 ### Papers
 
-1. **Empowering GUI Agents via Autonomous Experience Exploration and Hindsight Experience Utilization for Task Planning**
+1. **MAM-AI: An On-Device Medical Retrieval-Augmented Generation System for Nurses and Midwives in Zanzibar**
+   - Authors: Yi Ren
+   - arXiv: [2606.29580v1](http://arxiv.org/abs/2606.29580v1) | [PDF](https://arxiv.org/pdf/2606.29580v1)
+   - Published: `2026-06-29` | Categories: `cs.CL`
+   - Topics: GUI Agent Memory | Score: `3`
+   - Abstract: Maternal and newborn mortality remain among the highest in sub-Saharan Africa, where midwifery care is often delivered by nurses who lack midwifery training to international standards, and consulting authoritative guidance at the point of care is hard: the guidelines are long and connectivity is intermittent. We present MAM-AI, a medical question-answering assistant for nurse-midwives in Zanzibar that runs entirely on a commodity Android device: a question is embedded (EmbeddingGemma, 300M) and matched against a c...
+
+2. **Empowering GUI Agents via Autonomous Experience Exploration and Hindsight Experience Utilization for Task Planning**
    - Authors: Tianyi Men, Zhuoran Jin, Pengfei Cao, Yubo Chen, Kang Liu, et al.
    - arXiv: [2606.27330v1](http://arxiv.org/abs/2606.27330v1) | [PDF](https://arxiv.org/pdf/2606.27330v1)
    - Published: `2026-06-26` | Categories: `cs.CL, cs.AI, cs.CV, cs.LG`
    - Topics: GUI Agent Memory | Score: `10`
    - Abstract: Multimodal web agents can assist humans in operating repetitive GUI tasks, where effective task planning is essential for decomposing complex tasks into executable actions. While small open source MLLMs are cost efficient and privacy preserving compared with commercial large models, they suffer from weak planning and limited cross website generalization. To address these limitations, we introduce the planning experience exploration and utilization (PEEU) method, which autonomously explores environments to discover...
 
-2. **AOHP: An Open-Source OS-Level Agent Harness for Personalized, Efficient and Secure Interaction**
+3. **AOHP: An Open-Source OS-Level Agent Harness for Personalized, Efficient and Secure Interaction**
    - Authors: Shanhui Zhao, Jiacheng Liu, Guohong Liu, Jichao Yan, Jialei Ye, et al.
    - arXiv: [2606.23449v1](http://arxiv.org/abs/2606.23449v1) | [PDF](https://arxiv.org/pdf/2606.23449v1)
    - Published: `2026-06-22` | Categories: `cs.AI, cs.OS`
    - Topics: GUI Agent Memory | Score: `1`
    - Abstract: AI agents are driving a new software paradigm, with the ability to autonomously call tools, extract information, manage memory, and complete tasks that span applications and data sources. Most existing end-user operating systems, however, are designed for application-centric workflows and offer little native support for AI agents. This mismatch limits the wider adoption of agents and leads to execution overhead and safety risks when running agents on conventional systems. While the concept of agent-native operatin...
 
-3. **ENVS: Environment-Native Verified Search for Long-Horizon GUI Agents**
+4. **ENVS: Environment-Native Verified Search for Long-Horizon GUI Agents**
    - Authors: Yincheng Zhou, Athena Zhuoming Zhong, Shijie Zhang, Kevin Zhang, Teresa Xiaotao Shang, et al.
    - arXiv: [2606.22948v1](http://arxiv.org/abs/2606.22948v1) | [PDF](https://arxiv.org/pdf/2606.22948v1)
    - Published: `2026-06-22` | Categories: `cs.AI, cs.CV`
    - Topics: GUI Agent Memory | Score: `7`
    - Abstract: As multimodal agents move from interface understanding to real software control, successful trajectory discovery in live desktop environments becomes a key challenge. GUI tasks require long-horizon sequences of precise mouse and keyboard actions, while feedback is sparse, delayed, and costly to obtain through VM rollouts. We propose Environment-Native Verified Search (ENVS), a training-time search-and-filter pipeline that uses the environment to construct verified supervision before policy optimization: it branche...
 
-4. **Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining**
+5. **Automating SKILL.md Generation for Computer-Using Agents via Interaction Trajectory Mining**
    - Authors: Yuexing Hao, Xiaomin Li
    - arXiv: [2606.20363v1](http://arxiv.org/abs/2606.20363v1) | [PDF](https://arxiv.org/pdf/2606.20363v1)
    - Published: `2026-06-18` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `6`
    - Abstract: Explicit skill libraries make computer-using agents easier to inspect, but it remains unclear whether such libraries can be mined from interaction data in a way that improves downstream policies. We study this question through a three-stage pipeline that segments GUI trajectories, clusters segments into candidate skills, and trains a skill-aware policy from the resulting annotations. The mined clusters are readable on the source benchmark: five of eight clusters have at least 0.95 purity against InteraSkill Workfl...
 
-5. **MobileForge: Annotation-Free Adaptation for Mobile GUI Agents with Hierarchical Feedback-Guided Policy Optimization**
+6. **MobileForge: Annotation-Free Adaptation for Mobile GUI Agents with Hierarchical Feedback-Guided Policy Optimization**
    - Authors: Guangyi Liu, Pengxiang Zhao, Gao Wu, Yiwen Yin, Mading Li, et al.
    - arXiv: [2606.19930v1](http://arxiv.org/abs/2606.19930v1) | [PDF](https://arxiv.org/pdf/2606.19930v1)
    - Published: `2026-06-18` | Categories: `cs.HC`
    - Topics: GUI Agent Memory | Score: `13`
    - Abstract: MLLM-based mobile GUI agents have made substantial progress in UI understanding and action execution, but adapting them to real target apps remains costly because mobile apps are numerous, frequently updated, and hard to cover with human-written tasks, demonstrations, or reward labels. Existing annotation-free GUI learning reduces manual supervision, yet lacks a unified substrate connecting target-app exploration, curriculum mining, rollout execution, and feedback, while policy optimization often relies on isolate...
 
-6. **MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management**
+7. **MemGUI-Agent: An End-to-End Long-Horizon Mobile GUI Agent with Proactive Context Management**
    - Authors: Guangyi Liu, Gao Wu, Congxiao Liu, Pengxiang Zhao, Liang Liu, et al.
    - arXiv: [2606.19926v1](http://arxiv.org/abs/2606.19926v1) | [PDF](https://arxiv.org/pdf/2606.19926v1)
    - Published: `2026-06-18` | Categories: `cs.HC`
    - Topics: GUI Agent Memory | Score: `10`
    - Abstract: MLLM-based mobile GUI agents have made substantial progress on short-horizon tasks, yet remain unreliable on long-horizon tasks that require retaining intermediate facts across many steps and app transitions. We attribute this limitation to ReAct-style prompting, which passively accumulates per-step records, leading to prompt explosion and dilution of critical cross-app facts. To address this, we introduce MemGUI-Agent, an end-to-end long-horizon mobile GUI agent with proactive context management. MemGUI-Agent is...
 
-7. **Skill-Guided Continuation Distillation for GUI Agents**
+8. **Skill-Guided Continuation Distillation for GUI Agents**
    - Authors: Zhimin Fan, Hongwei Yu, Yeqing Shen, Haolong Yan, Guozhen Peng, et al.
    - arXiv: [2606.18890v1](http://arxiv.org/abs/2606.18890v1) | [PDF](https://arxiv.org/pdf/2606.18890v1)
    - Published: `2026-06-17` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `7`
    - Abstract: Improving GUI agents typically relies on behavior cloning on expert trajectories. However, as the current policy deviates from the expert policy, it inevitably encounters policy-induced off-trajectory states during closed-loop execution, i.e., states that fall outside the expert trajectories. Since expert trajectories provide no demonstrations for these unseen states, such states receive no effective supervision, leaving the policy unable to select the correct action. To close this supervision gap, we propose Skil...
 
-8. **HANSEL: Extracting Breadcrumbs from Web Agent Trajectories for Interactive Verification**
+9. **HANSEL: Extracting Breadcrumbs from Web Agent Trajectories for Interactive Verification**
    - Authors: Yujin Zhang, Daye Nam
    - arXiv: [2606.18671v1](http://arxiv.org/abs/2606.18671v1) | [PDF](https://arxiv.org/pdf/2606.18671v1)
    - Published: `2026-06-17` | Categories: `cs.HC`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: AI web agents can perform complex, multi-step tasks such as searching for products, comparing options, and making purchases on behalf of users. However, verifying the correctness of an agent's output remains difficult. Existing transparency mechanisms, including full trajectory logs, source links, screenshots, and LLM-generated summaries, treat verification as a passive reading task, leaving users to sift through overwhelming logs or trust potentially unfaithful explanations. We present HANSEL (Highlighting Agent...
 
-9. **Are Online Skill and Memory Modules Always Worth Their Tokens? A Budget-Constrained Study of Web Agents**
+10. **Are Online Skill and Memory Modules Always Worth Their Tokens? A Budget-Constrained Study of Web Agents**
    - Authors: Sina Hajimiri, Masih Aminbeidokhti, Jose Dolz, Ismail Ben Ayed, Issam H. Laradji, et al.
    - arXiv: [2606.15017v1](http://arxiv.org/abs/2606.15017v1) | [PDF](https://arxiv.org/pdf/2606.15017v1)
    - Published: `2026-06-13` | Categories: `cs.CL`
    - Topics: GUI Agent Memory | Score: `6`
    - Abstract: Online web agents often augment a base actor with memory, workflow, or skill modules. These modules can improve performance, but they also consume test-time tokens, a cost rarely reported alongside the actor's inference cost. We study online augmentation, where this overhead is paid on every task, and re-evaluate its benefits under a fixed total inference budget. We compare AWM, ASI, and ReasoningBank with a token-matched vanilla baseline that uses the same budget for additional actor steps. Across three WebArena...
 
-10. **Naive Visual Memory is Not Enough: A Failure-Mode Study of GUI Agents**
+11. **Naive Visual Memory is Not Enough: A Failure-Mode Study of GUI Agents**
    - Authors: Seoyoung Choi, Minseok Ko, Hyunseok Lee, Kunwoong Kim, Woomin Song, et al.
    - arXiv: [2606.14106v1](http://arxiv.org/abs/2606.14106v1) | [PDF](https://arxiv.org/pdf/2606.14106v1)
    - Published: `2026-06-12` | Categories: `cs.MA, cs.CV`
    - Topics: GUI Agent Memory | Score: `10`
    - Abstract: Graphical User Interface (GUI) agents are increasingly used to automate complex computer tasks across applications, websites, and operating systems. To improve their reliability, recent work has introduced experiential memory, where agents retrieve prior trajectories to guide decision-making in similar states. More recent approaches further extend this idea to visual memory by storing and retrieving screenshots from past interactions, providing agents with richer contextual information than text-only memories. How...
 
-11. **WHAR Arena: Benchmarking the State of the Art in Efficient Wearable Human Activity Recognition**
+12. **WHAR Arena: Benchmarking the State of the Art in Efficient Wearable Human Activity Recognition**
    - Authors: Maximilian Burzer, Tobias King, Till Riedel, Michael Beigl, Tobias Röddiger
    - arXiv: [2606.13194v1](http://arxiv.org/abs/2606.13194v1) | [PDF](https://arxiv.org/pdf/2606.13194v1)
    - Published: `2026-06-11` | Categories: `cs.LG`
    - Topics: GUI Agent Memory | Score: `1`
    - Abstract: Deep learning has become the dominant paradigm in Wearable Human Activity Recognition (WHAR), yet progress is obscured by a comparability crisis. Results are often reported using inconsistent datasets, custom data processing, and varying evaluation protocols, making state-of-the-art claims fragile. We address this with a large-scale, open-source benchmark that integrates 30 diverse datasets under standardized processing, unified model interfaces, and a shared cross-subject evaluation protocol. Evaluating 17 repres...
 
-12. **Reasoning for Mobile User Experience with Multimodal LLMs: Task, Benchmark, and Approach**
+13. **Reasoning for Mobile User Experience with Multimodal LLMs: Task, Benchmark, and Approach**
    - Authors: Ruichao Mao, Zhou Fang, Teng Guo, Hao Yang, Yaping Li, et al.
    - arXiv: [2606.13192v1](http://arxiv.org/abs/2606.13192v1) | [PDF](https://arxiv.org/pdf/2606.13192v1)
    - Published: `2026-06-11` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: User experience (UX) centered on usability, perceived consistency, and functional clarity is fundamental to real-world user interfaces (UI). The application of multimodal large language models (MLLMs) in the field of user interfaces is evolving rapidly, such as visual element grounding, graphical user interface (GUI) agents, and design-to-code generation. However, research efforts on evaluating UX based on UI screenshots are still immature. To address this, we propose UXBench, a novel multimodal benchmark consisti...
 
-13. **CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents**
+14. **CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents**
    - Authors: Siyu Shen, Fenghao Xu, Wenrui Diao, Kehuan Zhang
    - arXiv: [2606.12666v2](http://arxiv.org/abs/2606.12666v2) | [PDF](https://arxiv.org/pdf/2606.12666v2)
    - Published: `2026-06-11` | Categories: `cs.CR, cs.AI`
    - Topics: GUI Agent Memory | Score: `13`
    - Abstract: Screenshot-based mobile GUI agents can operate ordinary smartphone apps through the same visual interface as a human user, but this capability also turns every screen observation into a privacy boundary. During normal task execution, screenshots may expose contacts, messages, photos, files, recommendations, health cues, and other sensitive context that is unrelated to the user's request. We call this problem incidental visual privacy exposure. It is difficult to address with existing defenses: text anonymization m...
 
-14. **CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents**
+15. **CAPED: Context-Aware Privacy Exposure Defense for Mobile GUI Agents**
    - Authors: Siyu Shen, Fenghao Xu, Wenrui Diao, Kehuan Zhang
    - arXiv: [2606.12666v1](http://arxiv.org/abs/2606.12666v1) | [PDF](https://arxiv.org/pdf/2606.12666v1)
    - Published: `2026-06-11` | Categories: `cs.CR, cs.AI`
    - Topics: GUI Agent Memory | Score: `13`
    - Abstract: Screenshot-based mobile GUI agents can operate ordinary smartphone apps through the same visual interface as a human user, but this capability also turns every screen observation into a privacy boundary. During normal task execution, screenshots may expose contacts, messages, photos, files, recommendations, health cues, and other sensitive context that is unrelated to the user's request. We call this problem incidental visual privacy exposure. It is difficult to address with existing defenses: text anonymization m...
 
-15. **Somewhere Over the Desktop: A Research Agenda for Ubiquitous Analytics**
+16. **Somewhere Over the Desktop: A Research Agenda for Ubiquitous Analytics**
    - Authors: Niklas Elmqvist, Panagiotis D. Ritsos, Peter W. S. Butcher
    - arXiv: [2606.11980v1](http://arxiv.org/abs/2606.11980v1) | [PDF](https://arxiv.org/pdf/2606.11980v1)
    - Published: `2026-06-10` | Categories: `cs.HC`
    - Topics: GUI Agent Memory | Score: `1`
    - Abstract: Spatial computing, generative AI, and open web standards are converging. Three spatial operating systems -- Android XR, Meta Horizon OS, and Apple visionOS -- now ship with platform-level scene understanding. Wearable displays span the range from full headsets to slim smartglasses. Agentic AI operates on the same spatial substrates as the human user. This convergence enables new opportunities for \textit{ubiquitous analytics} (UA): the use of many, physically distributed, networked devices to support data sensemak...
 
-16. **Speculative Rollback Correction for Quality-Diverse Web Agent Imitation**
+17. **Speculative Rollback Correction for Quality-Diverse Web Agent Imitation**
    - Authors: Longkun Hao, Hongyu Lin, Hao Li, Zhichao Yang, Haojie Hao, et al.
    - arXiv: [2606.12485v1](http://arxiv.org/abs/2606.12485v1) | [PDF](https://arxiv.org/pdf/2606.12485v1)
    - Published: `2026-06-10` | Categories: `cs.LG, cs.AI`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: Training interactive web agents through imitation learning from expert trajectories has emerged as a highly effective approach. However, determining the optimal timing for expert intervention presents a critical challenge in this context. Delayed intervention often leads to the accumulation of early-stage errors, pushing the page state into an irrecoverable regime. Conversely, premature or excessive intervention causes the agent to become overly reliant on expert policies, trapping the model in local optima charac...
 
-17. **A History-Aware Visually Grounded Critic for Computer Use Agents**
+18. **A History-Aware Visually Grounded Critic for Computer Use Agents**
    - Authors: Jaewoo Lee, Zaid Khan, Archiki Prasad, Justin Chih-Yao Chen, Supriyo Chakraborty, et al.
    - arXiv: [2606.11078v1](http://arxiv.org/abs/2606.11078v1) | [PDF](https://arxiv.org/pdf/2606.11078v1)
    - Published: `2026-06-10` | Categories: `cs.AI, cs.CL, cs.CV`
    - Topics: GUI Agent Memory | Score: `7`
    - Abstract: Various test-time interventions for Computer Use Agents (CUAs), including critic models, have been developed to improve performance through pre-execution action evaluation in complex Graphical User Interface (GUI) environments. However, existing critics suffer from two key limitations: they (1) focus primarily on short-sighted decision loops (e.g., forgetting earlier actions) and (2) lack the visual grounding needed to detect flawed actions (e.g., clicking wrong UI elements). To address these, we introduce HiViG,...
 
-18. **MemVenom: Triggered Poisoning of Multimodal Memories in Web Agents**
+19. **MemVenom: Triggered Poisoning of Multimodal Memories in Web Agents**
    - Authors: Yv Zhang, Hao Sun, Hao Fang, Kuofeng Gao, Fan Mo, et al.
    - arXiv: [2606.10742v1](http://arxiv.org/abs/2606.10742v1) | [PDF](https://arxiv.org/pdf/2606.10742v1)
    - Published: `2026-06-09` | Categories: `cs.CR, cs.LG`
    - Topics: GUI Agent Memory | Score: `5`
    - Abstract: External memory has become a core component of modern web agents, enabling long-horizon reasoning through the retrieval of past experiences. However, this paradigm introduces a critical vulnerability: malicious content injected into memory can be persistently recalled and repeatedly influence agent behavior. In this work, we identify and systematically study multimodal memory poisoning, an overlooked yet practical attack surface in web-agent systems. We propose MemVenom, a unified black-box attack framework that p...
 
-19. **WebChallenger: A Reliable and Efficient Generalist Web Agent**
+20. **WebChallenger: A Reliable and Efficient Generalist Web Agent**
    - Authors: Jayoo Hwang, Xiaowen Zhang, Vedant Padwal
    - arXiv: [2606.10423v1](http://arxiv.org/abs/2606.10423v1) | [PDF](https://arxiv.org/pdf/2606.10423v1)
    - Published: `2026-06-09` | Categories: `cs.CL`
    - Topics: GUI Agent Memory | Score: `5`
    - Abstract: Autonomous web navigation remains challenging for LLM agents, and the strongest generalist systems rely on proprietary reasoning models whose inference cost is prohibitive for the repetitive tasks where such agents would be most useful. We argue this gap stems not from insufficient model capability but from agent architectures that fail to replicate three human cognitive advantages: selective attention to relevant page regions, persistent memory of website structure, and procedural fluency with common interaction...
 
-20. **StainFlow: Entity-Stain Tracking and Evidence Linking for Process Rewards in GUI Agents**
+21. **StainFlow: Entity-Stain Tracking and Evidence Linking for Process Rewards in GUI Agents**
    - Authors: Haojie Hao, Longkun Hao, Yihang Lou, Yan Bai, Zhenyang Li, et al.
    - arXiv: [2606.07027v2](http://arxiv.org/abs/2606.07027v2) | [PDF](https://arxiv.org/pdf/2606.07027v2)
    - Published: `2026-06-05` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `7`
    - Abstract: Reinforcement Learning (RL) has become a promising approach for improving GUI Agents in long-horizon, stochastic digital environments, but trajectory-level success feedback is too sparse to provide reliable credit assignment for intermediate exploration steps. To mitigate this issue, recent studies introduce Process Reward Models (PRMs), which provide finer-grained training feedback through global milestone verification or local step-level evaluation. However, these methods still suffer from two level-specific lim...
 
-21. **StainFlow: Entity-Stain Tracking and Evidence Linking for Process Rewards in GUI Agents**
+22. **StainFlow: Entity-Stain Tracking and Evidence Linking for Process Rewards in GUI Agents**
    - Authors: Haojie Hao, Longkun Hao, Yihang Lou, Yan Bai, Zhenyang Li, et al.
    - arXiv: [2606.07027v1](http://arxiv.org/abs/2606.07027v1) | [PDF](https://arxiv.org/pdf/2606.07027v1)
    - Published: `2026-06-05` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `7`
    - Abstract: Reinforcement Learning (RL) has become a promising approach for improving GUI Agents in long-horizon, stochastic digital environments, but trajectory-level success feedback is too sparse to provide reliable credit assignment for intermediate exploration steps. To mitigate this issue, recent studies introduce Process Reward Models (PRMs), which provide finer-grained training feedback through global milestone verification or local step-level evaluation. However, these methods still suffer from two level-specific lim...
 
-22. **AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents**
+23. **AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents**
    - Authors: Hao Bai, Rui Yang, Chenlu Ye, Spencer Whitehead, Aviral Kumar, et al.
    - arXiv: [2606.05597v2](http://arxiv.org/abs/2606.05597v2) | [PDF](https://arxiv.org/pdf/2606.05597v2)
    - Published: `2026-06-04` | Categories: `cs.LG`
    - Topics: GUI Agent Memory | Score: `5`
    - Abstract: Training vision-language web agents with multi-step RL is compute-intensive, with two dominant forms of inefficiency: idle GPUs in synchronous RL, and trajectories that use more steps and tokens than necessary. We present AsyncWebRL, which addresses both. On the system side, an asynchronous design overlaps rollout, gradient update, and policy refresh across iterations, paired with two web-agent-specific adaptations, namely an everlasting rollout pool and lightweight screenshot handling, that together deliver up to...
 
-23. **AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents**
+24. **AsyncWebRL: Efficient Multi-Step RL for Visual Web Agents**
    - Authors: Hao Bai, Rui Yang, Chenlu Ye, Spencer Whitehead, Aviral Kumar, et al.
    - arXiv: [2606.05597v1](http://arxiv.org/abs/2606.05597v1) | [PDF](https://arxiv.org/pdf/2606.05597v1)
    - Published: `2026-06-04` | Categories: `cs.LG`
    - Topics: GUI Agent Memory | Score: `5`
    - Abstract: Training vision-language web agents with multi-step RL is compute-intensive, with two dominant forms of inefficiency: idle GPUs in synchronous RL, and trajectories that use more steps and tokens than necessary. We present AsyncWebRL, which addresses both. On the system side, an asynchronous design overlaps rollout, gradient update, and policy refresh across iterations, paired with two web-agent-specific adaptations, namely an everlasting rollout pool and lightweight screenshot handling, that together deliver up to...
 
-24. **Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval**
+25. **Online Skill Learning for Web Agents via State-Grounded Dynamic Retrieval**
    - Authors: Jiaxi Li, Ke Deng, Yun Wang, Jingyuan Huang, Yucheng Shi, et al.
    - arXiv: [2606.04391v1](http://arxiv.org/abs/2606.04391v1) | [PDF](https://arxiv.org/pdf/2606.04391v1)
    - Published: `2026-06-03` | Categories: `cs.AI`
    - Topics: GUI Agent Memory | Score: `6`
    - Abstract: Language agents increasingly rely on reusable skills to improve multi-step web automation across related tasks. A growing line of work studies online skill learning, where agents continually induce skills from previous task trajectories and reuse them in future tasks on the fly. However, existing methods mainly reuse skills at the task-level: a fixed set of skills is retrieved based on the initial task instruction and then held fixed throughout execution. This static strategy is misaligned with web execution, wher...
 
-25. **Demo2Tutorial: From Human Experience to Multimodal Software Tutorials**
+26. **Demo2Tutorial: From Human Experience to Multimodal Software Tutorials**
    - Authors: Zechen Bai, Zhiheng Chen, Yiqi Lin, Kevin Qinghong Lin, Difei Gao, et al.
    - arXiv: [2606.03951v1](http://arxiv.org/abs/2606.03951v1) | [PDF](https://arxiv.org/pdf/2606.03951v1)
    - Published: `2026-06-03` | Categories: `cs.CV`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: Human experience in digital environments offers a vast, underexplored resource of authentic, untrimmed interactions that contain rich procedural knowledge. We introduce Demo2Tutorial, a framework that transforms this experience captured via screen recordings and interaction logs into structured, multimodal software tutorials for teaching both humans and agents. Demo2Tutorial first collects human experience via a dedicated recorder, then parses raw experience using a multimodal Action Parser to reconstruct percepti...
 
-26. **OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents**
+27. **OpenWebRL: Demystifying Online Multi-turn Reinforcement Learning for Visual Web Agents**
    - Authors: Rui Yang, Qianhui Wu, Yuxi Chen, Hao Bai, Wenlin Yao, et al.
    - arXiv: [2606.02031v2](http://arxiv.org/abs/2606.02031v2) | [PDF](https://arxiv.org/pdf/2606.02031v2)
    - Published: `2026-06-01` | Categories: `cs.LG, cs.AI, cs.CL, cs.CV`
    - Topics: GUI Agent Memory | Score: `4`
    - Abstract: Building capable visual web agents requires long-horizon reasoning, precise grounding, and robust interaction with dynamic real-world websites. Despite rapid progress, the strongest systems remain largely proprietary, while open agents still depend heavily on supervised post-training over large collections of curated web trajectories. This dependence creates a major scalability bottleneck: high-quality demonstrations are expensive to collect, and static datasets offer limited coverage of the diverse, ever-changing...
 
-27. **STaR-KV: Spatio-Temporal Adaptive Re-weighting for KV Cache Compression in GUI Vision-Language Models**
+28. **STaR-KV: Spatio-Temporal Adaptive Re-weighting for KV Cache Compression in GUI Vision-Language Models**
    - Authors: Yuhang Han, Wenzheng Yang, Yujie Chen, Xiangqi Jin, Yaojie Zhang, et al.
    - arXiv: [2606.01790v1](http://arxiv.org/abs/2606.01790v1) | [PDF](https://arxiv.org/pdf/2606.01790v1)
    - Published: `2026-06-01` | Categories: `cs.CV, cs.AI`
    - Topics: GUI Agent Memory | Score: `3`
    - Abstract: Vision-language-model-based graphical user interface (GUI) agents have shown broad automation capabilities, yet deployment is bottlenecked by a key-value (KV) cache that grows linearly with interaction steps. For instance, UI-TARS-1.5-7B consumes 76 GB of GPU memory on merely five screenshots, approaching the capacity of mainstream 80 GB accelerators. Existing KV compression methods share two structural assumptions: aggregating visual-token importance into a single shared saliency map, and applying a fixed top-B c...
 
-28. **Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism**
+29. **Masking Stale Observations Helps Search Agents -- Until It Doesn't: A Regime Map and Its Mechanism**
    - Authors: Haoxiang Zhang, Qixin Xu, Zhuofeng Li, Lei Zhang, Pengcheng Jiang, et al.
    - arXiv: [2606.00408v1](http://arxiv.org/abs/2606.00408v1) | [PDF](https://arxiv.org/pdf/2606.00408v1)
    - Published: `2026-05-30` | Categories: `cs.CL, cs.AI, cs.IR`
    - Topics: GUI Agent Memory | Score: `2`
    - Abstract: Long-horizon search agents accumulate large amounts of retrieved content across many tool calls, making context-budget efficiency increasingly important. A minimal intervention is to mask stale observations from the context as the trajectory progresses, but it remains unclear when this form of context management helps and why. We study observation masking through a systematic sweep over various agent backbones (4B to 284B parameters) and three retrievers on offline and live-web agentic search benchmarks. We find t...
 
-29. **GUITestScape: Towards Open-set Evaluation on Exploratory GUI Testing**
+30. **GUITestScape: Towards Open-set Evaluation on Exploratory GUI Testing**
    - Authors: Xiaoyi Chen, Yifei Gao, Yang Xu, Xingxing Song, Yi Zhang, et al.
    - arXiv: [2605.29532v1](http://arxiv.org/abs/2605.29532v1) | [PDF](https://arxiv.org/pdf/2605.29532v1)
    - Published: `2026-05-28` | Categories: `cs.SE, cs.AI`
