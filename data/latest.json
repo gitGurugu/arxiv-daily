@@ -8,8 +8,31 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 32,
+  "paper_count": 34,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2607.00502v1",
+      "abstract": "While long-horizon mobile GUI agents typically rely on thought-action-observation loops, they struggle to separate persistent task states from transient screen observations. As execution histories grow, this entanglement imposes a severe context burden, causing agents to forget initial requirements, hallucinate progress, or repeatedly interact with stale interfaces. To address this, we introduce Task-State Representation (TSR), a training-free framework that explicitly decouples task state from sensory input. Acting as a lightweight external wrapper, TSR maintains three structured components: a global instruction summary, a dynamic progress tracker for subgoals, and a transition-aware action verifier. By continuously updating through pre- and post-action visual comparisons, TSR effectively guides the agent's reasoning without requiring architectural modifications. Experiments across four mobile GUI benchmarks validate TSR's effectiveness, yielding up to a 12 absolute point increase in success rate on complex cross-application and memory-intensive tasks.",
+      "arxiv_id": "2607.00502v1",
+      "authors": [
+        "Yujie Zheng",
+        "Zikang Liu",
+        "Xin Zhao",
+        "Ji-Rong Wen"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.00502v1",
+      "published": "2026-07-01T14:37:21+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "A Task-State Representation for Long-Horizon Mobile GUI Agents",
+      "updated": "2026-07-01T14:37:21+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2606.31612v1",
       "abstract": "Mobile GUI agents increasingly face long-horizon tasks that require reading, updating, and reusing task-relevant data across pages and applications. Existing memory methods treat memory largely as passive storage, where past observations are accumulated and retrieved when needed. Yet retrieving a value does not reveal its current role in the workflow. The agent must still infer from accumulated records whether the value should be used now, has already been used, or must wait for a later dependency. This implicit reconstruction becomes unreliable in long trajectories with similar fields, repeated values, distractors, and outdated states, causing repeated or missed operations. We propose Active Task Driving Memory (ATMem), which shifts GUI-agent memory from passive storage to an actively maintained execution state. ATMem maintains task-relevant information as a continually updated execution state that links each value to its role and current status, enabling action selection based on the current workflow state. We therefore introduce \\textbf{STR-GRPO}, an online reinforcement learning method that learns to use ATMem selectively according to its contribution to task completion. STR-GRPO contrasts memory-on and memory-off rollouts to estimate when memory use improves execution, while memory-cost-aware reward discourages costly memory usage that does not improve execution. To evaluate whether agents can complete all in-scope work while avoiding out-of-scope actions over long-horizon execution, we build a challenging mobile benchmark. From a list of near identical entries, agents must act on every entry that satisfies the instruction and reject entries that violate its constraints.",
@@ -38,6 +61,57 @@
       "summary_zh": null,
       "title": "What Memory Do GUI Agents Really Need? From Passive Records to Active Task-Driving States",
       "updated": "2026-06-30T21:01:19+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.31410v2",
+      "abstract": "Graphical user interface (GUI) agents build on vision-language models to complete user tasks end-to-end in real applications through interface actions such as tapping, swiping, text entry, and navigation. However, existing GUI agents are trained and evaluated largely on offline trajectories, simulated environments, and standardized benchmarks. These differ substantially from real applications in interface layout, interaction logic, and abnormal-state distribution, and cannot faithfully characterize execution stability in real-world use, where account states, permission dialogs, payment authentication, and risk control continually reshape the state distribution and open a persistent gap between benchmark scores and real usability. To close this gap, we propose Xiaomi-GUI-0, a native multimodal GUI agent for real mobile environments, trained and evaluated within a real-device closed loop. At its core is a real-device-dominant hybrid infrastructure, where physical devices are the primary execution environment and sandboxes provide auxiliary support, so that data collection, training, rollout, and evaluation share an execution distribution close to real deployment. We construct multi-source training data spanning high-frequency head tasks, high-generalization data for long-tail intents, and capability-enhancement data for reflection and memory, and introduce an error-driven data flywheel that turns failure trajectories into corrected actions, reflective explanations, and recovery demonstrations. The model is trained through a progressive three-stage pipeline of supervised fine-tuning, step-level reinforcement learning, and agentic reinforcement learning. Evaluated on public benchmarks and our in-house RealMobile, Xiaomi-GUI-0 achieves 72.0% success on RealMobile and 78.9% on AndroidWorld, while substantially improving execution stability and abnormal-state recognition in real-world tasks.",
+      "arxiv_id": "2606.31410v2",
+      "authors": [
+        "Wanxia Cao",
+        "Chengzhen Duan",
+        "Pei Fu",
+        "Pengzhi Gao",
+        "Niu Lian",
+        "Fazhan Liu",
+        "Hui Liu",
+        "Heng Qu",
+        "Qinzhuo Wu",
+        "Zhehao Yu",
+        "Tongbo Chen",
+        "Shiqi Cui",
+        "Anan Du",
+        "Shukai Jia",
+        "Yuanfa Li",
+        "Wei Liu",
+        "Yike Liu",
+        "Wenchao Lu",
+        "Zhenbo Luo",
+        "Haoyuan Sun",
+        "Jiatong Sun",
+        "Cheng Tan",
+        "Yajie Wang",
+        "Changqiao Wu",
+        "Tao Xiong",
+        "Jiahui Yang",
+        "Yuxuan Yuan",
+        "Ruoceng Zhang",
+        "Shaojie Zhang",
+        "Jian Zhu",
+        "Jian Luan",
+        "Cong Zou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.31410v2",
+      "published": "2026-06-30T17:36:35+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Xiaomi-GUI-0 Technical Report",
+      "updated": "2026-07-01T11:59:21+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2606.31410v1",
@@ -900,7 +974,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-07-01",
-  "run_paper_count": 6,
+  "report_date": "2026-07-02",
+  "run_paper_count": 7,
   "source_report_date": null
 }
