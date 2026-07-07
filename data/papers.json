@@ -8,7 +8,7 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 37,
+  "paper_count": 38,
   "papers": [
     {
       "abs_url": "http://arxiv.org/abs/2607.02371v1",
@@ -212,6 +212,26 @@
       "summary_zh": null,
       "title": "Xiaomi-GUI-0 Technical Report",
       "updated": "2026-06-30T17:36:35+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.29580v3",
+      "abstract": "Maternal and newborn mortality remain among the highest in sub-Saharan Africa, where midwifery care is often delivered by nurses who lack midwifery training to international standards, and consulting authoritative guidance at the point of care is hard: the guidelines are long and connectivity is intermittent. We present MAM-AI, a medical question-answering assistant for nurse-midwives in Zanzibar that runs entirely on a commodity Android device: a question is embedded (EmbeddingGemma, 300M) and matched against a curated corpus of 87 guideline documents (63,650 passages), then answered with citations by a 4B int4 generator (Gemma 4 E4B), fully offline, with no query leaving the device. We evaluate the exact deployed configuration with a layered methodology -- retriever, generator under oracle context, end-to-end, and latency -- scored by LLM judges validated against physician rubrics. The evaluation relocates the hard problem. On-device retrieval is essentially solved: the 300M embedder ranks third of seven retrievers and rivals cloud systems, so the passages the system needs are usually found. The small generator is what remains in doubt: adding retrieved context does not improve its answers, and at 4B it cannot be both helpful and safe at once -- of two same-size candidates, the more helpful one commits genuine dangerous errors, so we deploy the other, which is about twice as faithful to its sources (as faithful as a frontier model), and recover its helpfulness with a redesigned prompt that cuts deflection from 33% to 3%. Corpus quality is decisive for the same reason: where the corpus holds the right passage the answer is specific and actionable, and where it does not it goes vague. MAM-AI is a thoroughly evaluated, open-source research prototype, not a fielded product; the system, knowledge base, benchmarks, and evaluation harness are released.",
+      "arxiv_id": "2606.29580v3",
+      "authors": [
+        "Yi Ren"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.29580v3",
+      "published": "2026-06-29T03:52:04+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "MAM-AI: An On-Device Medical Retrieval-Augmented Generation System for Nurses and Midwives in Zanzibar",
+      "updated": "2026-07-06T18:39:25+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2606.29580v2",
@@ -1045,7 +1065,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-07-06",
-  "run_paper_count": 8,
+  "report_date": "2026-07-07",
+  "run_paper_count": 6,
   "source_report_date": null
 }
