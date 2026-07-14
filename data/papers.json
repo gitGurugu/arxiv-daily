@@ -8,8 +8,65 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 39,
+  "paper_count": 42,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2607.11388v1",
+      "abstract": "Recent advances in large language models (LLMs) and vision-language models (VLMs) have enabled increasingly capable digital agents for computer use. However, real-world tasks are often long-horizon and involve evolving contexts containing accumulated observations, intermediate edits, failed attempts, and partially completed executions. Existing agents typically operate over raw interaction history, making task progress difficult to interpret, verify, and recover, which ultimately limits reliable long-horizon execution. In this paper, we argue that addressing this challenge requires explicitly structuring both the agent's state and workflow around a unified causal representation of task progress. We present \\textbf{StructAgent}, a state-centered framework that introduces a unified state for maintaining compact, verifiable task progress and a structured workflow that regulates progress through verifier-backed state transitions. Building on this design, StructAgent further enables explicit progress checkpointing, evidence-driven task completion, targeted failure recovery, and tool-supported execution, while ensuring that all progress updates remain grounded in verification. Extensive experiments demonstrate that StructAgent consistently improves a wide range of LLM and VLM backbones on long-horizon computer-use tasks. On OSWorld-Verified, it improves Qwen3.5-9B from 27.0\\% to 46.9\\% success rate and Qwen3.5-27B from 31.6\\% to 62.2\\%, while achieving a new open-source state of the art of 78.9\\% with MiniMax-M3. Moreover, the same framework generalizes beyond desktop environments to Minecraft, demonstrating the generality of our design.",
+      "arxiv_id": "2607.11388v1",
+      "authors": [
+        "Wenyi Wu",
+        "Sibo Zhu",
+        "Kun Zhou",
+        "Aayush Salvi",
+        "Zixuan Song",
+        "Biwei Huang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.11388v1",
+      "published": "2026-07-13T18:48:25+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "StructAgent: Harness Long-horizon Digital Agents with Unified Causal Structure",
+      "updated": "2026-07-13T18:48:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.07820v2",
+      "abstract": "Training tool-use agents to improve from their own experience remains challenging, as supervised fine-tuning relies on fixed teacher-distilled trajectories, while sparse-reward reinforcement learning provides weak supervision for long-horizon interactions. We present DeepSearch-Evolve, a self-distillation framework for web agents built on DeepSearch-World, a deterministic and verifiable environment with reproducible search and page-reading tools. DeepSearch-World contains 420K multi-hop QA tasks constructed from entity-level random walks and supports key agentic cognitive behaviors useful for self-evolving, including progress verification, grounded reflection, and failure recovery. DeepSearch-Evolve iteratively performs trajectory generation, filtering, data mixing, and fine-tuning to train stronger agents. Without distillation from more capable models, DeepSearch-World-9B achieves competitive performance compared with open-source agents, reaching 31.2% on BrowseComp, 61.5% on GAIA, and 93.4% on HotpotQA, showing that verifiable environments enable scalable self-evolution for long-horizon web agents. We will release the environment, 420K training pool, validation set, model, and code to facilitate future research on self-improving deep search agents.",
+      "arxiv_id": "2607.07820v2",
+      "authors": [
+        "Xinyu Geng",
+        "Xuanhua He",
+        "Sixiang Chen",
+        "Yanjing Xiao",
+        "Fan Zhang",
+        "Shijue Huang",
+        "Haitao Mi",
+        "Zhenwen Liang",
+        "Tianqing Fang",
+        "Yi R. Fung"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.07820v2",
+      "published": "2026-07-09T02:03:41+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment",
+      "updated": "2026-07-13T20:09:44+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2607.07820v1",
       "abstract": "Training tool-use agents to improve from their own experience remains challenging, as supervised fine-tuning relies on fixed teacher-distilled trajectories, while sparse-reward reinforcement learning provides weak supervision for long-horizon interactions. We present DeepSearch-Evolve, a self-distillation framework for web agents built on DeepSearch-World, a deterministic and verifiable environment with reproducible search and page-reading tools. DeepSearch-World contains 420K multi-hop QA tasks constructed from entity-level random walks and supports key agentic cognitive behaviors useful for self-evolving, including progress verification, grounded reflection, and failure recovery. DeepSearch-Evolve iteratively performs trajectory generation, filtering, data mixing, and fine-tuning to train stronger agents. Without distillation from more capable models, DeepSearch-World-9B achieves competitive performance compared with open-source agents, reaching 31.2% on BrowseComp, 61.5% on GAIA, and 93.4% on HotpotQA, showing that verifiable environments enable scalable self-evolution for long-horizon web agents. We will release the environment, 420K training pool, validation set, model, and code to facilitate future research on self-improving deep search agents.",
@@ -38,6 +95,42 @@
       "summary_zh": null,
       "title": "DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment",
       "updated": "2026-07-09T02:03:41+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.09773v1",
+      "abstract": "Computer-use agents must solve long-horizon tasks through repeated interaction with partially observable, multimodal desktop environments. Although imitation learning and offline trajectory refinement provide strong priors, static traces cannot cover the causal feedback loop of real computer use: each action changes the screen state, future action space, and recovery options. EvoCUA-1.5 extends self-evolving computer-use agents from offline experience learning to online reinforcement learning, where policies interact with executable sandbox environments and improve from verifiable task outcomes. Online RL in this setting requires more than directly reusing single-turn language-RL recipes. Multi-turn interaction introduces context-managed observations, sparse terminal rewards, variable-length trajectories, and slow environment feedback. EvoCUA-1.5 addresses these challenges with Step-Level Policy Optimization (STEPO), which preserves trajectory-level advantage balance after decomposition into step-level samples; policy-aware filtering and pass-rate calibration over verifiable synthesized tasks; Dynamic Tri-Adaptive Curriculum (DTAC), which combines learnable tasks, difficult positive replay, and controlled infeasible-task exposure; and a fully asynchronous RL infrastructure with staleness control and mini-group batching. Experiments show that these components improve training stability and downstream performance. EvoCUA-1.5 achieves 63.2\\% success on OSWorld-Verified, outperforming comparable 32B/35B-scale open-weight baselines and even approaching models with significantly larger parameter counts. Overall, EvoCUA-1.5 provides a practical framework for scaling online RL in multi-turn computer-use agents.",
+      "arxiv_id": "2607.09773v1",
+      "authors": [
+        "Mianqiu Huang",
+        "Taofeng Xue",
+        "Chong Peng",
+        "Jinrui Ding",
+        "Sicheng Fan",
+        "Jiale Hong",
+        "Yufei Gao",
+        "Xiaocheng Zhang",
+        "Linsen Guo",
+        "Xin Yang",
+        "Dengchang Zhao",
+        "Yuchen Xie",
+        "Peng Pei",
+        "Xunliang Xie",
+        "Xipeng Qiu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.09773v1",
+      "published": "2026-07-08T00:36:25+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "EvoCUA-1.5: Online Reinforcement Learning for Multi-turn Computer-Use Agents",
+      "updated": "2026-07-08T00:36:25+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2607.02371v1",
@@ -1094,7 +1187,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-07-13",
-  "run_paper_count": 6,
+  "report_date": "2026-07-14",
+  "run_paper_count": 7,
   "source_report_date": null
 }

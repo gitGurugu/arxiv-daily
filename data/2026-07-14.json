@@ -1,0 +1,235 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 7,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2607.11388v1",
+      "abstract": "Recent advances in large language models (LLMs) and vision-language models (VLMs) have enabled increasingly capable digital agents for computer use. However, real-world tasks are often long-horizon and involve evolving contexts containing accumulated observations, intermediate edits, failed attempts, and partially completed executions. Existing agents typically operate over raw interaction history, making task progress difficult to interpret, verify, and recover, which ultimately limits reliable long-horizon execution. In this paper, we argue that addressing this challenge requires explicitly structuring both the agent's state and workflow around a unified causal representation of task progress. We present \\textbf{StructAgent}, a state-centered framework that introduces a unified state for maintaining compact, verifiable task progress and a structured workflow that regulates progress through verifier-backed state transitions. Building on this design, StructAgent further enables explicit progress checkpointing, evidence-driven task completion, targeted failure recovery, and tool-supported execution, while ensuring that all progress updates remain grounded in verification. Extensive experiments demonstrate that StructAgent consistently improves a wide range of LLM and VLM backbones on long-horizon computer-use tasks. On OSWorld-Verified, it improves Qwen3.5-9B from 27.0\\% to 46.9\\% success rate and Qwen3.5-27B from 31.6\\% to 62.2\\%, while achieving a new open-source state of the art of 78.9\\% with MiniMax-M3. Moreover, the same framework generalizes beyond desktop environments to Minecraft, demonstrating the generality of our design.",
+      "arxiv_id": "2607.11388v1",
+      "authors": [
+        "Wenyi Wu",
+        "Sibo Zhu",
+        "Kun Zhou",
+        "Aayush Salvi",
+        "Zixuan Song",
+        "Biwei Huang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.11388v1",
+      "published": "2026-07-13T18:48:25+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "StructAgent: Harness Long-horizon Digital Agents with Unified Causal Structure",
+      "updated": "2026-07-13T18:48:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.07820v2",
+      "abstract": "Training tool-use agents to improve from their own experience remains challenging, as supervised fine-tuning relies on fixed teacher-distilled trajectories, while sparse-reward reinforcement learning provides weak supervision for long-horizon interactions. We present DeepSearch-Evolve, a self-distillation framework for web agents built on DeepSearch-World, a deterministic and verifiable environment with reproducible search and page-reading tools. DeepSearch-World contains 420K multi-hop QA tasks constructed from entity-level random walks and supports key agentic cognitive behaviors useful for self-evolving, including progress verification, grounded reflection, and failure recovery. DeepSearch-Evolve iteratively performs trajectory generation, filtering, data mixing, and fine-tuning to train stronger agents. Without distillation from more capable models, DeepSearch-World-9B achieves competitive performance compared with open-source agents, reaching 31.2% on BrowseComp, 61.5% on GAIA, and 93.4% on HotpotQA, showing that verifiable environments enable scalable self-evolution for long-horizon web agents. We will release the environment, 420K training pool, validation set, model, and code to facilitate future research on self-improving deep search agents.",
+      "arxiv_id": "2607.07820v2",
+      "authors": [
+        "Xinyu Geng",
+        "Xuanhua He",
+        "Sixiang Chen",
+        "Yanjing Xiao",
+        "Fan Zhang",
+        "Shijue Huang",
+        "Haitao Mi",
+        "Zhenwen Liang",
+        "Tianqing Fang",
+        "Yi R. Fung"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.07820v2",
+      "published": "2026-07-09T02:03:41+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "DeepSearch-World: Self-Distillation for Deep Search Agents in a Verifiable Environment",
+      "updated": "2026-07-13T20:09:44+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.09773v1",
+      "abstract": "Computer-use agents must solve long-horizon tasks through repeated interaction with partially observable, multimodal desktop environments. Although imitation learning and offline trajectory refinement provide strong priors, static traces cannot cover the causal feedback loop of real computer use: each action changes the screen state, future action space, and recovery options. EvoCUA-1.5 extends self-evolving computer-use agents from offline experience learning to online reinforcement learning, where policies interact with executable sandbox environments and improve from verifiable task outcomes. Online RL in this setting requires more than directly reusing single-turn language-RL recipes. Multi-turn interaction introduces context-managed observations, sparse terminal rewards, variable-length trajectories, and slow environment feedback. EvoCUA-1.5 addresses these challenges with Step-Level Policy Optimization (STEPO), which preserves trajectory-level advantage balance after decomposition into step-level samples; policy-aware filtering and pass-rate calibration over verifiable synthesized tasks; Dynamic Tri-Adaptive Curriculum (DTAC), which combines learnable tasks, difficult positive replay, and controlled infeasible-task exposure; and a fully asynchronous RL infrastructure with staleness control and mini-group batching. Experiments show that these components improve training stability and downstream performance. EvoCUA-1.5 achieves 63.2\\% success on OSWorld-Verified, outperforming comparable 32B/35B-scale open-weight baselines and even approaching models with significantly larger parameter counts. Overall, EvoCUA-1.5 provides a practical framework for scaling online RL in multi-turn computer-use agents.",
+      "arxiv_id": "2607.09773v1",
+      "authors": [
+        "Mianqiu Huang",
+        "Taofeng Xue",
+        "Chong Peng",
+        "Jinrui Ding",
+        "Sicheng Fan",
+        "Jiale Hong",
+        "Yufei Gao",
+        "Xiaocheng Zhang",
+        "Linsen Guo",
+        "Xin Yang",
+        "Dengchang Zhao",
+        "Yuchen Xie",
+        "Peng Pei",
+        "Xunliang Xie",
+        "Xipeng Qiu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.09773v1",
+      "published": "2026-07-08T00:36:25+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "EvoCUA-1.5: Online Reinforcement Learning for Multi-turn Computer-Use Agents",
+      "updated": "2026-07-08T00:36:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.02371v1",
+      "abstract": "Over 285 million people worldwide live with a visual impairment, for whom everyday tasks such as avoiding obstacles, locating personal belongings, recognizing familiar faces, or handling cash remain persistent obstacles to personal autonomy. Existing assistive applications are typically limited to recognizing predefined categories, depend heavily on cloud connectivity, or require dedicated hardware. We present VisionAId, an Android application that turns a commodity smartphone into a real-time visual assistant. The system integrates six on-device deep learning models (metric monocular depth estimation, instance segmentation, visual and facial embeddings, face detection, and a custom banknote detector) running entirely through ONNX Runtime, with an optional cloud large language model (Google Gemini Flash) used only for narrative scene description and automatic object labeling. A distinctive contribution is a few-shot pipeline for personal objects: the user photographs an object from several angles, and the system later locates that specific instance in the environment, guiding the user toward it with augmented-reality markers, spatial audio, and distance-proportional haptics. All feedback is multimodal (Romanian speech synthesis, voice commands, vibration). On a reference device (Samsung Galaxy S21 Ultra), INT8 quantization reduces depth latency from ~1200 ms to ~491 ms, the custom banknote detector reaches an mAP@50 of 0.986, and metric depth is calibrated to below 1 cm of error within 3 m.",
+      "arxiv_id": "2607.02371v1",
+      "authors": [
+        "Cristian-Gabriel Florea",
+        "Stelian Spînu"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.02371v1",
+      "published": "2026-07-03T00:12:50+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "VisionAId: An Offline-First Multimodal Android Assistant for People with Visual Impairment, Featuring Personalized Object Retrieval",
+      "updated": "2026-07-03T00:12:50+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.00502v1",
+      "abstract": "While long-horizon mobile GUI agents typically rely on thought-action-observation loops, they struggle to separate persistent task states from transient screen observations. As execution histories grow, this entanglement imposes a severe context burden, causing agents to forget initial requirements, hallucinate progress, or repeatedly interact with stale interfaces. To address this, we introduce Task-State Representation (TSR), a training-free framework that explicitly decouples task state from sensory input. Acting as a lightweight external wrapper, TSR maintains three structured components: a global instruction summary, a dynamic progress tracker for subgoals, and a transition-aware action verifier. By continuously updating through pre- and post-action visual comparisons, TSR effectively guides the agent's reasoning without requiring architectural modifications. Experiments across four mobile GUI benchmarks validate TSR's effectiveness, yielding up to a 12 absolute point increase in success rate on complex cross-application and memory-intensive tasks.",
+      "arxiv_id": "2607.00502v1",
+      "authors": [
+        "Yujie Zheng",
+        "Zikang Liu",
+        "Xin Zhao",
+        "Ji-Rong Wen"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.00502v1",
+      "published": "2026-07-01T14:37:21+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "A Task-State Representation for Long-Horizon Mobile GUI Agents",
+      "updated": "2026-07-01T14:37:21+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.31612v2",
+      "abstract": "Mobile GUI agents increasingly face long-horizon tasks that require reading, updating, and reusing task-relevant data across pages and applications. Existing methods treat memory largely as passive storage, where past observations are accumulated and retrieved when needed. Yet retrieving a value does not reveal its current role in the workflow. The agent must still infer from accumulated records whether the value should be used now, has already been used, or must wait for a later dependency. This implicit reconstruction becomes unreliable in long trajectories with repeated values, distractors, and outdated states, causing repeated or missed operations. To address this, we propose Active Task Driving Memory (ATMem), which shifts GUI-agent memory from passive storage to an actively maintained execution state. ATMem maintains task-relevant information as a continually updated execution state that links each value to its role and current status, enabling action selection based on the current workflow state. While supervised fine-tuning enables the agent to construct ATMem, it does not teach when ATMem is beneficial. We therefore introduce STR-GRPO, an online reinforcement learning method that encourages selective use of ATMem based on its contribution to task completion. STR-GRPO contrasts memory-on and memory-off rollouts to estimate when memory use improves execution, while memory-cost-aware reward discourages costly memory usage that does not improve execution. To evaluate whether agents can complete all in-scope work while avoiding out-of-scope actions, we build a challenging mobile benchmark. From a list of near identical entries, agents must act on every entry that satisfies the instruction and reject entries that violate its constraints. We further introduce App-Level Progress and Scope-Aware F1 to measure these two dimensions separately.",
+      "arxiv_id": "2606.31612v2",
+      "authors": [
+        "Chen Liu",
+        "Ling Chen",
+        "Hanzhang Zhou",
+        "Xu Zhang",
+        "Quyu Kong",
+        "Panrong Tong",
+        "Wenhao Wang",
+        "Xin Yu",
+        "Steven Hoi",
+        "Yue Wang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.31612v2",
+      "published": "2026-06-30T21:01:19+08:00",
+      "score": 11,
+      "summary_zh": null,
+      "title": "What Memory Do GUI Agents Really Need? From Passive Records to Active Task-Driving States",
+      "updated": "2026-07-02T14:42:39+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2606.31410v2",
+      "abstract": "Graphical user interface (GUI) agents build on vision-language models to complete user tasks end-to-end in real applications through interface actions such as tapping, swiping, text entry, and navigation. However, existing GUI agents are trained and evaluated largely on offline trajectories, simulated environments, and standardized benchmarks. These differ substantially from real applications in interface layout, interaction logic, and abnormal-state distribution, and cannot faithfully characterize execution stability in real-world use, where account states, permission dialogs, payment authentication, and risk control continually reshape the state distribution and open a persistent gap between benchmark scores and real usability. To close this gap, we propose Xiaomi-GUI-0, a native multimodal GUI agent for real mobile environments, trained and evaluated within a real-device closed loop. At its core is a real-device-dominant hybrid infrastructure, where physical devices are the primary execution environment and sandboxes provide auxiliary support, so that data collection, training, rollout, and evaluation share an execution distribution close to real deployment. We construct multi-source training data spanning high-frequency head tasks, high-generalization data for long-tail intents, and capability-enhancement data for reflection and memory, and introduce an error-driven data flywheel that turns failure trajectories into corrected actions, reflective explanations, and recovery demonstrations. The model is trained through a progressive three-stage pipeline of supervised fine-tuning, step-level reinforcement learning, and agentic reinforcement learning. Evaluated on public benchmarks and our in-house RealMobile, Xiaomi-GUI-0 achieves 72.0% success on RealMobile and 78.9% on AndroidWorld, while substantially improving execution stability and abnormal-state recognition in real-world tasks.",
+      "arxiv_id": "2606.31410v2",
+      "authors": [
+        "Wanxia Cao",
+        "Chengzhen Duan",
+        "Pei Fu",
+        "Pengzhi Gao",
+        "Niu Lian",
+        "Fazhan Liu",
+        "Hui Liu",
+        "Heng Qu",
+        "Qinzhuo Wu",
+        "Zhehao Yu",
+        "Tongbo Chen",
+        "Shiqi Cui",
+        "Anan Du",
+        "Shukai Jia",
+        "Yuanfa Li",
+        "Wei Liu",
+        "Yike Liu",
+        "Wenchao Lu",
+        "Zhenbo Luo",
+        "Haoyuan Sun",
+        "Jiatong Sun",
+        "Cheng Tan",
+        "Yajie Wang",
+        "Changqiao Wu",
+        "Tao Xiong",
+        "Jiahui Yang",
+        "Yuxuan Yuan",
+        "Ruoceng Zhang",
+        "Shaojie Zhang",
+        "Jian Zhu",
+        "Jian Luan",
+        "Cong Zou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2606.31410v2",
+      "published": "2026-06-30T17:36:35+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Xiaomi-GUI-0 Technical Report",
+      "updated": "2026-07-01T11:59:21+08:00"
+    }
+  ],
+  "report_date": "2026-07-14",
+  "run_paper_count": 7,
+  "source_report_date": null
+}
