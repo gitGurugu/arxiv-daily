@@ -1,0 +1,175 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 6,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2607.18046v1",
+      "abstract": "Graphical User Interface (GUI) agents powered by vision-language models hold promise for automating real-world mobile tasks. However, progress is limited by the lack of high-coverage, long-horizon interaction trajectories collected from element-rich and rapidly evolving apps. Existing pipelines often rely on costly human demonstrations or on-policy framework, which tends to over-sample common flows while missing rare transitions and complex multi-step procedures. To address this problem, we propose SEE, a two-stage data synthesis framework consisting of (i) an efficient exploration stage that builds an explicit UI transition graph over screens and elements, and (ii) a graph-based synthesis stage that composes diverse multi-step trajectories via planning and controlled sampling. This design yields reproducible and explainable data generation, while explicitly preventing spurious cycles and enabling long-horizon composition. Across multiple real-world apps, SEE produces trajectories with an average length of 14.8 steps while avoiding spurious loops, and agents fine-tuned on SEE achieve improved task success and generalization to unseen screens. We will publicly release our synthesis code and dataset.",
+      "arxiv_id": "2607.18046v1",
+      "authors": [
+        "Zhuohang Fan",
+        "Beichen Zhang",
+        "Yuanfa Li",
+        "Changqiao Wu",
+        "Wei Liu",
+        "Jian Luan",
+        "Weigang Zhang"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.18046v1",
+      "published": "2026-07-20T23:16:59+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "SEE: Structure-aware Exploring \\& Exploiting for Long-horizon GUI Agent Trajectory Synthesis",
+      "updated": "2026-07-20T23:16:59+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.17050v1",
+      "abstract": "GUI agents must reason about how actions transform interface states, but end-to-end success rates entangle this ability with perception, grounding, planning, and recovery. We introduce EvoGUI, a diagnostic framework that converts normalized GUI trajectories into three complementary visual question answering probes: temporal ordering, inverse action/value prediction, and contrastive one-step successor discrimination. Their labels are derived from trajectory order and logged actions, requiring no additional task-label annotation after trajectory normalization. We instantiate EvoGUI-Bench from Mind2Web and WebLINX, yielding 3,000 instances across 120 domains, and evaluate 28 vision-language model configurations zero-shot. The strongest model reaches only 60.4 EvoGain, while model scale and GUI specialization do not reliably predict performance. These results establish EvoGUI-Bench as a scalable diagnostic complement to end-to-end GUI-agent evaluation while exposing substantial headroom in state-transition understanding. The source code is publicly available at https://github.com/Yyhhh6/EvoGUI.",
+      "arxiv_id": "2607.17050v1",
+      "authors": [
+        "Yaohan Yang",
+        "Minglei Shi",
+        "Borui Zhang",
+        "Jie Zhou",
+        "Jiwen Lu"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.17050v1",
+      "published": "2026-07-19T11:29:08+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "EvoGUI: An Evolution-Aware Benchmark for GUI State-Transition Understanding",
+      "updated": "2026-07-19T11:29:08+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.15550v1",
+      "abstract": "Mobile graphical user interface (GUI) agents have demonstrated remarkable capabilities in automating complex tasks, yet they introduce critical safety risks where a single erroneous action can lead to irreversible consequences. Existing safety mechanisms are primarily reactive, lacking the ability to assess risks before execution. In this paper, we introduce SeerGuard, a consequence-aware safety framework designed to mitigate these risks through pre-execution instruction-level screening and action-level risk assessment. Specifically, the action-level assessment analyzes agent-proposed actions within current GUI states, anticipating likely outcomes to identify risks before they are executed. To enable these capabilities, we construct a unified safety-augmented world model (SAWM) via multi-task learning, integrating semantic next-state prediction with safety risk assessment. Extensive experiments demonstrate that SeerGuard generalizes effectively across diverse mobile GUI agents. On Qwen3-VL-8B-Instruct, it increases the safety-utility score from $0.191$ to $0.596$ at $ω=0.8$ and reduces the risk-cost score from $0.347$ to $0.130$ at $α=0.8$. Further analyses on our SAWM validate the effectiveness of the instruction-level screening, alongside the capability of action risk assessment and next-state prediction.",
+      "arxiv_id": "2607.15550v1",
+      "authors": [
+        "Xue Yu",
+        "Bo Yuan",
+        "Pengshuai Yang",
+        "Kailin Zhao",
+        "Hong Hu",
+        "Junlan Feng"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.15550v1",
+      "published": "2026-07-17T09:45:54+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "SeerGuard: A Safety Framework for Mobile GUI Agents via World Model Prediction",
+      "updated": "2026-07-17T09:45:54+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.13027v1",
+      "abstract": "Large Language Model (LLM) agents have moved beyond generating responses to executing multi-step tasks by calling tools, observing the results, and iteratively deciding the next action. Most agent systems run on desktops or servers, which support tool use and task automation. Mobile devices are also important agent environments because they are widely accessible and contain users' data, sensors, and daily-use applications. Existing mobile agents mainly operate smartphones through graphical user interface (GUI) actions such as tapping, swiping, and typing, which often form long, interface-dependent sequences, cannot directly access device capabilities, and make execution boundaries difficult to define. We present \\textbf{PalmClaw}, an open-source agent framework that runs natively on mobile phones and manages the sessions, memory, skills, tools, and agent loop directly on the device. PalmClaw exposes device capabilities as device tools with explicit arguments, structured results, and clearly defined execution boundaries. This design enables agents to use mobile capabilities directly while keeping each action explicit and controlled. Experiments show an 11.5\\% relative improvement in task success and a 94.9\\% reduction in completion time over the strongest baseline, with lower setup burden and traces illustrating how execution boundaries are applied. Code is available at https://github.com/ModalityDance/PalmClaw.",
+      "arxiv_id": "2607.13027v1",
+      "authors": [
+        "Hongru Cai",
+        "Yongqi Li",
+        "Ran Wei",
+        "Wenjie Li"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.13027v1",
+      "published": "2026-07-15T01:58:57+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "PalmClaw: A Native On-Device Agent Framework for Mobile Phones",
+      "updated": "2026-07-15T01:58:57+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.12625v2",
+      "abstract": "OpenClaw has emerged as a leading agent framework for complex task automation, yet it faces insufficient cross-platform GUI interaction support and a well-built self-evolution mechanism. These flaws limit its adaptation to diverse device ecosystems and prevent performance improvements through continuous learning from execution experience. To resolve these issues, we propose the Know Deeply, Act Perfectly paradigm for personal assistants, which holds that accumulated user interaction and task-running experience directly improve execution accuracy and efficiency, unifying cognitive comprehension and operational execution. Based on this paradigm, we introduce KnowAct-GUIClaw, a novel Know-Route-Act-Reflect framework designed to address OpenClaw's GUI manipulation deficits and break through its cross-platform and recursive self-improvement constraints. First, the host agent leverages accumulated interaction experience and task-relevant knowledge for long-horizon task decomposition and allocation (Know). Second, a pluggable GUI subagent with an experience-attributable memory system (Know) and self-evolving skill library (Act), enabling seamless cross-platform migration and fast-path integration. Especially, this framework continuously stores user profiles and feedback to improve the accuracy of task decomposition and tool calls. Extensive experiments across Android, iOS, HarmonyOS and Windows show that KnowAct-GUIClaw achieves superior efficiency, accuracy and cross-platform adaptability. Especially, the GUIClaw with open-source Kimi-2.6 models achieves the best performance (64.1%) on the long-horizon MobileWorld benchmark, beating all agentical frameworks and closed-source agentical models, e.g., Seed-2.0-Pro and GPT-5.5. Additionally, the knowledgeable memory and execution skills supported by our framework are transferable across diverse base models, improving by 8.5% with Kimi-2.6.",
+      "arxiv_id": "2607.12625v2",
+      "authors": [
+        "Yunxin Li",
+        "Jinchao Li",
+        "Shibo Su",
+        "Zhenran Xu",
+        "Chenrui Zhao",
+        "Tongshu Bian",
+        "Xiaoman Liang",
+        "Meishan Zhang",
+        "Baotian Hu",
+        "Min Zhang"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.12625v2",
+      "published": "2026-07-14T19:04:01+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "KnowAct-GUIClaw: Know Deeply, Act Perfectly, Personal GUI Assistant with Self-Evolving Memory and Skill",
+      "updated": "2026-07-15T12:41:47+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.11388v1",
+      "abstract": "Recent advances in large language models (LLMs) and vision-language models (VLMs) have enabled increasingly capable digital agents for computer use. However, real-world tasks are often long-horizon and involve evolving contexts containing accumulated observations, intermediate edits, failed attempts, and partially completed executions. Existing agents typically operate over raw interaction history, making task progress difficult to interpret, verify, and recover, which ultimately limits reliable long-horizon execution. In this paper, we argue that addressing this challenge requires explicitly structuring both the agent's state and workflow around a unified causal representation of task progress. We present \\textbf{StructAgent}, a state-centered framework that introduces a unified state for maintaining compact, verifiable task progress and a structured workflow that regulates progress through verifier-backed state transitions. Building on this design, StructAgent further enables explicit progress checkpointing, evidence-driven task completion, targeted failure recovery, and tool-supported execution, while ensuring that all progress updates remain grounded in verification. Extensive experiments demonstrate that StructAgent consistently improves a wide range of LLM and VLM backbones on long-horizon computer-use tasks. On OSWorld-Verified, it improves Qwen3.5-9B from 27.0\\% to 46.9\\% success rate and Qwen3.5-27B from 31.6\\% to 62.2\\%, while achieving a new open-source state of the art of 78.9\\% with MiniMax-M3. Moreover, the same framework generalizes beyond desktop environments to Minecraft, demonstrating the generality of our design.",
+      "arxiv_id": "2607.11388v1",
+      "authors": [
+        "Wenyi Wu",
+        "Sibo Zhu",
+        "Kun Zhou",
+        "Aayush Salvi",
+        "Zixuan Song",
+        "Biwei Huang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG",
+        "cs.MA"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.11388v1",
+      "published": "2026-07-13T18:48:25+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "StructAgent: Harness Long-horizon Digital Agents with Unified Causal Structure",
+      "updated": "2026-07-13T18:48:25+08:00"
+    }
+  ],
+  "report_date": "2026-07-23",
+  "run_paper_count": 6,
+  "source_report_date": null
+}
