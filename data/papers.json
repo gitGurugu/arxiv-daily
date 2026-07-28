@@ -8,8 +8,58 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 48,
+  "paper_count": 51,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2607.24167v1",
+      "abstract": "Long-horizon web agents often go off track before final failure: a trajectory can remain locally plausible even after the current state, reused skill, or plan assumption no longer supports the user instruction. Existing agents can plan, reflect, or reuse experience, but their plans rarely specify the evidence under which an active step should still be trusted. We propose FCPAgent, a falsifiable commitment planning framework for robust long-horizon web agents. FCPAgent represents each plan step as a Falsifiable Commitment Unit (FCU): a subgoal grounded in a reusable skill, together with confirming evidence, falsifying evidence, and a confidence score. Execution is organized as a plan-test-repair loop. The hybrid commitment testing module checks candidate actions before they modify the browser and checks observations after execution; for efficiency, it combines lightweight evidence matching with LLM-based diagnostic verification. When evidence falsifies a commitment, scope-aware repair localizes the contradiction to the execution, skill, or planning level and revises the smallest adequate part. On WebArena, FCPAgent achieves a 13.8% relative improvement in average success over the strongest baseline, with especially large gains on long-horizon tasks.",
+      "arxiv_id": "2607.24167v1",
+      "authors": [
+        "Guangyi Liu",
+        "Huan Zhao",
+        "Quanming Yao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.24167v1",
+      "published": "2026-07-27T16:48:01+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "Falsifiable Commitment Planning for Self-Correcting Web Agents",
+      "updated": "2026-07-27T16:48:01+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.24112v1",
+      "abstract": "We introduce State Transition Pretraining (STP) as a new scaling axis for GUI agents. During the STP stage, we continually pretrain a unified multimodal model on visual state transitions by jointly optimizing inverse dynamics (predicting actions from state changes) and forward dynamics (predicting next states from current states and actions). This optimization equips the model with better action-grounded visual representations and an internal world model of GUI dynamics. When subsequently fine-tuned on trajectories with task instructions, our STP-trained models consistently outperform baselines trained solely via direct trajectory fine-tuning across agent benchmarks in both desktop and mobile GUI scenarios (AgentNetBench, AndroidControl, and GUIOdyssey). Further empirical studies show that joint dynamics optimization yields stable improvements over single-objective training, and downstream performance scales steadily with the volume of transition data.",
+      "arxiv_id": "2607.24112v1",
+      "authors": [
+        "Xiangyan Liu",
+        "Kaixin Li",
+        "Haonan Wang",
+        "Biao Wu",
+        "Meng Fang",
+        "Longxu Dou",
+        "Chao Du",
+        "Michael Qizhe Shieh",
+        "Tianyu Pang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.24112v1",
+      "published": "2026-07-27T15:54:08+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Scaling GUI Agents with Visual State Transitions",
+      "updated": "2026-07-27T15:54:08+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2607.18046v1",
       "abstract": "Graphical User Interface (GUI) agents powered by vision-language models hold promise for automating real-world mobile tasks. However, progress is limited by the lack of high-coverage, long-horizon interaction trajectories collected from element-rich and rapidly evolving apps. Existing pipelines often rely on costly human demonstrations or on-policy framework, which tends to over-sample common flows while missing rare transitions and complex multi-step procedures. To address this problem, we propose SEE, a two-stage data synthesis framework consisting of (i) an efficient exploration stage that builds an explicit UI transition graph over screens and elements, and (ii) a graph-based synthesis stage that composes diverse multi-step trajectories via planning and controlled sampling. This design yields reproducible and explainable data generation, while explicitly preventing spurious cycles and enabling long-horizon composition. Across multiple real-world apps, SEE produces trajectories with an average length of 14.8 steps while avoiding spurious loops, and agents fine-tuned on SEE achieve improved task success and generalization to unseen screens. We will publicly release our synthesis code and dataset.",
@@ -35,6 +85,32 @@
       "summary_zh": null,
       "title": "SEE: Structure-aware Exploring \\& Exploiting for Long-horizon GUI Agent Trajectory Synthesis",
       "updated": "2026-07-20T23:16:59+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.22708v1",
+      "abstract": "Deploying a vision-language model with full UI understanding on end devices has long been trapped between accuracy and efficiency: on one side is the accuracy bar for OCR, screen understanding, visual question answering, and element grounding; on the other is the strict compute, memory, and power budget of mobile chips. Existing work either trades one for the other, or stops at simulation without real-device validation. We present StepX-Edge, a 0.9B-parameter on-device UI vision-language model that resolves this tension through three-layer co-design of architecture, training, and deployment. Architecturally, UI-aware Layered Visual Encoding (ULVE) and a Progressive Dimensionality Projection (PDP) connector target the extreme aspect ratios and fine-grained perception of screens, while standard full attention throughout ensures native compatibility with mainstream mobile NPU operators. For training, the five-stage StepX-Curriculum framework is designed around our observation of mutual-promotion effects among UI subtasks, so that all four capabilities grow synergistically under a tight parameter budget rather than interfering. For deployment, a module-wise differentiated two-stage PTQ-to-QAT quantization scheme keeps the post-quantization accuracy loss within 1%. StepX-Edge achieves the strongest overall UI understanding among <=1B models, surpassing all 2B-2.3B baselines on ScreenQA (88.76 F1) and Chinese OCRBench v2 (57.25), and matching 1.3B-2.3B general VLMs on RefCOCO (92.0%) and OCRBench v1 (831) with far fewer parameters. After W4A16+KV8 quantization, the model runs stably on Snapdragon 8 Gen5 devices with ~0.84 s TTFT, 98 tok/s decode, and 1.4 GB peak memory. We will open-source the training data, the full training recipe, and the quantization deployment pipeline.",
+      "arxiv_id": "2607.22708v1",
+      "authors": [
+        "Yin Wang",
+        "Haotian Hu",
+        "Jineng Han",
+        "Wentao Qiu",
+        "Zhenhua Ge",
+        "Liujian Tang",
+        "Fanyi Wang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.22708v1",
+      "published": "2026-07-20T22:14:44+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "StepX-Edge: An On-Device UI Vision-Language Model via Architecture-Training-Deployment Co-Design",
+      "updated": "2026-07-20T22:14:44+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2607.17050v1",
@@ -1347,7 +1423,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-07-25",
-  "run_paper_count": 6,
+  "report_date": "2026-07-28",
+  "run_paper_count": 7,
   "source_report_date": null
 }
