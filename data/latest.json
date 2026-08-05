@@ -8,7 +8,7 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 59,
+  "paper_count": 60,
   "papers": [
     {
       "abs_url": "http://arxiv.org/abs/2608.02352v1",
@@ -250,6 +250,26 @@
       "summary_zh": null,
       "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
       "updated": "2026-07-31T01:57:41+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.25096v2",
+      "abstract": "Spaced repetition systems (SRS) have demonstrated robust effects on long-term retention, yet existing tools reduce the flashcard interaction to a single binary gesture: flip and self-rate. This impoverished interaction model fails to leverage decades of cognitive science evidence on retrieval practice, and requires learners to context-switch out of their reading flow to create cards manually. We present Memdora, a cross-platform AI spaced repetition system that addresses these limitations through four contributions: (1) a taxonomy of 17 cognitively-grounded interaction types across three learning categories -- Language (6 types), By Heart (1 type with 3 retrieval modes), and Exam (10 types) -- each grounded in peer-reviewed cognitive science evidence, with per-type design rationale and citations documented in this paper; (2) a unified AI generation pipeline that collapses card creation to a single gesture at the point of reading across web, mobile, and three browser extensions (Chrome, Edge, Firefox); (3) a collaborative layer enabling users to publish decks with live synchronization: followers discover and follow decks via a public feed, and any edits the deck owner makes propagate instantly to all followers while each follower maintains independent FSRS-6 scheduling state; and (4) an effort-based behavioral reward system that incentivizes actual cognitive engagement rather than mere app presence. Memdora integrates FSRS-6, the current state-of-the-art spaced repetition algorithm, and is deployed publicly on iOS, Android, Web, and three browser extensions. We describe the design rationale for each interaction type, discuss how the system advances beyond prior AI flashcard systems including SmartFlash and KARL, and outline implications for educational technology design.",
+      "arxiv_id": "2607.25096v2",
+      "authors": [
+        "Ruiyang Zhang"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.25096v2",
+      "published": "2026-07-28T05:40:14+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Memdora: Designing Cognitively-Grounded Flashcard Interactions for AI-Powered Spaced Repetition",
+      "updated": "2026-08-04T22:03:37+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2607.25096v1",
@@ -1684,7 +1704,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-08-04",
-  "run_paper_count": 10,
+  "report_date": "2026-08-05",
+  "run_paper_count": 9,
   "source_report_date": null
 }

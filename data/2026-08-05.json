@@ -1,0 +1,300 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 9,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.02352v1",
+      "abstract": "Native computer use offers a general interface for agents to operate almost any software available to people, but requires long-horizon state tracking, large-scale interactive experience, and learning from sparse yet verifiable outcomes. We introduce Qwen-CUA, a native computer-use agent with a 397B-A17B Qwen mixture-of-experts backbone. It observes only screenshots and acts through keyboard and mouse events, without DOM trees, accessibility metadata, or task-specific APIs. Its scaffold maintains up to 20 active screenshots and folds older visual history in fixed-size blocks to retain recent evidence while preserving reusable prompt prefixes. For training, we build a cloud rollout fleet with access to nearly 100,000 vCPUs and tens of thousands of concurrent environments, construct approximately 40,000 verifiable tasks, and collect personalized long-horizon workflows across everyday and professional software. We optimize complete trajectories with verifiable rewards and trajectory slicing, while iterative training runs refresh supervised data and recalibrate reinforcement-learning tasks. Across eight benchmarks, Qwen-CUA outperforms Qwen3.7 and remains competitive with leading proprietary systems, reaching 86.2 on OSWorld-Verified and 18.5/48.4 binary/partial completion on OSWorld 2.0. Scaling the same recipe to a model with over one trillion parameters yields Qwen-CUA-Max, improving these scores to 87.6 and 21.2/53.3. Qwen-CUA also reduces RedTeamCUA attack success from 36.6 to 16.4 relative to Qwen3.7. Efficiency analyses, a browser deployment, and Bash-augmented experiments further characterize practical behavior. These results establish native computer use as a broadly capable agent foundation and highlight scalable verifiable interaction and hybrid tool use as key directions.",
+      "arxiv_id": "2608.02352v1",
+      "authors": [
+        "Dunjie Lu",
+        "Shuai Bai",
+        "Tianyi Bai",
+        "Sicheng Fan",
+        "Chang Gao",
+        "Jian Guan",
+        "Feng Hu",
+        "Mianqiu Huang",
+        "Xingyang Huang",
+        "Yizhen Jiang",
+        "Yuheng Jing",
+        "Dehui Kong",
+        "Ning Li",
+        "Dayiheng Liu",
+        "Shixuan Liu",
+        "Zheng Liu",
+        "Que Shen",
+        "Bowen Wang",
+        "Junli Wang",
+        "Chencan Wu",
+        "Rui Xie",
+        "Tianbao Xie",
+        "Zhihui Xie",
+        "Haiyang Xu",
+        "An Yang",
+        "Tao Yu",
+        "Wenzhen Yuan",
+        "Xi Zhang",
+        "Zhenru Zhang",
+        "Mingkang Zhu",
+        "Zhaoqing Zhu",
+        "Yizhong Cao",
+        "Kai Dang",
+        "Binyuan Hui",
+        "Kaixin Li",
+        "Junyang Lin",
+        "Haiquan Wang",
+        "Zekun Wang",
+        "Yiheng Xu",
+        "Fan Yan",
+        "Mengqi Yuan",
+        "Danyang Zhang",
+        "Jiajun Zhang",
+        "Zhipeng Zhang",
+        "Fan Zhou",
+        "Fan Zhou"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.02352v1",
+      "published": "2026-08-03T23:04:20+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Qwen-CUA: Native Computer Use for (almost) Everything",
+      "updated": "2026-08-03T23:04:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.01791v1",
+      "abstract": "The rapid development of photonic integrated circuits (PICs) is shifting the design flow from traditional graphical user interface (GUI)-based methods to script-based methods for higher flexibility, portability, and maintainability. However, script-based design introduces new challenges, requiring designers to possess additional proficiency in tool application programming interfaces (APIs) and programming. It also demands greater effort and time because it is inherently less intuitive and more complex than GUI-based methods. As PICs grow in scale and complexity, the productivity gap between design needs and manual scripting capabilities continues to widen. To address this gap, we introduce PICopilot, the first large language model (LLM)-based agentic framework that assists in PIC design via automated design script generation from natural language instructions. PICopilot leverages a multi-agent architecture with a feedback mechanism and a specifically designed retrieval-augmented generation (RAG) pipeline, achieving a high success rate and reliability. Experimental results on a benchmark of diverse PIC scripting tasks demonstrate that PICopilot successfully completes all 48 tasks and outperforms other LLM-based approaches without incurring substantial extra latency or cost, even solving 21 more tasks than the advanced GPT-5 model with a general RAG pipeline.",
+      "arxiv_id": "2608.01791v1",
+      "authors": [
+        "Xiaohan Jiang",
+        "Zeyu Li",
+        "Wei Zhang",
+        "Jiang Xu"
+      ],
+      "categories": [
+        "cs.ET",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.01791v1",
+      "published": "2026-08-03T15:03:24+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "PICopilot: An LLM-based Agentic Framework for Assisting Photonic Integrated Circuit Design via Script Generation",
+      "updated": "2026-08-03T15:03:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.01563v1",
+      "abstract": "Training and deployed inference often cross export, conversion, and platform-specific runtime boundaries. Meganeura asks whether one compact native compiler can span both phases on consumer GPUs. Its typed static graph, automatic differentiation, optimizer, checkpoint, memory planner, and runtime lower specialized programs through Vulkan and Metal. We compare five matched workloads with PyTorch on NVIDIA and AMD discrete GPUs, an AMD APU, Apple silicon, and an Intel iGPU. The protocol separates strict f32 from validated fast paths and gates forward and backward independently. Forty-eight of 50 device-workload-mode cells pass both gates; the other two share one unresolved backward-reference disagreement on a newly supported APU. In strict f32, Meganeura wins 12 of 20 GPU-referenced minimal-latency cells and has a median valid training gap of 1.8x. On the discrete AMD GPU, four of five inference workloads are within 1.10x of compiled ROCm PyTorch and three training workloads are faster. Under accelerated contracts, the worst training gap is 4.6x. Compilation takes 0.1-2.4 seconds versus 6-96 seconds for torch.compile on supported GPU paths; the stripped binary is 13 MiB. Dispatch profiles localize the largest gaps to convolution derivatives and attention backward. A physical Android XR case study transfers a Meganeura-trained decoder into an Adreno/OpenXR application sharing the graphics queue. The results show that general consumer graphics APIs can support a compact shared train-to-deploy stack at useful, sometimes vendor-competitive performance. The measured gaps point to kernel coverage, scheduling, and arithmetic policy rather than an identified API limitation.",
+      "arxiv_id": "2608.01563v1",
+      "authors": [
+        "Dzmitry Malyshau"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.DC",
+        "cs.PL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.01563v1",
+      "published": "2026-08-03T08:42:55+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Meganeura: Portable GPU Training and Inference through Vulkan and Metal",
+      "updated": "2026-08-03T08:42:55+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.00335v1",
+      "abstract": "Compact web agents can reduce deployment cost, but training them poses challenges in both data collection and post-SFT reinforcement learning (RL). Successful trajectories are expensive to collect and often contain inefficient detours. After supervised fine-tuning (SFT), full trajectory corpora are dominated by routine states; moreover, when group-relative RL is applied to web actions, inadequately designed action-level rewards can yield weak or misleading relative updates, while groups rejected as unsuitable for such updates receive no fallback learning signal. We present RMSWeb, a three-part recipe for Qwen3-VL-Instruct at 8B and 32B. Reflection-conditioned retries increase collection yield and shorten successful trajectories; failure-mode mining concentrates offline RL on critical states exposed by the SFT policy; and Salvage-DS combines an action-semantic polarized reward, contrast-and-competence-gated dynamic sampling, and an action-only anchor for rejected groups. Policies trained with reflection-collected data use up to 19.7% fewer action steps on solved tasks. On WebVoyager, Online-Mind2Web, and WebTailBench, RMSWeb improves over SFT by 2.4-7.0 points at 8B and 1.2-7.7 points at 32B. Our 8B model also achieves the strongest reported Online-Mind2Web result among similarly sized open-weight models in our comparison and a leading reported accuracy-cost trade-off on WebVoyager and WebTailBench, with the caveat that external evaluation protocols differ.",
+      "arxiv_id": "2608.00335v1",
+      "authors": [
+        "Chengbo Liu",
+        "Lifang Zhou",
+        "Ruijie Yan",
+        "Pei Tan",
+        "Ao Sun",
+        "Haojun Huang",
+        "Guichun Hua",
+        "Sining Wei",
+        "Yining Chen",
+        "Yingying He",
+        "Yutao Xie"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.00335v1",
+      "published": "2026-08-01T06:57:16+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "RMSWeb: Reflection, Failure-Mode Mining, and Salvage-DS for Web Agent Reinforcement Learning",
+      "updated": "2026-08-01T06:57:16+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.29320v1",
+      "abstract": "Graphical user interface (GUI) agents based on large language models are increasingly deployed across mobile, web, and desktop environments. However, existing agents are typically domain-specific, limiting the deployment and user experience. This motivates the consolidation of specialized models into a single cross-environment policy. Weight merging directly merges domain-specific experts but can corrupt executable actions under expert disagreement, while on-policy distillation (OPD) avoids conflicting teacher supervision yet still treats all response tokens equally during distillation, ignoring that action tokens are the only interface between the environment and the agent. To address this, We introduce MAGA that re-allocates training signal according to the structured action. Based on the correctness of the generated action, it suppresses unnecessary or invalid distillation signals and focuses learning on erroneous actions. Besides, a training-only hint optimizes the supervision signal provided by domain-specific teachers without changing the student input. Across two model scales, MAGA achieves the highest mean success rate, outperforming the strongest baseline by 2.0% at 8B and achieves almost the same average performance with teachers.",
+      "arxiv_id": "2607.29320v1",
+      "authors": [
+        "Hang Yan",
+        "Zhangxuan GU",
+        "Beitong Zhou",
+        "Jiaxuan Chen",
+        "Runze Li",
+        "Yusong Hu",
+        "Shuheng Shen",
+        "Changhua Meng"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.29320v1",
+      "published": "2026-07-31T19:51:04+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "MAGA: Multi-Platform Self-Fusion of GUI Agents via Structured Action Distillation",
+      "updated": "2026-07-31T19:51:04+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.28750v1",
+      "abstract": "As mobile applications grow in complexity, traditional End-to-End (E2E) testing frameworks struggle with UI volatility, maintenance overhead, and cross-platform scalability. This paper presents DragonCrawl, an AI-driven mobile testing system for continuous regression testing that has evolved from embedding-based similarity matching to generative intent-based reasoning using large language models. Unlike prior LLM-based testing research focused on exploratory testing and crash detection, DragonCrawl validates specific user flows on every code change, blocking commits that break critical functionality. By leveraging GPT-4o's multimodal capabilities, DragonCrawl achieves 91.6% pass rate on iOS and 92.2% on Android across 1,013 automated tests running continuously in CI/CD pipelines. The system reduces test onboarding time from 96-120 hours to under 4 hours and has saved an estimated 27 developer years in test maintenance effort. We present the architectural evolution from V1 (semantic embedding matching) to V2 (generative intent-based reasoning), discuss implementation challenges including token explosion and memory constraints, and report operational experience from production deployment. The integration of multimodal vision for end-state detection and tool calling for backend state transitions enables comprehensive regression testing that bridges UI interactions with system state. Our results demonstrate that AI-driven testing can maintain stability while eliminating the brittleness of traditional automated tests, enabling continuous quality assurance at scale.",
+      "arxiv_id": "2607.28750v1",
+      "authors": [
+        "Sowjanya Puligadda",
+        "Mengdie Zhang",
+        "Ali Zamani",
+        "Dhruva Dixith Kurra",
+        "Eric Chen",
+        "Juan Marcano"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.28750v1",
+      "published": "2026-07-31T02:17:31+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "DragonCrawl: A Generative, Intent-Based Framework for Scalable Mobile End-to-End Testing",
+      "updated": "2026-07-31T02:17:31+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.28609v1",
+      "abstract": "Computer-using agents (CUAs) are advancing rapidly across the digital world. A CUA trajectory records the agent's actions, states, and reasoning. Verifying whether it fulfilled the task instruction is central to CUA evaluation, data curation, and reinforcement learning. Neither human-written verifiers nor human annotators can provide such verification at scale, so the field increasingly turns to vision-language models (VLMs) as judges of CUA trajectories. But a fundamental question has long gone unexamined: are these VLM judges reliable enough? To study it systematically, we introduce OSReward, a realistic, high-quality benchmark that evaluates VLM judges on CUA trajectories. The trajectories come from diverse agent backbones executing human-verified instructions across platforms, then rigorously labeled with ground-truth verdicts through multi-stage human annotation. Building on it, we derive OSReward-Hard, a challenge set concentrating genuinely hard cases, and OSReward-Multi for fine-grained efficiency and alignment scoring. The most comprehensive evaluation of VLM judges to date finds even state-of-the-art models fall short of an ideal judge, sharing a systematic leniency bias that mislabels failed runs as successes. The few reliable enough to trust are too expensive to run at scale, while affordable open models trail far behind. To close this gap, we construct and release OS-Shepherd-100K, an open corpus of reasoning-annotated trajectory judgments for the CUA community. On it, we train OS-Shepherd (9B and 35B), open reward models that supply low-cost, stable, and reliable reward signals, matching commercial judges at 30-60% lower cost than the frontier. Extensive analyses further inform the design of reliable CUA reward at scale. Our code, benchmark, dataset, and model checkpoints are available at https://os-copilot.github.io/OSReward-Home/.",
+      "arxiv_id": "2607.28609v1",
+      "authors": [
+        "Qiushi Sun",
+        "Kanzhi Cheng",
+        "Yian Wang",
+        "Bowen Yang",
+        "Hang Yan",
+        "Liheng Chen",
+        "Fangzhi Xu",
+        "Zichen Ding",
+        "Nuo Chen",
+        "Jialin Cao",
+        "Xingdong Gong",
+        "Zehao Li",
+        "Kaiming Jin",
+        "Xinfeng Yuan",
+        "Zhoumianze Liu",
+        "Jingyang Gong",
+        "Zhangyue Yin",
+        "Jiahui Gao",
+        "Zhiyong Wu",
+        "Tianbao Xie",
+        "Jianbing Zhang",
+        "Ben Kao",
+        "Lingpeng Kong"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.28609v1",
+      "published": "2026-07-31T01:57:41+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "OSReward: Instituting Standardized Evaluation for Cross-Platform Computer-Use Reward Models",
+      "updated": "2026-07-31T01:57:41+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.25096v2",
+      "abstract": "Spaced repetition systems (SRS) have demonstrated robust effects on long-term retention, yet existing tools reduce the flashcard interaction to a single binary gesture: flip and self-rate. This impoverished interaction model fails to leverage decades of cognitive science evidence on retrieval practice, and requires learners to context-switch out of their reading flow to create cards manually. We present Memdora, a cross-platform AI spaced repetition system that addresses these limitations through four contributions: (1) a taxonomy of 17 cognitively-grounded interaction types across three learning categories -- Language (6 types), By Heart (1 type with 3 retrieval modes), and Exam (10 types) -- each grounded in peer-reviewed cognitive science evidence, with per-type design rationale and citations documented in this paper; (2) a unified AI generation pipeline that collapses card creation to a single gesture at the point of reading across web, mobile, and three browser extensions (Chrome, Edge, Firefox); (3) a collaborative layer enabling users to publish decks with live synchronization: followers discover and follow decks via a public feed, and any edits the deck owner makes propagate instantly to all followers while each follower maintains independent FSRS-6 scheduling state; and (4) an effort-based behavioral reward system that incentivizes actual cognitive engagement rather than mere app presence. Memdora integrates FSRS-6, the current state-of-the-art spaced repetition algorithm, and is deployed publicly on iOS, Android, Web, and three browser extensions. We describe the design rationale for each interaction type, discuss how the system advances beyond prior AI flashcard systems including SmartFlash and KARL, and outline implications for educational technology design.",
+      "arxiv_id": "2607.25096v2",
+      "authors": [
+        "Ruiyang Zhang"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.25096v2",
+      "published": "2026-07-28T05:40:14+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Memdora: Designing Cognitively-Grounded Flashcard Interactions for AI-Powered Spaced Repetition",
+      "updated": "2026-08-04T22:03:37+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.24167v1",
+      "abstract": "Long-horizon web agents often go off track before final failure: a trajectory can remain locally plausible even after the current state, reused skill, or plan assumption no longer supports the user instruction. Existing agents can plan, reflect, or reuse experience, but their plans rarely specify the evidence under which an active step should still be trusted. We propose FCPAgent, a falsifiable commitment planning framework for robust long-horizon web agents. FCPAgent represents each plan step as a Falsifiable Commitment Unit (FCU): a subgoal grounded in a reusable skill, together with confirming evidence, falsifying evidence, and a confidence score. Execution is organized as a plan-test-repair loop. The hybrid commitment testing module checks candidate actions before they modify the browser and checks observations after execution; for efficiency, it combines lightweight evidence matching with LLM-based diagnostic verification. When evidence falsifies a commitment, scope-aware repair localizes the contradiction to the execution, skill, or planning level and revises the smallest adequate part. On WebArena, FCPAgent achieves a 13.8% relative improvement in average success over the strongest baseline, with especially large gains on long-horizon tasks.",
+      "arxiv_id": "2607.24167v1",
+      "authors": [
+        "Guangyi Liu",
+        "Huan Zhao",
+        "Quanming Yao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.24167v1",
+      "published": "2026-07-27T16:48:01+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "Falsifiable Commitment Planning for Self-Correcting Web Agents",
+      "updated": "2026-07-27T16:48:01+08:00"
+    }
+  ],
+  "report_date": "2026-08-05",
+  "run_paper_count": 9,
+  "source_report_date": null
+}
