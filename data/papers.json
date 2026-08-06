@@ -8,8 +8,35 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 60,
+  "paper_count": 63,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.04530v1",
+      "abstract": "GUI agents must remember both useful experience from earlier tasks and unfinished progress in the current interaction. Latent memory offers a compact solution by compressing multimodal trajectories into a few continuous tokens. Existing methods, however, usually map each trajectory to one fixed memory block and train it mainly through next-action supervision. This creates three practical problems: important details may be lost during compression, the same memory block must serve different decision stages, and irrelevant retrieved trajectories may still mislead the agent. We introduce FocusMem, which separates these responsibilities within a compact latent-memory interface. A role-aware content basis encourages episodic memory to retain reusable experience and working memory to retain task progress. A state-conditioned readout generates a decision-specific view of the same stored evidence, while a lightweight trust gate can suppress memory blocks that appear irrelevant to the current step. All components are trained while the GUI policy remains frozen. Across five GUI-agent benchmarks, FocusMem consistently outperforms a fully matched action-only fixed-memory baseline and prior latent memory adaptations. Further analysis shows that semantic and functional supervision preserve complementary information, state-conditioned readout is more robust as surrounding trajectory context grows, and the trust gate reduces the harm caused by injected irrelevant episodic evidence. These results show that effective latent memory depends not only on compressing past interaction, but also on what is retained, what is exposed, and what is allowed.",
+      "arxiv_id": "2608.04530v1",
+      "authors": [
+        "Zhuoran Zhang",
+        "Bowen Li",
+        "Jingcheng Ju",
+        "Yang Shi",
+        "Qixun Wang",
+        "Haotian Wang",
+        "Wei Chen",
+        "Tengjiao Wang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.04530v1",
+      "published": "2026-08-05T15:02:30+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "FocusMem: Factorizing Content, Readout, and Trust in Latent GUI Memory",
+      "updated": "2026-08-05T15:02:30+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2608.02352v1",
       "abstract": "Native computer use offers a general interface for agents to operate almost any software available to people, but requires long-horizon state tracking, large-scale interactive experience, and learning from sparse yet verifiable outcomes. We introduce Qwen-CUA, a native computer-use agent with a 397B-A17B Qwen mixture-of-experts backbone. It observes only screenshots and acts through keyboard and mouse events, without DOM trees, accessibility metadata, or task-specific APIs. Its scaffold maintains up to 20 active screenshots and folds older visual history in fixed-size blocks to retain recent evidence while preserving reusable prompt prefixes. For training, we build a cloud rollout fleet with access to nearly 100,000 vCPUs and tens of thousands of concurrent environments, construct approximately 40,000 verifiable tasks, and collect personalized long-horizon workflows across everyday and professional software. We optimize complete trajectories with verifiable rewards and trajectory slicing, while iterative training runs refresh supervised data and recalibrate reinforcement-learning tasks. Across eight benchmarks, Qwen-CUA outperforms Qwen3.7 and remains competitive with leading proprietary systems, reaching 86.2 on OSWorld-Verified and 18.5/48.4 binary/partial completion on OSWorld 2.0. Scaling the same recipe to a model with over one trillion parameters yields Qwen-CUA-Max, improving these scores to 87.6 and 21.2/53.3. Qwen-CUA also reduces RedTeamCUA attack success from 36.6 to 16.4 relative to Qwen3.7. Efficiency analyses, a browser deployment, and Bash-augmented experiments further characterize practical behavior. These results establish native computer use as a broadly capable agent foundation and highlight scalable verifiable interaction and hybrid tool use as key directions.",
@@ -75,6 +102,30 @@
       "summary_zh": null,
       "title": "Qwen-CUA: Native Computer Use for (almost) Everything",
       "updated": "2026-08-03T23:04:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.01791v2",
+      "abstract": "The rapid development of photonic integrated circuits (PICs) is shifting the design flow from traditional graphical user interface (GUI)-based methods to script-based methods for higher flexibility, portability, and maintainability. However, script-based design introduces new challenges, requiring designers to possess additional proficiency in tool application programming interfaces (APIs) and programming. It also demands greater effort and time because it is inherently less intuitive and more complex than GUI-based methods. As PICs grow in scale and complexity, the productivity gap between design needs and manual scripting capabilities continues to widen. To address this gap, we introduce PICopilot, the first large language model (LLM)-based agentic framework that assists in PIC design via automated design script generation from natural language instructions. PICopilot leverages a multi-agent architecture with a feedback mechanism and a specifically designed retrieval-augmented generation (RAG) pipeline, achieving a high success rate and reliability. Experimental results on a benchmark of diverse PIC scripting tasks demonstrate that PICopilot successfully completes all 48 tasks and outperforms other LLM-based approaches without incurring substantial extra latency or cost, even solving 21 more tasks than the advanced GPT-5 model with a general RAG pipeline.",
+      "arxiv_id": "2608.01791v2",
+      "authors": [
+        "Xiaohan Jiang",
+        "Zeyu Li",
+        "Wei Zhang",
+        "Jiang Xu"
+      ],
+      "categories": [
+        "cs.ET",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.01791v2",
+      "published": "2026-08-03T15:03:24+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "PICopilot: An LLM-based Agentic Framework for Assisting Photonic Integrated Circuit Design via Script Generation",
+      "updated": "2026-08-05T14:30:28+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2608.01791v1",
@@ -180,6 +231,32 @@
       "summary_zh": null,
       "title": "MAGA: Multi-Platform Self-Fusion of GUI Agents via Structured Action Distillation",
       "updated": "2026-07-31T19:51:04+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2607.28750v2",
+      "abstract": "As mobile applications grow in complexity, traditional End-to-End (E2E) testing frameworks struggle with UI volatility, maintenance overhead, and cross-platform scalability. This paper presents DragonCrawl, an AI-driven mobile testing system for continuous regression testing that has evolved from embedding-based similarity matching to generative intent-based reasoning using large language models. Unlike prior LLM-based testing research focused on exploratory testing and crash detection, DragonCrawl validates specific user flows on every code change, blocking commits that break critical functionality. By leveraging GPT-4o's multimodal capabilities, DragonCrawl achieves 91.6% pass rate on iOS and 92.2% on Android across 1,013 automated tests running continuously in CI/CD pipelines. The system reduces test onboarding time from 96-120 hours to under 4 hours and has saved an estimated 27 developer years in test maintenance effort. We present the architectural evolution from V1 (semantic embedding matching) to V2 (generative intent-based reasoning), discuss implementation challenges including token explosion and memory constraints, and report operational experience from production deployment. The integration of multimodal vision for end-state detection and tool calling for backend state transitions enables comprehensive regression testing that bridges UI interactions with system state. Our results demonstrate that AI-driven testing can maintain stability while eliminating the brittleness of traditional automated tests, enabling continuous quality assurance at scale.",
+      "arxiv_id": "2607.28750v2",
+      "authors": [
+        "Sowjanya Puligadda",
+        "Mengdie Zhang",
+        "Ali Zamani",
+        "Dhruva Dixith Kurra",
+        "Eric Chen",
+        "Juan Marcano"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2607.28750v2",
+      "published": "2026-07-31T02:17:31+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "DragonCrawl: A Generative, Intent-Based Framework for Scalable Mobile End-to-End Testing",
+      "updated": "2026-08-06T01:13:25+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2607.28750v1",
@@ -1704,7 +1781,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-08-05",
+  "report_date": "2026-08-06",
   "run_paper_count": 9,
   "source_report_date": null
 }
