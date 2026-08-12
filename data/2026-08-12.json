@@ -1,0 +1,265 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 8,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.10775v1",
+      "abstract": "Computer-using agents can perceive rich software interfaces, yet their decisions often lack visual procedural memory: they may recognize individual controls without identifying which familiar workflow is active, which control matters next, or what evidence would confirm progress. Raw interaction traces preserve such information but are long and noisy to condition on, whereas text-only skills often omit the visual state that makes a procedure applicable. We introduce Visual Skill Cards (VSCs), a state-conditioned memory representation that binds reusable procedures with applicability cues, visual evidence, and verification signals. SkillLens constructs VSCs from heterogeneous interaction experience through Trace-to-Visual-Skill-Card and, at inference time, retrieves relevant cards and selectively expands only the evidence needed by a fixed visual-language model executor for grounded GUI action prediction. The same representation also supports CardDistill, which uses VSC evidence as privileged teacher context to train a student that acts without runtime card retrieval. Across Multimodal-Mind2Web and WebLINX-BrowserGym, SkillLens improves the frozen GPT-5.4-mini executor by +11.6 points in Step SR and +2.9 points in Overall, respectively; CardDistill further improves the corresponding student-only Qwen3-VL-2B metrics by +12.0 and +3.2 points.",
+      "arxiv_id": "2608.10775v1",
+      "authors": [
+        "Zhou Liu",
+        "Ligang Huang",
+        "Zeli Su",
+        "Zewei Pan",
+        "Zhaoyang Han",
+        "Xing Chen",
+        "Yuanfeng Song",
+        "Wentao Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.10775v1",
+      "published": "2026-08-11T18:28:59+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "SkillLens: Visual Skill Cards for Retrieval-Augmented GUI Action Prediction and On-Policy Distillation",
+      "updated": "2026-08-11T18:28:59+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.09273v2",
+      "abstract": "LLMs have demonstrated strong capabilities in code generation and automated program repair, but migrating an entire repository rarely produces a runnable application because long-horizon translation challenges LLM-based agents' ability to maintain repository-level migration objectives. In this work, we propose Entropy-based Code Adversarial Translation (ECAT), a multi-agent framework for automated Android-to-HarmonyOS repository migration. ECAT formulates repository migration as adversarial entropy minimization through a generator-discriminator architecture. The discriminator measures migration quality using a unified metric called Code Entropy and produces text gradients that specify both file-level generation directives and the skills needed to execute them. Guided by these optimization signals, the generator iteratively updates the repository, and each update is accepted only if it reduces Code Entropy. Repeated generator--discriminator interactions progressively drive the migration from an initial template toward a functionally complete HarmonyOS repository. Successful low-entropy trajectories are further distilled into a self-evolving memory tree, enabling transferable migration knowledge across repositories. We also introduce A2H-RepoBench, the first real-world benchmark for Android-to-HarmonyOS repository migration, covering applications from tens of thousands to hundreds of thousands of lines of code. Evaluated by node alignment and an agent-based functional judge, ECAT achieves 74.7% overall migration quality and consistently outperforms existing agent-based methods across repositories of different scales.",
+      "arxiv_id": "2608.09273v2",
+      "authors": [
+        "Yushun Tang",
+        "Yisen Cao",
+        "Zhicheng Chen",
+        "Lin Peng",
+        "Junkang Mao",
+        "Fengyi Song",
+        "Yantao Jia"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.09273v2",
+      "published": "2026-08-10T16:29:29+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Entropy-based Code Adversarial Translation for Real-world Repository Migration",
+      "updated": "2026-08-11T15:01:28+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.09049v1",
+      "abstract": "Mobile app reviews are a rich, continuously renewing source of how users experience privacy and security, yet existing taxonomies of these concerns are hand-crafted and cannot keep pace with the evolving nature of the data. Automating taxonomy construction is the natural response, but scalability is the core challenge: current LLM- and clustering-based methods are developed for scientific corpora of a few thousand documents and do not extend to app review collections numbering in the hundreds of thousands. We address this gap in two ways. First, we filter app reviews for privacy- and security-related content, yielding a comprehensive corpus of over 600K reviews. Second, we introduce TaxoScale, a pipeline that handles taxonomy construction at this scale by extending an expert-defined taxonomy via Recursive Hierarchical Clustering and LLM-based node naming. TaxoScale outperforms strong automatic-taxonomy baselines on path, level, coverage, and novelty metrics, and discovers novel branches absent from prior taxonomies.",
+      "arxiv_id": "2608.09049v1",
+      "authors": [
+        "Moghis Fereidouni",
+        "Vinaik Chhetri",
+        "Umar Farooq",
+        "A. B. Siddique"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.09049v1",
+      "published": "2026-08-10T10:55:24+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Security and Privacy Taxonomy Generation from Mobile App Reviews",
+      "updated": "2026-08-10T10:55:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.06704v1",
+      "abstract": "Delegating a web task involves more than asking a question; it requires transferring a policy: what to verify, how to handle uncertainty, which preferences matter, and when to stop. Yet, current live-web agents are evaluated solely on the final answer, ignoring the policy constraints that define the delegation. A plausible final answer can conceal violations of that policy. Our full live audit reveals this critical gap: a strong controller completes 99.2% of tasks but honors all policy constraints in only 38.8% of cases. Finishing does not imply fidelity. WebRider bridges this gap by formalizing the delegated policy as an intent contract---an operational record of goals, constraints, evidence obligations, answer form, and task-local persona controls that must hold even as web pages change. WebRider employs a hierarchical architecture: a top-layer controller maintains the contract, a middle layer realizes intentions as guarded executable actions, and a tool layer executes these actions via browser, search, and maps tools. Our benchmark, RiderBench, evaluates this design on 4,096 live-web contracts across 42 public websites, auditing both the internal contract state and the visible user experience to determine if a rollout preserved its policy and if the steps were persona-consistent. The guarded middle interface also serves as a high-quality training signal; an 8B action-policy model trained through this interface outperforms executable-only baselines under a fixed controller. By making the browsing path a first-class object, WebRider enables a system that is auditable, human-judgeable, and learnable without conflating action realization with final-answer decisions. Dataset URL: hf.co/datasets/WebRider/WebRider.",
+      "arxiv_id": "2608.06704v1",
+      "authors": [
+        "Zhi Li",
+        "Tao Zhou",
+        "Yeqing Li",
+        "Eugene Ie",
+        "Demetri Terzopoulos"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.06704v1",
+      "published": "2026-08-07T10:00:49+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "WebRider: Persona-Conditioned Intent Controllers for Live-Web Assistance",
+      "updated": "2026-08-07T10:00:49+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.06065v1",
+      "abstract": "GUI agents are commonly trained offline from successful interaction trajectories. Standard training decomposes each trajectory into prefix-action pairs: the agent predicts an action from the current screen and interaction history, while the subsequent observation is discarded. This removes the rationale of why an action is correct: the evidence often appears only on the subsequent screen. For example, to enable Soft Wrap, the agent should click Edit or View, but nothing reveals this until the menu opens. Without such evidence, standard imitation gives the model little chance of ever sampling and thus learning the correct reasoning. To address this issue, we propose Gated Hindsight Distillation (GHD), which uses the next screenshot as privileged information during training. A student predicts from the observable trajectory prefix, while a parameter-sharing teacher additionally observes the next screenshot and re-scores the student's on-policy responses. We apply distillation only when the student fails and the hindsight-conditioned teacher recovers the demonstrated action. GHD improves task success over GRPO on AndroidWorld and AndroidLab across two vision-language models. The code and checkpoints will be made available.",
+      "arxiv_id": "2608.06065v1",
+      "authors": [
+        "Weiwei Li",
+        "Junzhuo Liu",
+        "Tong Chu",
+        "Hengfu Yu",
+        "Wen Li"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.06065v1",
+      "published": "2026-08-06T22:10:23+08:00",
+      "score": 14,
+      "summary_zh": null,
+      "title": "The Next Screenshot Knows: Gated Hindsight Distillation for Mobile GUI Agents",
+      "updated": "2026-08-06T22:10:23+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.05891v1",
+      "abstract": "Mobile GUI agents can operate apps through pixel perception and touch actions, making them a promising interface for collecting and improving long-horizon mobile interaction policies. However, real trajectories are difficult to obtain for sensitive apps and privacy-critical operations. At the same time, existing simulated environments are costly to scale up, and GUI world models still suffer from unstable generation, limited modality coverage, and inconsistent action-transition logic. To address these limitations, we propose AppDeltaWorld, a transition-grounded delta code world model that predicts the next GUI as a reachable code update rather than as an unconstrained image or text description. AppDeltaWorld retrieves app-specific Level-1 HTML references under an action-transition constraint, generates Level-2 executable HTML conditioned on the current screen, action, predicted next-screen text, and retrieved structure, and inserts generated visual assets into image slots before browser rendering. As a world model, AppDeltaWorld achieves the highest fidelity on CMGUIBench-500 under Code2World evaluation, with clear gains in structural layout and UI element reconstruction over image-only and code-only baselines. As a training environment, AppDeltaWorld supports filtered closed-loop SFT data construction that, when combined with public supervision, enables AppDeltaAgent to achieve state-of-the-art performance on AndroidLens and consistent gains on MobileGym and MobileWorld. Moreover, world-model-based test-time reinforcement learning enables policy adaptation and shows further improvements without additional interaction with real apps.",
+      "arxiv_id": "2608.05891v1",
+      "authors": [
+        "Weikai Xu",
+        "Yunren Feng",
+        "Haoxiang Lei",
+        "Kun Huang",
+        "Yuxuan Liu",
+        "Kang Zhao",
+        "Xiaolin Hu",
+        "Shuo Shang",
+        "Bo An"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.05891v1",
+      "published": "2026-08-06T19:15:41+08:00",
+      "score": 12,
+      "summary_zh": null,
+      "title": "AppDeltaWorld: Transition-Grounded Delta Code World Model for Mobile GUI Agents",
+      "updated": "2026-08-06T19:15:41+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.04530v1",
+      "abstract": "GUI agents must remember both useful experience from earlier tasks and unfinished progress in the current interaction. Latent memory offers a compact solution by compressing multimodal trajectories into a few continuous tokens. Existing methods, however, usually map each trajectory to one fixed memory block and train it mainly through next-action supervision. This creates three practical problems: important details may be lost during compression, the same memory block must serve different decision stages, and irrelevant retrieved trajectories may still mislead the agent. We introduce FocusMem, which separates these responsibilities within a compact latent-memory interface. A role-aware content basis encourages episodic memory to retain reusable experience and working memory to retain task progress. A state-conditioned readout generates a decision-specific view of the same stored evidence, while a lightweight trust gate can suppress memory blocks that appear irrelevant to the current step. All components are trained while the GUI policy remains frozen. Across five GUI-agent benchmarks, FocusMem consistently outperforms a fully matched action-only fixed-memory baseline and prior latent memory adaptations. Further analysis shows that semantic and functional supervision preserve complementary information, state-conditioned readout is more robust as surrounding trajectory context grows, and the trust gate reduces the harm caused by injected irrelevant episodic evidence. These results show that effective latent memory depends not only on compressing past interaction, but also on what is retained, what is exposed, and what is allowed.",
+      "arxiv_id": "2608.04530v1",
+      "authors": [
+        "Zhuoran Zhang",
+        "Bowen Li",
+        "Jingcheng Ju",
+        "Yang Shi",
+        "Qixun Wang",
+        "Haotian Wang",
+        "Wei Chen",
+        "Tengjiao Wang"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.04530v1",
+      "published": "2026-08-05T15:02:30+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "FocusMem: Factorizing Content, Readout, and Trust in Latent GUI Memory",
+      "updated": "2026-08-05T15:02:30+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.02352v1",
+      "abstract": "Native computer use offers a general interface for agents to operate almost any software available to people, but requires long-horizon state tracking, large-scale interactive experience, and learning from sparse yet verifiable outcomes. We introduce Qwen-CUA, a native computer-use agent with a 397B-A17B Qwen mixture-of-experts backbone. It observes only screenshots and acts through keyboard and mouse events, without DOM trees, accessibility metadata, or task-specific APIs. Its scaffold maintains up to 20 active screenshots and folds older visual history in fixed-size blocks to retain recent evidence while preserving reusable prompt prefixes. For training, we build a cloud rollout fleet with access to nearly 100,000 vCPUs and tens of thousands of concurrent environments, construct approximately 40,000 verifiable tasks, and collect personalized long-horizon workflows across everyday and professional software. We optimize complete trajectories with verifiable rewards and trajectory slicing, while iterative training runs refresh supervised data and recalibrate reinforcement-learning tasks. Across eight benchmarks, Qwen-CUA outperforms Qwen3.7 and remains competitive with leading proprietary systems, reaching 86.2 on OSWorld-Verified and 18.5/48.4 binary/partial completion on OSWorld 2.0. Scaling the same recipe to a model with over one trillion parameters yields Qwen-CUA-Max, improving these scores to 87.6 and 21.2/53.3. Qwen-CUA also reduces RedTeamCUA attack success from 36.6 to 16.4 relative to Qwen3.7. Efficiency analyses, a browser deployment, and Bash-augmented experiments further characterize practical behavior. These results establish native computer use as a broadly capable agent foundation and highlight scalable verifiable interaction and hybrid tool use as key directions.",
+      "arxiv_id": "2608.02352v1",
+      "authors": [
+        "Dunjie Lu",
+        "Shuai Bai",
+        "Tianyi Bai",
+        "Sicheng Fan",
+        "Chang Gao",
+        "Jian Guan",
+        "Feng Hu",
+        "Mianqiu Huang",
+        "Xingyang Huang",
+        "Yizhen Jiang",
+        "Yuheng Jing",
+        "Dehui Kong",
+        "Ning Li",
+        "Dayiheng Liu",
+        "Shixuan Liu",
+        "Zheng Liu",
+        "Que Shen",
+        "Bowen Wang",
+        "Junli Wang",
+        "Chencan Wu",
+        "Rui Xie",
+        "Tianbao Xie",
+        "Zhihui Xie",
+        "Haiyang Xu",
+        "An Yang",
+        "Tao Yu",
+        "Wenzhen Yuan",
+        "Xi Zhang",
+        "Zhenru Zhang",
+        "Mingkang Zhu",
+        "Zhaoqing Zhu",
+        "Yizhong Cao",
+        "Kai Dang",
+        "Binyuan Hui",
+        "Kaixin Li",
+        "Junyang Lin",
+        "Haiquan Wang",
+        "Zekun Wang",
+        "Yiheng Xu",
+        "Fan Yan",
+        "Mengqi Yuan",
+        "Danyang Zhang",
+        "Jiajun Zhang",
+        "Zhipeng Zhang",
+        "Fan Zhou",
+        "Fan Zhou"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.02352v1",
+      "published": "2026-08-03T23:04:20+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Qwen-CUA: Native Computer Use for (almost) Everything",
+      "updated": "2026-08-03T23:04:20+08:00"
+    }
+  ],
+  "report_date": "2026-08-12",
+  "run_paper_count": 8,
+  "source_report_date": null
+}
