@@ -1,0 +1,195 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 7,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.12429v1",
+      "abstract": "Web agents often struggle to generalize to unseen websites because they lack website-specific supervision. Recent exploration-based data synthesis methods reduce manual annotation, but they still face two key limitations: they often fail to cover the full functionality of a website, and without sufficient website prior knowledge, they tend to propose hallucinated tasks, which in turn limits the diversity and efficiency of downstream trajectory synthesis. We present \\textbf{SynWeaver}, a website-prior task-trajectory co-synthesis framework designed to address these challenges. SynWeaver first performs structured website exploration and constructs a website map that covers a broad set of functionally distinct page states and executable interactions on the target website. It then derives page-level and transition-level supervision from this map to train a UI-aware model with website-specific priors, enabling more grounded task proposals. Finally, SynWeaver performs collaborative task-trajectory synthesis, jointly updating the task and execution trajectory when they become inconsistent, and then verifies and repairs the collected results to produce executable, semantically aligned supervision. Experiments on WebArena and WebVoyager demonstrate that SynWeaver consistently outperforms strong synthesis baselines and yields more effective supervision for both in-domain and out-of-domain generalization.",
+      "arxiv_id": "2608.12429v1",
+      "authors": [
+        "Ruitao Wang",
+        "Yuwen Hao",
+        "Menglin Yang"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.12429v1",
+      "published": "2026-08-12T20:03:20+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "SynWeaver: Website-Prior Task and Trajectory Co-Synthesis for Web Agents",
+      "updated": "2026-08-12T20:03:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.10775v1",
+      "abstract": "Computer-using agents can perceive rich software interfaces, yet their decisions often lack visual procedural memory: they may recognize individual controls without identifying which familiar workflow is active, which control matters next, or what evidence would confirm progress. Raw interaction traces preserve such information but are long and noisy to condition on, whereas text-only skills often omit the visual state that makes a procedure applicable. We introduce Visual Skill Cards (VSCs), a state-conditioned memory representation that binds reusable procedures with applicability cues, visual evidence, and verification signals. SkillLens constructs VSCs from heterogeneous interaction experience through Trace-to-Visual-Skill-Card and, at inference time, retrieves relevant cards and selectively expands only the evidence needed by a fixed visual-language model executor for grounded GUI action prediction. The same representation also supports CardDistill, which uses VSC evidence as privileged teacher context to train a student that acts without runtime card retrieval. Across Multimodal-Mind2Web and WebLINX-BrowserGym, SkillLens improves the frozen GPT-5.4-mini executor by +11.6 points in Step SR and +2.9 points in Overall, respectively; CardDistill further improves the corresponding student-only Qwen3-VL-2B metrics by +12.0 and +3.2 points.",
+      "arxiv_id": "2608.10775v1",
+      "authors": [
+        "Zhou Liu",
+        "Ligang Huang",
+        "Zeli Su",
+        "Zewei Pan",
+        "Zhaoyang Han",
+        "Xing Chen",
+        "Yuanfeng Song",
+        "Wentao Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.10775v1",
+      "published": "2026-08-11T18:28:59+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "SkillLens: Visual Skill Cards for Retrieval-Augmented GUI Action Prediction and On-Policy Distillation",
+      "updated": "2026-08-11T18:28:59+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.09273v2",
+      "abstract": "LLMs have demonstrated strong capabilities in code generation and automated program repair, but migrating an entire repository rarely produces a runnable application because long-horizon translation challenges LLM-based agents' ability to maintain repository-level migration objectives. In this work, we propose Entropy-based Code Adversarial Translation (ECAT), a multi-agent framework for automated Android-to-HarmonyOS repository migration. ECAT formulates repository migration as adversarial entropy minimization through a generator-discriminator architecture. The discriminator measures migration quality using a unified metric called Code Entropy and produces text gradients that specify both file-level generation directives and the skills needed to execute them. Guided by these optimization signals, the generator iteratively updates the repository, and each update is accepted only if it reduces Code Entropy. Repeated generator--discriminator interactions progressively drive the migration from an initial template toward a functionally complete HarmonyOS repository. Successful low-entropy trajectories are further distilled into a self-evolving memory tree, enabling transferable migration knowledge across repositories. We also introduce A2H-RepoBench, the first real-world benchmark for Android-to-HarmonyOS repository migration, covering applications from tens of thousands to hundreds of thousands of lines of code. Evaluated by node alignment and an agent-based functional judge, ECAT achieves 74.7% overall migration quality and consistently outperforms existing agent-based methods across repositories of different scales.",
+      "arxiv_id": "2608.09273v2",
+      "authors": [
+        "Yushun Tang",
+        "Yisen Cao",
+        "Zhicheng Chen",
+        "Lin Peng",
+        "Junkang Mao",
+        "Fengyi Song",
+        "Yantao Jia"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.09273v2",
+      "published": "2026-08-10T16:29:29+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Entropy-based Code Adversarial Translation for Real-world Repository Migration",
+      "updated": "2026-08-11T15:01:28+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.09049v1",
+      "abstract": "Mobile app reviews are a rich, continuously renewing source of how users experience privacy and security, yet existing taxonomies of these concerns are hand-crafted and cannot keep pace with the evolving nature of the data. Automating taxonomy construction is the natural response, but scalability is the core challenge: current LLM- and clustering-based methods are developed for scientific corpora of a few thousand documents and do not extend to app review collections numbering in the hundreds of thousands. We address this gap in two ways. First, we filter app reviews for privacy- and security-related content, yielding a comprehensive corpus of over 600K reviews. Second, we introduce TaxoScale, a pipeline that handles taxonomy construction at this scale by extending an expert-defined taxonomy via Recursive Hierarchical Clustering and LLM-based node naming. TaxoScale outperforms strong automatic-taxonomy baselines on path, level, coverage, and novelty metrics, and discovers novel branches absent from prior taxonomies.",
+      "arxiv_id": "2608.09049v1",
+      "authors": [
+        "Moghis Fereidouni",
+        "Vinaik Chhetri",
+        "Umar Farooq",
+        "A. B. Siddique"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.09049v1",
+      "published": "2026-08-10T10:55:24+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Security and Privacy Taxonomy Generation from Mobile App Reviews",
+      "updated": "2026-08-10T10:55:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.06704v1",
+      "abstract": "Delegating a web task involves more than asking a question; it requires transferring a policy: what to verify, how to handle uncertainty, which preferences matter, and when to stop. Yet, current live-web agents are evaluated solely on the final answer, ignoring the policy constraints that define the delegation. A plausible final answer can conceal violations of that policy. Our full live audit reveals this critical gap: a strong controller completes 99.2% of tasks but honors all policy constraints in only 38.8% of cases. Finishing does not imply fidelity. WebRider bridges this gap by formalizing the delegated policy as an intent contract---an operational record of goals, constraints, evidence obligations, answer form, and task-local persona controls that must hold even as web pages change. WebRider employs a hierarchical architecture: a top-layer controller maintains the contract, a middle layer realizes intentions as guarded executable actions, and a tool layer executes these actions via browser, search, and maps tools. Our benchmark, RiderBench, evaluates this design on 4,096 live-web contracts across 42 public websites, auditing both the internal contract state and the visible user experience to determine if a rollout preserved its policy and if the steps were persona-consistent. The guarded middle interface also serves as a high-quality training signal; an 8B action-policy model trained through this interface outperforms executable-only baselines under a fixed controller. By making the browsing path a first-class object, WebRider enables a system that is auditable, human-judgeable, and learnable without conflating action realization with final-answer decisions. Dataset URL: hf.co/datasets/WebRider/WebRider.",
+      "arxiv_id": "2608.06704v1",
+      "authors": [
+        "Zhi Li",
+        "Tao Zhou",
+        "Yeqing Li",
+        "Eugene Ie",
+        "Demetri Terzopoulos"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.06704v1",
+      "published": "2026-08-07T10:00:49+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "WebRider: Persona-Conditioned Intent Controllers for Live-Web Assistance",
+      "updated": "2026-08-07T10:00:49+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.06065v1",
+      "abstract": "GUI agents are commonly trained offline from successful interaction trajectories. Standard training decomposes each trajectory into prefix-action pairs: the agent predicts an action from the current screen and interaction history, while the subsequent observation is discarded. This removes the rationale of why an action is correct: the evidence often appears only on the subsequent screen. For example, to enable Soft Wrap, the agent should click Edit or View, but nothing reveals this until the menu opens. Without such evidence, standard imitation gives the model little chance of ever sampling and thus learning the correct reasoning. To address this issue, we propose Gated Hindsight Distillation (GHD), which uses the next screenshot as privileged information during training. A student predicts from the observable trajectory prefix, while a parameter-sharing teacher additionally observes the next screenshot and re-scores the student's on-policy responses. We apply distillation only when the student fails and the hindsight-conditioned teacher recovers the demonstrated action. GHD improves task success over GRPO on AndroidWorld and AndroidLab across two vision-language models. The code and checkpoints will be made available.",
+      "arxiv_id": "2608.06065v1",
+      "authors": [
+        "Weiwei Li",
+        "Junzhuo Liu",
+        "Tong Chu",
+        "Hengfu Yu",
+        "Wen Li"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.06065v1",
+      "published": "2026-08-06T22:10:23+08:00",
+      "score": 14,
+      "summary_zh": null,
+      "title": "The Next Screenshot Knows: Gated Hindsight Distillation for Mobile GUI Agents",
+      "updated": "2026-08-06T22:10:23+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.05891v1",
+      "abstract": "Mobile GUI agents can operate apps through pixel perception and touch actions, making them a promising interface for collecting and improving long-horizon mobile interaction policies. However, real trajectories are difficult to obtain for sensitive apps and privacy-critical operations. At the same time, existing simulated environments are costly to scale up, and GUI world models still suffer from unstable generation, limited modality coverage, and inconsistent action-transition logic. To address these limitations, we propose AppDeltaWorld, a transition-grounded delta code world model that predicts the next GUI as a reachable code update rather than as an unconstrained image or text description. AppDeltaWorld retrieves app-specific Level-1 HTML references under an action-transition constraint, generates Level-2 executable HTML conditioned on the current screen, action, predicted next-screen text, and retrieved structure, and inserts generated visual assets into image slots before browser rendering. As a world model, AppDeltaWorld achieves the highest fidelity on CMGUIBench-500 under Code2World evaluation, with clear gains in structural layout and UI element reconstruction over image-only and code-only baselines. As a training environment, AppDeltaWorld supports filtered closed-loop SFT data construction that, when combined with public supervision, enables AppDeltaAgent to achieve state-of-the-art performance on AndroidLens and consistent gains on MobileGym and MobileWorld. Moreover, world-model-based test-time reinforcement learning enables policy adaptation and shows further improvements without additional interaction with real apps.",
+      "arxiv_id": "2608.05891v1",
+      "authors": [
+        "Weikai Xu",
+        "Yunren Feng",
+        "Haoxiang Lei",
+        "Kun Huang",
+        "Yuxuan Liu",
+        "Kang Zhao",
+        "Xiaolin Hu",
+        "Shuo Shang",
+        "Bo An"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.05891v1",
+      "published": "2026-08-06T19:15:41+08:00",
+      "score": 12,
+      "summary_zh": null,
+      "title": "AppDeltaWorld: Transition-Grounded Delta Code World Model for Mobile GUI Agents",
+      "updated": "2026-08-06T19:15:41+08:00"
+    }
+  ],
+  "report_date": "2026-08-14",
+  "run_paper_count": 7,
+  "source_report_date": null
+}
