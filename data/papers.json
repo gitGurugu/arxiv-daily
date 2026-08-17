@@ -8,8 +8,32 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 73,
+  "paper_count": 74,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.14132v1",
+      "abstract": "Mobile GUI Agents powered by multimodal large language models (MLLMs) show promise in human-computer intelligence. However, current research primarily focuses on reactive task execution while lacking a comprehensive understanding-prediction-execution process for user intentions, which are the core requirements of active agents. In this paper, we propose the Act2Intention framework that builds an active mobile agent by integrating understanding, predicting user intentions, and executing decisions. First, we construct the Act2Intention Bench through data collection and validated generation, comprising 72,511 intentions and over 700,000 actions across 52 apps, thereby establishing the first benchmark for evaluating proactive agents via continuous intention-action trajectories. We further develop the Act2Intention Agent, achieving proactive services through Proactive-oriented Intention Understanding, Personalized Proactive Intention Prediction, and Experience-guided Intention Execution. Experimental results show that supervised fine-tuning on Act2Intention Bench yields absolute improvements of +32.0 Acc-S, +10.25 Acc-S, and +6.9 SSR points over non-fine-tuned counterparts under the same agent framework for intention understanding, prediction, and execution, respectively. This success underscores the necessity and value of the Act2Intention Bench, which establishes a standardized platform for developing and evaluating proactive agents and consequently paves the way for research on intention-driven human-computer interaction.",
+      "arxiv_id": "2608.14132v1",
+      "authors": [
+        "Xiaokai Yan",
+        "Jingtao Ding",
+        "Yong Li",
+        "Zhiwen Yu"
+      ],
+      "categories": [
+        "cs.HC",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.14132v1",
+      "published": "2026-08-14T17:36:59+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "Act2Intention: A Benchmark For Developing Active Mobile Agents Through Inferring User Intention from GUI Actions",
+      "updated": "2026-08-14T17:36:59+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2608.12429v1",
       "abstract": "Web agents often struggle to generalize to unseen websites because they lack website-specific supervision. Recent exploration-based data synthesis methods reduce manual annotation, but they still face two key limitations: they often fail to cover the full functionality of a website, and without sufficient website prior knowledge, they tend to propose hallucinated tasks, which in turn limits the diversity and efficiency of downstream trajectory synthesis. We present \\textbf{SynWeaver}, a website-prior task-trajectory co-synthesis framework designed to address these challenges. SynWeaver first performs structured website exploration and constructs a website map that covers a broad set of functionally distinct page states and executable interactions on the target website. It then derives page-level and transition-level supervision from this map to train a UI-aware model with website-specific priors, enabling more grounded task proposals. Finally, SynWeaver performs collaborative task-trajectory synthesis, jointly updating the task and execution trajectory when they become inconsistent, and then verifies and repairs the collected results to produce executable, semantically aligned supervision. Experiments on WebArena and WebVoyager demonstrate that SynWeaver consistently outperforms strong synthesis baselines and yields more effective supervision for both in-domain and out-of-domain generalization.",
@@ -2054,7 +2078,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-08-14",
+  "report_date": "2026-08-17",
   "run_paper_count": 7,
   "source_report_date": null
 }
