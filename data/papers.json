@@ -8,8 +8,190 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 74,
+  "paper_count": 81,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.25777v1",
+      "abstract": "Modern GUI-agent frameworks achieve strong desktop task performance with frontier API models, yet persistent control information often remains implicit in growing interaction trajectories. At each step, the planner reconstructs the active task stage, accumulated evidence, and runtime feedback before deciding the next action. This dependence becomes more pronounced under weaker local reasoning backbones. Across four representative state-of-the-art frameworks, replacing GPT-5 with Qwen3.5-9B reduces average OSWorld SR-100 from 60.9\\% to 37.7\\%. Trajectory annotation further identifies at least one control failure in 91.6\\% of failed trajectories. To address this problem, we introduce LocalLSTC, a training-free architecture that organizes control by temporal scope, maintaining persistent cross-step state to guide short-term execution commitments. Long-Term Control maintains the active subgoal, subgoal-aligned evidence, and runtime feedback across interactions, while Short-Term Execution realizes bounded commitments for the current step. Long-to-Short Planning forms each commitment from persistent state, and Short-to-Long Control integrates execution outcomes back into that state for progress assessment, recovery, and termination. With Qwen3.6-27B, LocalLSTC reaches 64.7\\% SR-100 on OSWorld and 65.3\\% on WindowsAgentArena, outperforming the strongest prior local results on both benchmarks. Ablations further support contributions from mechanisms on both sides of execution. These findings identify temporal organization of control information as a distinct architectural dimension for locally deployed GUI agents.",
+      "arxiv_id": "2608.25777v1",
+      "authors": [
+        "Weiming Li",
+        "Helen Paik",
+        "Yulei Sui"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.25777v1",
+      "published": "2026-08-26T21:20:27+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "LocalLSTC: A Long Short-Term Control Architecture for Locally Deployed GUI Agents",
+      "updated": "2026-08-26T21:20:27+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.24848v1",
+      "abstract": "Web agents that act from rendered pixels avoid the fragility and heavy token cost of reading a page's HTML or accessibility tree, but training them depends on large amounts of high-quality interaction trajectories, and how to produce such data at scale remains an open problem. Public datasets typically contain only a few thousand trajectories drawn from a fixed and narrow set of websites, and even recent automated synthesis pipelines stay bound to predefined site lists or tutorial sources, so the number of distinct websites the agent ever sees barely grows. We present BrowserForge, a framework that generates web interaction data at scale by driving many browser sandboxes in parallel over the open web. BrowserForge couples three components: an open-web sourcing stage that exposes the agent to hundreds of thousands of real, openly reachable websites; a sandbox cluster manager that schedules hundreds of concurrent browsers with high utilization; and a Proposer-Solver dual-agent loop that turns a raw page into an executable task and then collects a verified trajectory for it. A rule-plus-model cleaning pipeline removes failed runs and rewrites the surviving reasoning into a single unified chain-of-thought style. Page structure such as the accessibility tree is used only as a synthesis-time signal; the agent we train and release acts purely from the screenshot. The resulting corpus contains 203,238 trajectories, each collected from a distinct website, larger and more diverse than prior trajectory datasets. Fine-tuning a compact multimodal model on this corpus raises its success rate on the live Online-Mind2Web from 25.66% to 33.33% and consistently improves step accuracy on the static Multimodal-Mind2Web, with the gain growing as the corpus scales. Controlled analyses further confirm that open-web sourcing and broad website coverage are key contributors to the observed improvement.",
+      "arxiv_id": "2608.24848v1",
+      "authors": [
+        "Fei Tang",
+        "Huawen Shen",
+        "Zhiqiong Lu",
+        "Zhengxi Lu",
+        "Pengyuan Lyu",
+        "Chengquan Zhang",
+        "Weiming Lu",
+        "Jun Xiao",
+        "Yueting Zhuang",
+        "Yongliang Shen"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.24848v1",
+      "published": "2026-08-26T01:35:42+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "BrowserForge: Scaling Web Episode via Parallel Browser Sandboxes",
+      "updated": "2026-08-26T01:35:42+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.24174v1",
+      "abstract": "Recent studies on GUI agents have increasingly focused on outcome reward modeling, which assigns outcome rewards by judging whether an executed trajectory satisfies the success criteria implied by the user instruction. Existing GUI reward verifiers, however, often under-specify how these criteria should be constructed for each task instance. Whether using generic rubric structures or implicit model reasoning, their judging criteria are not sufficiently task-adaptive: they can transfer checks across tasks, overlook concrete constraints in the current instruction, or become overly strict by enforcing unstated requirements. To address this limitation, we propose AdaptRubric, a Coarse-to-Fine Rubrics Framework that constructs task-adaptive judging criteria through a category-level coarse stage and an instance-level fine stage. AdaptRubric performs category-level coarse rubric retrieval by routing the instruction to a GUI task family and retrieving reusable task-family criteria, then conducts instance-level fine rubric generation to surface compact cues for concrete values, scopes, and constraints in the current instruction. Across offline reward evaluation and online reinforcement learning optimization, AdaptRubric consistently outperforms prior reward agents, improving F1 by 3.6 points over the baseline average under a matched image budget and yielding a 4.23-point task-success gain.",
+      "arxiv_id": "2608.24174v1",
+      "authors": [
+        "Tao Xiong",
+        "Xavier Hu",
+        "Wenkai Wang",
+        "Qinzhuo Wu",
+        "Changqiao Wu",
+        "Pengzhi Gao",
+        "Wei Liu",
+        "Jian Luan",
+        "Shengyu Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.24174v1",
+      "published": "2026-08-25T15:40:12+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Task-Adaptive Rubrics for GUI Reward Modeling",
+      "updated": "2026-08-25T15:40:12+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.22847v1",
+      "abstract": "Vision-Language Models (VLMs) based GUI agents stand to benefit significantly from online reinforcement learning (RL). However, their training is bottlenecked by two fundamental issues: current data synthesis methods for GUI Agents rely on specific environments and struggle to generate diverse data, while existing evaluators either suffer from limited scalability or provide inaccurate and unreliable reward signals. To overcome these challenges, we introduce GSAR (Goal-State-Anchor Reward), a RL reward framework that supports scalable task generation and delivers reliable reward signals for stable and efficient policy optimization. Our approach features self-evolving data synthesis, which produces multiple environments through task execution and generates diverse tasks and goal states. Complementing this, a state-anchor mechanism automatically annotates task-relevant UI elements in successful goal states as reference anchors. During RL training, these reference anchors provide accurate, scalable reward signals that substantially enhance efficiency. Extensive evaluations demonstrate that our framework achieves over 90% accuracy on offline trajectory verification and performs closest to rule-based methods. Furthermore, agents trained using our reward framework exhibit strong performance on both AndroidWorld and our constructed benchmark, establishing a scalable approach for GUI agent training.",
+      "arxiv_id": "2608.22847v1",
+      "authors": [
+        "Long Zhang",
+        "Yuhan Chen",
+        "Chaoran Zhang",
+        "Wanxia Cao",
+        "Kun Huang",
+        "Pengzhi Gao",
+        "Wei Liu",
+        "Jian Luan",
+        "Chenliang Li",
+        "Lixin Zou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.22847v1",
+      "published": "2026-08-24T14:27:47+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "GSAR: Goal-State-Anchor Rewards for Mobile GUI Agents with Self-Evolving Data Synthesis",
+      "updated": "2026-08-24T14:27:47+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.22577v2",
+      "abstract": "Long-horizon GUI agents can retain complete action histories as compact text, but only a few historical screenshots fit in active context. We formulate this as budgeted fidelity restoration: every event remains summarized, while a fixed budget $B$ determines which events regain their archived screenshots. Recent-$B$ assigns all visual slots to the latest events. CausalCache instead scores the complete history and swaps in an older event only when its predicted utility exceeds that of a recent event. A history-gated key/value adapter modifies only restored history-image tokens and is exactly bypassed when no history image is active, preserving current-screen processing. The adapter and selector are trained with matched-budget interventions on desktop trajectories and evaluated zero-shot on mobile. On OSWorld-Verified, activating historical screenshots improves success by about $13$ percentage points over summary-only memory. Under the official $15$-step limit, CausalCache and Recent-$4$ are statistically indistinguishable; in a $30$-step diagnostic, CausalCache achieves $46.7\\%$ success versus $42.4\\%$ ($+4.3$ points). Zero-shot on $117$ MobileWorld tasks, CausalCache improves over Recent-$4$ from $30.2\\%$ to $36.8\\%$. The gain is concentrated on a pre-defined cross-app memory-candidate split ($30.6\\%$ vs. $19.4\\%$, $+11.2$ points), while single-app controls show no detectable difference ($43.6\\%$ vs. $42.4\\%$). These results show that selecting which past events regain pixels is more effective than spending a fixed visual budget entirely on recency.",
+      "arxiv_id": "2608.22577v2",
+      "authors": [
+        "Jiaxuan Luo",
+        "Zhanfeng Liao",
+        "Jiayao Teng",
+        "Yuan Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.22577v2",
+      "published": "2026-08-24T04:04:21+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "CausalCache: Conditional High-Fidelity Restoration for Long-Horizon GUI Agents",
+      "updated": "2026-08-25T12:24:36+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.21898v1",
+      "abstract": "Web agents promise to automate complex digital workflows, but their training remains limited by synthetic environments that look plausible while hiding broken links, inconsistent states, or infeasible tasks. We address the gap between scalable environment generation and trustworthy agent learning by constructing synthetic web environments that are executable, auditable, and grounded in backend state. Our framework represents each generated website as a structured scaffold of pages, navigation links, database records, state-change markers, and task constraints, then verifies and repairs structural, semantic, consistency, and feasibility defects before policy training. During interaction, ordinary UI transitions are executed deterministically, while persistent backend updates are invoked only through validated state-change markers, enabling dense rewards compiled from verified task-progress predicates. Across 500 synthetic environments spanning six domains, our method reduces task-blocking defects and improves feasible-task rate from 48.6% to 94.8%, while producing stronger PPO policies and improving transfer to WebArena, WebShop, and MiniWoB++ without LLM calls at evaluation time. These results show that verified synthetic environments can serve as a scalable and reliable training substrate for compact web agents, shifting synthetic webagent learning from surface-level plausibility toward executable, state-grounded supervision.",
+      "arxiv_id": "2608.21898v1",
+      "authors": [
+        "Chenghao Zhang",
+        "Canran Xiao",
+        "SaiSai Hu",
+        "Dan Roth"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.21898v1",
+      "published": "2026-08-22T18:18:45+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Training Needs Trustworthy Worlds: Verified Synthetic Web Environments for Agent Learning",
+      "updated": "2026-08-22T18:18:45+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.21830v1",
+      "abstract": "Graphical User Interface (GUI) agents powered by Multimodal Large Language Models (MLLMs) have shown strong potential for automating tasks across diverse digital environments, where reinforcement learning (RL) has become a dominant training paradigm. However, widely used methods such as Group Relative Policy Optimization (GRPO) suffer from reward-gradient misalignment, leading to inefficient and unstable optimization. Recent work addresses this issue by reformulating RL with verifiable rewards (RLVR) as contrastive or classification-based objectives, which improve stability by eliminating problematic gradient behaviors. Despite this progress, existing contrastive RLVR methods rely primarily on outcome-level supervision and fail to capture fine-grained differences in trajectory quality within the same outcome category. In this paper, we propose Length-Aware Contrastive Learning for GUI Agents (LACL-GUI), a contrastive RLVR framework that incorporates trajectory-level quality signals into policy optimization. LACL-GUI introduces structured preferences within both successful and failed trajectories, encouraging concise successful executions and differentiating failure quality based on divergence from successful trajectories, while preserving optimization stability. Experiments on GUI agent benchmarks show that LACL-GUI provides more effective learning signals and consistently improves agent performance over prior methods, highlighting the value of trajectory-level supervision in contrastive RLVR.",
+      "arxiv_id": "2608.21830v1",
+      "authors": [
+        "Chengyang Gu",
+        "Le Zhang",
+        "Jingbo Zhou",
+        "Yize Chen",
+        "Yu Shi",
+        "Siqi Bao",
+        "Zheng-Fan Wu",
+        "Hua Wu",
+        "Hui Xiong"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.21830v1",
+      "published": "2026-08-22T16:01:47+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "Beyond Success and Failure: Length-Aware Contrastive Learning for GUI Agents",
+      "updated": "2026-08-22T16:01:47+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2608.14132v1",
       "abstract": "Mobile GUI Agents powered by multimodal large language models (MLLMs) show promise in human-computer intelligence. However, current research primarily focuses on reactive task execution while lacking a comprehensive understanding-prediction-execution process for user intentions, which are the core requirements of active agents. In this paper, we propose the Act2Intention framework that builds an active mobile agent by integrating understanding, predicting user intentions, and executing decisions. First, we construct the Act2Intention Bench through data collection and validated generation, comprising 72,511 intentions and over 700,000 actions across 52 apps, thereby establishing the first benchmark for evaluating proactive agents via continuous intention-action trajectories. We further develop the Act2Intention Agent, achieving proactive services through Proactive-oriented Intention Understanding, Personalized Proactive Intention Prediction, and Experience-guided Intention Execution. Experimental results show that supervised fine-tuning on Act2Intention Bench yields absolute improvements of +32.0 Acc-S, +10.25 Acc-S, and +6.9 SSR points over non-fine-tuned counterparts under the same agent framework for intention understanding, prediction, and execution, respectively. This success underscores the necessity and value of the Act2Intention Bench, which establishes a standardized platform for developing and evaluating proactive agents and consequently paves the way for research on intention-driven human-computer interaction.",
@@ -2078,7 +2260,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-08-17",
+  "report_date": "2026-08-28",
   "run_paper_count": 7,
   "source_report_date": null
 }
