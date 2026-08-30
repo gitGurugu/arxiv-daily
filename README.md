@@ -26,7 +26,7 @@ output paths. The file intentionally uses JSON syntax, which is valid YAML, so
 the crawler can run with only the Python standard library.
 
 <!-- ARXIV-DAILY:START -->
-## GUI Agent Memory Papers (updated 2026-08-29)
+## GUI Agent Memory Papers (updated 2026-08-30)
 
 Tracked categories: `cs.AI, cs.LG, cs.CL, cs.HC, cs.CV`
 
