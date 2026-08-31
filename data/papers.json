@@ -8,8 +8,29 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 81,
+  "paper_count": 83,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.27508v1",
+      "abstract": "GUI agents trained with reinforcement learning (RL) have showcased strong environment learning capabilities on mobile platforms. However, RL typically demands extensive real-environment interactions, leading to high resource costs and instability, especially in GUI scenarios. To address these, we propose WM-R1, the first reinforcement learning framework that trains mobile GUI agents with world models instead of real environments. Specifically, world models serve as the source of state transitions during all rollouts, replacing the real Android environment within the training loop. WM-R1 also embeds world models directly into the thinking process, enabling agents to reason about the consequences of candidate actions before committing to the final action. Crucially, WM-R1 eliminates the need for real-environment interaction, supports massively parallelized and step-level granularized trajectory generation grounded in world models, and introduces a multi-dimensional rule-based reward that jointly optimizes task success, trajectory efficiency, and world model utilization. For efficient training, we curate a high-quality dataset of 2000 challenging tasks. Experiments on Android mobile benchmarks demonstrate that WM-R1-trained agents significantly outperform GRPO-only baselines and inference-time simulation methods. Code is available at https://github.com/genalyu/WM-R1 .",
+      "arxiv_id": "2608.27508v1",
+      "authors": [
+        "Yu Han",
+        "Tianwen Qian"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.27508v1",
+      "published": "2026-08-27T15:09:28+08:00",
+      "score": 9,
+      "summary_zh": null,
+      "title": "WM-R1: Training GUI Agents to Reason and leverage World Models with Reinforcement Learning",
+      "updated": "2026-08-27T15:09:28+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2608.25777v1",
       "abstract": "Modern GUI-agent frameworks achieve strong desktop task performance with frontier API models, yet persistent control information often remains implicit in growing interaction trajectories. At each step, the planner reconstructs the active task stage, accumulated evidence, and runtime feedback before deciding the next action. This dependence becomes more pronounced under weaker local reasoning backbones. Across four representative state-of-the-art frameworks, replacing GPT-5 with Qwen3.5-9B reduces average OSWorld SR-100 from 60.9\\% to 37.7\\%. Trajectory annotation further identifies at least one control failure in 91.6\\% of failed trajectories. To address this problem, we introduce LocalLSTC, a training-free architecture that organizes control by temporal scope, maintaining persistent cross-step state to guide short-term execution commitments. Long-Term Control maintains the active subgoal, subgoal-aligned evidence, and runtime feedback across interactions, while Short-Term Execution realizes bounded commitments for the current step. Long-to-Short Planning forms each commitment from persistent state, and Short-to-Long Control integrates execution outcomes back into that state for progress assessment, recovery, and termination. With Qwen3.6-27B, LocalLSTC reaches 64.7\\% SR-100 on OSWorld and 65.3\\% on WindowsAgentArena, outperforming the strongest prior local results on both benchmarks. Ablations further support contributions from mechanisms on both sides of execution. These findings identify temporal organization of control information as a distinct architectural dimension for locally deployed GUI agents.",
@@ -191,6 +212,36 @@
       "summary_zh": null,
       "title": "Beyond Success and Failure: Length-Aware Contrastive Learning for GUI Agents",
       "updated": "2026-08-22T16:01:47+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2608.27477v1",
+      "abstract": "Graphical user interfaces have emerged as an important environment for evaluating autonomous AI agents on multimodal interactive tasks. Existing benchmarks such as AndroidWorld and MobileWorld provide strong foundations for mobile agent evaluation, but their application coverage and task design do not yet fully capture the diversity and complexity of realistic mobile use. We present GMA, a benchmark for evaluating general mobile assistants in challenging real-world scenarios. GMA introduces seven applications based on open-source projects, spanning domains such as lifestyle sharing and travel planning, and 300 tasks across four difficulty tiers, from atomic actions to complex multi-step workflows. We evaluate eight frontier models and find that performance declines substantially as task complexity increases, with current agents remaining far from reliably handling realistic user requirements. We further conduct controlled ablation studies of agent harness choices, including context retention and explicit state tracking, under a shared environment, model setting, and task taxonomy. Results show that appropriate harness design can meaningfully improve performance, particularly on demanding workflows, while the effectiveness of specific designs can vary across foundation models. Overall, GMA complements existing benchmarks by expanding application coverage and task complexity, providing a challenging testbed for evaluating mobile agents and studying how harness design supports reliable execution in complex mobile workflows.",
+      "arxiv_id": "2608.27477v1",
+      "authors": [
+        "Yiqi Zhu",
+        "Feiyu Gao",
+        "Jiaxing Fan",
+        "Jiahui Zeng",
+        "Minggang Wu",
+        "Chenliang Li",
+        "Haiyang Xu",
+        "Peng Li",
+        "Ming Yan",
+        "Yang Liu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.27477v1",
+      "published": "2026-08-21T20:17:14+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Benchmarking General Mobile Assistants in Challenging Real-World Scenarios",
+      "updated": "2026-08-21T20:17:14+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2608.14132v1",
@@ -2260,7 +2311,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-08-30",
-  "run_paper_count": 7,
+  "report_date": "2026-08-31",
+  "run_paper_count": 9,
   "source_report_date": null
 }
