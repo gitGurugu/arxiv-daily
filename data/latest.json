@@ -8,8 +8,36 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 83,
+  "paper_count": 84,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2608.29305v1",
+      "abstract": "Large language model (LLM) agents have demonstrated remarkable proficiency in manually constructed environments, yet their performance frequently collapses when transitioned to complex real-world settings. Existing research largely attribute this degradation to the compositional generalization gaps in LLMs on combinations of multiple simple, well-structured environments. In this work, we propose that LLM web agents can learn simple environment observations at test time. Specifically, we introduce trial steps for agents to decompose a complex environment observation into sub-modules, and implement a label-free learning method, Test-Time Environment Decomposition (TTED), to adapt agent behaviors with experience during inference. Our empirical evaluations demonstrate the framework's efficacy across both synthetic and realistic benchmarks, showing (1) experience gains acquired within simpler sub-environments can be effectively composed to improve performance in the full one, and (2) test-time training on sub-environments can significantly enhance the compositional generalization of agents in real-world web automation tasks. We also provide key insights in the design of the label-free learning algorithm. As more complex environments are accessed by LLM agents, we believe learning environment decomposition skills at test time will be critical for robust real-world deployment.",
+      "arxiv_id": "2608.29305v1",
+      "authors": [
+        "Junxuan Li",
+        "Zijun Liu",
+        "Ziyi Huang",
+        "Peng Li",
+        "Yuzhou Liu",
+        "Ming Yan",
+        "Yang Liu"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2608.29305v1",
+      "published": "2026-08-29T22:45:09+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Learning Simple Test-Time Environments for LLM Web Agents",
+      "updated": "2026-08-29T22:45:09+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2608.27508v1",
       "abstract": "GUI agents trained with reinforcement learning (RL) have showcased strong environment learning capabilities on mobile platforms. However, RL typically demands extensive real-environment interactions, leading to high resource costs and instability, especially in GUI scenarios. To address these, we propose WM-R1, the first reinforcement learning framework that trains mobile GUI agents with world models instead of real environments. Specifically, world models serve as the source of state transitions during all rollouts, replacing the real Android environment within the training loop. WM-R1 also embeds world models directly into the thinking process, enabling agents to reason about the consequences of candidate actions before committing to the final action. Crucially, WM-R1 eliminates the need for real-environment interaction, supports massively parallelized and step-level granularized trajectory generation grounded in world models, and introduces a multi-dimensional rule-based reward that jointly optimizes task success, trajectory efficiency, and world model utilization. For efficient training, we curate a high-quality dataset of 2000 challenging tasks. Experiments on Android mobile benchmarks demonstrate that WM-R1-trained agents significantly outperform GRPO-only baselines and inference-time simulation methods. Code is available at https://github.com/genalyu/WM-R1 .",
@@ -2311,7 +2339,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-08-31",
-  "run_paper_count": 9,
+  "report_date": "2026-09-01",
+  "run_paper_count": 10,
   "source_report_date": null
 }
