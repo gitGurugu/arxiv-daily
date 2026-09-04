@@ -8,8 +8,40 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 89,
+  "paper_count": 90,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2609.04034v1",
+      "abstract": "While diffusion base models such as GPT-Image-2 and Nano-Banana exhibit remarkable visual expressiveness, their end-to-end generation inherently yields flattened bitmaps with error-prone text, precluding layer-wise post-editing. Conversely, code-based visual generation via Coding Agents provides precise layout control and decoupled layers, yet remains constrained by a lack of global aesthetic intuition and the difficulty of coding complex visual assets. To address this, we propose Editable Visual Design, a new paradigm driven by a Coding Agent. We designate the VLM as the ``creative brain'' for requirement comprehension, task planning, and aesthetic judgment, while utilizing the image generation model as an on-demand ``visual world simulator'' to synthesize standalone visual assets. Operating under an ``imagine first, then act'' closed-loop workflow, the agent generates isolated assets, writes native HTML/CSS, and iteratively refines the design against visual rendering feedback. Furthermore, Agent Design Replay faithfully reproduces the creative and reasoning trajectory akin to that of professional human designers. Ultimately, the system delivers editable artifacts with decoupled layers and real text, enabling users to perform intuitive mouse dragging and layout adjustments on a graphical user interface. Validations on posters, infographics, and other scenarios show that this paradigm successfully achieves both refined aesthetics and production-grade editability.",
+      "arxiv_id": "2609.04034v1",
+      "authors": [
+        "Junyan Ye",
+        "Wei Liu",
+        "Dongzhi Jiang",
+        "Zichen Wen",
+        "HaoDong Li",
+        "Zhutao Lv",
+        "Jiaxin Lin",
+        "Jinhua Yu",
+        "Jun He",
+        "Zilong Huang",
+        "Rui Chen",
+        "Weijia Li"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.04034v1",
+      "published": "2026-09-04T00:10:12+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Editable Visual Design",
+      "updated": "2026-09-04T00:10:12+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2609.02885v1",
       "abstract": "Recent web agents use world models for test-time action selection by sampling candidate actions, predicting the resulting web states, and ranking them with a ranker model or a Process Reward Model (PRM). These world models are typically trained via supervised next-state prediction to generate fixed representations like HTML or AXTree snapshots. However, this objective is misaligned with the downstream ranker, which relies on predicted states being discriminative across candidates to accurately score them. To address this, we introduce predicted-state matching, a training objective where the predicted representation must distinguish the true resulting state from those reached by alternative actions. We train these models using a branching web-agent dataset derived from WebArena Go-Browse trajectories, where every decision point contains multiple alternative actions and their resulting states. Experiments on our held-out predicted-state matching benchmark show that our approach outperforms world models trained with supervised next-state prediction. We further show that our approach improves PRM-style action ranking on WebPRMBench compared with action-only PRMs and PRMs augmented with supervised-next-state world models. Finally, on WebArena-Lite, using our world model for test-time action selection improves end-to-end task success. Our project page is available at: https://dhruvpendharkar.github.io/dwm/.",
@@ -2476,7 +2508,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-09-03",
+  "report_date": "2026-09-04",
   "run_paper_count": 11,
   "source_report_date": null
 }
