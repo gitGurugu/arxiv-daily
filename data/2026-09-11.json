@@ -1,0 +1,263 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 9,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2609.10297v1",
+      "abstract": "GUI agents accumulate high-resolution screenshots as the trajectory unfolds, increasing inference latency and memory usage. Training-free visual token pruning can reduce this cost, but cache reuse introduces a fundamental constraint. Once tokens are discarded, the corresponding visual evidence cannot be recovered without re-encoding. Pruning therefore becomes an \\textit{irreversible admission decision} that must remain useful for unknown future targets while preserving coverage of operable regions under tight budgets. To address these challenges, we propose \\textbf{\\method{}}, a training-free framework for \\emph{\\textbf{T}rajectory-\\textbf{r}obust \\textbf{A}dmission and \\textbf{C}overage-aware \\textbf{E}vidence ordering}. Specifically, we combine a query-independent layout-derived interaction prior with instruction relevance and feature novelty to rank visual evidence according to both potential future utility and diversity. Then, we reserve part of the budget for native visual tokens distributed across the screen, repairing missing spatial coverage without breaking the ordering. Together, these mechanisms produce a nested token order, allowing retained visual evidence to shrink monotonically across budgets while remaining reusable throughout the trajectory. Finally, our monotone KV contraction incrementally contracts retired frames into compact session state, avoiding repeated visual encoding or pruning. Extensive experiments across six GUI benchmarks and diverse models verify the effectiveness of our proposed \\method{} under tight budgets. The source code will be released.",
+      "arxiv_id": "2609.10297v1",
+      "authors": [
+        "Yuhao Wang",
+        "Mu Qiao",
+        "Xindong Zhang",
+        "Yunzhi Zhuge",
+        "Lei Zhang",
+        "Huchuan Lu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.10297v1",
+      "published": "2026-09-09T23:12:48+08:00",
+      "score": 10,
+      "summary_zh": null,
+      "title": "TRACE: Trajectory-robust Admission with Evidence Ordering for Efficient GUI Agents",
+      "updated": "2026-09-09T23:12:48+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.09476v1",
+      "abstract": "In-vehicle assistants must translate natural-language requests into accurate vehicle function calls under strict memory and latency constraints, making small language models (SLMs) attractive for on-device deployment. For such models, a key design choice is how the available function surface is presented. Two approaches are to represent each function with a dedicated Functional Token (FT) or provide function schemas directly in the prompt. FTs enable compact inference but are restricted to functions learned during training, whereas Schema-in-Prompt (SIP) can generalize to unseen functions at the cost of longer prompts and higher inference overhead. We introduce a benchmark of 9,822 single-turn examples spanning 79 vehicle functions derived from Android Automotive, including held-out functions and requests requiring refusal. We compare both approaches under matched fine-tuning across four SLMs from 270M to 1.7B parameters. On functions seen during training, scaling provides limited benefit: the 270M model can match the 1.7B model, while the strongest overall performance occurs at 0.6B. On held-out functions, FT achieves zero accuracy by construction, whereas SIP generalizes and improves substantially with scale. On out-of-scope requests, FT can invoke an unavailable function it was trained to emit, while SIP more reliably refuses based on the functions offered. This flexibility comes with higher memory use and latency. Our theoretical analysis explains how SIP enables generalization and why longer schema contexts increase inference cost. Overall, function-surface representation, rather than model scale alone, determines the capabilities and failure modes of SLM-based vehicle function calling.",
+      "arxiv_id": "2609.09476v1",
+      "authors": [
+        "Hamed Jafarzadeh Asl",
+        "Yuanhao Yu",
+        "Vahid Partovi Nia"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.09476v1",
+      "published": "2026-09-09T05:46:35+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "From Fixed Keys to Readable Schemas: Small Language Models for Vehicle Agent Function Calls",
+      "updated": "2026-09-09T05:46:35+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.06530v1",
+      "abstract": "Continual learning is a crucial capability for Graphical User Interface (GUI) agents to adapt to evolving applications while retaining knowledge acquired from previous applications. Such application streams pose a challenging knowledge modeling problem: new applications often share underlying knowledge with past ones, yet also introduce specific knowledge that must not interfere with historical knowledge. In this paper, we propose activation-conditioned selective knowledge control, a lightweight method that achieves selective knowledge retention via neuron-level gradient manipulation. Our method maintains a compact historical knowledge state to protect highly activated MLP neurons that preserve previous knowledge. When a new application arrives, it performs real-time gradient surgery conditioned on forward activation. Concretely, the protected neurons are categorized into two types: unactivated neurons holding specific knowledge, whose gradients are truncated to prevent interference; and activated neurons holding shared knowledge, whose gradients are orthogonally projected to preserve stability while enabling adaptation. After each application stage, newly identified critical neurons are merged into the historical state for future learning. Empirical evaluations on multi-app sequential benchmark demonstrate that our method effectively mitigates catastrophic forgetting on prior applications while sustaining robust adaptation to new ones.",
+      "arxiv_id": "2609.06530v1",
+      "authors": [
+        "Zirui Shang",
+        "Xin Shu",
+        "Yang Liu",
+        "Zhi Gao",
+        "Xinxiao Wu",
+        "Lifeng Fan"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.06530v1",
+      "published": "2026-09-06T18:50:55+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Selective Knowledge Control for Continual GUI Agent Learning over Application Streams",
+      "updated": "2026-09-06T18:50:55+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.04034v2",
+      "abstract": "While diffusion base models such as GPT-Image-2 and Nano-Banana exhibit remarkable visual expressiveness, their end-to-end generation inherently yields flattened bitmaps with error-prone text, precluding layer-wise post-editing. Conversely, code-based visual generation via Coding Agents provides precise layout control and decoupled layers, yet remains constrained by a lack of global aesthetic intuition and the difficulty of coding complex visual assets. To address this, we propose Editable Visual Design, a new paradigm driven by a Coding Agent. We designate the VLM as the ``creative brain'' for requirement comprehension, task planning, and aesthetic judgment, while utilizing the image generation model as an on-demand ``visual world simulator'' to synthesize standalone visual assets. Operating under an ``imagine first, then act'' closed-loop workflow, the agent generates isolated assets, writes native HTML/CSS, and iteratively refines the design against visual rendering feedback. Furthermore, Agent Design Replay faithfully reproduces the creative and reasoning trajectory akin to that of professional human designers. Ultimately, the system delivers editable artifacts with decoupled layers and real text, enabling users to perform intuitive mouse dragging and layout adjustments on a graphical user interface. Validations on posters, infographics, and other scenarios show that this paradigm successfully achieves both refined aesthetics and production-grade editability.",
+      "arxiv_id": "2609.04034v2",
+      "authors": [
+        "Junyan Ye",
+        "Wei Liu",
+        "Dongzhi Jiang",
+        "Zichen Wen",
+        "HaoDong Li",
+        "Zhutao Lv",
+        "Jiaxin Lin",
+        "Jinhua Yu",
+        "Jun He",
+        "Zilong Huang",
+        "Rui Chen",
+        "Weijia Li"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.04034v2",
+      "published": "2026-09-04T00:10:12+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Editable Visual Design",
+      "updated": "2026-09-04T15:34:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.02885v1",
+      "abstract": "Recent web agents use world models for test-time action selection by sampling candidate actions, predicting the resulting web states, and ranking them with a ranker model or a Process Reward Model (PRM). These world models are typically trained via supervised next-state prediction to generate fixed representations like HTML or AXTree snapshots. However, this objective is misaligned with the downstream ranker, which relies on predicted states being discriminative across candidates to accurately score them. To address this, we introduce predicted-state matching, a training objective where the predicted representation must distinguish the true resulting state from those reached by alternative actions. We train these models using a branching web-agent dataset derived from WebArena Go-Browse trajectories, where every decision point contains multiple alternative actions and their resulting states. Experiments on our held-out predicted-state matching benchmark show that our approach outperforms world models trained with supervised next-state prediction. We further show that our approach improves PRM-style action ranking on WebPRMBench compared with action-only PRMs and PRMs augmented with supervised-next-state world models. Finally, on WebArena-Lite, using our world model for test-time action selection improves end-to-end task success. Our project page is available at: https://dhruvpendharkar.github.io/dwm/.",
+      "arxiv_id": "2609.02885v1",
+      "authors": [
+        "Kelvin Li",
+        "Dhruv Pendharkar",
+        "Anish Pahilajani",
+        "Chuyi Shang",
+        "Leon Oks",
+        "Leonid Karlinsky",
+        "Rogerio Feris",
+        "Trevor Darrell",
+        "Roei Herzig"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.02885v1",
+      "published": "2026-09-03T01:59:40+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "Discriminative World Models for Web Agents",
+      "updated": "2026-09-03T01:59:40+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.02309v1",
+      "abstract": "GUI agents increasingly operate across websites, mobile apps, and desktop environments, yet the field still reports progress primarily through task success. We argue that practical deployment depends equally on efficiency: how much context, computation, action budget, and runtime overhead an agent consumes while succeeding. This survey studies efficient GUI agents through an end-to-end systems lens that preserves the current technical axes of observation efficiency, context and memory efficiency, action efficiency, and planner-side/system efficiency. For each subsection, we expand the seed literature through targeted search plus backward and forward citation chaining, then synthesize the dominant mechanisms, reported efficiency signals, and new overheads they introduce. Across the literature, recent progress converges on a small set of recurring ideas: selective reading instead of full-context ingestion, global-to-local visual allocation, recoverable memory rather than raw history replay, verification-aware control, and hybrid runtimes that can switch between GUI and non-GUI execution. We conclude by identifying the main open problems, including honest accounting of verifier cost, cross-benchmark comparability, and co-design of observation, memory, and execution layers under real latency and privacy constraints.",
+      "arxiv_id": "2609.02309v1",
+      "authors": [
+        "Bizhe Bai",
+        "Jiakang Yuan",
+        "Hongming Wu",
+        "Xinyue Wang",
+        "Jie Ren",
+        "Siyao Chen",
+        "Yuchen Ya",
+        "Fan Bai",
+        "Pai Peng",
+        "Huafeng Qin",
+        "Tao Chen"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.02309v1",
+      "published": "2026-09-02T16:54:58+08:00",
+      "score": 10,
+      "summary_zh": null,
+      "title": "Efficient GUI Agents: A Systems Survey of Observation, Memory, Action, and Runtime Optimization",
+      "updated": "2026-09-02T16:54:58+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.02057v1",
+      "abstract": "Reliable web-agent monitoring is difficult when model-internal uncertainty signals such as token logits are unavailable. In this work, we study prefix-level risk prediction for web agents using observable trajectory signals: given an evolving prefix, estimate whether the current execution remains on track or is tending toward failure. We derive two observable trajectory representations: Macro features summarize cross-step agent--environment behavior and feedback, while Micro features measure the consistency of intention, action, and anticipated state change through repeated black-box queries. Instead of inheriting the final result label, we label the first critical error that remains uncorrected in the observed continuation and is associated with final failure as a key-step boundary, preserving valid early prefixes of failed trajectories as on track. Across WebArena-Lite and Online Mind2Web web agent benchmarks with five open- and closed-source backbones, observable trajectory signals are competitive with internal-signal baselines. The resulting predictors also support early intervention under fixed false-cut budgets and transfer across held-out website categories. These findings show that observable trajectory signals support valuable risk prediction abilities.",
+      "arxiv_id": "2609.02057v1",
+      "authors": [
+        "Sitong Pan",
+        "Yipeng Shen",
+        "Yilin Lu",
+        "Caiwen Ding",
+        "Lu Cheng",
+        "Qianwen Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.02057v1",
+      "published": "2026-09-02T11:34:47+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Monitoring Web Agents Without Internal Signals: Observable Trajectories and Key-Step Supervision",
+      "updated": "2026-09-02T11:34:47+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.01338v1",
+      "abstract": "On-device mobile Large Language Model (LLM) inference is gaining significant attention. However, mobile devices operate in highly dynamic multitasking environments where users frequently switch between applications. This creates memory pressure, forcing LLM memory (model weights and KV cache) to be evicted by the operating system. When a new inference request arrives, the inference system must restore the evicted memory through slow storage reads or recompute the entire KV cache, severely degrading responsiveness. To address this, we present mzCache, an on-device LLM inference system with specialized memory management for multitasking environments. Under unpredictable memory pressure, mzCache elastically evicts LLM memory and leverages the unified memory of mobile SoCs to enable zero-wait inference on the GPU with concurrent CPU-side restoration. mzCache realizes this through restoration-oriented memory management: LLM memory is partitioned into fine-grained shared buffers to enable partial eviction and restoration with concurrent cross-processor access, while hybrid swap and backward-out eviction policies ensure low-latency restoration from any eviction state. Implemented on llama.cpp and deployed as an Android application, mzCache achieves 2.1-5.5$\\times$ reduction in Time-to-First-Token compared to storage-backed partial offload and demonstrates its effectiveness in real multitasking scenarios.",
+      "arxiv_id": "2609.01338v1",
+      "authors": [
+        "Hongseung Yu",
+        "Minsung Kim",
+        "Jongseok Park",
+        "Kyunghan Lee"
+      ],
+      "categories": [
+        "cs.OS",
+        "cs.DC",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.01338v1",
+      "published": "2026-09-01T22:49:20+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "mzCache: On-Device LLM Memory Management under Multitasking",
+      "updated": "2026-09-01T22:49:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.05513v1",
+      "abstract": "Web agents have achieved significant success in automating complex internet tasks but deploying them in real-world environments requires continuous online adaptation. Given that deploying powerful proprietary models remains commercially cost-prohibitive, practitioners must rely on lightweight local models that evolve post-deployment via online teaching from a stronger teacher. However, standard interactive feedback imposes prohibitive costs. We show that conventional trajectory-level preference optimization wastes budget on both unresolvable episodes and redundant execution turns. To resolve these inefficiencies, we propose \\textbf{Score-Guided Online Teaching with Budgeted Trajectory Trimming}, a budget-aware framework that systematically orchestrates \\textbf{when} and \\textbf{what} to teach. Specifically, our framework integrates a solvability-aware teacher gate to dictate \\textbf{when} to query the teacher model and a score-guided turn selection mechanism to decide \\textbf{what} informative turns to retain. Extensive experiments on MiniWoB and TimeWarp demonstrate that our method achieves comparable first-pass success while reducing teacher calls by 22.6\\% and student training compute by 52.1\\% on average. Our code is available at https://github.com/zjw131f1fc/budgeted-online-teaching.",
+      "arxiv_id": "2609.05513v1",
+      "authors": [
+        "Jianwei Zhang",
+        "Sihan Cao",
+        "Pengcheng Zheng",
+        "Ya Wen",
+        "Pei Ke",
+        "Kuien Liu",
+        "Shen Gao",
+        "Wei Dong",
+        "Yang Yang",
+        "Chaoning Zhang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.05513v1",
+      "published": "2026-08-31T16:40:34+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "When and What to Teach: Budget-Aware Online Adaptation for Web Agents",
+      "updated": "2026-08-31T16:40:34+08:00"
+    }
+  ],
+  "report_date": "2026-09-11",
+  "run_paper_count": 9,
+  "source_report_date": null
+}
