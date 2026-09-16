@@ -8,8 +8,146 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 95,
+  "paper_count": 99,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2609.16635v1",
+      "abstract": "Computer-use agents increasingly operate browsers, software, and desktop applications via CLI or API portals, but graphical user interface (GUI) still plays an important role in common industrial production scenarios. GUI agents commonly employ fresh observe-plan-ground-act loops, which is inefficient for enterprise tasks that repeatedly update records, process forms, configure tools, and export reports. We introduce EchoPath, a model-agnostic harness that converts artifact-validated GUI trajectories into standardized, parameter-controlled callable memories, analogous to Model Context Protocol (MCP)-style tool calls rather than unstructured experience records. Each memory stores task-intent keys, application and state preconditions, flexible input parameters, GUI evidence, validation provenance, and lifecycle state, so the host agent invokes a targeted procedure only when it can be deterministically replayed in the current runtime. The core mechanism enabling replay is an image-based target-reaiming algorithm that treats stored coordinates as visual evidence, matches the remembered GUI target against the current screen, and emits corrected operation coordinates before execution. During replay, EchoPath rebinds only declared modifiable inputs and rejects ambiguous or incompatible steps to bounded grounding repair or fresh planning. In experiments with real computer-use tasks, EchoPath reduced median token cost by more than 90% and median execution time by about 60%. These results support a bounded form of enterprise GUI memory: validated execution experience can become a controllable callable asset for recurrent work rather than only context for another reasoning pass.",
+      "arxiv_id": "2609.16635v1",
+      "authors": [
+        "Yao Zhao",
+        "Aditya Shanmugham",
+        "Swastik Roy",
+        "Yanxun Xu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.16635v1",
+      "published": "2026-09-15T12:56:17+08:00",
+      "score": 11,
+      "summary_zh": null,
+      "title": "EchoPath: Execution-Level Replayable Memory for GUI Agents",
+      "updated": "2026-09-15T12:56:17+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.13548v1",
+      "abstract": "Web agents can utilize reusable tools to reduce the cost and latency of low-level browser interaction, but automatically discovered tool collections can be large, redundant, and poorly aligned with user demand. We present AutoTailor, a meta-agentic framework for constructing and maintaining a compact set of trajectory-derived Model Context Protocol (MCP) APIs. Offline, AutoTailor converts web trajectories into parameterized browser-automation programs, applies a Quality Filter to remove APIs with unsuitable granularity and redundant functionality, and applies a Usage Likelihood Filter to prioritize broadly useful capabilities while preserving semantic coverage. Online, Dynamic Reselection monitors task outcomes and API usage, identifies recurring coverage gaps, adds relevant candidates, and prunes persistently unused capabilities. We evaluate AutoTailor on 106 WebArena Postmill tasks. Offline filtering reduces the initial 1,283 unrefined APIs to 87, and Dynamic Reselection produces a 33-API set. With reasoning and acting (ReAct) fallback, this set achieves 90.6% correctness, compared with 87.5% for ReAct alone, while reducing average total request-token cost by 57.8% and latency by 29.4%. Without ReAct, it achieves 60.1% correctness, marginally matching the performance of unrefined set, while reducing request-token usage by 94.9%. Together, these results show that static filtering produces a compact inventory of APIs expected to support core, high-likelihood tasks, while dynamic reselection further tailors that inventory to observed user needs. This combination improves accuracy and latency while sharply reducing token usage and end-to-end cost, demonstrating the value of user-aligned capability management for efficient web agents.",
+      "arxiv_id": "2609.13548v1",
+      "authors": [
+        "Xinyun Cao",
+        "Adriana Szekeres",
+        "Fazle Elahi Faisal"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.SE"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.13548v1",
+      "published": "2026-09-12T05:24:40+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "AutoTailor: Automatic, User-Aligned Capability Selection and Adaptation for Web Agents",
+      "updated": "2026-09-12T05:24:40+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.12404v1",
+      "abstract": "Learning from trial and error is a promising way to improve language agents on complex tasks such as computer control. Reflexion introduced verbal reinforcement learning, which turns failed trials into text that guides later attempts without updating model parameters. We introduce VRL-Bench, a harness for fair evaluation of trial-and-error learning under finite trial budgets. Across three models on MiniWoB and WebShop, we evaluate updates from several prominent verbal-memory methods spanning Reflexion and later work: each improves observed success over memory-free retry in some settings but reduces it in others. Replay experiments show that using reflection can reduce success rates, revealing a trade-off between exploiting experience and continued exploration. We propose VEX$^2$, a verbal exploration--exploitation scheduler that uses a language model to jointly select policies and allocate the remaining trial budget. VEX$^2$ is the only evaluated update to achieve positive observed success-rate gains over retry in all six settings.",
+      "arxiv_id": "2609.12404v1",
+      "authors": [
+        "Yu Bai",
+        "Yukai Miao",
+        "Dawei Wang",
+        "Li Chen",
+        "Yanyu Ren",
+        "Yuqian Shi",
+        "Dan Li",
+        "Ying Xiong",
+        "Chengqiu Tan",
+        "Run Zhou",
+        "Li Li"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.12404v1",
+      "published": "2026-09-11T11:54:02+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "VRL-Bench: Benchmarking agents on computer control tasks under finite trial budgets",
+      "updated": "2026-09-11T11:54:02+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.12394v3",
+      "abstract": "Mobile GUI agents are shifting from multi-module frameworks to native models trained end-to-end, yet industrial deployment faces three persistent gaps. Sandbox training produces a distribution mismatch with production environments; expensive real-device failures remain underutilized; and fixed benchmarks saturate, losing the power to guide iteration. We present BlueLM-GUI, a 35B-A3B mobile GUI agent built as a real-device-centric flywheel that closes these gaps through three principles. Every Sample Matters: a dual-track pipeline with Heterogeneous Triple-System Consensus evaluation and an Error Correction \\& Derivation Module salvages every trajectory into usable supervision. Every Rollout Is Real: a three-stage recipe---continual pre-training, supervised fine-tuning, and agentic reinforcement learning on hundreds of real phones---grounds every rollout in real production environments, so the capability the model learns transfers directly to deployment. Every Query Evolves: a quota-driven benchmark methodology with three orthogonal axes enables precise attribution and allows the benchmark to be systematically upgraded as the model improves. BlueLM-GUI achieves 87.4 on MobileGUI-VBench, surpassing the best closed-source model by 5.1 points, and 84.9 on AndroidWorld, the best result among open-source models and competitive with closed-source models. These results demonstrate that grounding model training and iterative improvement in both real devices and the three Every principles yields strong, robust, and transferable mobile GUI capability.",
+      "arxiv_id": "2609.12394v3",
+      "authors": [
+        "Tong Ye",
+        "Kunyang Han",
+        "Guozhi Wang",
+        "Longqiang Luo",
+        "Zhifeng Ding",
+        "Yongxiang Zhang",
+        "Xiaolei Shen",
+        "Yuxuan Zhang",
+        "Zhuping Zhang",
+        "Tao Xu",
+        "Yue Pan",
+        "Yucheng Zhao",
+        "Yupei Hu",
+        "Yuanjiang Ouyang",
+        "Danfeng Shen",
+        "Runqi Lin",
+        "Hongda Cai",
+        "Zhaoxiong Wang",
+        "Mengjia Yan",
+        "Yingjie Zhong",
+        "Chen Zhou",
+        "Zeyu Zhang",
+        "Xuwen Zhu",
+        "Penggang Shi",
+        "Mingcheng Luo",
+        "Ziyang Wu",
+        "Min Jin",
+        "Mingfu Shen",
+        "Zairong Xu",
+        "Fan Zhang",
+        "Hao Wang",
+        "Liang Liu",
+        "Zhulin Xie",
+        "Lijun Yao",
+        "Xiao Liang",
+        "Liangmin Wen",
+        "Liqiang Feng",
+        "Feilong Wu",
+        "Min Hu",
+        "Min Chen",
+        "Guanjing Xiong",
+        "Xiaohu Ruan",
+        "Xiaoxin Chen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.12394v3",
+      "published": "2026-09-11T11:36:35+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "BlueLM-GUI Technical Report: A Real-Device-Centric Flywheel for Self-Improving Mobile GUI Agents",
+      "updated": "2026-09-15T14:36:04+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2609.10297v1",
       "abstract": "GUI agents accumulate high-resolution screenshots as the trajectory unfolds, increasing inference latency and memory usage. Training-free visual token pruning can reduce this cost, but cache reuse introduces a fundamental constraint. Once tokens are discarded, the corresponding visual evidence cannot be recovered without re-encoding. Pruning therefore becomes an \\textit{irreversible admission decision} that must remain useful for unknown future targets while preserving coverage of operable regions under tight budgets. To address these challenges, we propose \\textbf{\\method{}}, a training-free framework for \\emph{\\textbf{T}rajectory-\\textbf{r}obust \\textbf{A}dmission and \\textbf{C}overage-aware \\textbf{E}vidence ordering}. Specifically, we combine a query-independent layout-derived interaction prior with instruction relevance and feature novelty to rank visual evidence according to both potential future utility and diversity. Then, we reserve part of the budget for native visual tokens distributed across the screen, repairing missing spatial coverage without breaking the ordering. Together, these mechanisms produce a nested token order, allowing retained visual evidence to shrink monotonically across budgets while remaining reusable throughout the trajectory. Finally, our monotone KV contraction incrementally contracts retired frames into compact session state, avoiding repeated visual encoding or pruning. Extensive experiments across six GUI benchmarks and diverse models verify the effectiveness of our proposed \\method{} under tight budgets. The source code will be released.",
@@ -2645,7 +2783,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-09-12",
-  "run_paper_count": 9,
+  "report_date": "2026-09-16",
+  "run_paper_count": 7,
   "source_report_date": null
 }
