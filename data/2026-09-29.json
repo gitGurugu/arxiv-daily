@@ -1,0 +1,253 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 9,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2609.34974v1",
+      "abstract": "LLM-based Web agents can autonomously complete user tasks, yet deceptive interfaces can steer them toward outcomes that conflict with users' interests. Existing defenses primarily intervene on agent behavior through blocking, guidance, or replanning. We identify a distinct failure mode: a task-valid action can still realize an unauthorized consequence because of the current Web state. This motivates treating task-relevant Web state itself as a runtime control target. We introduce Veer, an agent-side runtime defense that leaves task planning to the base agent and intervenes on Web state when a proposed action would produce an unauthorized consequence. Before modifying the live environment, Veer constructs a prospective intervention trajectory toward a safe task-relevant state and executes it with runtime grounding and verification. Across TrickyArena and WebDecept, Veer achieves the highest safe task completion in all three evaluation settings, exceeding the next-best defense by 15.9 and 25.0 percentage points on TrickyArena-Single and TrickyArena-Multi, respectively, while reducing dark-pattern success on WebDecept to 0.3%. These gains persist across dark-pattern types and all 12 agent, model, and benchmark configurations. Ablations show that active state intervention provides the largest gain, while prospective rollout and temporal evidence contribute additional improvements. These results establish task-relevant Web state as an effective runtime control target for protecting Web agents from deceptive outcomes.",
+      "arxiv_id": "2609.34974v1",
+      "authors": [
+        "Ruozhao Yang",
+        "Mingfei Cheng",
+        "Xiaofei Xie"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.34974v1",
+      "published": "2026-09-28T19:53:24+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Before Acting, Change the State: Prospective State Intervention for Web Agents under Deceptive Interfaces",
+      "updated": "2026-09-28T19:53:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.34769v1",
+      "abstract": "GUI agents need long-horizon visual reasoning: they must interpret a changing interface while keeping a multi-step plan viable as earlier actions constrain later ones. Existing benchmarks evaluate grounding, computer use, and game play, but rarely test whether agents stay coherent across long chains of coupled decisions. Long-horizon visual puzzles expose this capability directly: a legal move that looks like progress can make the puzzle unsolvable, and the loss shows only several moves later. We introduce LongPuzzleBench, 114 levels in six puzzle games played through native GUI actions, where one objective can take a human over a thousand actions on persistent boards and dead ends go unannounced. With Native GUI Actions alone, the strongest agents solve most objectives, but success falls sharply on harder, longer boards: seven of ten general-purpose agents solve nothing harder than Medium, and none completes Bolt Unscrew Hard, which a human solves along with every other objective. Code Execution CUA does not close this gap, and its scores mix visual solving with algorithmic search. Controlled diagnostics trace these failures to one limitation that neither rules, state hints, nor failure memory removes: agents judge each move by the visible progress it makes, not by the future options it leaves.",
+      "arxiv_id": "2609.34769v1",
+      "authors": [
+        "Bingo Zhang",
+        "Haochuan Lu",
+        "Zongjie Li",
+        "Genjian Li",
+        "Ari Yu Zhang",
+        "Chaozheng Wang"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.34769v1",
+      "published": "2026-09-28T17:49:25+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "LongPuzzleBench: Evaluating GUI Agents on Long-Horizon Visual Puzzles",
+      "updated": "2026-09-28T17:49:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.34321v1",
+      "abstract": "GUI agents are deployed with frozen weights and discard everything they experience on the job. Existing ways to update an agent's weights assume something deployment withholds: ground truth, rollouts beyond the single attempt (retries, samples, practice runs), or a learning phase other than deployment. Because GUI actions can be irreversible, a deployed agent gets one attempt per task occurrence, in arrival order, and every attempt counts. No ground truth is available at any point. We define fully test-time adaptation for GUI agents by these constraints and pair it with a minimal weight-space method, SOLO. Auxiliary models read each episode: a judge selects the episodes it deems successful, and a proposer-verifier pair relabels a failed episode's prefix with the subtask that prefix completed. Admitted episodes enter a short sliding window, and each admission updates a small adapter by top-K self-distillation on the agent's own predictions, provided the window holds a judged success. On recurring task streams built from WebArena, VisualWebArena and MobileWorld, SOLO improves on the frozen agent with both UI-TARS-7B and Qwen3-VL-8B, by three to six points of success rate, and exceeds two in-setting memory methods on the web streams.",
+      "arxiv_id": "2609.34321v1",
+      "authors": [
+        "Ziqiang Wang",
+        "Li Gu",
+        "Zhixiang Chi",
+        "Linlian Jiang",
+        "Zihuan Jiang",
+        "Linqiang Guo",
+        "Siobhan Reid",
+        "Zhi Liu",
+        "Yang Wang"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.34321v1",
+      "published": "2026-09-28T13:00:45+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "One Rollout Is All You Get: Fully Test-Time Adaptation for GUI Agents",
+      "updated": "2026-09-28T13:00:45+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.34113v1",
+      "abstract": "Understanding where and why Graphical User Interface (GUI) agents fail is essential for building more reliable systems, yet current evaluation relies on step accuracy, a metric that treats each screen independently and overlooks the underlying structure of GUI environments. This leads to two critical blind spots: (1) functionally equivalent screens are evaluated in isolation, obscuring systematic failure patterns across shared screens; and (2) the long-tailed GUI distribution renders failures on rare but critical screens invisible under standard metrics. To address these issues, we propose \\textbf{GUITAR}, a state-centric diagnostic framework that performs structured failure analysis over both states and transitions, using a State Transition Graph (STG) by mapping visually diverse screens to shared functional states. Across 8 agents and 6 tasks from AndroidControl and Mind2Web, GUITAR reveals that 60.4\\% of failures occur in 20\\% of states, localizing errors to a small set of bottlenecks. Bottleneck-targeted guidance improves SR by 2.8\\% and retains a 1.88\\% average gain across 7 agents under three-fold trajectory-held-out evaluation with fully automatic STGs. These findings demonstrate the diagnostic and actionable value of structure-aware evaluation within the evaluated mobile and web tasks. Code is available at https://github.com/sqzhang-lazy/GUITAR",
+      "arxiv_id": "2609.34113v1",
+      "authors": [
+        "Shaoqing Zhang",
+        "Kehai Chen",
+        "Xuefeng Bai",
+        "Zhuosheng Zhang",
+        "Pengfei Zhang",
+        "Yang Xiang",
+        "Min Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.34113v1",
+      "published": "2026-09-28T09:48:48+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "GUITAR: Structured Failure Diagnosis of GUI Agents via State Transitions",
+      "updated": "2026-09-28T09:48:48+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.33304v1",
+      "abstract": "Personal Graphical User Interface (GUI) agents rely on interaction history to infer what a user wants from ambiguous instructions and to anticipate recurring routines. Existing approaches retrieve task-relevant history and append it to the policy's context, implicitly assuming that experience relevant to a task remains useful for each decision within it. We find that this help is largely spent at the first decision: retrieved history strongly improves the opening step of an episode, yet provides little sustained benefit over the remaining 90\\% of steps, and offers weak guidance on whether a proactive suggestion is warranted. A relevant record may tell the agent where to begin, but not which past action applies to the current screen or whether a routine is due now. The underlying issue is that relevance does not imply applicability}: relevance is determined at the task level, whereas applicability depends on the situation at decision time. We therefore recast personalization as experience activation and introduce ExpActivator, a training-free framework that activates only the experience applicable to the current situation. During execution, ExpActivator matches each new screen to historical states in the frozen GUI backbone's latent space and supplies the corresponding action as a reference. Before execution, it activates a recurring intent only when the current time and scenario provide sufficient support, and otherwise abstains. Across four GUI backbones, ExpActivator improves within-trajectory step success by 28\\% on average, achieves the best personalized execution on every backbone while using about one-fifth as many history tokens, and reaches approximately 2.3$\\times$ the Matthews correlation coefficient of the strongest proactive baseline. Experience pays where it is activated, not where it is appended.",
+      "arxiv_id": "2609.33304v1",
+      "authors": [
+        "Fuyao Zhang",
+        "Xuan Wang",
+        "Zherui Li",
+        "Jiaming Zhang",
+        "Longtao Huang",
+        "Wei Yang Bryan Lim"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.33304v1",
+      "published": "2026-09-27T15:15:57+08:00",
+      "score": 12,
+      "summary_zh": null,
+      "title": "Relevance Does Not Imply Applicability: Experience Activation for Personal GUI Agents",
+      "updated": "2026-09-27T15:15:57+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.32679v1",
+      "abstract": "GUI World Models (GUI-WMs) are increasingly used to predict future states for agent planning and simulation, yet most existing formulations condition only on the current GUI observation and action. We identify state aliasing, where the vis- ible interface omits transition-relevant environment state, so identical observable conditions can correspond to different valid futures. To diagnose this failure mode, we introduce StateAliasBench, a diagnostic benchmark that explicitly isolates such ambiguities via strict pairing. We further propose lightweight predictive- state recovery that infers structured state from history and augments otherwise frozen GUI-WMs through a deterministic state interface. Family-specific special- ists provide state recovery across heterogeneous state types, and multi-teacher dis- tillation consolidates them into a single unified estimator. Experiments show that existing GUI-WMs exhibit systematic failures under observation-only condition- ing, while predictive-state augmentation substantially restores state-sensitive pre- diction across evaluated WMs, preserves generative fidelity, and improves down- stream performance of GUI agents on AndroidWorld. These results suggest that reliable GUI world modeling should account not only for what is visible, but also for the hidden transition state that determines what happens next.",
+      "arxiv_id": "2609.32679v1",
+      "authors": [
+        "Dongsheng Liu",
+        "Chao Jin",
+        "Wenkui Yang",
+        "Hejin Wang",
+        "Junwei Yang",
+        "Zeren Zhang",
+        "Ziwei Chen",
+        "Huaibo Huang",
+        "Jie Cao",
+        "Ran He"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.32679v1",
+      "published": "2026-09-26T22:35:45+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "The GUI Is Not the State: Diagnosing State Aliasing in GUI World Models",
+      "updated": "2026-09-26T22:35:45+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.32351v1",
+      "abstract": "Comparative Process Reward Models (PRMs) provide critical step-level guidance for autonomous web agents by evaluating state-conditioned preferences between candidate actions. However, existing preference training data synthesized via multi-policy sampling suffers from a severe scarcity of Grounded Minimal Contrastive Pairs (GMCPs)-where competing candidates target genuine on-page elements with identical action types. In representative baselines preference data (namely, WebArbiter), GMCPs account for merely 24.19%, biasing PRMs during training to rely on shallow shortcuts (such as element hallucinations and action type mismatches) rather than acquiring genuine contextual decision semantics. To address these challenges, we propose SURFPRM, a graph-guided process preference synthesis framework for comparative Web PRMs. SURFPRM structures web demonstrations into a persistent Interaction Element Graph that acts as an environment-grounded negative action proposal mechanism, systematically synthesizing contrastive negative actions across spatial, temporal, and spatiotemporal confusion axes. This elevates the GMCP proportion from 24.19% to 74.60%, producing the curated SURFPRM-DATA dataset. Across six open-source backbones (3B to 9B parameters), PRMs trained on SURFPRM-DATA outperform baseline-trained models on average on WEBPRMBENCH and rival leading proprietary LLMs. In downstream reward-guided trajectory search on WEBARENA-LITE, SURFPRM provides step-level guidance for both GPT-4o (+14.21%) and GPT-4o-mini (+12.83%) policies, yielding substantial improvements in complex web task success rates.",
+      "arxiv_id": "2609.32351v1",
+      "authors": [
+        "Yangzhe Peng",
+        "Xiaoyang Wang",
+        "Yiyang Zhao",
+        "Lijun Wu",
+        "Kun He"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.32351v1",
+      "published": "2026-09-26T16:14:50+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "From Trajectories to Grounded Preferences: Process Preference Synthesis via Interaction Element Graphs for Web PRMs",
+      "updated": "2026-09-26T16:14:50+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.32166v1",
+      "abstract": "Running GUI agents on edge devices can keep sensitive screens and interaction histories local, but the computational cost of inference at every action step makes deployment challenging. Existing GUI agent systems either perform full vision-language model (VLM) inference at each action step or reuse coarse-grained knowledge matched to prior tasks. However, dynamic mobile environments and user tasks make it difficult to fully utilize prior task executions without additional fine-tuning or task-specific offline exploration. To address this challenge, we present PastForward, a system that accelerates GUI agents through validated, fine-grained reuse of computational experience accumulated during ordinary task execution. During decoding, PastForward retrieves prior output sequences as device-adaptive multi-token proposals and verifies them in a single VLM forward pass. Across action steps, it uses prior GUI transitions to begin next-step inference while the device executes the current action, retains the early computation only when the predicted screen matches the observed screen, and carries reusable KV states forward. We evaluate PastForward on AndroidWorld workloads derived from real mobile usage patterns using multiple VLM backbones across server and edge platforms. On device, PastForward achieves action-step latency speedups of 1.63-2.36$\\times$ while maintaining task success rates.",
+      "arxiv_id": "2609.32166v1",
+      "authors": [
+        "Taehwan Park",
+        "Changmin Lee",
+        "Hayeon Lee",
+        "Taesik Gong"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.32166v1",
+      "published": "2026-09-26T10:41:56+08:00",
+      "score": 9,
+      "summary_zh": null,
+      "title": "PastForward: Faster On-Device GUI Agents via Computational Experience Reuse",
+      "updated": "2026-09-26T10:41:56+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.27307v1",
+      "abstract": "Graphical User Interface (GUI) agents enable the fulfillment of complex user instructions through multi-turn interactions with software environments, requiring step-wise reasoning and long-horizon memory to guide actions and retain task-relevant information, respectively. Recent on-policy self-distillation (OPSD) methods have achieved strong performance on GUI grounding, a foundational subtask for GUI agents, owing to dense token-level supervision from privilege-conditioned self-teachers. However, extending existing OPSD methods to multi-turn GUI agents is hindered by self-teachers' limited privilege-following ability and insufficient privileged guidance. In this paper, we introduce GUI-SD-v2, the next version of GUI-SD, which extends OPSD from GUI grounding to multi-turn GUI interaction and addresses key limitations through a two-stage training framework. Specifically, GUI-SD-v2 first strengthens privilege following by jointly optimizing rollouts with and without privileged guidance from the same GUI states. Furthermore, it selectively distills step-specific reasoning and memory guidance through a privilege-conditioned self-teacher, supporting action decisions and the retention of task-relevant information for subsequent interactions. Extensive experiments on two representative GUI agent benchmarks, AndroidWorld and MobileWorld, show that GUI-SD-v2 compares favorably with existing OPSD baselines while consistently outperforming the evaluated state-of-the-art methods in both Pass@1 and Pass@3 success rates. Code and training data will be publicly released.",
+      "arxiv_id": "2609.27307v1",
+      "authors": [
+        "Yan Zhang",
+        "Daiqing Wu",
+        "Huawen Shen",
+        "Liang Li",
+        "Gang Cao",
+        "Zhi Gong",
+        "Wei Dai",
+        "Xiaode Zhang",
+        "Can Ma",
+        "Yu Zhou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.27307v1",
+      "published": "2026-09-23T11:38:11+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "Learn How to Act from Your Own Interactions: On-Policy Self-Distillation for GUI Agents",
+      "updated": "2026-09-23T11:38:11+08:00"
+    }
+  ],
+  "report_date": "2026-09-29",
+  "run_paper_count": 9,
+  "source_report_date": null
+}
