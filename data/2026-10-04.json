@@ -1,0 +1,364 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 12,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.01787v1",
+      "abstract": "Self-improving GUI agents keep the trajectories they produce and return them to the agent, by fine-tuning or by retrieval into the prompt, and studies that compare the two destinations disagree. We attribute this to the unit of experience: a trajectory bundles items with different properties, so a conclusion about the bundle depends on its mix. To address this, (i) we introduce component routing, which splits the experience into locators, procedures, state facts and lessons and sends each component to the context or to the weights, compared on the same items across three backbone families, two environments and three seeds. One pool has two destinations: locators and lessons win in the weights, procedures and state facts in the context. (ii) We fit a rule in two properties measured before any training, recurrence and state-conditionality; it recovers the destination of a held-out backbone family in 24 of 24 cells, two interventions move a component toward the boundary, and routing by the rule beats every whole-trajectory baseline and, by +3.5 points on average, the better single destination of each backbone. (iii) We identify how training and producer-consumer differences change the value of the two destinations: note readout decreases after the same component is written into the weights, most for the items that recur most, context gains increase with the information gap, and weights gains decrease with the policy gap. Code and data will be released.",
+      "arxiv_id": "2610.01787v1",
+      "authors": [
+        "Beining Wu",
+        "Zihao Ding",
+        "Jun Huang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.GR"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.01787v1",
+      "published": "2026-10-01T22:34:32+08:00",
+      "score": 11,
+      "summary_zh": null,
+      "title": "Not All Experience Belongs in the Weights: Component Routing for Self-Improving GUI Agents",
+      "updated": "2026-10-01T22:34:32+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.01491v1",
+      "abstract": "Web agents are an important application of large language models, yet their evaluation often depends on rule based or language model evaluators that inspect only the final outcome. Human verification of task completion and detailed analysis of failed trajectories remain limited. We audit all 165 WebArena Lite tasks under six evaluation conditions built from GPT 5.5 and an untrained Qwen3.5 9B model. The audit retains the original score, corrects false negatives from the automatic evaluator, identifies the first consequential error, and examines progress across the trajectory. We also study a Memory and Analysis Support Mechanism (MASM), which maintains explicit execution state, and Guide Text, which provides task relevant procedural guidance. Across four GPT 5.5 settings, human review recovers 5.45 to 8.49 percentage points of success missed by the evaluator. With a 25 step budget, Guide Text raises corrected success with MASM from 34.55% to 38.18%. On the untrained Qwen3.5 9B model, MASM raises the evaluator score from 13.90% to 18.80%. Review of 102 failed GPT 5.5 trajectories reveals frequent scrolling loops, unfinished exploration, premature answers, invalid actions, and incomplete form workflows. Step level evidence further shows that substantial early progress can coexist with a final failure. These results show why final scores alone provide an incomplete account of web agent behavior and motivate human grounded, trajectory aware verification.",
+      "arxiv_id": "2610.01491v1",
+      "authors": [
+        "Chengguang Gan",
+        "Zimeng He",
+        "Yoshihiro Tsujii",
+        "Ken-ichiro Kobayashi",
+        "Hiroki Itoh",
+        "Kotaro Funakoshi"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.01491v1",
+      "published": "2026-10-01T19:31:37+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "Auditing Web Agent Evaluation on WebArena-Lite: Human Review of Outcomes and Trajectories",
+      "updated": "2026-10-01T19:31:37+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.01215v1",
+      "abstract": "GUI agents require high-quality interaction trajectories to learn how software environments respond to actions, maintain state, and support multi-step workflows. However, the diversity of available trajectories is constrained by the applications, interface states, and workflows accessible in the underlying environments. Expanding this coverage requires deploying increasingly diverse and complex software, with specialized applications imposing additional installation, configuration, and runtime costs. We introduce AutoGUIWorld, a data generation framework that combines the visual priors of image generators with the task knowledge of a planner to synthesize GUI interaction trajectories without deploying or running the corresponding software environments. AutoGUIWorld samples initial GUI scenes from structured specifications of operating-system context, visual appearance, and interface state, and generates tasks conditioned on those scenes. A planner then specifies atomic actions and their intended visual consequences, while an image generator iteratively edits the current screenshot to produce subsequent observations. Action grounding and transition-level quality filtering yield 79,266 spatially annotated step-level training samples across Ubuntu, Windows, macOS, and Chrome. Fine-tuning Qwen3.5-35B-A3B on AutoGUIWorld trajectories improves the mean task score on OSWorld from 33.0% to 40.8% and the task success rate on ScienceBoard from 14.0% to 32.2%. These results show that generated trajectories improve GUI-agent performance on real desktop and scientific tasks.",
+      "arxiv_id": "2610.01215v1",
+      "authors": [
+        "Cheng Yang",
+        "Yifan Wu",
+        "Yutao Huang",
+        "Zhaohua Zhang",
+        "Beiduo Chen",
+        "Muxi Chen",
+        "Chenchen Zhao",
+        "Hexuan Deng",
+        "Haolin Yang",
+        "Geyuan Zhu",
+        "Sa Zhu",
+        "Jianhuan Zhuo",
+        "Qiuyong Xiao",
+        "Jianhao Ruan",
+        "Yiran Peng",
+        "Jiayi Zhang",
+        "Tian Ye",
+        "Xinlei Yu",
+        "Tianwen Jiang",
+        "Jihong Zhang",
+        "Yuyu Luo"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.01215v1",
+      "published": "2026-10-01T15:22:53+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "AutoGUIWorld: Image Generators as Visual World Models for GUI Agent",
+      "updated": "2026-10-01T15:22:53+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.39903v1",
+      "abstract": "Scientific software presents a demanding test for computer-using agents based on visual language models (VLMs): completing a research workflow requires interpreting specialized interfaces, manipulating scientific objects, and producing verifiable results. We thus introduce OSWorld-Science, a benchmark and evaluation environment that combines scientifically meaningful tasks, artifact-based evaluation, and an efficient agent harness for studying computer use in the scientific domain. The benchmark contains 12 VLMs and 146 high-quality tasks across several scientific domains and software configurations, covering workflows such as molecular drawing and retrosynthesis, pathology image analysis, statistical computing, and physical simulation. Tasks are developed through expert proposals and iterative human--AI co-design, with selection guided by scientific value and difficulty. Task-specific execution-based evaluators inspect application states and generated artifacts, including molecular structures, segmentation masks, plots, and numerical results, and award partial credit for incomplete outcomes. Our special harness integrates model adapters, interaction-loop control, and trajectory logging to support comparisons of models and interaction strategies. Our results show that current state-of-the-art VLMs with a strong harness still face challenges in addressing key questions in the scientific domains. We also analyze the benchmarking results across multi-linguistics, reasoning efforts, context length and other factors and derive several important conclusions and directions to assist future development. Overall, we provide an integrated framework connecting expert-defined scientific goals to verifiable software outcomes, enabling systematic evaluation of both agent capabilities and harness design in scientific workflows.",
+      "arxiv_id": "2609.39903v1",
+      "authors": [
+        "Dingyuan Dai",
+        "Heli Qi",
+        "Lei Liu",
+        "Yinxi Li",
+        "Baiding Chen",
+        "Zijun Dou",
+        "Qingcheng Zeng",
+        "Qi Kang",
+        "Oliver Sun",
+        "Eric Wang",
+        "Bo Zhou",
+        "Haixin Wang",
+        "Yufan Du",
+        "Shi Bo",
+        "Ruihan Lin",
+        "Mengqi Yuan",
+        "Dunjie Lu",
+        "Steven Dillmann",
+        "Yiming Shi",
+        "Tina Su",
+        "Amy Xin",
+        "Minghao Liu",
+        "Xi Wang",
+        "Xu Huang",
+        "Ge Zhang",
+        "Pengyu Nie",
+        "Zhen Yang",
+        "Jie Tang",
+        "Juanzi Li",
+        "Weihao Xuan",
+        "Tianyu Liu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.39903v1",
+      "published": "2026-09-30T23:03:05+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "OSWorld-Science: A Benchmark of Computer Use Agents for Learning and Using Scientific Software",
+      "updated": "2026-09-30T23:03:05+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.39547v1",
+      "abstract": "GUI agents built on large language and vision-language models still struggle on unseen applications and complex multi-step tasks, as completing real GUI tasks depends on app-specific, temporally volatile operational knowledge that is scarce in pretraining corpora. Retrieval-augmented execution offers a natural remedy but faces two coupled bottlenecks: knowledge at scale is hard to acquire, and self-collected priors inevitably drift from the live environment due to version updates, promotions, ads, A/B tests, and personalization. We therefore argue that GUI agents should not pursue perfect knowledge but learn to act correctly under imperfect priors, and propose our framework that couples knowledge acquisition with noise-robust utilization: a structured exploration strategy traverses interactive elements, builds a UI state-transition graph, and synthesizes (task, trajectory) pairs via a VLM without human annotation; a noise-aware training strategy, grounded in a taxonomy of real GUI drift patterns, injects five types of realistic errors into self-explored trajectories to teach the agent to assess prior reliability before acting. Experiments on physical devices and online emulator benchmarks show that our method discovers more unique screens, covers more benchmark tasks, and more effectively rejects erroneous priors while leveraging correct ones, with accuracy gains that transfer across datasets.",
+      "arxiv_id": "2609.39547v1",
+      "authors": [
+        "Bo Han",
+        "Qianyi Wang",
+        "Shuai Liu",
+        "Xiong Zifan",
+        "Changqiao Wu",
+        "Yuanfa Li",
+        "Pengzhi Gao",
+        "Wei Liu",
+        "Jian Luan",
+        "Heng Qu",
+        "Yunpeng Song",
+        "Zhongmin Cai"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.39547v1",
+      "published": "2026-09-30T19:45:51+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "Learning Reliable GUI Agents under Imperfect Priors",
+      "updated": "2026-09-30T19:45:51+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.38778v1",
+      "abstract": "An agent that remembers what it did on a web page must decide when two pages count as the same. Memories built on observation similarity merge pages that look alike but behave differently, and GUIs are full of such pages: two tabs of one widget or two rows of one menu answer the same click differently. We define the merge rule as an action-conditioned bisimulation over the empirical predictive state graph a frozen agent fills as it acts. Two states merge only when their shared actions lead to agreeing outcomes and successor blocks under an affordance label. Observation similarity never enters the rule, and nothing is trained. It replaces the merge rule of an existing outcome-value memory, so a closed-loop comparison isolates it. On MiniWoB++ it raises success rate over a memoryless agent, while a control taking identical exploratory detours, the prior successor-representation merge, and the same criterion without action conditioning change nothing.",
+      "arxiv_id": "2609.38778v1",
+      "authors": [
+        "Hongbo Zhang",
+        "Liuyang Song",
+        "Quanquan Li",
+        "Daqian Yang",
+        "Yan Wen",
+        "Zhengtao Yao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.38778v1",
+      "published": "2026-09-30T10:11:02+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "Action Conditioned Bisimulation For GUI Agent Memory",
+      "updated": "2026-09-30T10:11:02+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.37617v1",
+      "abstract": "Speculative decoding accelerates autoregressive generation by using a smaller drafter to propose tokens for batched verification by a larger target. However, conventional speculative decoding couples drafting to the target's evolving verified prefix, serializing drafting and verification. We ask whether this dependency is necessary for source-conditioned generation. Our key observation is that, for audio language models, the input audio and user request can provide useful speculative candidates without following the target's evolving text prefix. We propose AS$^2$D (Audio Speculative Speculative Decoding), which enables target-decoupled drafting: an audio-conditioned drafter follows its own generation history while the target independently verifies and corrects ready candidates. Without usable candidates, the target advances alone. Thus, target feedback determines which candidates are committed but no longer determines when the drafter can make progress, enabling drafting and verification to proceed concurrently while retaining target-side verification and correction. We implement AS$^2$D in MNN for Android and evaluate two target models across four phones, seven datasets, and three tasks covering 12.2 hours of audio. Across four phones, AS$^2$D improves pooled ASR throughput by 42-76% over target-only decoding, while only 5.7% of evaluation windows are slower than target-only, compared with 58.1-63.0% for speculative baselines. For ASR, AS$^2$D reaches 97.33-98.20% of a hindsight per-window oracle's pooled throughput over the evaluated drafter/budget catalog. Native on-demand execution with a 7B target achieves up to 78% higher throughput than target-only. These results show that source-conditioned audio generation can relax the conventional dependence of speculative drafting on the target's evolving output prefix, exposing substantial parallelism for efficient inference.",
+      "arxiv_id": "2609.37617v1",
+      "authors": [
+        "Yunzhe Li",
+        "Kyoungjun Park",
+        "Hongzi Zhu",
+        "Lili Qiu"
+      ],
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.37617v1",
+      "published": "2026-09-29T21:59:17+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "AS$^2$D: Accelerating On-Demand Audio Understanding on Mobile Devices",
+      "updated": "2026-09-29T21:59:17+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.36927v1",
+      "abstract": "Many computer tasks recur: the same workflow runs many times, with new inputs and from different starting states. Current computer-use agents re-plan every step of every run, which makes them costly and unreliable on such tasks. We introduce neuro-symbolic computer use, in which a recurring workflow is executed by a learned policy rather than re-derived by an agent on each run. The policy fixes the decisions that are stable across runs (ordering, variables, loops, and branches) in executable code, and delegates observation-dependent decisions, such as grounding and state checks, to neural models. We learn these policies with neuro-symbolic policy iteration: starting from one agent trajectory, it executes the policy, diagnoses failures with task-completion and step-level judges, and revises the code with a coding model informed by an agent's continuation from the point of failure, without access to the benchmark evaluator. Iterating on generated parameter and initial-state variants makes the policy reusable, and a pre-action verifier guards each state-mutating step at deployment. On OSWorld-Verified and ScienceBoard, the learned policies achieve the highest Pass^3 of all methods in all four settings, 3.6-15.8 points above the base agent, while cutting per-run cost by 15-217$\\times$ and latency by 3.4-5.1$\\times$. On OSWorld-Verified, policies built only on variants transfer to the held-out original tasks, exceeding AutoRPA by 8.6-17.5 points in Pass^3.",
+      "arxiv_id": "2609.36927v1",
+      "authors": [
+        "Hyewon Suh",
+        "Thanh Minh Nguyen",
+        "Chih-Lun Lee",
+        "Darrow Hartman",
+        "Lizhao Liu",
+        "Xin Eric Wang",
+        "Ang Li",
+        "Jiachen Yang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.36927v1",
+      "published": "2026-09-29T15:44:22+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Neuro-Symbolic Computer Use: Learning Reusable Policies for Reliable and Efficient Execution",
+      "updated": "2026-09-29T15:44:22+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.36923v1",
+      "abstract": "Existing reactive Graphical User Interface (GUI) agents often fail in long-horizon, dynamic scenarios, where unexpected disturbances trigger attention-diverting and cascading failures. To address this, we propose PrecogUI, a pre-cognitive architecture that shifts the paradigm from reactive execution to proactive decision-making. Specifically, we design a Proactive Experience Pool (PEP), which caches recurring anomaly and success patterns as \"state-action-result\" tuples in a dual-memory repository. Furthermore, we introduce a Proactive Simulation Executor (PSE) that learns to forecast the next symbolic UI layout given a candidate action, enabling early anomaly avoidance and ranking candidate actions by predicted reliability. Finally, a Pre-cognitive Execution Controller (PEC) fuses these priors and predictions, prioritizes handling of foreseen anomalies, and ensures execution robustness through a closed-loop error correction mechanism. For robust evaluation, we develop AutoTraj, an automatic data-generation engine, to construct InterfereBench, a benchmark for long-horizon tasks with strong disturbances. Experiments demonstrate that PrecogUI surpasses state-of-the-art methods on InterfereBench while maintaining competitive performance on public benchmarks. The code will be publicly available.",
+      "arxiv_id": "2609.36923v1",
+      "authors": [
+        "Bin Kang",
+        "Jiarui Ouyang",
+        "Li Jiang",
+        "Bin Chen",
+        "Zhuotao Tian"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.36923v1",
+      "published": "2026-09-29T15:41:34+08:00",
+      "score": 14,
+      "summary_zh": null,
+      "title": "PrecogUI: Proactive GUI Agents via Pre-cognitive Simulation and Experience Retrieval",
+      "updated": "2026-09-29T15:41:34+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.36488v1",
+      "abstract": "Large language model (LLM) agents have demonstrated strong performance on complex web navigation tasks, yet they remain brittle in real-world settings where user intentions are underspecified and preferences are heterogeneous. In practice, users rarely provide explicit profiles, requiring agents to infer latent preferences from implicit signals. Despite its importance for deployment, this problem setting is largely underexplored in existing benchmarks. To address this gap, we introduce AdaptArena, a benchmark for evaluating test-time personalization of web agents via implicit preference inference. AdaptArena consists of 480 tasks, featuring both single-preference and double-preference scenarios. Each evaluation task must be solved by retrieving and leveraging the most relevant historical user trajectory that implicitly encodes the target preference. In addition, we introduce AdaptiveAgent, a retrieval-based framework for standardized evaluation of implicit preference inference. Experiments reveal a substantial performance gap: while oracle agents with access to ground-truth preferences achieve an 82.92% success rate, the evaluated LLM agents using our framework reach at most 15.62%. Furthermore, we find that correctly inferring user preferences is necessary but not sufficient for task success, as execution failures in downstream web interactions remain a significant bottleneck even when agents align with the target preference. These findings highlight implicit preference inference and robust action grounding as key challenges for deploying reliable, user-facing web agents. We release our code: https://github.com/McGill-NLP/web-agents-test-time-adaptations",
+      "arxiv_id": "2609.36488v1",
+      "authors": [
+        "Dongchan Shin",
+        "Xing Han Lù",
+        "Jiaqi Deng",
+        "Jay Gala",
+        "Tomás Vergara Browne",
+        "Jaewon Moon",
+        "Fengyuan Liu",
+        "Alexandre Drouin",
+        "Siva Reddy",
+        "Alexandre Lacoste"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.36488v1",
+      "published": "2026-09-29T09:46:48+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "AdaptArena: Evaluating Test-Time Personalization of Web Agents",
+      "updated": "2026-09-29T09:46:48+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.34974v1",
+      "abstract": "LLM-based Web agents can autonomously complete user tasks, yet deceptive interfaces can steer them toward outcomes that conflict with users' interests. Existing defenses primarily intervene on agent behavior through blocking, guidance, or replanning. We identify a distinct failure mode: a task-valid action can still realize an unauthorized consequence because of the current Web state. This motivates treating task-relevant Web state itself as a runtime control target. We introduce Veer, an agent-side runtime defense that leaves task planning to the base agent and intervenes on Web state when a proposed action would produce an unauthorized consequence. Before modifying the live environment, Veer constructs a prospective intervention trajectory toward a safe task-relevant state and executes it with runtime grounding and verification. Across TrickyArena and WebDecept, Veer achieves the highest safe task completion in all three evaluation settings, exceeding the next-best defense by 15.9 and 25.0 percentage points on TrickyArena-Single and TrickyArena-Multi, respectively, while reducing dark-pattern success on WebDecept to 0.3%. These gains persist across dark-pattern types and all 12 agent, model, and benchmark configurations. Ablations show that active state intervention provides the largest gain, while prospective rollout and temporal evidence contribute additional improvements. These results establish task-relevant Web state as an effective runtime control target for protecting Web agents from deceptive outcomes.",
+      "arxiv_id": "2609.34974v1",
+      "authors": [
+        "Ruozhao Yang",
+        "Mingfei Cheng",
+        "Xiaofei Xie"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.34974v1",
+      "published": "2026-09-28T19:53:24+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Before Acting, Change the State: Prospective State Intervention for Web Agents under Deceptive Interfaces",
+      "updated": "2026-09-28T19:53:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2609.34769v1",
+      "abstract": "GUI agents need long-horizon visual reasoning: they must interpret a changing interface while keeping a multi-step plan viable as earlier actions constrain later ones. Existing benchmarks evaluate grounding, computer use, and game play, but rarely test whether agents stay coherent across long chains of coupled decisions. Long-horizon visual puzzles expose this capability directly: a legal move that looks like progress can make the puzzle unsolvable, and the loss shows only several moves later. We introduce LongPuzzleBench, 114 levels in six puzzle games played through native GUI actions, where one objective can take a human over a thousand actions on persistent boards and dead ends go unannounced. With Native GUI Actions alone, the strongest agents solve most objectives, but success falls sharply on harder, longer boards: seven of ten general-purpose agents solve nothing harder than Medium, and none completes Bolt Unscrew Hard, which a human solves along with every other objective. Code Execution CUA does not close this gap, and its scores mix visual solving with algorithmic search. Controlled diagnostics trace these failures to one limitation that neither rules, state hints, nor failure memory removes: agents judge each move by the visible progress it makes, not by the future options it leaves.",
+      "arxiv_id": "2609.34769v1",
+      "authors": [
+        "Bingo Zhang",
+        "Haochuan Lu",
+        "Zongjie Li",
+        "Genjian Li",
+        "Ari Yu Zhang",
+        "Chaozheng Wang"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2609.34769v1",
+      "published": "2026-09-28T17:49:25+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "LongPuzzleBench: Evaluating GUI Agents on Long-Horizon Visual Puzzles",
+      "updated": "2026-09-28T17:49:25+08:00"
+    }
+  ],
+  "report_date": "2026-10-04",
+  "run_paper_count": 12,
+  "source_report_date": null
+}
