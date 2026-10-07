@@ -8,8 +8,61 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 122,
+  "paper_count": 125,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.08773v1",
+      "abstract": "Web agents complete user requests by reading and acting on pages that third parties write, so an instruction planted on a page can redirect the agent away from the user's goal. The agent cannot simply ignore the page, because the page also holds the values and controls the task requires. Current defenses fine-tune the agent on injections fixed before training, and attackers that adapt to the trained model bypass them. Adversarial training lets the attacker adapt but keeps the tasks fixed, so a task stops teaching once the agent solves it. We introduce AdvSim2Real, which co-evolves a task curriculum, an injection adversary, and the agent inside a frozen web world model. The curriculum is rewarded for tasks the agent solves about half of the time, and the adversary only for a success flip, an injection that turns a judged success into a failure. Training in the simulator makes a 4B agent both more capable and more robust: its completion rises with and without attacks, holds against a frontier-model adversary it never trained against, and its capability gain carries over to a real browser. On 150 web tasks, AdvSim2Real raises completion under this unseen adversary by 33.6\\% relative to the base agent.",
+      "arxiv_id": "2610.08773v1",
+      "authors": [
+        "Sarim Hashmi",
+        "Mukul Ranjan",
+        "Kshitij Mishra",
+        "Mikhail Kuznetsov",
+        "Praneeth Vepakomma",
+        "Nils Lukas"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.08773v1",
+      "published": "2026-10-07T01:56:43+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "AdvSim2Real : Training Web Agents Against Adaptive Prompt Injection in a Web World Model",
+      "updated": "2026-10-07T01:56:43+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.07846v1",
+      "abstract": "The scenario approach is a well-established statistical framework for data-driven decision-making. In particular, in data-driven optimization, the scenario approach unveils how the problem structure governs out-of-sample generalization, and offers a principled basis for assessing and certifying the reliability of the optimal solution as per constraint satisfaction. Despite its strong theoretical development and wide applicability, no software toolbox has been available to date that enables user-friendly, data-driven convex optimization within the scenario-approach framework. In this paper, we introduce Scen-Opt, an open-source software tool that integrates convex programming with data samples while providing statistical guarantees grounded in scenario theory. Scen-Opt is implemented in Python, supporting data-driven linear, quadratic, and semidefinite programming, and offers a Python-based web application with an intuitive and reactive graphical user interface (GUI) built using modern web technologies. Scen-Opt can be used directly through its online interface or installed locally, accommodating both manual input and data-file uploads (CSV, JSON, TXT, TSV, MAT, Excel, NPY, NPZ, Parquet). Built on a Python backend with a modern JavaScript frontend, Scen-Opt offers a highly user-friendly experience and efficient usability across desktops, laptops, tablets, and mobile devices. In this paper, Scen-Opt is applied to a set of representative benchmarks, demonstrating its practical effectiveness for data-driven convex optimization with guaranteed performance.",
+      "arxiv_id": "2610.07846v1",
+      "authors": [
+        "Ben Wooding",
+        "Simone Garatti",
+        "Marco C. Campi",
+        "Abolfazl Lavaei"
+      ],
+      "categories": [
+        "cs.MS",
+        "cs.LG",
+        "eess.SY",
+        "math.OC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.07846v1",
+      "published": "2026-10-06T14:51:26+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Scen-Opt: A Scenario Optimization Toolbox for Data-Driven Convex Programming",
+      "updated": "2026-10-06T14:51:26+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2610.06829v1",
       "abstract": "Open-source web agents are now strong enough to execute realistic browser tasks, but training them with reinforcement learning still depends on weak supervision: binary task success is too sparse for credit assignment, while frontier-language-model judges are too expensive to call at every step and cannot be assumed available at deployment. We introduce CLIFT, a training and test-time scaling method built around conformal self-verification. During training, the agent answers natural-language verification questions about its own rollouts; a Compositional Conformal Certifier keeps only question signals whose URL-conditional evidence agrees with a training-time judge, assigns signed trust weights through polarity-aware lift, and blends the resulting verifier score into per-step rewards in a way that never subtracts from the judge baseline. At test time, the same certified bank is frozen and reused as structured evidence for Conformal Trajectory Selection (CTS): the agent samples a greedy rollout and one or more diverse retries, the self-verifier summarises each URL trace, and a conservative majority-vote rule chooses whether to swap away from the current incumbent without calling any external judge. This single mechanism supports three settings. On WebArena Infinity, CLIFT achieves state-of-the-art performance among open-source web agents. On VisualWebArena, a bank trained with the open model transfers to GPT-5.5 at test time and reaches state-of-the-art performance under the canonical harness. On Online Mind2Web, without training an agent on the benchmark, translating the certified question bank improves a live-web agent in zero-shot evaluation. Together these results position conformal self-verification as a way to turn costly judge feedback into a reusable training signal and a judge-free test-time scaling signal.",
@@ -36,6 +89,33 @@
       "summary_zh": null,
       "title": "CLIFT: Conformal Self-Verification for Web Agent Training and Test-Time Scaling",
       "updated": "2026-10-06T01:57:51+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.07118v1",
+      "abstract": "Modern language-model agents increasingly interact with external environments over long-horizon, multi-step trajectories, where the accumulated interaction history can quickly exceed practical context budgets. To ensure reliability, agents must maintain factual information over long horizons, remember execution errors and corrective feedback, and track progress across actions. Several approaches have been proposed to achieve this without the need for maintaining the entire execution history in context, such as using the reasoning and action history, learning to maintain a fixed-size memory through an overwrite mechanism, and periodic summarization. Although overwrite memory can in principle retain anything an append-only memory can, it must learn to carry each fact through every subsequent rewrite, which is difficult to learn from sparse outcome rewards; for interactive applications like web agents, we find that trained overwrite memories delete key information required by the trajectory, as well as corrective feedback received from the environment. We introduce AMBER (Append-only Memory Bank for Evidence Retention) - a simple and scalable framework where an agent jointly learns to reason, act, and write free-form memory, while an append-only rule guarantees retention by construction. This allows AMBER to be trained end-to-end with reinforcement learning from outcome rewards without the need for extensive curated SFT data. On WebArena Lite, AMBER improves average success over overwrite-based memory by 4.09 percentage points, increases the fraction of tasks solved in five repeated runs by 4.8 percentage points, and matches an overwrite baseline trained on substantially more expensive curated supervision. AMBER achieves these improvements while maintaining a practical token budget, providing a strong balance between context efficiency, task performance, and reliable long-horizon execution.",
+      "arxiv_id": "2610.07118v1",
+      "authors": [
+        "Chinmay Savadikar",
+        "Zhaoyu Zhang",
+        "Mingyu Zhao",
+        "Shuang Xie",
+        "Han Li",
+        "Tianfu Wu",
+        "Lingyun Wang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.07118v1",
+      "published": "2026-10-06T01:11:07+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "AMBER: Training Long-Horizon Web Agents through Append-Only Memory",
+      "updated": "2026-10-06T01:11:07+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2610.05861v1",
@@ -3419,7 +3499,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-10-06",
+  "report_date": "2026-10-07",
   "run_paper_count": 9,
   "source_report_date": null
 }
