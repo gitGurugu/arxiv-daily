@@ -1,0 +1,221 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 8,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.11942v1",
+      "abstract": "A login screen that appears after a tap on Sign in is expected; the same screen after a tap on View order is an attack. For GUI agents, safety is therefore a property of the transition rather than of the screen, and a monitor that inspects only screens can be defeated by reusing a legitimate one. Judging a transition requires an expectation of what should have followed the action. Existing GUI world models provide one, but they output it as text, code, or images, so checking it against the observed screen requires a second model to judge the two. We argue that a world model meant for verification should instead predict in the space in which observations are encoded, and present LGWM, a decoder-free, action-conditioned world model that predicts the representation of the next screen directly, trained without semantic annotation on 1.85M real GUI transitions. Verification reduces to a vector comparison, and the same signal reveals whether a mismatch is harmful. We evaluate on RSWT-BENCH, a diagnostic where each credential screen appears under both a legitimate and a hijacked transition, so detectors that see only the screen are at chance by construction. The training-free score reaches 0.987 AUC at 17 ms per decision, on par with the strongest closed-source VLMs and about ten AUC points above generative GUI world models at over three orders of magnitude lower latency. The residual direction reaches 0.953 AUC at separating harmful from benign violations, where prompted VLMs are near chance. Further analyses show that the prediction is a usable future state rather than an anomaly score. World models have mostly served as simulators or planners; our results point to a third role, verification, for which predicting in representation space is the natural design.",
+      "arxiv_id": "2610.11942v1",
+      "authors": [
+        "Jiaming Zhang",
+        "Xuan Wang",
+        "Fuyao Zhang",
+        "Yang Cao",
+        "Lingjuan Lyu",
+        "Wei Yang Bryan Lim"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.11942v1",
+      "published": "2026-10-08T21:33:23+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "Right Screen, Wrong Transition: World Models as Verifiers for GUI Agents",
+      "updated": "2026-10-08T21:33:23+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.11707v1",
+      "abstract": "Memory-augmented mobile GUI agents store successful execution trajectories and reuse them in later tasks, but a stored trajectory rarely matches a new task exactly. The new task may use different parameters, share only some of its steps with a stored trajectory, or have no relevant record in memory. Forcing the agent to use irrelevant memory can mislead it, whereas discarding memory that may still be useful deprives it of guidance from past experience. To address this dilemma, we propose DeltaReplay, a step-level memory reuse framework that decides how to use existing memory without modifying it. We observe that the reusable part of a stored record is determined not by the record itself but by its relation to the new task, mainly through two factors: page-level consistency and action-level generality. We therefore store execution trajectories as paths in a transition graph, whose nodes (pages) and edges (actions between pages) capture these two factors. At reuse time, the action on each edge is split into a task-independent operation and task-specific parameters. DeltaReplay then compares each recorded step with the new task and the current screen, and decides whether to follow it, execute it after replacing its parameters, or leave it to the base agent. On AndroidWorld and SPA-Bench, DeltaReplay improves the task success rate over a base agent with the same backbone by up to 10.3 and 25.0 percentage points, respectively. These results indicate that deciding at each step how to use retrieved memory lets agents benefit even from partially matching trajectories.",
+      "arxiv_id": "2610.11707v1",
+      "authors": [
+        "Yudong Bai",
+        "Yihong Chen",
+        "Quanming Yao",
+        "Yaqing Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.11707v1",
+      "published": "2026-10-08T19:12:57+08:00",
+      "score": 17,
+      "summary_zh": null,
+      "title": "DeltaReplay: Task-Relative Memory Reuse for Mobile GUI Agents",
+      "updated": "2026-10-08T19:12:57+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.08773v1",
+      "abstract": "Web agents complete user requests by reading and acting on pages that third parties write, so an instruction planted on a page can redirect the agent away from the user's goal. The agent cannot simply ignore the page, because the page also holds the values and controls the task requires. Current defenses fine-tune the agent on injections fixed before training, and attackers that adapt to the trained model bypass them. Adversarial training lets the attacker adapt but keeps the tasks fixed, so a task stops teaching once the agent solves it. We introduce AdvSim2Real, which co-evolves a task curriculum, an injection adversary, and the agent inside a frozen web world model. The curriculum is rewarded for tasks the agent solves about half of the time, and the adversary only for a success flip, an injection that turns a judged success into a failure. Training in the simulator makes a 4B agent both more capable and more robust: its completion rises with and without attacks, holds against a frontier-model adversary it never trained against, and its capability gain carries over to a real browser. On 150 web tasks, AdvSim2Real raises completion under this unseen adversary by 33.6\\% relative to the base agent.",
+      "arxiv_id": "2610.08773v1",
+      "authors": [
+        "Sarim Hashmi",
+        "Mukul Ranjan",
+        "Kshitij Mishra",
+        "Mikhail Kuznetsov",
+        "Praneeth Vepakomma",
+        "Nils Lukas"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.08773v1",
+      "published": "2026-10-07T01:56:43+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "AdvSim2Real : Training Web Agents Against Adaptive Prompt Injection in a Web World Model",
+      "updated": "2026-10-07T01:56:43+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.07846v1",
+      "abstract": "The scenario approach is a well-established statistical framework for data-driven decision-making. In particular, in data-driven optimization, the scenario approach unveils how the problem structure governs out-of-sample generalization, and offers a principled basis for assessing and certifying the reliability of the optimal solution as per constraint satisfaction. Despite its strong theoretical development and wide applicability, no software toolbox has been available to date that enables user-friendly, data-driven convex optimization within the scenario-approach framework. In this paper, we introduce Scen-Opt, an open-source software tool that integrates convex programming with data samples while providing statistical guarantees grounded in scenario theory. Scen-Opt is implemented in Python, supporting data-driven linear, quadratic, and semidefinite programming, and offers a Python-based web application with an intuitive and reactive graphical user interface (GUI) built using modern web technologies. Scen-Opt can be used directly through its online interface or installed locally, accommodating both manual input and data-file uploads (CSV, JSON, TXT, TSV, MAT, Excel, NPY, NPZ, Parquet). Built on a Python backend with a modern JavaScript frontend, Scen-Opt offers a highly user-friendly experience and efficient usability across desktops, laptops, tablets, and mobile devices. In this paper, Scen-Opt is applied to a set of representative benchmarks, demonstrating its practical effectiveness for data-driven convex optimization with guaranteed performance.",
+      "arxiv_id": "2610.07846v1",
+      "authors": [
+        "Ben Wooding",
+        "Simone Garatti",
+        "Marco C. Campi",
+        "Abolfazl Lavaei"
+      ],
+      "categories": [
+        "cs.MS",
+        "cs.LG",
+        "eess.SY",
+        "math.OC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.07846v1",
+      "published": "2026-10-06T14:51:26+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Scen-Opt: A Scenario Optimization Toolbox for Data-Driven Convex Programming",
+      "updated": "2026-10-06T14:51:26+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.06829v1",
+      "abstract": "Open-source web agents are now strong enough to execute realistic browser tasks, but training them with reinforcement learning still depends on weak supervision: binary task success is too sparse for credit assignment, while frontier-language-model judges are too expensive to call at every step and cannot be assumed available at deployment. We introduce CLIFT, a training and test-time scaling method built around conformal self-verification. During training, the agent answers natural-language verification questions about its own rollouts; a Compositional Conformal Certifier keeps only question signals whose URL-conditional evidence agrees with a training-time judge, assigns signed trust weights through polarity-aware lift, and blends the resulting verifier score into per-step rewards in a way that never subtracts from the judge baseline. At test time, the same certified bank is frozen and reused as structured evidence for Conformal Trajectory Selection (CTS): the agent samples a greedy rollout and one or more diverse retries, the self-verifier summarises each URL trace, and a conservative majority-vote rule chooses whether to swap away from the current incumbent without calling any external judge. This single mechanism supports three settings. On WebArena Infinity, CLIFT achieves state-of-the-art performance among open-source web agents. On VisualWebArena, a bank trained with the open model transfers to GPT-5.5 at test time and reaches state-of-the-art performance under the canonical harness. On Online Mind2Web, without training an agent on the benchmark, translating the certified question bank improves a live-web agent in zero-shot evaluation. Together these results position conformal self-verification as a way to turn costly judge feedback into a reusable training signal and a judge-free test-time scaling signal.",
+      "arxiv_id": "2610.06829v1",
+      "authors": [
+        "Yifan Zhang",
+        "Yutong Dai",
+        "Viraj Prabhu",
+        "Zhiyuan Hu",
+        "Ran Xu",
+        "Zeyuan Chen"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.06829v1",
+      "published": "2026-10-06T01:57:51+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "CLIFT: Conformal Self-Verification for Web Agent Training and Test-Time Scaling",
+      "updated": "2026-10-06T01:57:51+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.07118v1",
+      "abstract": "Modern language-model agents increasingly interact with external environments over long-horizon, multi-step trajectories, where the accumulated interaction history can quickly exceed practical context budgets. To ensure reliability, agents must maintain factual information over long horizons, remember execution errors and corrective feedback, and track progress across actions. Several approaches have been proposed to achieve this without the need for maintaining the entire execution history in context, such as using the reasoning and action history, learning to maintain a fixed-size memory through an overwrite mechanism, and periodic summarization. Although overwrite memory can in principle retain anything an append-only memory can, it must learn to carry each fact through every subsequent rewrite, which is difficult to learn from sparse outcome rewards; for interactive applications like web agents, we find that trained overwrite memories delete key information required by the trajectory, as well as corrective feedback received from the environment. We introduce AMBER (Append-only Memory Bank for Evidence Retention) - a simple and scalable framework where an agent jointly learns to reason, act, and write free-form memory, while an append-only rule guarantees retention by construction. This allows AMBER to be trained end-to-end with reinforcement learning from outcome rewards without the need for extensive curated SFT data. On WebArena Lite, AMBER improves average success over overwrite-based memory by 4.09 percentage points, increases the fraction of tasks solved in five repeated runs by 4.8 percentage points, and matches an overwrite baseline trained on substantially more expensive curated supervision. AMBER achieves these improvements while maintaining a practical token budget, providing a strong balance between context efficiency, task performance, and reliable long-horizon execution.",
+      "arxiv_id": "2610.07118v1",
+      "authors": [
+        "Chinmay Savadikar",
+        "Zhaoyu Zhang",
+        "Mingyu Zhao",
+        "Shuang Xie",
+        "Han Li",
+        "Tianfu Wu",
+        "Lingyun Wang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.07118v1",
+      "published": "2026-10-06T01:11:07+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "AMBER: Training Long-Horizon Web Agents through Append-Only Memory",
+      "updated": "2026-10-06T01:11:07+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.05861v1",
+      "abstract": "Graphical User Interface (GUI) agents have emerged as a promising paradigm for automating complex digital workflows across diverse applications. However, training highly capable and generalizable agents fundamentally relies on massive, high-fidelity visual-action trajectories, which are notoriously difficult to acquire. While human demonstrations are unscalable, existing GUI world models rely on text descriptions or HTML rendering, discarding crucial pixel-level visual details like icons and layout styles. To address this issue, we introduce Infinite-Dreamer, a simulation-free data synthesis method powered by a pixel-level Image Editing World Model. By conceptualizing GUI transitions as image editing tasks, we leverage Vision-Language Models (VLMs) to describe action-induced UI changes as structured delta-text. We then fine-tune an image editing backbone to controllably synthesize realistic screenshot transitions. We utilize this model to generate both single-frame visual robustness data and multi-step imaginary trajectories. To validate the effectiveness of our approach, we fine-tune the Qwen3-VL baseline solely on the synthesized data to obtain Infinite-Actor, and evaluate it on AndroidWorld, MobileWorld, and AndroidControl-Curated benchmarks. Infinite-Actor consistently outperforms the Qwen3-VL baselines across scales: Infinite-Actor-8B improves AndroidWorld Pass@1 by +4.45 and nearly doubles the MobileWorld Pass@3 success rate, while Infinite-Actor-2B improves Pass@1 by +9.05. Code is available at https://github.com/swaydy-n/Infinite-Dreamer.",
+      "arxiv_id": "2610.05861v1",
+      "authors": [
+        "Yongxin Ning",
+        "Runliang Niu",
+        "Qianli Xing",
+        "Zhiyi Duan",
+        "Qingzu He",
+        "Pan Wang",
+        "Qi Wang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.05861v1",
+      "published": "2026-10-05T14:28:58+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Imagine to Act: High-Fidelity Data Synthesis via Image Editing World Model for Scalable GUI Agent Training",
+      "updated": "2026-10-05T14:28:58+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.05709v1",
+      "abstract": "Language-model agents are evolving into long-running services that interact with models, tools, computers, mobile devices, and distributed environments. Existing agent frameworks simplify reasoning and tool invocation. However, cloud-centric designs face three limitations: centralized execution increases failure impact, scaling pressure, and compute cost; extending agents across computers, mobile devices, and edge environments requires a unified execution abstraction with permission control; and long-running executions require consistent lifecycle management across failures, recovery, results, usage, and settlement. We present Nexus, a cloud-edge platform that treats each invocation as a persistent task. Nexus uses an OpenWrt-based runtime for distributed serving, run-scoped delegation for authorized access to Computer and Mobile environments, and persistent records to track execution, outputs, failures, recovery, usage, and charging across cloud and edge components. We evaluate Nexus on controlled, cross-device, and model-driven workloads. All ten Computer-Android workflows succeed, and all six revocation tests block subsequent writes while preserving prior authorized reads. Under worker loss, journaling eliminates duplicate appends (six to zero per task), adding 0.933 s mean normal-path overhead. Across 24 matched task pairs, Nexus completes 24 tasks versus Dify's 22 and is a median 3.88 s faster on jointly successful pairs. In a separate workload, Nexus operates under a smaller tested incremental-runtime memory ceiling than Dapr (16 versus 64 MiB), although Dapr achieves lower successful-call latency. These results demonstrate how locality, operation-scoped authority, and persistent result identity support cloud-edge agent services with workload-dependent costs.",
+      "arxiv_id": "2610.05709v1",
+      "authors": [
+        "Cary Chang",
+        "Jialin Zhou"
+      ],
+      "categories": [
+        "cs.DC",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.05709v1",
+      "published": "2026-10-05T10:47:01+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Nexus: An Execution Fabric for AI Agents Across Cloud, Edge, and Devices",
+      "updated": "2026-10-05T10:47:01+08:00"
+    }
+  ],
+  "report_date": "2026-10-10",
+  "run_paper_count": 8,
+  "source_report_date": null
+}
