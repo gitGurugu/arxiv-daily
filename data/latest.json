@@ -8,8 +8,35 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 146,
+  "paper_count": 147,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.27205v1",
+      "abstract": "Web agents are typically evaluated on English-language interfaces, leaving their ability to operate across the world's multilingual websites largely unexplored. This gap is especially significant for low-resource languages, where standardized resources for evaluating web agents remain limited. To address this gap, we introduce Low-Resource Web Agent Benchmark (LoWAgent), a benchmark for evaluating web agents across different low-resource languages (LRLs) in comparison to the default, English. LoWAgent evaluates web agents across English and four LRLs: Hindi, Bengali, Urdu, and Amharic. The benchmark comprises of six fully localized websites, instantiated across five languages to yield 3,000 task instances. We evaluate three closed-source and five open-source models across all five languages on all six websites. Our findings show that both closed-source and open-source models experience performance degradation for LRLs compared to English, with substantially greater performance drops observed among the open-source model agents. We further evaluate the robustness of the models on realistic interface disruptions, such as cookie notices and advertisement pop-ups, and find that these further degrade agentic performance. Finally, we show that post-training on a small subset of LoWAgent traces can significantly improve low-resource language agentic task performance, demonstrating the usefulness of our benchmark.",
+      "arxiv_id": "2610.27205v1",
+      "authors": [
+        "Ocean Monjur",
+        "Daud Ahmad Nisar",
+        "Shahriar Kabir Nahin",
+        "Tadesse Destaw Belay",
+        "Sushruti Mishra",
+        "Israel Abebe Azime",
+        "Anshuman Chhabra"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.27205v1",
+      "published": "2026-10-20T03:40:15+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "LoWAgent: A Low-Resource Multilingual Benchmark for Web Agents",
+      "updated": "2026-10-20T03:40:15+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2610.26828v1",
       "abstract": "Agent learning is shifting from learning from human data toward learning through interaction with the world. However, scaling such learning directly in real-world computer systems is challenging and can introduce substantial security risks. We therefore propose Agent World Model in the Wild (WildAWM), a scalable pipeline for synthesizing controllable environments and tasks for training general computer-use agents (CUAs). Whereas existing approaches typically specialize in a single agent interaction interface, we construct executable environments that jointly support graphical user interfaces, model context protocol services, and command-line interfaces, allowing agents to flexibly combine visual interaction, tool use, and code execution. WildAWM is entirely powered by open-source models, demonstrating that high-quality computer-use environments can be generated without proprietary frontier models. Beyond environments, we address three recurring challenges in task synthesis: ensuring solvability, maintaining sufficient difficulty, and producing reliable verifiers, by introducing execution-based quality gates that combine heterogeneous agent rollouts, cross-judge consistency checks, and counterfactual probes of judgment robustness. The resulting pipeline synthesizes 341 long-horizon environment-task pairs that can require over 100 agent steps to solve and remain challenging even for frontier models, with GPT-6-Astra solving only 60% of them. We train two Qwen models of different sizes exclusively in these synthetic worlds. Both models achieve substantial gains across 8 out-of-distribution benchmarks spanning web, claw, and computer-use agents, demonstrating that learning in WildAWM's synthesized worlds generalizes broadly to unseen computer-use tasks. The code is publicly available at https://github.com/MSR-Orchard/WildAWM.",
@@ -4054,7 +4081,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-10-20",
+  "report_date": "2026-10-21",
   "run_paper_count": 8,
   "source_report_date": null
 }
