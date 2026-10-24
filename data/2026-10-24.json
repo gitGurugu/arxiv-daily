@@ -1,0 +1,278 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 10,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.31307v1",
+      "abstract": "GUI agents aim to automate complex user tasks by interacting with mobile interfaces, but ef- fective decision-making in long-horizon set- tings requires reusing prior experience rather than relying solely on the environment ob- servations. Existing memory-based methods typically store experience either at the single- action level or as entire trajectories. Single- step actions are often too fine-grained to carry meaningful semantics, since the success of an individual action does not necessarily imply progress towards the overall goal. In contrast, whole trajectories are often too coarse-grained and difficult to reuse across different tasks. We propose a subgoal-aware memory graph that distils past trajectories into structured, reusable evidence at the level of subgoals. We define a subgoal as consecutive actions shar- ing a single intent, the granularity at which progress toward the task becomes meaning- ful. To reduce redundancy and support cross- task reuse, we organise subgoal experiences as nodes in a graph, where related memories can be merged, extended, and retrieved based on the environment observation. On SPA-Bench, our method improves success rate by 11.11% over the baseline.",
+      "arxiv_id": "2610.31307v1",
+      "authors": [
+        "Dezhao Luo",
+        "Daniel Beechey",
+        "Derek Yuen",
+        "Weilin Luo"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.31307v1",
+      "published": "2026-10-22T22:06:00+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "Subgoal-aware Memory Graph for GUI Agent",
+      "updated": "2026-10-22T22:06:00+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.31107v1",
+      "abstract": "Web agents increasingly serve the same user across repeated online tasks such as booking travel, shopping, and scheduling, so their long-term usefulness depends on how well they know the user's preferences. Passive memory and personalization methods cannot obtain preferences the user never reveals, and clarification methods that value a question by its benefit to the current task overlook the benefit of reusing the answer in later tasks. We study Active Preference Acquisition (APA): which missing preferences are worth the cost of asking? We define the Prospective Personalization Value (PPV) of a missing preference as its expected cumulative utility gain over future tasks minus the effort and disclosure-risk cost of asking, and select questions under a per-interaction budget. We characterize when cumulative reuse justifies acquisition despite insufficient single-task benefit, and evaluate this regime with an initial-profile diagnostic. APA computes the counterfactual gain of each candidate preference on public task prototypes with the agent's own task solver and aggregates it by the expected reuse of each task family. We evaluate it on ActiveWebPref, a controlled longitudinal benchmark with hidden but queryable user profiles and exact task utilities. At a horizon of 20 tasks, 34.4% of budget-feasible valuable missing preferences are amortization-dependent; APA acquires 80.3% of them, whereas current-task value of information acquires 5.1%. Under per-user asking-cost caps matched to APA's realized expenditure, APA achieves higher net utility than four heuristic selection baselines. In our cost setting, asking about every unknown preference yields lower net utility than not asking, while APA recovers 84.2% of its utility gain with 27.6% of its questions. The value of acquiring a user preference should account for its reuse across future tasks, not only its benefit to the task at hand.",
+      "arxiv_id": "2610.31107v1",
+      "authors": [
+        "Yiqi Wang",
+        "Zizhi Zeng",
+        "Jiaqi Zhang",
+        "Yiqun Duan",
+        "Mingkai Zheng",
+        "Taotao Cai"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.31107v1",
+      "published": "2026-10-22T19:16:24+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Learning What to Ask for Tomorrow: Active Preference Acquisition for Long-Term Personalized Web Agents",
+      "updated": "2026-10-22T19:16:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.30895v1",
+      "abstract": "Everyday household information is often exchanged in conversations but never written down, making details easy to forget or misremember. We present a voice-enabled smart-home assistant that acts as a household memory by recording conversations and retrieving information from stored and newly captured speech. The assistant runs on an Android tablet with a modular architecture in which speech-recognition, diarisation, embedding and language models can be configured or replaced through an orchestration layer. On-device wake-word detection and VAD-based query capture support hands-free interaction. Recorded audio is processed in configurable chunks, transcribed and diarised, converted into turn-aware passages with conversation-level timestamps, and indexed in a vector store. For memory queries, a retrieval-augmented generation pipeline selects key passages and uses them to generate an answer. The interface supports recording, conversation management and inspection of timestamped sources.",
+      "arxiv_id": "2610.30895v1",
+      "authors": [
+        "Aleix Sant",
+        "Jordi Luque",
+        "Fernando López",
+        "Pablo Gómez",
+        "Carlos Escolano"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.30895v1",
+      "published": "2026-10-22T16:19:07+08:00",
+      "score": 6,
+      "summary_zh": null,
+      "title": "Your Home Remembers: A Voice-Enabled Household Memory Assistant for Conversational Retrieval",
+      "updated": "2026-10-22T16:19:07+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.30573v1",
+      "abstract": "Unlike conventional GUI agents, personalized GUI agents require user preferences to guide sequential execution over changing GUI states. This raises two challenges: determining HOW each preference should alter execution strategy and WHEN it should take effect along the interaction trajectory. Existing benchmarks primarily evaluate overall task success, offering limited insight into these questions. We introduce PrefDiag-Bench with two components: (1) a categorization of preferences into five types, characterizing HOW they affect execution; and (2) a stage-wise diagnostic framework with 1,664 probes, tracing WHEN preferences should take effect and where failures occur. We evaluate eleven GUI agent systems, including end-to-end agents and agentic workflows, under two forms of user context: explicit user profiles and behavioral memory logs. Although existing agents achieve relatively high completion rates on non-personalized tasks, performance is substantially lower on preference-personalized tasks. Even the best-performing model, Seed-2.0-Pro, achieves only 47.17% on Process preferences under explicit user profiles. Agents struggle particularly with Ranking and Process preferences. Further analysis reveals two key capability bottlenecks: selecting relevant evidence from user history and recognizing when preferences should take effect during execution. Controlled interventions that explicitly provide relevant evidence improve end-to-end task success by up to 7.06%. PrefDiag-Bench offers a more systematic evaluation of GUI agents' personalization capabilities beyond overall task success. Code and data are available at https://github.com/Zhixin-L/PrefDiag-Bench.",
+      "arxiv_id": "2610.30573v1",
+      "authors": [
+        "Zhixin Lin",
+        "Dongliang Xu",
+        "Jungang Li",
+        "Shidong Pan",
+        "Jun Feng",
+        "Yanbin Sun",
+        "Jing Li",
+        "Liang Liu",
+        "Yue Yao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.30573v1",
+      "published": "2026-10-22T09:04:24+08:00",
+      "score": 15,
+      "summary_zh": null,
+      "title": "Diagnosing Personalization Failures in Mobile GUI Agents",
+      "updated": "2026-10-22T09:04:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.27205v1",
+      "abstract": "Web agents are typically evaluated on English-language interfaces, leaving their ability to operate across the world's multilingual websites largely unexplored. This gap is especially significant for low-resource languages, where standardized resources for evaluating web agents remain limited. To address this gap, we introduce Low-Resource Web Agent Benchmark (LoWAgent), a benchmark for evaluating web agents across different low-resource languages (LRLs) in comparison to the default, English. LoWAgent evaluates web agents across English and four LRLs: Hindi, Bengali, Urdu, and Amharic. The benchmark comprises of six fully localized websites, instantiated across five languages to yield 3,000 task instances. We evaluate three closed-source and five open-source models across all five languages on all six websites. Our findings show that both closed-source and open-source models experience performance degradation for LRLs compared to English, with substantially greater performance drops observed among the open-source model agents. We further evaluate the robustness of the models on realistic interface disruptions, such as cookie notices and advertisement pop-ups, and find that these further degrade agentic performance. Finally, we show that post-training on a small subset of LoWAgent traces can significantly improve low-resource language agentic task performance, demonstrating the usefulness of our benchmark.",
+      "arxiv_id": "2610.27205v1",
+      "authors": [
+        "Ocean Monjur",
+        "Daud Ahmad Nisar",
+        "Shahriar Kabir Nahin",
+        "Tadesse Destaw Belay",
+        "Sushruti Mishra",
+        "Israel Abebe Azime",
+        "Anshuman Chhabra"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.27205v1",
+      "published": "2026-10-20T03:40:15+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "LoWAgent: A Low-Resource Multilingual Benchmark for Web Agents",
+      "updated": "2026-10-20T03:40:15+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.26828v1",
+      "abstract": "Agent learning is shifting from learning from human data toward learning through interaction with the world. However, scaling such learning directly in real-world computer systems is challenging and can introduce substantial security risks. We therefore propose Agent World Model in the Wild (WildAWM), a scalable pipeline for synthesizing controllable environments and tasks for training general computer-use agents (CUAs). Whereas existing approaches typically specialize in a single agent interaction interface, we construct executable environments that jointly support graphical user interfaces, model context protocol services, and command-line interfaces, allowing agents to flexibly combine visual interaction, tool use, and code execution. WildAWM is entirely powered by open-source models, demonstrating that high-quality computer-use environments can be generated without proprietary frontier models. Beyond environments, we address three recurring challenges in task synthesis: ensuring solvability, maintaining sufficient difficulty, and producing reliable verifiers, by introducing execution-based quality gates that combine heterogeneous agent rollouts, cross-judge consistency checks, and counterfactual probes of judgment robustness. The resulting pipeline synthesizes 341 long-horizon environment-task pairs that can require over 100 agent steps to solve and remain challenging even for frontier models, with GPT-6-Astra solving only 60% of them. We train two Qwen models of different sizes exclusively in these synthetic worlds. Both models achieve substantial gains across 8 out-of-distribution benchmarks spanning web, claw, and computer-use agents, demonstrating that learning in WildAWM's synthesized worlds generalizes broadly to unseen computer-use tasks. The code is publicly available at https://github.com/MSR-Orchard/WildAWM.",
+      "arxiv_id": "2610.26828v1",
+      "authors": [
+        "Zhaoyang Wang",
+        "Qianhui Wu",
+        "Haorui Wang",
+        "Simon Yu",
+        "Baolin Peng",
+        "Canwen Xu",
+        "Hao Cheng",
+        "Wenlin Yao",
+        "Boyi Liu",
+        "Yite Wang",
+        "Jianfeng Gao",
+        "Huaxiu Yao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.26828v1",
+      "published": "2026-10-20T01:55:35+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Agent World Model in the Wild: Computer-Use Agent Environment Synthesis",
+      "updated": "2026-10-20T01:55:35+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.26660v1",
+      "abstract": "Smartphone GUI agents complete tasks in mobile apps by repeatedly reading the screen and asking a model for the next action. Mobile neural processing units (NPUs) enable local execution, keeping screen contents on the phone, but model latency accumulates with every action. Hybrid linear attention models reduce memory requirements, yet reusing their recurrent state requires checkpoints at the appropriate input positions. Agent requests retain instructions but rewrite recent history, so checkpoint policies designed for chat continuation can miss reusable prefixes. Retaining rollback states for speculative decoding can also move prompt processing off the NPU's matrix unit, adding overhead that outweighs decoding savings on short action outputs. A loaded model can further hold the NPU awake between tasks. We present Tandem, a runtime for hybrid GUI agents on mobile NPUs. Tandem saves recurrent state where consecutive prompts diverge, allowing later requests to reuse previously processed context. It keeps most prefill on the matrix unit and produces rollback states through a short per-token tail. Its verification kernel reads each weight block once for all proposed tokens. Between request bursts, Tandem releases NPU power votes without unloading the model. We implement Tandem in llama.cpp and evaluate it on recorded agent interactions across two Snapdragon generations. On a Snapdragon 8 Elite, Tandem reduces per-step latency by 30% for text-based screen descriptions and 16% for screenshots relative to llama.cpp's fastest NPU configuration, reduces energy per text step by 33%, and lowers standby power with the model loaded from 0.76 to 0.22 W.",
+      "arxiv_id": "2610.26660v1",
+      "authors": [
+        "Zhuomin Chen",
+        "Jingchao Ni",
+        "Xu Zheng",
+        "Yong Chen",
+        "Mo Sha",
+        "Wei Cheng",
+        "Dongsheng Luo"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.26660v1",
+      "published": "2026-10-20T00:18:16+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "Tandem: Serving Hybrid Linear-Attention GUI Agents on Mobile NPUs",
+      "updated": "2026-10-20T00:18:16+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.26503v1",
+      "abstract": "Latent memory is gaining ground as a lightweight history supplement for GUI agents. It supplies history to a frozen vision-language model via prefix vectors trained with step-wise cross-entropy (CE). While resulting gains are naturally attributed to encoded history, our controlled experiments show they primarily stem from action revision. The prefix learns to alter the model's default actions. However, this revision is unscoped because step-wise CE pushes outputs toward reference actions at every step without explicitly preserving correct decisions. Consequently, it repairs errors but also breaks 8-13% of initially correct answers. Overall accuracy metrics hide these losses. We therefore propose ScopeMem, a latent-memory method for scoped revision. Its encoder conditions prefix generation on the model's initial answer and is trained to correct errors while preserving correct decisions. On the controlled ablation set, ScopeMem reduces the share of broken correct decisions to 5.6% while repairing more errors than any evaluated CE-trained prefix. On AndroidControl, GUI-Odyssey, and zero-shot AITW, ScopeMem outperforms all evaluated prompting and latent-memory baselines, enabling a frozen Qwen3-VL-8B to match or surpass GUI-specialized agents and Qwen3-VL-32B.",
+      "arxiv_id": "2610.26503v1",
+      "authors": [
+        "Zhicheng Zheng",
+        "Cheng Zhang",
+        "Shengping Yu",
+        "Tianxiang Zhao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.26503v1",
+      "published": "2026-10-19T22:38:41+08:00",
+      "score": 10,
+      "summary_zh": null,
+      "title": "ScopeMem: Latent Memory That Learns Where to Revise Frozen GUI Agents",
+      "updated": "2026-10-19T22:38:41+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.26278v1",
+      "abstract": "Nowadays, it is easy to set up any element of a VR experience so users can interact with it physically, except for interactive VR characters. Can we extend this to animated VR characters? In this work, we studied whether physics-based character animation (PBCA) controllers can produce high-quality movement in VR-compatible environments (Unity3D, WebXR). We evaluated the quality of the results, as well as the losses at each stage of the processing pipeline: data ingest, training and inference. For data ingest, we computed accuracy metrics related to the retargeting method used. For training, we computed accuracy metrics related to different training policies and different training environments. We developed new JAX implementations of state-of-the-art PBCA controllers (DeepMimic, AMP and ADD) which can be trained in MuJoCo-MJX in minutes, 50 times faster than in a traditional CPU-based training environment. The benefit of these particular implementations is that the resulting control policies can be readily transferred to Unity3D and support cross-platform compilation, including Android, something critical for use in VR production. For inference, we tested these controller policies in Unity3D and WebXR. Our results suggest that DeepMimic and ADD trained in MuJoCo-MJX generate controller policies with better animation fidelity than other methods. To simplify the comparison between controller policies, and different reference animations, we implemented an animation fidelity index (afi). Its results are analogous to other more common metrics, but afi is more intuitive to interpret and thus simplifies the comparison of training methods across the successive stages of the processing pipeline.",
+      "arxiv_id": "2610.26278v1",
+      "authors": [
+        "Joan Llobera",
+        "Pierre Nagorny",
+        "Balint Hodossy",
+        "Valérie Juillard",
+        "Caecilia Charbonnier"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.26278v1",
+      "published": "2026-10-19T20:32:05+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "Bringing physics-based controller policies to virtual reality",
+      "updated": "2026-10-19T20:32:05+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.26203v1",
+      "abstract": "Graphical User Interface (GUI) agents increasingly act over streaming omni-modal observations spanning screenshots, audio, video, interaction history, and device states. However, exposing this complete context uniformly at every step ignores that relevance is transient and sparse: the signal determining one action can become clutter at the next. Because executed actions feed back into the context, these errors compound into Sequential Distraction, driving the agent into irreversible trajectory drift. We formulate the underlying requirement as Focused Perception: a representation that is step-adaptive, action-sufficient, and non-intrusive. We realize this in FocusGUI, a lightweight adapter that dynamically prioritizes multimodal channels against a step-specific decision reference. Instead of uniformly processing all inputs, it compresses the most relevant evidence into a compact latent and subtly injects it into the frozen decoder's embeddings, guiding the model's attention without altering its native parameter space. FocusGUI trains from action supervision alone, requiring neither modality-relevance labels nor backbone fine-tuning. Across four omni-modal backbones, it raises overall Type Match by +33.2 and Exact Match by 3.0 times over the frozen backbone on average, and Type Match by +30.1 over the strongest existing enhancement method.",
+      "arxiv_id": "2610.26203v1",
+      "authors": [
+        "Fuyao Zhang",
+        "Wenwen He",
+        "Jiaming Zhang",
+        "Yurong Hao",
+        "Xuan Wang",
+        "Guowei Guan",
+        "Che Wang",
+        "Longtao Huang",
+        "Wei Yang Bryan Lim"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.26203v1",
+      "published": "2026-10-19T19:30:48+08:00",
+      "score": 9,
+      "summary_zh": null,
+      "title": "Focused Omni-Modal GUI Agents",
+      "updated": "2026-10-19T19:30:48+08:00"
+    }
+  ],
+  "report_date": "2026-10-24",
+  "run_paper_count": 10,
+  "source_report_date": null
+}
