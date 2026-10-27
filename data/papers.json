@@ -8,8 +8,122 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 151,
+  "paper_count": 157,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.34959v1",
+      "abstract": "GUI agents built on vision-language models interact with continuously evolving interfaces, yet conventional inference repeatedly recomputes representations of largely overlapping observations and histories. This mismatch makes multi-step interaction costly, while changes in context, interface content, and action arguments prevent straightforward cache reuse. We introduce GUIFlow, a framework for full-pipeline incremental inference in multi-image GUI interaction. Our central insight is that advancing a decision need not require rebuilding all supporting representations: each interaction step can instead selectively update computational states maintained across the trajectory. To support new decisions as the context evolves, GUIFlow adapts how past computation is reused: historical KV states are position-aligned and injected into the current context; change signals guide selective updates of current-observation states in the vision encoder and language model; and earlier action responses serve as speculative drafts verified by the target model. Together, these mechanisms enable cross-step reuse throughout visual encoding, prefill, and decoding without additional training, a separate draft model, or changes to the model-visible inputs and action interface. Experiments demonstrate up to 3.39x geometric-mean speedup across offline multi-image benchmarks and up to 3.49x in online, closed-loop interaction on OSWorld, while maintaining task performance broadly comparable to the dense baseline.",
+      "arxiv_id": "2610.34959v1",
+      "authors": [
+        "Ye Li",
+        "Haoran Ding",
+        "Huanan Liu",
+        "Yuan Meng",
+        "Yutian Shen",
+        "Yuansong Wang",
+        "Kangye Ji",
+        "Hanyun Cui",
+        "Hongbo Duan",
+        "Chen Tang",
+        "Jiawei Li",
+        "Shu-Tao Xia",
+        "Zhi Wang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.34959v1",
+      "published": "2026-10-26T15:25:39+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "GUIFlow: Temporal Redundancy-Aware Incremental Inference for GUI Agents",
+      "updated": "2026-10-26T15:25:39+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.34724v1",
+      "abstract": "Long-horizon agents continuously encounter reusable procedural knowledge, yet existing systems typically rely either on model adaptation or external memory, trading persistent learning for rapid reuse. This limitation is especially important for Web agents that repeatedly execute related multi-step workflows. We propose HaMo, a Harness-Model collaborative framework that combines fast non-parametric experience accumulation with slow parametric adaptation. HaMo distills trajectories into strategy-level experience cards for immediate retrieval, while an experience-conditioned continual learning objective trains the model to interpret, ground, and execute retrieved strategies across changing contexts. A retrieval-coverage-based selection mechanism further identifies compact and complementary trajectories for parameter updates. Experiments show that HaMo outperforms harness-only and model-only adaptation under within-domain and cross-domain shifts, improving both retention and adaptation. These results highlight the importance of jointly preserving procedural experience and internalizing the competence to transfer and execute it across tasks.",
+      "arxiv_id": "2610.34724v1",
+      "authors": [
+        "Zhen Bi",
+        "Zhizhi Peng",
+        "Yan Wang",
+        "Xueshu Chen",
+        "Haofei Zhang",
+        "Yaobo Zhang",
+        "Zeyu Yang",
+        "Qing Shen",
+        "Jungang Lou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.34724v1",
+      "published": "2026-10-26T10:21:20+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Harness-Model Collaboration for Long-Horizon Continual Learning",
+      "updated": "2026-10-26T10:21:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.33907v1",
+      "abstract": "Computer-using agents are increasingly capable of performing complex tasks in the digital world. However, high-quality interaction trajectories remain scarce for specialized desktop applications, where limited application knowledge, cumbersome GUI workflows, and incomplete exploration hinder automated collection. We introduce OS-Wizard, an automated trajectory collection framework. It combines tutorial-guided exploration with a hybrid GUI--Code action space, providing application-specific knowledge and simplifying GUI workflows through direct execution of application-native commands. The framework also checkpoints and revisits pivotal states during tree exploration to explore alternative workflows, complementing linear rollouts for broader coverage. We collect 10.9K trajectories comprising 54.9K state--action samples. Fine-tuning open-source base models on this corpus yields a best-performing model that improves performance on a benchmark of specialized desktop workflows by 58.2 percentage points to 64.1\\%, surpassing reported human performance of 59.8\\% and establishing a new state of the art. The fine-tuned model also improves performance on general desktop workflows using GUI actions only, suggesting that the collected supervision benefits general desktop tasks as well. Comparative experiments and ablations demonstrate the efficiency of trajectory collection and the importance of code actions.",
+      "arxiv_id": "2610.33907v1",
+      "authors": [
+        "Zhoumianze Liu",
+        "Zichen Ding",
+        "Bowen Yang",
+        "Zehao Li",
+        "Zhenyu Wu",
+        "Yibo Zhao",
+        "Kanzhi Chen",
+        "Yian Wang",
+        "Yanan Sun",
+        "Qiushi Sun",
+        "Yu Qiao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.33907v1",
+      "published": "2026-10-25T04:39:23+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "OS-Wizard: Scaling Computer-Using Agents to Specialized Software via Knowledge-Guided Exploration",
+      "updated": "2026-10-25T04:39:23+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.33528v1",
+      "abstract": "Skill learning enables web agents to reuse prior experience for long-horizon interactive tasks. However, learned skills are typically evaluated in closed environments, overlooking the fact that real-world web deployment involves continuous shifts in invocation context, perceptual grounding, and execution feasibility. To this end, we introduce SkillShift-Bench, the first benchmark for evaluating skill learning with controlled open-environment shifts. SkillShift-Bench simulates Contextual Shift, Perceptual Shift, and Execution Shift across three self-hosted web systems, and evaluates agents with diagnostics covering task success, interaction cost, skill use, and skill failure. Comprehensive experiments reveal systematic robustness degradation under controlled shifts, characterized by lower success rates, higher interaction costs, and more frequent skill failures, with Execution Shift exerting the strongest pressure. We further formulate shifted skill execution as a nonstationary local executability problem and provide both a dynamic-regret analysis and a practical test-time adaptation method, demonstrating the feasibility of improving learned-skill execution without relearning the skill library. Code, tasks, environments, documentation, and the leaderboard are available at https://skillshift-bench.github.io/.",
+      "arxiv_id": "2610.33528v1",
+      "authors": [
+        "Bo-Yu Chen",
+        "Zhi Zhou",
+        "Yu-Feng Li"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.33528v1",
+      "published": "2026-10-24T16:09:00+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "SkillShift-Bench: Benchmarking Skill Learning under Environment Evolution for Web Agents",
+      "updated": "2026-10-24T16:09:00+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2610.31307v1",
       "abstract": "GUI agents aim to automate complex user tasks by interacting with mobile interfaces, but ef- fective decision-making in long-horizon set- tings requires reusing prior experience rather than relying solely on the environment ob- servations. Existing memory-based methods typically store experience either at the single- action level or as entire trajectories. Single- step actions are often too fine-grained to carry meaningful semantics, since the success of an individual action does not necessarily imply progress towards the overall goal. In contrast, whole trajectories are often too coarse-grained and difficult to reuse across different tasks. We propose a subgoal-aware memory graph that distils past trajectories into structured, reusable evidence at the level of subgoals. We define a subgoal as consecutive actions shar- ing a single intent, the granularity at which progress toward the task becomes meaning- ful. To reduce redundancy and support cross- task reuse, we organise subgoal experiences as nodes in a graph, where related memories can be merged, extended, and retrieved based on the environment observation. On SPA-Bench, our method improves success rate by 11.11% over the baseline.",
@@ -32,6 +146,31 @@
       "summary_zh": null,
       "title": "Subgoal-aware Memory Graph for GUI Agent",
       "updated": "2026-10-22T22:06:00+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.31107v2",
+      "abstract": "Web agents increasingly serve the same user across repeated online tasks such as booking travel, shopping, and scheduling, so their long-term usefulness depends on how well they know the user's preferences. Passive memory and personalization methods cannot obtain preferences the user never reveals, and clarification methods that value a question by its benefit to the current task overlook the benefit of reusing the answer in later tasks. We study Active Preference Acquisition (APA): which missing preferences are worth the cost of asking? We define the Prospective Personalization Value (PPV) of a missing preference as its expected cumulative utility gain over future tasks minus the effort and disclosure-risk cost of asking, and select questions under a per-interaction budget. We characterize when cumulative reuse justifies acquisition despite insufficient single-task benefit, and evaluate this regime with an initial-profile diagnostic. APA computes the counterfactual gain of each candidate preference on public task prototypes with the agent's own task solver and aggregates it by the expected reuse of each task family. We evaluate it on ActiveWebPref, a controlled longitudinal benchmark with hidden but queryable user profiles and exact task utilities. At a horizon of 20 tasks, 34.4% of budget-feasible valuable missing preferences are amortization-dependent; APA acquires 80.3% of them, whereas current-task value of information acquires 5.1%. Under per-user asking-cost caps matched to APA's realized expenditure, APA achieves higher net utility than four heuristic selection baselines. In our cost setting, asking about every unknown preference yields lower net utility than not asking, while APA recovers 84.2% of its utility gain with 27.6% of its questions. The value of acquiring a user preference should account for its reuse across future tasks, not only its benefit to the task at hand.",
+      "arxiv_id": "2610.31107v2",
+      "authors": [
+        "Yiqi Wang",
+        "Zizhi Zeng",
+        "Jiaqi Zhang",
+        "Yiqun Duan",
+        "Mingkai Zheng",
+        "Taotao Cai"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.31107v2",
+      "published": "2026-10-22T19:16:24+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Learning What to Ask for Tomorrow: Active Preference Acquisition for Long-Term Personalized Web Agents",
+      "updated": "2026-10-25T13:24:21+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2610.31107v1",
@@ -109,6 +248,33 @@
       "summary_zh": null,
       "title": "Diagnosing Personalization Failures in Mobile GUI Agents",
       "updated": "2026-10-22T09:04:24+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.27205v2",
+      "abstract": "Web agents are typically evaluated on English-language interfaces, leaving their ability to operate across the world's multilingual websites largely unexplored. This gap is especially significant for low-resource languages, where standardized resources for evaluating web agents remain limited. To address this gap, we introduce Low-Resource Web Agent Benchmark (LoWAgent), a benchmark for evaluating web agents across different low-resource languages (LRLs) in comparison to the default, English. LoWAgent evaluates web agents across English and four LRLs: Hindi, Bengali, Urdu, and Amharic. The benchmark comprises of six fully localized websites, instantiated across five languages to yield 3,000 task instances. We evaluate three closed-source and five open-source models across all five languages on all six websites. Our findings show that both closed-source and open-source models experience performance degradation for LRLs compared to English, with substantially greater performance drops observed among the open-source model agents. We further evaluate the robustness of the models on realistic interface disruptions, such as cookie notices and advertisement pop-ups, and find that these further degrade agentic performance. Finally, we show that post-training on a small subset of LoWAgent traces can significantly improve low-resource language agentic task performance, demonstrating the usefulness of our benchmark.",
+      "arxiv_id": "2610.27205v2",
+      "authors": [
+        "Ocean Monjur",
+        "Daud Ahmad Nisar",
+        "Shahriar Kabir Nahin",
+        "Tadesse Destaw Belay",
+        "Sushruti Mishra",
+        "Israel Abebe Azime",
+        "Anshuman Chhabra"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.27205v2",
+      "published": "2026-10-20T03:40:15+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "LoWAgent: A Low-Resource Multilingual Benchmark for Web Agents",
+      "updated": "2026-10-24T11:47:17+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2610.27205v1",
@@ -4181,7 +4347,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-10-26",
-  "run_paper_count": 10,
+  "report_date": "2026-10-27",
+  "run_paper_count": 9,
   "source_report_date": null
 }
