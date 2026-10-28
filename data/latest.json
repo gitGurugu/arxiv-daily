@@ -8,8 +8,59 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 157,
+  "paper_count": 159,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.37482v1",
+      "abstract": "GUI memory should preserve the results of past actions and learn reusable operations. This is difficult in long-horizon workflows, where agents must use information across applications and useful operations are interleaved with failed attempts. We introduce Task Advancement Memory (TAM), which defines task advancement as verified task progress, and supports ongoing task execution and learns reusable operations. During execution, Task Advancement State represents how verified task progress changes the remaining goals, allowing the agent to build on earlier achievements across applications. After each task, advancement supervision identifies and abstracts the interactions that produced a verified local result. The learned operations preserve the relation between required inputs, expected outcomes, and verification conditions. This retains locally successful operations from both successful and failed tasks. On MobileWorld GUI-only tasks, Advancement State alone raises success from 12.0% to 28.2%. Full TAM achieves a 17.6% relative gain in task success over the strongest evaluated baseline and reduces lifecycle tokens per solved task by 38.7%. On SPA-Bench, TAM achieves state-of-the-art task success in the single-app English Level 3 setting.",
+      "arxiv_id": "2610.37482v1",
+      "authors": [
+        "Ziyang Chen",
+        "Qian Li",
+        "Chengwei Qin"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.37482v1",
+      "published": "2026-10-28T00:09:25+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "From Interaction to Capability: Task Advancement as State and Supervision for GUI Agents",
+      "updated": "2026-10-28T00:09:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.36877v1",
+      "abstract": "Mobile GUI agents are typically fine-tuned 7B-scale vision-language models (VLMs) that generate each action as text. However, these VLMs decode every action token by token, and even agents that score candidate actions keep a large language model or VLM in the loop, making them slow and memory-hungry. To address these issues, we propose GUI-JEPA, to our knowledge the first decoder-free GUI agent policy built on a Joint-Embedding Predictive Architecture (JEPA), which selects actions in the latent space of a JEPA encoder pretrained on unlabelled GUI screenshots. Its action- and region-conditioned latent predictor turns the screen latent into one latent per candidate action, letting lightweight heads score all candidates against the instruction in a single batched pass, without decoding a token. We further show that the scorer relies on this latent pathway and that the predictor is trained for the decision itself: a randomly initialised predictor does just as well as one pretrained on screen dynamics. On AndroidControl, GUI-JEPA is 2.8-4.0x faster on the same GPU than a Qwen2.5-VL-7B agent we fine-tune with the same inputs, while reaching 86-92% of its in-distribution accuracy with 6% of its parameters. Code is available at https://github.com/bcwang-sjtu/GUI-JEPA",
+      "arxiv_id": "2610.36877v1",
+      "authors": [
+        "Bingchao Wang",
+        "Yongcheng Jing",
+        "Shunyu Liu",
+        "Chengyu Wang",
+        "Jun Huang",
+        "Jie Yang",
+        "Wei Liu",
+        "Dacheng Tao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.36877v1",
+      "published": "2026-10-27T17:17:51+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "GUI-JEPA: Candidate-Conditioned JEPA Latents as a Fast Action Policy for Mobile GUI Agents",
+      "updated": "2026-10-27T17:17:51+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2610.34959v1",
       "abstract": "GUI agents built on vision-language models interact with continuously evolving interfaces, yet conventional inference repeatedly recomputes representations of largely overlapping observations and histories. This mismatch makes multi-step interaction costly, while changes in context, interface content, and action arguments prevent straightforward cache reuse. We introduce GUIFlow, a framework for full-pipeline incremental inference in multi-image GUI interaction. Our central insight is that advancing a decision need not require rebuilding all supporting representations: each interaction step can instead selectively update computational states maintained across the trajectory. To support new decisions as the context evolves, GUIFlow adapts how past computation is reused: historical KV states are position-aligned and injected into the current context; change signals guide selective updates of current-observation states in the vision encoder and language model; and earlier action responses serve as speculative drafts verified by the target model. Together, these mechanisms enable cross-step reuse throughout visual encoding, prefill, and decoding without additional training, a separate draft model, or changes to the model-visible inputs and action interface. Experiments demonstrate up to 3.39x geometric-mean speedup across offline multi-image benchmarks and up to 3.49x in online, closed-loop interaction on OSWorld, while maintaining task performance broadly comparable to the dense baseline.",
@@ -4347,7 +4398,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-10-27",
-  "run_paper_count": 9,
+  "report_date": "2026-10-28",
+  "run_paper_count": 10,
   "source_report_date": null
 }
