@@ -8,8 +8,56 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 159,
+  "paper_count": 161,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.40133v1",
+      "abstract": "Web agents are typically evaluated with goals fully specified before execution and fixed thereafter, whereas real users often revise their requirements during interaction. To study such interactions, we introduce DynaRev, a benchmark of 181 tasks to evaluate web agents under dynamic goal revision. DynaRev uses semantic milestones to deliver revisions at task-defined stages, covers additive revisions, unconditional overrides, and runtime-conditioned overrides, and evaluates correctness, responsiveness, and efficiency through trajectory-grounded evaluation. Five-model evaluations show that agents often satisfy only part of the task requirements, with performance varying across task sources, revision types, and models. Further analyses reveal varied milestone timing, mixed effects of dynamic delivery, and contrasting revision-handling outcomes, with gains from instruction rewriting while preserving browser state and losses from browser resets. DynaRev provides a testbed for studying how web agents adapt to evolving user goals. The code and data are available at https://github.com/zsq259/DynaRev.",
+      "arxiv_id": "2610.40133v1",
+      "authors": [
+        "Shiqi Zhang",
+        "Guochen Zhou",
+        "Zesheng Wei",
+        "Hai Zhao",
+        "Zhisong Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.40133v1",
+      "published": "2026-10-29T22:25:54+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "DynaRev: Benchmarking Web Agents under Dynamic Goal Revision",
+      "updated": "2026-10-29T22:25:54+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.39251v1",
+      "abstract": "Trajectory-level GRPO is a common approach for training multi-step GUI agents, but repeatedly rolling out complete trajectories from the task root can be inefficient: task-level rewards provide coarse supervision over which intermediate decisions require improvement, while already-mastered prefixes are repeatedly re-executed before reaching difficult states. We introduce a two-stage adaptive training framework that jointly addresses where to learn and how far to roll out. We first construct reusable intermediate checkpoints from successful expert trajectories and select informative pivots using action disagreement, which measures uncertainty directly from sampled GUI actions. Stage I performs one-step RL at these pivots to improve uncertain local decisions. Stage II then progressively expands policy responsibility through adaptive Local, Suffix, and Root training according to task progress. Recoverable checkpoints enable repeated training from intermediate states without replaying the preceding trajectory. Across MobileGym and CUA-Gym-Hub, our method reduces environment interaction by 56-61% relative to Vanilla GRPO while improving task performance, demonstrating that jointly allocating training across states and rollout ranges can substantially improve GUI-agent RL efficiency.",
+      "arxiv_id": "2610.39251v1",
+      "authors": [
+        "Yuxiang Chai",
+        "Quyu Kong",
+        "Panrong Tong",
+        "Steven Hoi",
+        "Yue Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.39251v1",
+      "published": "2026-10-29T11:03:29+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Where to Learn and How Far to Roll Out: Efficient Adaptive Training for GUI Agents",
+      "updated": "2026-10-29T11:03:29+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2610.37482v1",
       "abstract": "GUI memory should preserve the results of past actions and learn reusable operations. This is difficult in long-horizon workflows, where agents must use information across applications and useful operations are interleaved with failed attempts. We introduce Task Advancement Memory (TAM), which defines task advancement as verified task progress, and supports ongoing task execution and learns reusable operations. During execution, Task Advancement State represents how verified task progress changes the remaining goals, allowing the agent to build on earlier achievements across applications. After each task, advancement supervision identifies and abstracts the interactions that produced a verified local result. The learned operations preserve the relation between required inputs, expected outcomes, and verification conditions. This retains locally successful operations from both successful and failed tasks. On MobileWorld GUI-only tasks, Advancement State alone raises success from 12.0% to 28.2%. Full TAM achieves a 17.6% relative gain in task success over the strongest evaluated baseline and reduces lifecycle tokens per solved task by 38.7%. On SPA-Bench, TAM achieves state-of-the-art task success in the single-app English Level 3 setting.",
@@ -4398,7 +4446,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-10-29",
-  "run_paper_count": 10,
+  "report_date": "2026-10-30",
+  "run_paper_count": 9,
   "source_report_date": null
 }
