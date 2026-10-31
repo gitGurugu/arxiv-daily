@@ -1,0 +1,253 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 9,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2610.40133v1",
+      "abstract": "Web agents are typically evaluated with goals fully specified before execution and fixed thereafter, whereas real users often revise their requirements during interaction. To study such interactions, we introduce DynaRev, a benchmark of 181 tasks to evaluate web agents under dynamic goal revision. DynaRev uses semantic milestones to deliver revisions at task-defined stages, covers additive revisions, unconditional overrides, and runtime-conditioned overrides, and evaluates correctness, responsiveness, and efficiency through trajectory-grounded evaluation. Five-model evaluations show that agents often satisfy only part of the task requirements, with performance varying across task sources, revision types, and models. Further analyses reveal varied milestone timing, mixed effects of dynamic delivery, and contrasting revision-handling outcomes, with gains from instruction rewriting while preserving browser state and losses from browser resets. DynaRev provides a testbed for studying how web agents adapt to evolving user goals. The code and data are available at https://github.com/zsq259/DynaRev.",
+      "arxiv_id": "2610.40133v1",
+      "authors": [
+        "Shiqi Zhang",
+        "Guochen Zhou",
+        "Zesheng Wei",
+        "Hai Zhao",
+        "Zhisong Zhang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.40133v1",
+      "published": "2026-10-29T22:25:54+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "DynaRev: Benchmarking Web Agents under Dynamic Goal Revision",
+      "updated": "2026-10-29T22:25:54+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.39251v1",
+      "abstract": "Trajectory-level GRPO is a common approach for training multi-step GUI agents, but repeatedly rolling out complete trajectories from the task root can be inefficient: task-level rewards provide coarse supervision over which intermediate decisions require improvement, while already-mastered prefixes are repeatedly re-executed before reaching difficult states. We introduce a two-stage adaptive training framework that jointly addresses where to learn and how far to roll out. We first construct reusable intermediate checkpoints from successful expert trajectories and select informative pivots using action disagreement, which measures uncertainty directly from sampled GUI actions. Stage I performs one-step RL at these pivots to improve uncertain local decisions. Stage II then progressively expands policy responsibility through adaptive Local, Suffix, and Root training according to task progress. Recoverable checkpoints enable repeated training from intermediate states without replaying the preceding trajectory. Across MobileGym and CUA-Gym-Hub, our method reduces environment interaction by 56-61% relative to Vanilla GRPO while improving task performance, demonstrating that jointly allocating training across states and rollout ranges can substantially improve GUI-agent RL efficiency.",
+      "arxiv_id": "2610.39251v1",
+      "authors": [
+        "Yuxiang Chai",
+        "Quyu Kong",
+        "Panrong Tong",
+        "Steven Hoi",
+        "Yue Wang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.39251v1",
+      "published": "2026-10-29T11:03:29+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Where to Learn and How Far to Roll Out: Efficient Adaptive Training for GUI Agents",
+      "updated": "2026-10-29T11:03:29+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.37482v1",
+      "abstract": "GUI memory should preserve the results of past actions and learn reusable operations. This is difficult in long-horizon workflows, where agents must use information across applications and useful operations are interleaved with failed attempts. We introduce Task Advancement Memory (TAM), which defines task advancement as verified task progress, and supports ongoing task execution and learns reusable operations. During execution, Task Advancement State represents how verified task progress changes the remaining goals, allowing the agent to build on earlier achievements across applications. After each task, advancement supervision identifies and abstracts the interactions that produced a verified local result. The learned operations preserve the relation between required inputs, expected outcomes, and verification conditions. This retains locally successful operations from both successful and failed tasks. On MobileWorld GUI-only tasks, Advancement State alone raises success from 12.0% to 28.2%. Full TAM achieves a 17.6% relative gain in task success over the strongest evaluated baseline and reduces lifecycle tokens per solved task by 38.7%. On SPA-Bench, TAM achieves state-of-the-art task success in the single-app English Level 3 setting.",
+      "arxiv_id": "2610.37482v1",
+      "authors": [
+        "Ziyang Chen",
+        "Qian Li",
+        "Chengwei Qin"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.37482v1",
+      "published": "2026-10-28T00:09:25+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "From Interaction to Capability: Task Advancement as State and Supervision for GUI Agents",
+      "updated": "2026-10-28T00:09:25+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.36877v1",
+      "abstract": "Mobile GUI agents are typically fine-tuned 7B-scale vision-language models (VLMs) that generate each action as text. However, these VLMs decode every action token by token, and even agents that score candidate actions keep a large language model or VLM in the loop, making them slow and memory-hungry. To address these issues, we propose GUI-JEPA, to our knowledge the first decoder-free GUI agent policy built on a Joint-Embedding Predictive Architecture (JEPA), which selects actions in the latent space of a JEPA encoder pretrained on unlabelled GUI screenshots. Its action- and region-conditioned latent predictor turns the screen latent into one latent per candidate action, letting lightweight heads score all candidates against the instruction in a single batched pass, without decoding a token. We further show that the scorer relies on this latent pathway and that the predictor is trained for the decision itself: a randomly initialised predictor does just as well as one pretrained on screen dynamics. On AndroidControl, GUI-JEPA is 2.8-4.0x faster on the same GPU than a Qwen2.5-VL-7B agent we fine-tune with the same inputs, while reaching 86-92% of its in-distribution accuracy with 6% of its parameters. Code is available at https://github.com/bcwang-sjtu/GUI-JEPA",
+      "arxiv_id": "2610.36877v1",
+      "authors": [
+        "Bingchao Wang",
+        "Yongcheng Jing",
+        "Shunyu Liu",
+        "Chengyu Wang",
+        "Jun Huang",
+        "Jie Yang",
+        "Wei Liu",
+        "Dacheng Tao"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.36877v1",
+      "published": "2026-10-27T17:17:51+08:00",
+      "score": 13,
+      "summary_zh": null,
+      "title": "GUI-JEPA: Candidate-Conditioned JEPA Latents as a Fast Action Policy for Mobile GUI Agents",
+      "updated": "2026-10-27T17:17:51+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.34959v1",
+      "abstract": "GUI agents built on vision-language models interact with continuously evolving interfaces, yet conventional inference repeatedly recomputes representations of largely overlapping observations and histories. This mismatch makes multi-step interaction costly, while changes in context, interface content, and action arguments prevent straightforward cache reuse. We introduce GUIFlow, a framework for full-pipeline incremental inference in multi-image GUI interaction. Our central insight is that advancing a decision need not require rebuilding all supporting representations: each interaction step can instead selectively update computational states maintained across the trajectory. To support new decisions as the context evolves, GUIFlow adapts how past computation is reused: historical KV states are position-aligned and injected into the current context; change signals guide selective updates of current-observation states in the vision encoder and language model; and earlier action responses serve as speculative drafts verified by the target model. Together, these mechanisms enable cross-step reuse throughout visual encoding, prefill, and decoding without additional training, a separate draft model, or changes to the model-visible inputs and action interface. Experiments demonstrate up to 3.39x geometric-mean speedup across offline multi-image benchmarks and up to 3.49x in online, closed-loop interaction on OSWorld, while maintaining task performance broadly comparable to the dense baseline.",
+      "arxiv_id": "2610.34959v1",
+      "authors": [
+        "Ye Li",
+        "Haoran Ding",
+        "Huanan Liu",
+        "Yuan Meng",
+        "Yutian Shen",
+        "Yuansong Wang",
+        "Kangye Ji",
+        "Hanyun Cui",
+        "Hongbo Duan",
+        "Chen Tang",
+        "Jiawei Li",
+        "Shu-Tao Xia",
+        "Zhi Wang"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.34959v1",
+      "published": "2026-10-26T15:25:39+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "GUIFlow: Temporal Redundancy-Aware Incremental Inference for GUI Agents",
+      "updated": "2026-10-26T15:25:39+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.34724v1",
+      "abstract": "Long-horizon agents continuously encounter reusable procedural knowledge, yet existing systems typically rely either on model adaptation or external memory, trading persistent learning for rapid reuse. This limitation is especially important for Web agents that repeatedly execute related multi-step workflows. We propose HaMo, a Harness-Model collaborative framework that combines fast non-parametric experience accumulation with slow parametric adaptation. HaMo distills trajectories into strategy-level experience cards for immediate retrieval, while an experience-conditioned continual learning objective trains the model to interpret, ground, and execute retrieved strategies across changing contexts. A retrieval-coverage-based selection mechanism further identifies compact and complementary trajectories for parameter updates. Experiments show that HaMo outperforms harness-only and model-only adaptation under within-domain and cross-domain shifts, improving both retention and adaptation. These results highlight the importance of jointly preserving procedural experience and internalizing the competence to transfer and execute it across tasks.",
+      "arxiv_id": "2610.34724v1",
+      "authors": [
+        "Zhen Bi",
+        "Zhizhi Peng",
+        "Yan Wang",
+        "Xueshu Chen",
+        "Haofei Zhang",
+        "Yaobo Zhang",
+        "Zeyu Yang",
+        "Qing Shen",
+        "Jungang Lou"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.34724v1",
+      "published": "2026-10-26T10:21:20+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "Harness-Model Collaboration for Long-Horizon Continual Learning",
+      "updated": "2026-10-26T10:21:20+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.33907v1",
+      "abstract": "Computer-using agents are increasingly capable of performing complex tasks in the digital world. However, high-quality interaction trajectories remain scarce for specialized desktop applications, where limited application knowledge, cumbersome GUI workflows, and incomplete exploration hinder automated collection. We introduce OS-Wizard, an automated trajectory collection framework. It combines tutorial-guided exploration with a hybrid GUI--Code action space, providing application-specific knowledge and simplifying GUI workflows through direct execution of application-native commands. The framework also checkpoints and revisits pivotal states during tree exploration to explore alternative workflows, complementing linear rollouts for broader coverage. We collect 10.9K trajectories comprising 54.9K state--action samples. Fine-tuning open-source base models on this corpus yields a best-performing model that improves performance on a benchmark of specialized desktop workflows by 58.2 percentage points to 64.1\\%, surpassing reported human performance of 59.8\\% and establishing a new state of the art. The fine-tuned model also improves performance on general desktop workflows using GUI actions only, suggesting that the collected supervision benefits general desktop tasks as well. Comparative experiments and ablations demonstrate the efficiency of trajectory collection and the importance of code actions.",
+      "arxiv_id": "2610.33907v1",
+      "authors": [
+        "Zhoumianze Liu",
+        "Zichen Ding",
+        "Bowen Yang",
+        "Zehao Li",
+        "Zhenyu Wu",
+        "Yibo Zhao",
+        "Kanzhi Chen",
+        "Yian Wang",
+        "Yanan Sun",
+        "Qiushi Sun",
+        "Yu Qiao"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.33907v1",
+      "published": "2026-10-25T04:39:23+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "OS-Wizard: Scaling Computer-Using Agents to Specialized Software via Knowledge-Guided Exploration",
+      "updated": "2026-10-25T04:39:23+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.33528v1",
+      "abstract": "Skill learning enables web agents to reuse prior experience for long-horizon interactive tasks. However, learned skills are typically evaluated in closed environments, overlooking the fact that real-world web deployment involves continuous shifts in invocation context, perceptual grounding, and execution feasibility. To this end, we introduce SkillShift-Bench, the first benchmark for evaluating skill learning with controlled open-environment shifts. SkillShift-Bench simulates Contextual Shift, Perceptual Shift, and Execution Shift across three self-hosted web systems, and evaluates agents with diagnostics covering task success, interaction cost, skill use, and skill failure. Comprehensive experiments reveal systematic robustness degradation under controlled shifts, characterized by lower success rates, higher interaction costs, and more frequent skill failures, with Execution Shift exerting the strongest pressure. We further formulate shifted skill execution as a nonstationary local executability problem and provide both a dynamic-regret analysis and a practical test-time adaptation method, demonstrating the feasibility of improving learned-skill execution without relearning the skill library. Code, tasks, environments, documentation, and the leaderboard are available at https://skillshift-bench.github.io/.",
+      "arxiv_id": "2610.33528v1",
+      "authors": [
+        "Bo-Yu Chen",
+        "Zhi Zhou",
+        "Yu-Feng Li"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.33528v1",
+      "published": "2026-10-24T16:09:00+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "SkillShift-Bench: Benchmarking Skill Learning under Environment Evolution for Web Agents",
+      "updated": "2026-10-24T16:09:00+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.31307v1",
+      "abstract": "GUI agents aim to automate complex user tasks by interacting with mobile interfaces, but ef- fective decision-making in long-horizon set- tings requires reusing prior experience rather than relying solely on the environment ob- servations. Existing memory-based methods typically store experience either at the single- action level or as entire trajectories. Single- step actions are often too fine-grained to carry meaningful semantics, since the success of an individual action does not necessarily imply progress towards the overall goal. In contrast, whole trajectories are often too coarse-grained and difficult to reuse across different tasks. We propose a subgoal-aware memory graph that distils past trajectories into structured, reusable evidence at the level of subgoals. We define a subgoal as consecutive actions shar- ing a single intent, the granularity at which progress toward the task becomes meaning- ful. To reduce redundancy and support cross- task reuse, we organise subgoal experiences as nodes in a graph, where related memories can be merged, extended, and retrieved based on the environment observation. On SPA-Bench, our method improves success rate by 11.11% over the baseline.",
+      "arxiv_id": "2610.31307v1",
+      "authors": [
+        "Dezhao Luo",
+        "Daniel Beechey",
+        "Derek Yuen",
+        "Weilin Luo"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.31307v1",
+      "published": "2026-10-22T22:06:00+08:00",
+      "score": 8,
+      "summary_zh": null,
+      "title": "Subgoal-aware Memory Graph for GUI Agent",
+      "updated": "2026-10-22T22:06:00+08:00"
+    }
+  ],
+  "report_date": "2026-10-31",
+  "run_paper_count": 9,
+  "source_report_date": null
+}
