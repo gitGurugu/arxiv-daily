@@ -1,0 +1,180 @@
+{
+  "categories": [
+    "cs.AI",
+    "cs.LG",
+    "cs.CL",
+    "cs.HC",
+    "cs.CV"
+  ],
+  "days_back": 180,
+  "fallback": false,
+  "paper_count": 6,
+  "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2611.06544v1",
+      "abstract": "Graphical user interface (GUI) agents can improve decision-making with world-model foresight, provided that predicted states accurately reflect post-action interfaces. Existing state representations fail to jointly capture interface layout, UI semantics, and explicit locations. We introduce Typed Spatial Markdown (TSM), a Markdown-style textual state representation for desktop web interfaces. TSM serializes block-level and atomic-level UI elements according to their spatial relationships, jointly encoding their types, visual semantics, explicit locations, optional control states, and hierarchical membership. To train a screenshot-to-TSM renderer, we construct AtomBlock-WebUI, a dataset with precise annotations at both granularities. By injecting element-type labels into HTML and directly extracting bounding boxes after rendering, we avoid annotation errors caused by post-hoc inference from webpage structures. Building on TSM, we propose MKD2World, a desktop web world model trained in two stages for current-state description and action-conditioned next-state prediction. During inference, the web agent queries MKD2World as needed and performs a ``digest'' step, in which it interprets each predicted state and extracts task-relevant evidence for selecting the best action. Experiments show that MKD2World-9B achieves an EleF1 score of 26.50 on the out-of-domain test set, outperforming GPT-5.6-Sol(14.98) by 11.52 points. Across Online-Mind2Web tasks, MKD2World-9B improves the success rate of the Qwen3.5-35B web agent from 22.94% to 37.61%, achieving competitive performance among leading open-source GUI world models. Code is available at https://github.com/OmniAI-Lab-CUHKSZ/MKD2World.",
+      "arxiv_id": "2611.06544v1",
+      "authors": [
+        "Zhihao Nan",
+        "Sifan Zhou",
+        "Yiming Cheng",
+        "Jinkai Zheng",
+        "Zheng Zhu",
+        "Si Shi",
+        "Ming Li",
+        "Fei Yu"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.06544v1",
+      "published": "2026-11-04T22:11:56+08:00",
+      "score": 4,
+      "summary_zh": null,
+      "title": "MKD2World: A Typed Spatial MarkDown World Model For Web Agents",
+      "updated": "2026-11-04T22:11:56+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.04393v1",
+      "abstract": "LLM agents increasingly act on information retrieved from public sources they treat as credible, which turns a manipulated recommendation into a transaction, a dependency, or a decision with physical consequences. The security literature models this threat as instruction injection, in which an adversary writes a command into retrieved content and deployed defenses learn to recognize command syntax. We show that an attacker can instead steer an agent through the agent's own harm-avoidance. A single fabricated hazard, written as an ordinary review, leads the agent to disqualify the legitimate options and select the attacker's target by its own reasoning, with no command for a detector to recognize. We call this voluntary servitude. These payloads steer agents about as often as instruction injection (60.4% vs. 66.0%), and deployed injection detectors score them as benign, so behind a filter they are 1.7-4.4x more effective. We measure this at the generation stage across six models and ten consumer-service domains, for three attack families, and show that it transfers to production browser agents, outperforming instruction injection, and to a retrieval pipeline (1.0-57.0% end-to-end success, depending on the retriever). We then show that a corroboration requirement added to the agent's instructions removes roughly 95% of the exposure against a non-adaptive attacker without retraining. With the requirement in place, the agent still reads the planted hazard and no longer acts on it.",
+      "arxiv_id": "2611.04393v1",
+      "authors": [
+        "Ilan Zendel",
+        "Matan Levy",
+        "Stav Cohen",
+        "Avi Mendelson",
+        "Amit LeVi"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.AI",
+        "cs.CL",
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.04393v1",
+      "published": "2026-11-03T14:26:58+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Voluntary Servitude: Weaponized Safety Warning Mechanisms for Controlling AI Agents",
+      "updated": "2026-11-03T14:26:58+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.03116v1",
+      "abstract": "Large language models (LLMs) are driving autonomous agents toward real-world environments, with the Web emerging as one of the most representative interaction scenarios. However, training Web agents with naive exploration remains challenging: successful trajectories are rare, and the sparse terminal rewards make it difficult for agents to obtain useful feedback from failed trajectories. Inspired by skill acquisition theory, we propose Skill-Composed Progressive Exploration (SCOPE), a short-to-long learning framework for long-horizon Web agents that decomposes complex task exploration into a gradual expansion process from local skills to complete task-solving capability. Specifically, SCOPE iteratively explores around local skills: Skill Discovery extracts reusable local skills and failure experiences from historical rollouts; Skill Orchestration composes discovered skills into high-level skill chains; and Skill Expansion leverages failure experiences aligned with the current skill chain to guide the agent toward exploring new subskills. Through this process, SCOPE progressively constructs task-completing skill chains across rollouts and internalizes them into the policy parameters through agentic on-policy distillation. Extensive experiments on WebArena, WebVoyager, and WebShop show that SCOPE consistently improves exploration dynamics and achieves 3.9% to 18.6% relative gains over the strongest baselines in each setting.",
+      "arxiv_id": "2611.03116v1",
+      "authors": [
+        "Xueyang Feng",
+        "Xiaohe Bo",
+        "Xu Chen",
+        "Quanyu Dai",
+        "Feng Wen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.03116v1",
+      "published": "2026-11-02T21:32:59+08:00",
+      "score": 3,
+      "summary_zh": null,
+      "title": "From Local Skills to Long-Horizon Web Tasks: Progressive Skill Exploration for LLM Web Agents",
+      "updated": "2026-11-02T21:32:59+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.01351v1",
+      "abstract": "Autonomous agents powered by vision-language models (VLMs) show great potential in navigating mobile graphical user interfaces (GUIs) to complete complex tasks. However, existing paradigms face fundamental scalability bottlenecks: fine-tuning requires massive high-fidelity datasets or prohibitive training time and compute, while gradient-free approaches rely on custom static heuristics or costly trial-and-error trajectory exploration where feedback is deferred until the end of execution. To address these limitations, we introduce MAPLE (Multimodal Agent with Playbook-Learned Experience), a novel gradient-free multi-agent framework that enables dynamic, step-wise experience sharing and execution-time prompt evolution. Unlike traditional action-reflection architectures that depend on costly, post-hoc self-reflection, MAPLE enables agents to cross-reference and distribute runtime insights in real time at each operational step. This dynamic exchange eliminates blind trial-and-error looping and steers agents along direct, grounded interaction paths. Extensive evaluations on the AndroidWorld and MobileWorld benchmarks demonstrate that MAPLE achieves state-of-the-art performance on complex, long-horizon mobile tasks, while proving scalable and adaptable across novel environments.",
+      "arxiv_id": "2611.01351v1",
+      "authors": [
+        "Jun Wang",
+        "Aurora Wei",
+        "Lucas Spangher",
+        "Ming Zhang",
+        "Eugene Ie",
+        "Yiannis Kantaros"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.MA"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.01351v1",
+      "published": "2026-11-01T07:44:52+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "MAPLE: A Multimodal Mobile Agent with Playbook-Learned Experience",
+      "updated": "2026-11-01T07:44:52+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.00191v1",
+      "abstract": "Existing Graphical User Interface (GUI) benchmarks predominantly rely on precise and stateless user instructions. In everyday usage, however, instructions are often \\emph{vague and history-dependent}: users omit the exact details of their past operations because they no longer remember them, leaving the agent to recover the missing context from long and noisy interaction histories. To bridge this evaluation gap, we introduce \\textbf{MemU-Bench}, a mobile benchmark of \\textbf{118 vague tasks} grounded in 29 long-horizon user trajectories, where agents must distill raw interaction streams into memory and retrieve the missing context on demand, with task outcomes verified against serialized application databases. Alongside Success Rate, we incorporate Interaction Efficiency (IE) and Success weighted by Path Length (SPL) to expose agents that succeed by exhaustively searching across different applications rather than by \\emph{genuinely recalling} the history. Evaluations show that without user history, state-of-the-art systems struggle under such ambiguity: the best-performing Gemini-3.1-Pro achieves an SPL of only 16.4\\%, and end-to-end GUI agents fall below 5\\%. To address this, we further propose \\textbf{AppMem}, a training-free framework that distills user history into a \\emph{structured, app-centric} memory bank, tracks interrupted intents across application switches, and selectively retrieves relevant memories via target-app inference. AppMem raises the SPL of GPT-5.5 from 15.7\\% to 66.9\\% (\\textbf{+51.2\\%}), outperforms a naive summary baseline by 9.3\\%, and delivers consistent gains across evaluated backbones.",
+      "arxiv_id": "2611.00191v1",
+      "authors": [
+        "Yizhou Liu",
+        "Zhengxi Lu",
+        "Fei Tang",
+        "Yiwen Qiu",
+        "Yong Du",
+        "Tongbo Chen",
+        "Bofan Chen",
+        "Tao Jiang",
+        "Wenhao Xu",
+        "Yunfeng Shu",
+        "Wenqi Zhang",
+        "Weiming Lu",
+        "Jun Xiao",
+        "Yueting Zhuang",
+        "Yongliang Shen"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.00191v1",
+      "published": "2026-10-31T01:41:46+08:00",
+      "score": 9,
+      "summary_zh": null,
+      "title": "MemU-Bench: Benchmarking GUI Agents on Long-Horizon User Interactions",
+      "updated": "2026-10-31T01:41:46+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2610.41460v1",
+      "abstract": "Web agents increasingly edit images by calling open editing models in a critique-and-retry loop, and these models differ in cost by more than an order of magnitude. After every rejected edit, a service must decide whether to retry the same model, escalate to another or give up. Existing routers pick one model per request, and cascades escalate in a fixed order. However, both treat a retry as an independent draw. We identify sticky failures, meaning that a retry after a failure succeeds only 17-53% as often as a first try across six open models, three benchmarks and two judges. Based on this finding, we propose RetryRoute, a retry-aware router that estimates each model's chance of success given the request's failure history. It plans retries, escalations and abandonment over failure states and adds live queue waits to the cost, so the same plan becomes load-aware dispatch. At the main budget, RetryRoute's success under the in-loop judge exceeds the strongest of eleven prior baselines by 2.8 points on average over eight groups. On a GPU serving testbed it raises the share of edits delivered within the service-level objective by 5.0-6.3 points over the best prior baseline at every load.",
+      "arxiv_id": "2610.41460v1",
+      "authors": [
+        "Hanshuai Cui",
+        "Zhiqing Tang",
+        "Zhi Yao",
+        "Jun Luo",
+        "Weijia Jia"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2610.41460v1",
+      "published": "2026-10-30T17:12:21+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "RetryRoute: Retry-Aware Model Routing for Agentic Image Editing Services",
+      "updated": "2026-10-30T17:12:21+08:00"
+    }
+  ],
+  "report_date": "2026-11-05",
+  "run_paper_count": 6,
+  "source_report_date": null
+}
