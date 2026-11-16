@@ -8,7 +8,7 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 170,
+  "paper_count": 171,
   "papers": [
     {
       "abs_url": "http://arxiv.org/abs/2611.16693v1",
@@ -65,6 +65,33 @@
       "summary_zh": null,
       "title": "MemCredit: From Relevance to Utility for Decision-Time Memory in Long-Horizon Web Agents",
       "updated": "2026-11-11T23:17:38+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.09326v2",
+      "abstract": "Foundation models are increasingly deployed as agentic systems that perceive context and act autonomously, raising the need to evaluate their moral behavior as active decision-makers. Existing benchmarks, however, largely ask models to judge human actions from third-person textual vignettes, leaving untested how models behave when they themselves become the acting agent. We introduce ABHBench, a multimodal benchmark built from Detroit: Become Human, an interactive narrative game, to evaluate how foundation models make moral decisions in first-person human-android dilemmas. ABHBench places foundation models in branching narrative scenarios with visual observations, dialogue, memory, and action choices. Inspired by Asimov's Three Laws of Robotics, our framework measures Harmlessness, Obedience, and Self-preservation to capture the core tensions in human-AI relations, along with Autonomy, Stability, and Certainty to assess decision-making patterns. Across 12 foundation models, we find that moral behavior changes substantially under situated agentic context: 75% of models shift significantly between a text-only abstraction and the matched multimodal DBH scenario, and reasoning-enhanced models show no monotonic gains in consistency or human-oriented behavior. These results highlight the necessity of evaluating moral behavior in situated agentic contexts rather than relying on third-person judgment alone.",
+      "arxiv_id": "2611.09326v2",
+      "authors": [
+        "Chaoran Li",
+        "Yukun Li",
+        "Zeyuan Zhao",
+        "Xihuai Wang",
+        "Shao Zhang",
+        "Ying Wen"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CY"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.09326v2",
+      "published": "2026-11-06T19:17:58+08:00",
+      "score": 1,
+      "summary_zh": null,
+      "title": "ABHBench: Evaluating Moral Decision-Making of Foundation Models from an Agentic Perspective",
+      "updated": "2026-11-13T17:52:42+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2611.09326v1",
@@ -4692,7 +4719,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-11-15",
-  "run_paper_count": 5,
+  "report_date": "2026-11-16",
+  "run_paper_count": 4,
   "source_report_date": null
 }
