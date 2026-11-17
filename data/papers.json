@@ -8,8 +8,68 @@
   ],
   "days_back": 180,
   "fallback": false,
-  "paper_count": 171,
+  "paper_count": 175,
   "papers": [
+    {
+      "abs_url": "http://arxiv.org/abs/2611.20753v1",
+      "abstract": "Mobile task automation aims to streamline multi-step, cross-app interactions on smartphones and in-vehicle systems. Recent LLM-based GUI agents have advanced rapidly, yet reliability remains limited because modern mobile workflows are increasingly service-composed (app switching, forms, pop-ups/permissions, copy-paste), requiring fine-grained operations on dense, dynamic, and heterogeneous UIs, often in distraction-sensitive contexts (e.g., hands-busy or attention-limited use). Through an in-the-wild failure analysis of deployable GUI agents, we identify two dominant bottlenecks: agents often miss or misread actionable UI elements, and they execute actions without verifying target correctness or outcomes. We present UIAnchor, a modular multi-agent system that improves mobile GUI automation by anchoring both perception and execution. UIAnchor combines a two-stage UI parser for high-recall element capture and context-aware semantics with a meta-controller that performs pre-action verification, post-action outcome perception, per-step state tracking, and targeted recovery. We further introduce an L1-L5 task taxonomy based on step length, cross-app scope, and UI granularity, showing that L5 remains beyond today's practical frontier. On the hardest practical tier, L4 tasks (20-30 steps, multi-app, targets < 100 x 100 px, ~5 mm on typical phones), UIAnchor improves success by 31.5% over GPT-4o and 16.6% over Mobile-Agent-v3. With edge/cloud assistance, UIAnchor runs at ~2 s per step, comparable to human operation, while reducing per-step latency by up to 75.5% and energy by 52.4%. It also generalizes to unseen apps and cross-platform GUIs.",
+      "arxiv_id": "2611.20753v1",
+      "authors": [
+        "Wentao Zhou",
+        "Sicong Liu",
+        "Zimu Zhou",
+        "Yimeng Duan",
+        "Yongyan Cai",
+        "Weiye Wu",
+        "Teng Li",
+        "Daqing Zhang",
+        "Zhiwen Yu"
+      ],
+      "categories": [
+        "cs.HC"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.20753v1",
+      "published": "2026-11-16T17:01:47+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "UIAnchor: Anchoring UI Perception and Action Execution for Reliable Service-Composed Mobile Task Automation with GUI Agents",
+      "updated": "2026-11-16T17:01:47+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.20012v1",
+      "abstract": "Offline language models could extend access to maternal-health information where internet connectivity is unreliable, but deployment requires both clinically appropriate responses and feasible local execution. This study presents an offline Android assistant integrating ready-made quantized language models, a clinically validated local knowledge package, conversational context, and model-initiated local retrieval. Gemma 4 E2B and Qwen3.5 0.8B were compared across 45 conversations and 312 turns per configuration, including a dedicated offline agentic benchmark. Gemma achieved higher response-quality, context-retention, and safety scores; Qwen offered faster generation and lower memory use. Clinician assessment of 150 Gemma responses across nine clinical domains yielded a mean quality score of 3.80/4, with 147 responses meeting the acceptance criterion. A paired RAG-on/off experiment evaluated 74 questions: retrieval improved 11 responses, left 56 neutral, produced four adverse response changes, and left three pairs unassessable. RAG-on had descriptively higher mean usefulness, safety, correctness, and actionability in the conditional 70-pair subset excluding the four flagged pairs from both conditions. Physical-device testing demonstrated offline responses on a 6 GB Android handset, with a 14.3 s median latency, alongside successful reconnection synchronization in the integrated application. Together, the findings document clinical response quality and practical performance of the integrated offline maternal-health assistant.",
+      "arxiv_id": "2611.20012v1",
+      "authors": [
+        "Okenla AbdulQahhar Abimbola",
+        "Maurice Abraham John",
+        "Adepoju Jeremiah Moyondafoluwa",
+        "Omolaiye Samuel",
+        "Oko-Oba Sandra Chioma",
+        "Owoo Oluwamayowa Emmanuel",
+        "Thanni Adewuyi",
+        "Lily Aimas-Love",
+        "Benson Eniola",
+        "Abdulquddus Ajibade",
+        "Sylvia Essessien",
+        "Anyanwu Princess Emmanuella",
+        "Adereni Abiodun"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.20012v1",
+      "published": "2026-11-15T21:42:56+08:00",
+      "score": 2,
+      "summary_zh": null,
+      "title": "Offline-First Quantized AI: Design and Evaluation of an On-Device Maternal-Health Assistant for Low-Connectivity Environments",
+      "updated": "2026-11-15T21:42:56+08:00"
+    },
     {
       "abs_url": "http://arxiv.org/abs/2611.16693v1",
       "abstract": "Mobile GUI agents read the screen of a phone and operate apps on a user's behalf to complete multi-step tasks such as online shopping or messaging. Because the agent acts on whatever the screen shows, an attacker can embed malicious instructions into ordinary UI content and redirect its actions. We refer to this threat as environmental injection attack (EIA). Existing benchmarks measure this risk by pinning hand-crafted payloads to a fixed step of a fixed task. This approach faces two limitations. First, each payload is bound to one task in one app and does not transfer without manual redesign. Second, agents given the same task may follow different routes, so an agent that never reaches the injected page is recorded as safe without being tested. This insufficient test coverage can cause fixed-point benchmarks to underestimate the security risk of deployed mobile agents. In this work, we propose MobileProbe, a trajectory-aware red-teaming framework that evaluates mobile agents adaptively. MobileProbe discovers attacker-controllable content surfaces through automated pentesting, localizes vulnerable decision points along the agent's trajectory, and iteratively refines context-aware payloads through a surrogate-filtered evolutionary loop. We construct a benchmark of 83 long-horizon attack instances spanning 12 mobile applications. Each is annotated with a Confidentiality, Integrity, or Availability (CIA) attack goal to cover the principal categories of security threats facing mobile agents. On three representative agent architectures, MobileProbe attains higher attack success rates than human-written, zero-shot LLM, and prior automated red-teaming baselines adapted to the mobile domain. MobileProbe can serve as a pre-deployment auditing tool to systematically uncover vulnerabilities and inform security hardening of mobile agents.",
@@ -65,6 +125,59 @@
       "summary_zh": null,
       "title": "MemCredit: From Relevance to Utility for Decision-Time Memory in Long-Horizon Web Agents",
       "updated": "2026-11-11T23:17:38+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.18747v1",
+      "abstract": "Multimodal large language models (LLMs) have enabled capable computer-use agents that perceive graphical user interfaces, reason over instructions, and execute actions. However, existing approaches to learning from video demonstrations typically convert videos into screenshot-based action trajectories, rather than directly leveraging their rich audio-visual information. We introduce VEX (Video as EXperience), a framework that uses audio-visual understanding to unify learning from external demonstrations and reflecting on an agent's own behavior. Following a watch-act-rewatch paradigm, the agent extracts procedural guidance from tutorial videos containing visual demonstrations and spoken explanations, executes tasks, and verifies its progress by rewatching its execution as video. We instantiate VEX with video-SALMONN-VEX, a 9B-scale audio-visual computer-use agent built on the video-SALMONN 2 architecture with a Qwen3.5-9B backbone. We further introduce Action-Grounded Guide Optimization (AGGO), a reinforcement learning method that optimizes video-derived guidance for downstream action prediction, and augment AgentNet, OSWorld, and CUA-Gym with over 24K real-world tutorial videos. Experiments on OSWorld and a complementary subset of CUA-Gym demonstrate consistent improvements, with video-SALMONN-VEX achieving a 22% relative increase in task success over its Qwen3.5 backbone on OSWorld. Moreover, its generated guidance improves Gemini-3.5-flash by 10% relatively on OSWorld. These results highlight the potential of audio-visual understanding as a unified interface for procedural learning and self-verification in computer-use agents.",
+      "arxiv_id": "2611.18747v1",
+      "authors": [
+        "Guangzhi Sun",
+        "Zhonghao Zhai",
+        "Yixuan Li",
+        "Chao Zhang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CV"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.18747v1",
+      "published": "2026-11-11T19:38:51+08:00",
+      "score": 7,
+      "summary_zh": null,
+      "title": "Video-as-Experience: Learning Computer Use via Audio-Visual Understanding",
+      "updated": "2026-11-11T19:38:51+08:00"
+    },
+    {
+      "abs_url": "http://arxiv.org/abs/2611.18715v1",
+      "abstract": "Training generalist GUI agents requires large volumes of interaction trajectories comprising screenshot sequences paired with grounded UI actions, yet collecting such data through human demonstration is expensive and difficult to scale. Although public software tutorial videos contain rich operational demonstrations, their continuous pixel streams lack discrete action boundaries, semantic intents, and precise spatial coordinates, making them difficult to use directly for model training. To address this, we present T2T (Tutorial-to-Trajectory), a fully automated pipeline for synthesizing GUI agent trajectories at scale. T2T spans desktop, web, and mobile platforms to convert unannotated video tutorials into structured, executable interaction trajectories. To guarantee trajectory quality, T2T combines active segment filtering, keyframe identification via localized UI change, shortcut-free observation frame selection, presence-aware grounding, and two-stage action-space normalization. These refined trajectories are then converted into multi-task training views spanning navigation, planning, forward dynamics, and grounding. We fine-tune Qwen3-VL-8B on a subset of the more than one million human-annotation-free training samples generated by this pipeline. Evaluations show that the model achieves consistent gains across multiple benchmarks covering desktop, web, and mobile environments, including OSWorld-G, ScreenSpot-Pro, AndroidControl, and AgentNetBench, indicating improved core capabilities in grounding, step-level instruction execution, and trajectory-level decision-making. Notably, all gains are achieved without any in-distribution training data from target domains. Learning exclusively from trajectories extracted from public videos via the T2T pipeline, the model exhibits cross-application and cross-task generalization capabilities.",
+      "arxiv_id": "2611.18715v1",
+      "authors": [
+        "Qingsong Xie",
+        "Yanlin Fei",
+        "Nazhou Liu",
+        "Jiacheng Tang",
+        "Madalina Ciobanu",
+        "Navan Preet Singh",
+        "Qingqing Mao",
+        "Ritankar Das"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "matched_topics": [
+        "GUI Agent Memory"
+      ],
+      "pdf_url": "https://arxiv.org/pdf/2611.18715v1",
+      "published": "2026-11-08T09:23:58+08:00",
+      "score": 5,
+      "summary_zh": null,
+      "title": "T2T Technical Report: Synthesizing GUI Agent Trajectories at Scale from Video Tutorials",
+      "updated": "2026-11-08T09:23:58+08:00"
     },
     {
       "abs_url": "http://arxiv.org/abs/2611.09326v2",
@@ -4719,7 +4832,7 @@
       "updated": "2026-05-28T15:47:27+08:00"
     }
   ],
-  "report_date": "2026-11-16",
-  "run_paper_count": 4,
+  "report_date": "2026-11-17",
+  "run_paper_count": 6,
   "source_report_date": null
 }
